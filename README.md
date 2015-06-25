@@ -1,4 +1,4 @@
-Note: This is an unofficial fork of [MWERT](https://github.com/hawkrobe/MWERT), adapted to allow arbitrary numbers of players to join a single room and participate in a collective behavior task. This task was originally used by Ian Couzin's lab to investigate collective behavior in fish.
+Note: This is an unofficial fork of [keysar_replication](https://github.com/hawkrobe/keysar_replication), which was an unofficial fork of [MWERT](https://github.com/hawkrobe/MWERT). The overall framework is the same, but we've added a chat panel, and a 'workspace' where people can drag objects around and (optionally) watch one another do so in real time.
 
 Local demo (from scratch)
 =========================
@@ -7,7 +7,7 @@ Local demo (from scratch)
 
 2. On Mac or Linux, use the Terminal to navigate to the location where you want to create your project, and enter 
    ```
-   git clone https://github.com/hawkrobe/keysar_replication.git
+   git clone https://github.com/hawkrobe/tangrams_replication.git
    ```
    at the command line to create a local copy of this repository. On Windows, run this command in the shell you installed in the previous step.
 
