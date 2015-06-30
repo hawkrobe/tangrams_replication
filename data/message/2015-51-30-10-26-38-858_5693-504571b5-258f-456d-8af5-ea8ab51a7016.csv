@@ -1,0 +1,4 @@
+gameid, time, condition, critical, objectSet, instructionNum, attemptNum, sender, contents
+5693-5,1435685221682,base,0,2,0,0,director,"move the binoculars one space to the right"
+5693-5,1435685272134,base,0,2,1,0,director,"move the wrench to the left"
+5693-5,1435685295412,base,1,2,2,0,director,"move the bottom block one space to the left"
