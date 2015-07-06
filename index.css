@@ -46,32 +46,37 @@ html , body {
 	left:0; right:0; top:10%; bottom: 0;
 	position: absolute;
 }
-
+/*height and width originally 80vh*/
 #viewport {
-	float: right;
+	float: bottom;
 	border:solid 1px #333;
-	height: 80vh;
-    width: 80vh;
-	margin-right: 2.5%;
+	height: 50vh;
+    width: 180vh;
+	margin: center;    
+	/*margin-right: 2.5%;*/
 	background: #383838; 
 
 }
 
 #message_panel {
-	height: 90%;
-	width: 40%;
+	height: 40vh;
+	width: 180vh;
  
-	float: left;
+	float: top;
+/*centers message_panel*/
+	margin: auto;
 
-	margin-left: 5%;
-	margin-right: 5%;
+/*old code*/	
+	/*margin-left: 5%;
+	margin-right: 5%;*/
+	
 	list-style-type: none; 
 
 	border: solid 1px #999; 
 }
 
 #messages {
-	height:92%;
+	height:85%;
 	text-align: left;
 	font-size: 200%;
 	overflow-y: scroll;
@@ -80,24 +85,26 @@ html , body {
 #chatarea form {
 	background: #212121; 
 	padding: 3px; 
-	height: 7%;
-	width: 100%; 
+	height: 7vh;
+	width: 180vh; 
 	float: bottom;
+
+
 }
 
 #chatarea input {
 	border: 0; 
 	height: 100%;
-	font-size: 150%;
-	width: 80%; 
+	font-size: 125%;
+	width: 90%; 
 	margin-left: .5%;
 	margin-right: .5%; 
 	padding: 5px;
 }
 
 #chatarea button {
-	width: 15%; 
-	height: 100%;
+/*	width: 150%; 
+	height: 100%;*/
 	font-size: 150%;
 	background: rgb(130, 224, 255); 
 	border: none; 

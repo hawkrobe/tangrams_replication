@@ -1,17 +1,17 @@
-/*  Copyright (c) 2012 Sven "FuzzYspo0N" Bergström, 
-                  2013 Robert XD Hawkins
+//   Copyright (c) 2012 Sven "FuzzYspo0N" Bergström, 
+//                   2013 Robert XD Hawkins
     
-    written by : http://underscorediscovery.com
-    written for : http://buildnewgames.com/real-time-multiplayer/
+//     written by : http://underscorediscovery.com
+//     written for : http://buildnewgames.com/real-time-multiplayer/
     
-    modified for collective behavior experiments on Amazon Mechanical Turk
+//     modified for collective behavior experiments on Amazon Mechanical Turk
 
-    MIT Licensed.
-*/
+//     MIT Licensed.
 
-/* 
-   THE FOLLOWING FUNCTIONS MAY NEED TO BE CHANGED
-*/
+
+// /* 
+//    THE FOLLOWING FUNCTIONS MAY NEED TO BE CHANGED
+// */
 
 // A window global for our game root variable.
 var game = {};
@@ -46,31 +46,35 @@ Explanation: This function is at the center of the problem of
   the server regularly sends news about its variables to the clients so
   that they can update their variables to reflect changes.
 */
-client_onserverupdate_received = function(data){
+client_onserverupdate_received = function(data){  
 
     // Update client versions of variables with data received from
     // server_send_update function in game.core.js
+    //data refers to server information
     if(data.players) {
-        _.map(_.zip(data.players, game.players),
-            function(z){
-                z[1].id = z[0].id;
-            })
+        _.map(_.zip(data.players, game.players),function(z){
+                //make client's players = server's players
+                z[1].id = z[0].id;  
     }
 
-    var dataNames = _.map(data.objects, 
-        function(e){ return e.name})
-    var localNames = _.map(game.objects,
-        function(e){return e.name})
+    var dataNames = _.map(data.objects, function(e)
+        { return e.name})
+    var localNames = _.map(game.objects,function(e)
+        {return e.name})
 
     // If your objects are out-of-date (i.e. if there's a new round), update them
     if (game.objects.length == 0 || !_.isEqual(dataNames, localNames)) { 
+        //get new list of objects from server
         game.objects = _.map(data.objects, function(obj) {
+            //initialize object as an image
             var imgObj = new Image()
             imgObj.src = obj.url
             // Set it up to load properly
-            imgObj.onload = function(){
-                game.ctx.drawImage(imgObj, parseInt(obj.trueX), parseInt(obj.trueY), obj.width, obj.height)
-//                if(my_role == "director") 
+            imgObj.onload = function(){  
+                //do I specify Director or Matcher at this point?
+                game.ctx.drawImage(imgObj, parseInt(obj.trueX),  //what is parseInt?
+                    parseInt(obj.trueY), obj.width, obj.height)
+//                if(my_role == "director")  //what is this for?
                     drawScreen(game, game.get_player(my_id))
             }
             return _.extend(_.omit(obj, ['trueX', 'trueY']),
@@ -79,6 +83,7 @@ client_onserverupdate_received = function(data){
     }
 
     // Update local object positions
+    //** Include director and matcher details?
     _.map(game.objects, function(obj) {
         data_obj = _.find(data.objects, function(o) {return o.name == obj.name})
         obj.trueX = data_obj.trueX;
@@ -89,10 +94,9 @@ client_onserverupdate_received = function(data){
         game.get_player(my_id).message = ""
 
     game.currentDestination = data.curr_dest;
-    game.scriptedInstruction = data.scriptedInstruction;
-
-    game.instructions = data.instructions
-    game.instructionNum = data.instructionNum;
+    // game.scriptedInstruction = data.scriptedInstruction;
+    // game.instructions = data.instructions
+    // game.instructionNum = data.instructionNum;
     game.game_started = data.gs;
     game.players_threshold = data.pt;
     game.player_count = data.pc;
@@ -199,12 +203,13 @@ client_connect_to_server = function(game) {
             game.socket.send(msg);
             $('#chatbox').val('');
             // If you just sent a scripted instruction, get rid of it!
-            game.scriptedInstruction = "none";
+            //game.scriptedInstruction = "none";
         }
-        return false;
+        return false;   // ???
     });
 
     // Update messages log when other players send chat
+    // Why isn't this working?
     game.socket.on('chatMessage', function(data){
         var otherRole = my_role === "director" ? "Matcher" : "Director"
         var source = data.user === my_id ? "You" : otherRole
@@ -258,217 +263,217 @@ client_onjoingame = function(num_players, role) {
     my_role = role;
     game.get_player(my_id).role = my_role;
 
-    if(num_players == 1)
-        game.get_player(my_id).message = 'Waiting for other player to connect...';
+     if(num_players == 1);
+          game.get_player(my_id).message = 'Waiting for other player to connect...'; //why does this need to be on?
 
-    // set mouse-tracking event handler
-    if(role === "matcher") {
-        $('#viewport').mousemove(function(event){
-            var bRect = game.viewport.getBoundingClientRect();
-            mouseX = (event.clientX - bRect.left)*(game.viewport.width/bRect.width);
-            mouseY = (event.clientY - bRect.top)*(game.viewport.height/bRect.height);
-            game.socket.send('update_mouse.' + Date.now() + '.' + Math.floor(mouseX) + '.' + Math.floor(mouseY));
-        });
-        game.viewport.addEventListener("mousedown", mouseDownListener, false);
-    }
+//     set mouse-tracking event handler
+//     if(role === "matcher") {
+//         $('#viewport').mousemove(function(event){
+//             var bRect = game.viewport.getBoundingClientRect();
+//             mouseX = (event.clientX - bRect.left)*(game.viewport.width/bRect.width);
+//             mouseY = (event.clientY - bRect.top)*(game.viewport.height/bRect.height);
+//             game.socket.send('update_mouse.' + Date.now() + '.' + Math.floor(mouseX) + '.' + Math.floor(mouseY));
+//         });
+//         game.viewport.addEventListener("mousedown", mouseDownListener, false);
+//     }
 }; 
 
 /*
 MOUSE EVENT LISTENERS
 */
 
-function mouseDownListener(evt) {
-    var i;
-    //We are going to pay attention to the layering order of the objects so that if a mouse down occurs over more than object,
-    //only the topmost one will be dragged.
-    var highestIndex = -1;
+// function mouseDownListener(evt) {
+//     var i;
+//     //We are going to pay attention to the layering order of the objects so that if a mouse down occurs over more than object,
+//     //only the topmost one will be dragged.
+//     var highestIndex = -1;
     
-    //getting mouse position correctly, being mindful of resizing that may have occured in the browser:
-    var bRect = game.viewport.getBoundingClientRect();
-    mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
-    mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
+//     //getting mouse position correctly, being mindful of resizing that may have occured in the browser:
+//     var bRect = game.viewport.getBoundingClientRect();
+//     mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
+//     mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
 
-    // if waiting flag is active, check if center was clicked
-    if(waiting) {
-        if((Math.pow(mouseX - game.viewport.width/2, 2) + Math.pow(mouseY - game.viewport.height/2, 2))
-            <= Math.pow(8, 2)) {
-            game.get_player(my_id).message = ""
-            if (incorrect) {
-                game.socket.send("ready.incorrect")
-                incorrect = false;
-            } else {
-                game.socket.send("ready")
-            }
-            waiting = false
-        }
-    } else {
-        //find which shape was clicked
-        for (i=0; i < game.objects.length; i++) {
-            if  (hitTest(game.objects[i], mouseX, mouseY)) {
-                dragging = true;
-                if (i > highestIndex) {
-                    //We will pay attention to the point on the object where the mouse is "holding" the object:
-                    dragHoldX = mouseX - game.objects[i].trueX;
-                    dragHoldY = mouseY - game.objects[i].trueY;
-                    highestIndex = i;
-                    dragIndex = i;
-                }
-            }
-        }
-    }
-    if (dragging) {
-        window.addEventListener("mousemove", mouseMoveListener, false);
-    }
-    game.viewport.removeEventListener("mousedown", mouseDownListener, false);
-    window.addEventListener("mouseup", mouseUpListener, false);
+//     // if waiting flag is active, check if center was clicked
+//     if(waiting) {
+//         if((Math.pow(mouseX - game.viewport.width/2, 2) + Math.pow(mouseY - game.viewport.height/2, 2))
+//             <= Math.pow(8, 2)) {
+//             game.get_player(my_id).message = ""
+//             if (incorrect) {
+//                 game.socket.send("ready.incorrect")
+//                 incorrect = false;
+//             } else {
+//                 game.socket.send("ready")
+//             }
+//             waiting = false
+//         }
+//     } else {
+//         //find which shape was clicked
+//         for (i=0; i < game.objects.length; i++) {
+//             if  (hitTest(game.objects[i], mouseX, mouseY)) {
+//                 dragging = true;
+//                 if (i > highestIndex) {
+//                     //We will pay attention to the point on the object where the mouse is "holding" the object:
+//                     dragHoldX = mouseX - game.objects[i].trueX;
+//                     dragHoldY = mouseY - game.objects[i].trueY;
+//                     highestIndex = i;
+//                     dragIndex = i;
+//                 }
+//             }
+//         }
+//     }
+//     if (dragging) {
+//         window.addEventListener("mousemove", mouseMoveListener, false);
+//     }
+//     game.viewport.removeEventListener("mousedown", mouseDownListener, false);
+//     window.addEventListener("mouseup", mouseUpListener, false);
 
-    //code below prevents the mouse down from having an effect on the main browser window:
-    if (evt.preventDefault) {
-        evt.preventDefault();
-    } //standard
-    else if (evt.returnValue) {
-        evt.returnValue = false;
-    } //older IE
-    return false;
-}
+//     //code below prevents the mouse down from having an effect on the main browser window:
+//     if (evt.preventDefault) {
+//         evt.preventDefault();
+//     } //standard
+//     else if (evt.returnValue) {
+//         evt.returnValue = false;
+//     } //older IE
+//     return false;
+// }
 
-function mouseUpListener(evt) {    
-    game.viewport.addEventListener("mousedown", mouseDownListener, false);
-    window.removeEventListener("mouseup", mouseUpListener, false);
-    if (dragging) {
-        // Set up the right variables
-        var bRect = game.viewport.getBoundingClientRect();
-        dropX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
-        dropY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
-        var obj = game.objects[dragIndex]
-        var cell = game.getCellFromPixel(dropX, dropY)
-        console.log(cell)
-        console.log([obj.gridX, obj.gridY])
+// function mouseUpListener(evt) {    
+//     game.viewport.addEventListener("mousedown", mouseDownListener, false);
+//     window.removeEventListener("mouseup", mouseUpListener, false);
+//     if (dragging) {
+//         // Set up the right variables
+//         var bRect = game.viewport.getBoundingClientRect();
+//         dropX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
+//         dropY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
+//         var obj = game.objects[dragIndex]
+//         var cell = game.getCellFromPixel(dropX, dropY)
+//         console.log(cell)
+//         console.log([obj.gridX, obj.gridY])
         
-        // If you were dragging the correct object... And dragged it to the correct location...
-        if (_.isEqual(obj.name, game.instructions[game.instructionNum].split(' ')[0])
-            && _.isEqual(cell, game.currentDestination)) {
-            // center it
-            obj.gridX = cell[0]
-            obj.gridY = cell[1]
-            obj.trueX = game.getPixelFromCell(cell[0], cell[1]).centerX - obj.width/2
-            obj.trueY = game.getPixelFromCell(cell[0], cell[1]).centerY - obj.height/2
-            game.socket.send("correctDrop." + dragIndex + "." + Math.round(obj.trueX) + "." + Math.round(obj.trueY))
+//         // If you were dragging the correct object... And dragged it to the correct location...
+//         if (_.isEqual(obj.name, game.instructions[game.instructionNum].split(' ')[0])
+//             && _.isEqual(cell, game.currentDestination)) {
+//             // center it
+//             obj.gridX = cell[0]
+//             obj.gridY = cell[1]
+//             obj.trueX = game.getPixelFromCell(cell[0], cell[1]).centerX - obj.width/2
+//             obj.trueY = game.getPixelFromCell(cell[0], cell[1]).centerY - obj.height/2
+//             game.socket.send("correctDrop." + dragIndex + "." + Math.round(obj.trueX) + "." + Math.round(obj.trueY))
         
-        // If you didn't drag it beyond cell bounds, snap it back w/o comment
-        } else if (obj.gridX == cell[0] && obj.gridY == cell[1]) {
-            console.log("here!")
-            obj.trueX = game.getPixelFromCell(obj.gridX, obj.gridY).centerX - obj.width/2
-            obj.trueY = game.getPixelFromCell(obj.gridX, obj.gridY).centerY - obj.height/2
-            game.socket.send("objMove." + dragIndex + "." + Math.round(obj.trueX) + "." + Math.round(obj.trueY))
+//         // If you didn't drag it beyond cell bounds, snap it back w/o comment
+//         } else if (obj.gridX == cell[0] && obj.gridY == cell[1]) {
+//             console.log("here!")
+//             obj.trueX = game.getPixelFromCell(obj.gridX, obj.gridY).centerX - obj.width/2
+//             obj.trueY = game.getPixelFromCell(obj.gridX, obj.gridY).centerY - obj.height/2
+//             game.socket.send("objMove." + dragIndex + "." + Math.round(obj.trueX) + "." + Math.round(obj.trueY))
         
-        // If you moved the incorrect object or went to the incorrect location, pause game to readjust mouse
-        } else {
-            obj.trueX = game.getPixelFromCell(obj.gridX, obj.gridY).centerX - obj.width/2
-            obj.trueY = game.getPixelFromCell(obj.gridX, obj.gridY).centerY - obj.height/2
-            game.get_player(my_id).message = "Error!"
-            game.socket.send("incorrectDrop." + dragIndex + "." + Math.round(obj.trueX) + "." + Math.round(obj.trueY) 
-                + "." + cell[0] + "." + cell[1] + "." + Date.now())
-        }
-        // Tell server where you dropped it
-        drawScreen(game, game.get_player(my_id))
-        dragging = false;
-        window.removeEventListener("mousemove", mouseMoveListener, false);
-    }
-}
+//         // If you moved the incorrect object or went to the incorrect location, pause game to readjust mouse
+//         } else {
+//             obj.trueX = game.getPixelFromCell(obj.gridX, obj.gridY).centerX - obj.width/2
+//             obj.trueY = game.getPixelFromCell(obj.gridX, obj.gridY).centerY - obj.height/2
+//             game.get_player(my_id).message = "Error!"
+//             game.socket.send("incorrectDrop." + dragIndex + "." + Math.round(obj.trueX) + "." + Math.round(obj.trueY) 
+//                 + "." + cell[0] + "." + cell[1] + "." + Date.now())
+//         }
+//         // Tell server where you dropped it
+//         drawScreen(game, game.get_player(my_id))
+//         dragging = false;
+//         window.removeEventListener("mousemove", mouseMoveListener, false);
+//     }
+// }
 
-function mouseMoveListener(evt) {
-    // prevent from dragging offscreen
-    var minX = 25;
-    var maxX = game.viewport.width - game.objects[dragIndex].width - 25;
-    var minY = 25;
-    var maxY = game.viewport.height - game.objects[dragIndex].height - 25;
+// function mouseMoveListener(evt) {
+//     // prevent from dragging offscreen
+//     var minX = 25;
+//     var maxX = game.viewport.width - game.objects[dragIndex].width - 25;
+//     var minY = 25;
+//     var maxY = game.viewport.height - game.objects[dragIndex].height - 25;
 
-    //getting mouse position correctly 
-    var bRect = game.viewport.getBoundingClientRect();
-    mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
-    mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
+//     //getting mouse position correctly 
+//     var bRect = game.viewport.getBoundingClientRect();
+//     mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
+//     mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
 
-    //clamp x and y positions to prevent object from dragging outside of canvas
-    var posX = mouseX - dragHoldX;
-    posX = (posX < minX) ? minX : ((posX > maxX) ? maxX : posX);
-    var posY = mouseY - dragHoldY;
-    posY = (posY < minY) ? minY : ((posY > maxY) ? maxY : posY);
+//     //clamp x and y positions to prevent object from dragging outside of canvas
+//     var posX = mouseX - dragHoldX;
+//     posX = (posX < minX) ? minX : ((posX > maxX) ? maxX : posX);
+//     var posY = mouseY - dragHoldY;
+//     posY = (posY < minY) ? minY : ((posY > maxY) ? maxY : posY);
 
-    // Update object locally
-    var obj = game.objects[dragIndex]
-    obj.trueX = Math.round(posX);
-    obj.trueY = Math.round(posY);
+//     // Update object locally
+//     var obj = game.objects[dragIndex]
+//     obj.trueX = Math.round(posX);
+//     obj.trueY = Math.round(posY);
 
-    // Tell server about it
-    game.socket.send("objMove." + dragIndex + "." + Math.round(posX) + "." + Math.round(posY))
-    drawScreen(game, game.get_player(my_id));
-}
+//     // Tell server about it
+//     game.socket.send("objMove." + dragIndex + "." + Math.round(posX) + "." + Math.round(posY))
+//     drawScreen(game, game.get_player(my_id));
+// }
 
-function hitTest(shape,mx,my) {
-    var dx = mx - shape.trueX;
-    var dy = my - shape.trueY;
-    return (0 < dx) && (dx < shape.width) && (0 < dy) && (dy < shape.height)
-}
+// function hitTest(shape,mx,my) {
+//     var dx = mx - shape.trueX;
+//     var dy = my - shape.trueY;
+//     return (0 < dx) && (dx < shape.width) && (0 < dy) && (dy < shape.height)
+// }
 
-// Automatically registers whether user has switched tabs...
-(function() {
-    document.hidden = hidden = "hidden";
+// // Automatically registers whether user has switched tabs...
+// (function() {
+//     document.hidden = hidden = "hidden";
 
-    // Standards:
-    if (hidden in document)
-        document.addEventListener("visibilitychange", onchange);
-    else if ((hidden = "mozHidden") in document)
-        document.addEventListener("mozvisibilitychange", onchange);
-    else if ((hidden = "webkitHidden") in document)
-        document.addEventListener("webkitvisibilitychange", onchange);
-    else if ((hidden = "msHidden") in document)
-        document.addEventListener("msvisibilitychange", onchange);
-    // IE 9 and lower:
-    else if ('onfocusin' in document)
-        document.onfocusin = document.onfocusout = onchange;
-    // All others:
-    else
-        window.onpageshow = window.onpagehide = window.onfocus 
-             = window.onblur = onchange;
-})();
+//     // Standards:
+//     if (hidden in document)
+//         document.addEventListener("visibilitychange", onchange);
+//     else if ((hidden = "mozHidden") in document)
+//         document.addEventListener("mozvisibilitychange", onchange);
+//     else if ((hidden = "webkitHidden") in document)
+//         document.addEventListener("webkitvisibilitychange", onchange);
+//     else if ((hidden = "msHidden") in document)
+//         document.addEventListener("msvisibilitychange", onchange);
+//     // IE 9 and lower:
+//     else if ('onfocusin' in document)
+//         document.onfocusin = document.onfocusout = onchange;
+//     // All others:
+//     else
+//         window.onpageshow = window.onpagehide = window.onfocus 
+//              = window.onblur = onchange;
+// })();
 
-function onchange (evt) {
-    var v = 'visible', h = 'hidden',
-    evtMap = { 
-        focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h 
-    };
-    evt = evt || window.event;
-    if (evt.type in evtMap) {
-        document.body.className = evtMap[evt.type];
-    } else {
-        document.body.className = evt.target.hidden ? "hidden" : "visible";
-    }
-    visible = document.body.className;
-    game.socket.send("h." + document.body.className);
-};
+// function onchange (evt) {
+//     var v = 'visible', h = 'hidden',
+//     evtMap = { 
+//         focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h 
+//     };
+//     evt = evt || window.event;
+//     if (evt.type in evtMap) {
+//         document.body.className = evtMap[evt.type];
+//     } else {
+//         document.body.className = evt.target.hidden ? "hidden" : "visible";
+//     }
+//     visible = document.body.className;
+//     game.socket.send("h." + document.body.className);
+// };
 
-(function () {
+// (function () {
 
-    var original = document.title;
-    var timeout;
+//     var original = document.title;
+//     var timeout;
 
-    window.flashTitle = function (newMsg, howManyTimes) {
-        function step() {
-            document.title = (document.title == original) ? newMsg : original;
-            if (visible === "hidden") {
-                timeout = setTimeout(step, 500);
-            } else {
-                document.title = original;
-            }
-        };
-        cancelFlashTitle(timeout);
-        step();
-    };
+//     window.flashTitle = function (newMsg, howManyTimes) {
+//         function step() {
+//             document.title = (document.title == original) ? newMsg : original;
+//             if (visible === "hidden") {
+//                 timeout = setTimeout(step, 500);
+//             } else {
+//                 document.title = original;
+//             }
+//         };
+//         cancelFlashTitle(timeout);
+//         step();
+//     };
 
-    window.cancelFlashTitle = function (timeout) {
-        clearTimeout(timeout);
-        document.title = original;
-    };
+//     window.cancelFlashTitle = function (timeout) {
+//         clearTimeout(timeout);
+//         document.title = original;
+//     };
 
-}());
+// }());
