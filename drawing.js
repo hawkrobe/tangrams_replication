@@ -8,7 +8,7 @@ var drawGrid = function(game){
     var ch = game.viewport.height;
 
     //padding around grid
-    var p = 25;
+    var p = game.cellPadding / 2;
 
     //grid width and height
     var bw = cw - (p*2) ;
@@ -31,6 +31,7 @@ var drawGrid = function(game){
     game.ctx.stroke();
 };
 
+// Loop through the object list and draw each one in its specified location
 var drawObjects = function(game, player) {
     _.map(game.objects, function(obj) { 
       game.ctx.drawImage(obj.matcher.img, obj.matcher.trueX, obj.matcher.trueY,

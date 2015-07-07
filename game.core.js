@@ -38,6 +38,7 @@ var game_core = function(game_instance){
   this.numHorizontalCells = 6;
   this.numVerticalCells = 2;
   this.cellDimensions = {height : 300, width : 300}; // in pixels
+  this.cellPadding = 50;
   this.world = {height : this.cellDimensions.height * this.numVerticalCells,
 		width : this.cellDimensions.width * this.numHorizontalCells}; 
   
@@ -102,81 +103,28 @@ game_core.prototype.get_player = function(id) {
 
 // Method to get list of players that aren't the given id
 game_core.prototype.get_others = function(id) {
-    return _.without(_.map(_.filter(this.players, function(e){return e.id != id}), 
-        function(p){return p.player ? p : null}), null)
+  return _.without(_.map(_.filter(this.players, function(e){return e.id != id;}), 
+			 function(p){return p.player ? p : null;}), null);
 };
 
 // Returns all other players
 game_core.prototype.get_active_players = function() {
-    return _.without(_.map(this.players, function(p){
-        return p.player ? p : null}), null)
+  return _.without(_.map(this.players, function(p){
+    return p.player ? p : null;}), null);
 };
 
 game_core.prototype.newRound = function() {
-    console.log("new round!")
-    console.log(this.roundNum)
-
-    if(this.roundNum == this.numRounds - 1) {
-        var local_game = this;
-        _.map(local_game.get_active_players(), function(p){
-            p.player.instance.disconnect()})//send('s.end')})
-    } else {
-        this.roundNum += 1;
-        this.objects = this.trialList[this.roundNum].objects
-        // this.instructions = this.trialList[this.roundNum].instructions
-        // this.instructionNum = -1;
-        // this.newInstruction()
-    }
-}
-
-// game_core.prototype.setScriptAndDir = function(instruction) {
-//     var item = instruction.split(' ')[0]
-//     var dir = instruction.split(' ')[1]
-//     var object = _.find(this.objects, function(obj) { return obj.name == item })
-//     this.scriptedInstruction = (object.hasOwnProperty('scriptedInstruction') ?
-//         object.scriptedInstruction :
-//         "none")
-//     var dest;
-//     switch(dir) {
-//         case "down" :
-//             dest = [object.gridX, object.gridY + 1]; break;
-//         case "up" :
-//             dest = [object.gridX, object.gridY - 1]; break;
-//         case "left" :
-//             dest = [object.gridX - 1, object.gridY]; break;
-//         case "right" :
-//             dest = [object.gridX + 1, object.gridY]; break;
-//     }
-//     this.currentDestination = dest;
-// }
-
-// game_core.prototype.newInstruction = function() {
-//     this.instructionNum += 1;
-//     var instruction = this.instructions[this.instructionNum]
-//     this.setScriptAndDir(instruction)
-//     this.server_send_update()
-// }
-
-// var sampleConditionOrder = function() {
-//     var orderList = []
-//     var options = ['exp', 'base'] 
-//     while (orderList.length < 8
-//         || !(_.every(orderList.concat().sort().slice(0,4), function(v) {return v === "base"})
-//             && _.every(orderList.concat().sort().slice(4,8), function(v) {return v === "exp"}))) {
-//         orderList = []
-//         _.map(_.range(8), function(i){
-//             var candidate = _.sample(options)
-//             // If already two in a row...
-//             if (_.every(orderList.slice(-2), function(v) {return v === candidate})) {
-//                 orderList.push(_.filter(options, function(v) {return v != candidate})[0])
-//             } else {
-//                 orderList.push(candidate)
-//             }
-//         })
-//         console.log(orderList)
-//     }
-//     return orderList
-// }
+  if(this.roundNum == this.numRounds - 1) {
+    // If you've reached the planned number of rounds, end the game
+    var local_game = this;
+    _.map(local_game.get_active_players(), function(p){
+      p.player.instance.disconnect();});
+  } else {
+    // Otherwise, get the preset list of tangrams for the new round
+    this.roundNum += 1;
+    this.objects = this.trialList[this.roundNum].objects;
+  }
+};
 
 var cartesianProductOf = function(listOfLists) {
     return _.reduce(listOfLists, function(a, b) {
@@ -189,72 +137,65 @@ var cartesianProductOf = function(listOfLists) {
 };
 
 // Returns random set of unique grid locations
-var getLocations = function(numObjects) {
-    var possibilities = cartesianProductOf([_.range(1, 7), _.range(1, 3)])
+game_core.prototype.randomizeLocations = function() {
+  var possibilities = cartesianProductOf([_.range(1, this.numHorizontalCells + 1),
+					  _.range(1, this.numVerticalCells + 1)]);
 
-    function getRandomFromBucket() {
-        var randomIndex = Math.floor(Math.random()*possibilities.length);
-        return possibilities.splice(randomIndex, 1)[0];
-    }
+  // Makes sure we select locations WITHOUT replacement
+  function getRandomFromBucket() {
+    var randomIndex = Math.floor(Math.random()*possibilities.length);
+    return possibilities.splice(randomIndex, 1)[0];
+  }
 
-    return _.map(_.range(numObjects), function(v) {
-        return getRandomFromBucket()
-    })
+  return _.map(_.range(numObjects), function(v) {
+    return getRandomFromBucket();
+  });
 
-}
+};
 
-//Randomizes objects in the way given by Keysar et al (2003)
+// Randomly sets tangram locations for each trial
 game_core.prototype.makeTrialList = function () {
-    var local_this = this;
-    var trialList =_.map(_.range(6), function(i) { //creating a list?
-        var directorLocs = getLocations(12);
-        var matcherLocs = getLocations(12);
-        var localTangramList = _.map(tangramList, _.clone);
-        console.log("this is the tangramList ", localTangramList);  
-        return _.map(_.zip(localTangramList, directorLocs, matcherLocs), function(pair) {
-            console.log("this is the pair")
-            console.log(pair);
-            var tangram = pair[0]   // [[tangramA,[4,1]*director, [3,2]*matcher], [tangramB, [3,2]...]]
-            var directorGridCell = local_this.getPixelFromCell(pair[1][0], pair[1][1]); 
-            var matcherGridCell = local_this.getPixelFromCell(pair[2][0], pair[2][1]);
-            tangram.directorGridX = pair[1][0]
-            tangram.directorGridY = pair[1][1]
-            tangram.matcherGridX = pair[2][0]
-            tangram.matcherGridY = pair[2][1]
-            tangram.directorTrueX = directorGridCell.centerX - tangram.width/2
-            tangram.directorTrueY = directorGridCell.centerY - tangram.height/2
-            tangram.matcherTrueX = matcherGridCell.centerX - tangram.width/2
-            tangram.matcherTrueY = matcherGridCell.centerY - tangram.height/2
-            return tangram;
-            //console.log("this is the trialList " + trialList);
-        })
-    })
-    console.log("this is the trialList ")
-    console.log(trialList);
-    return(trialList);
-}
-
-
+  var local_this = this;
+  var trialList =_.map(_.range(this.numRounds), function(i) { //creating a list?
+    var directorLocs = this.randomizeLocations();
+    var matcherLocs = this.randomizeLocations();
+    var localTangramList = _.map(tangramList, _.clone);
+    return _.map(_.zip(localTangramList, directorLocs, matcherLocs), function(pair) {
+      var tangram = pair[0]   // [[tangramA,[4,1]*director, [3,2]*matcher], [tangramB, [3,2]...]]
+      var directorGridCell = local_this.getPixelFromCell(pair[1][0], pair[1][1]); 
+      var matcherGridCell = local_this.getPixelFromCell(pair[2][0], pair[2][1]);
+      tangram.directorGridX = pair[1][0];
+      tangram.directorGridY = pair[1][1];
+      tangram.matcherGridX = pair[2][0];
+      tangram.matcherGridY = pair[2][1];
+      tangram.directorTrueX = directorGridCell.centerX - tangram.width/2;
+      tangram.directorTrueY = directorGridCell.centerY - tangram.height/2;
+      tangram.matcherTrueX = matcherGridCell.centerX - tangram.width/2;
+      tangram.matcherTrueY = matcherGridCell.centerY - tangram.height/2;
+      return tangram;
+    });
+  });
+  return(trialList);
+};
 
 // maps a grid location to the exact pixel coordinates
 // for x = 1,2,3,4; y = 1,2,3,4
 game_core.prototype.getPixelFromCell = function (x, y) {
-    return {
-        centerX: 25 + 68.75 + 137.5 * (x - 1),
-        centerY: 25 + 68.75 + 137.5 * (y - 1),
-        width: 137.5,
-        height: 137.5
-
-    }
-}
+  return {
+    centerX: this.cellPadding + 137.5 * (x - 1) * 1.5,
+    centerY: this.cellPadding + 137.5 * (y - 1) * 1.5,
+    width: 137.5,
+    height: 137.5
+  };
+};
 
 // maps a raw pixel coordinate to to the exact pixel coordinates
 // for x = 1,2,3,4; y = 1,2,3,4
 game_core.prototype.getCellFromPixel = function (mx, my) {
-    var cellX = Math.floor((mx - 25) / 137.5) + 1
-    var cellY = Math.floor((my - 25) / 137.5) + 1
-    return [cellX, cellY]
-}
+  var cellX = Math.floor((mx - (this.cellPadding / 2)) / 137.5) + 1;
+  var cellY = Math.floor((my - (this.cellPadding / 2)) / 137.5) + 1;
+  return [cellX, cellY];
+};
 
 game_core.prototype.server_send_update = function(){
     //Make a snapshot of the current state, for updating the clients
