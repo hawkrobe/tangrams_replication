@@ -26,27 +26,31 @@ if( typeof _ === 'undefined' ) {
 
 var game_core = function(game_instance){
 
-    this.debug = false
+  this.debug = false;
 
-    // Define some variables specific to our game to avoid
-    // 'magic numbers' elsewhere
-    this.instance = game_instance;
+  // Store the instance passed in from game.server.js
+  this.instance = game_instance;
+  
+  //Store a flag if we are the server instance
+  this.server = this.instance !== undefined;
+  
+  //Dimensions of world in pixels and numberof cells to be divided into;
+  this.world = {height : 600, };  // 160cm * 3
+  this.numHorizontalCells = 6;
+  this.numVerticalCells = 2;
+  
+  // Which round are we on (initialize at -1 so that first round is 0-indexed)
+  this.roundNum = -1;
 
-    //Store a flag if we are the server instance
-    this.server = this.instance !== undefined;
+  // How many rounds do we want people to complete?
+  this.numRounds = 6;
 
-    //Dimensions of world -- Used in collision detection, etc.
-    this.world = {width : 1300, height : 600};  // 160cm * 3    
-    this.roundNum = -1;
-    // this.instructionNum = -1;
-    this.numRounds = 6;
-    this.attemptNum = 0; // Increments whenever someone makes a mistake
-//    this.paused = true;
-    this.objects = [];
-//    this.instructions = []
-    this.currentDestination = [];
+  // How many mistakes have the pair made on the current trial?
+  this.attemptNum = 0;
 
-
+  // This will be populated with the tangram set
+  this.objects = [];
+  
 // what is this doing?
     if(this.server) {
         console.log("making trial list...") 

@@ -1,5 +1,7 @@
-var occludedList = [[4,4], [2,2], [2,3], [3,1], [1,4]];
+// drawing.js
+// This file contains functions to draw on the HTML5 canvas
 
+// Draws a grid of cells on the canvas (evenly divided 
 var drawGrid = function(game){
     //size of canvas
     var cw = game.viewport.width;
@@ -11,17 +13,16 @@ var drawGrid = function(game){
     //grid width and height
     var bw = cw - (p*2) ;
     var bh = ch - (p*2) ;
-
     
     game.ctx.beginPath();
 
     // vertical lines
-    for (var x = 0; x <= bw; x += Math.floor((cw - 2*p) / 6)) {
+  for (var x = 0; x <= bw; x += Math.floor((cw - 2*p) / game.numHorizontalCells)) {
         game.ctx.moveTo(0.5 + x + p, p);
         game.ctx.lineTo(0.5 + x + p, bh + p);}
 
     // horizontal lines
-    for (var x = 0; x <= bh; x += Math.floor((ch - 2*p) / 2)) {
+    for (var x = 0; x <= bh; x += Math.floor((ch - 2*p) / game.numVerticalCells)) {
         game.ctx.moveTo(p, 0.5 + x + p);
         game.ctx.lineTo(bw + p, 0.5 + x + p);}
 
