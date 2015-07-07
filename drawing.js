@@ -31,12 +31,6 @@ var drawGrid = function(game){
     game.ctx.stroke();
 };
 
-var containsCell = function(cellList, cell) {
-  return _.some(cellList, function(compCell) {
-    return _.isEqual(cell, compCell);
-  });
-};
-
 var drawObjects = function(game, player) {
     _.map(game.objects, function(obj) { 
       game.ctx.drawImage(obj.matcher.img, obj.matcher.trueX, obj.matcher.trueY,
