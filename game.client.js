@@ -62,28 +62,33 @@ client_onserverupdate_received = function(data){
   var localNames = _.map(game.objects,function(e)
 			 {return e.name;});
 
-  // If your objects are out-of-date (i.e. if there's a new round), update them
+  // If your objects are out-of-date (i.e. if there's a new round), set up
+  // machinery to draw them
   if (game.objects.length == 0 || !_.isEqual(dataNames, localNames)) { 
-    //get new list of objects from server
     game.objects = _.map(data.objects, function(obj) {
+      // Extract the coordinates matching your role
+      var customCoords = my_role == "director" ? obj.directorCoords : obj.matcherCoords;
+      // Set the object to have these properties 
+      var customObj = _.extend(obj, {img: imgObj,
+				     trueX : customCoords.trueX,
+				     trueY : customCoords.trueY,
+				     gridX : customCoords.gridX,
+				     gridY : customCoords.gridY});
       var imgObj = new Image(); //initialize object as an image (from HTML5)
-      imgObj.src = obj.url;
+      imgObj.src = customObj.url; // tell client where to find it
       imgObj.onload = function(){ // Draw image as soon as it loads (this is a callback)
-        game.ctx.drawImage(imgObj, parseInt(obj.trueX), parseInt(obj.trueY),
-			   obj.width, obj.height);
+        game.ctx.drawImage(imgObj, parseInt(customObj.trueX), parseInt(customObj.trueY),
+			   customObj.width, customObj.height);
       };
-      // TODO: check whether this is still necessary
-      return _.extend(_.omit(obj, ['trueX', 'trueY']),
-                      {img: imgObj, trueX : obj.trueX, trueY : obj.trueY});
     });
   };
 
   // TODO: check necessary?
-  _.map(game.objects, function(obj) {
-    var data_obj = _.find(data.objects, function(o) {return o.name == obj.name;});
-    obj.trueX = data_obj.trueX;
-    obj.trueY = data_obj.trueY;
-  });
+  // _.map(game.objects, function(obj) {
+  //   var data_obj = _.find(data.objects, function(o) {return o.name == obj.name;});
+  //   obj.trueX = data_obj.trueX;
+  //   obj.trueY = data_obj.trueY;
+  // });
 
   // Get rid of "waiting" screen if there are multiple players
   if(data.players.length > 1) 

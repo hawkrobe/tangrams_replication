@@ -109,12 +109,13 @@ game_core.prototype.get_others = function(id) {
 			 function(p){return p.player ? p : null;}), null);
 };
 
-// Returns all other players
+// Returns all players
 game_core.prototype.get_active_players = function() {
   return _.without(_.map(this.players, function(p){
     return p.player ? p : null;}), null);
 };
 
+// Advance to the next round
 game_core.prototype.newRound = function() {
   if(this.roundNum == this.numRounds - 1) {
     // If you've reached the planned number of rounds, end the game
@@ -166,14 +167,16 @@ game_core.prototype.makeTrialList = function () {
       var tangram = pair[0]   // [[tangramA,[4,1]*director, [3,2]*matcher], [tangramB, [3,2]...]]
       var directorGridCell = local_this.getPixelFromCell(pair[1][0], pair[1][1]); 
       var matcherGridCell = local_this.getPixelFromCell(pair[2][0], pair[2][1]);
-      tangram.directorGridX = pair[1][0];
-      tangram.directorGridY = pair[1][1];
-      tangram.matcherGridX = pair[2][0];
-      tangram.matcherGridY = pair[2][1];
-      tangram.directorTrueX = directorGridCell.centerX - tangram.width/2;
-      tangram.directorTrueY = directorGridCell.centerY - tangram.height/2;
-      tangram.matcherTrueX = matcherGridCell.centerX - tangram.width/2;
-      tangram.matcherTrueY = matcherGridCell.centerY - tangram.height/2;
+      tangram.directorCoords = {
+	gridX : pair[1][0],
+	gridY : pair[1][1],
+	trueX : directorGridCell.centerX - tangram.width/2,
+	trueY : directorGridCell.centerY - tangram.height/2};
+      tangram.matcherCoords = {
+	gridX : pair[2][0],
+	gridY : pair[2][1],
+	trueX : matcherGridCell.centerX - tangram.width/2,
+	trueY : matcherGridCell.centerY - tangram.height/2};
       return tangram;
     });
   });
@@ -200,34 +203,34 @@ game_core.prototype.getCellFromPixel = function (mx, my) {
 };
 
 game_core.prototype.server_send_update = function(){
-    //Make a snapshot of the current state, for updating the clients
-    var local_game = this;
-    
-    // Add info about all players
-    var player_packet = _.map(local_game.players, function(p){
-        return {id: p.id,
-            player: null}
-        })
+  //Make a snapshot of the current state, for updating the clients
+  var local_game = this;
+  
+  // Add info about all players
+  var player_packet = _.map(local_game.players, function(p){
+    return {id: p.id,
+            player: null};
+  });
 
-    var state = {
-            gs : this.game_started,                      // true when game's started
-            pt : this.players_threshold,
-            pc : this.player_count,
-            curr_dest : this.currentDestination,
-            scriptedInstruction : this.scriptedInstruction,
-            instructionNum : this.instructionNum,
-        };
+  var state = {
+    gs : this.game_started,                      // true when game's started
+    pt : this.players_threshold,
+    pc : this.player_count,
+    curr_dest : this.currentDestination,
+    scriptedInstruction : this.scriptedInstruction,
+    instructionNum : this.instructionNum
+  };
 
-    _.extend(state, {players: player_packet})
-    _.extend(state, {instructions: this.instructions})
-    if(player_packet.length == 2) {
-        _.extend(state, {objects: this.objects})
-    }
+  _.extend(state, {players: player_packet});
+  _.extend(state, {instructions: this.instructions});
+  if(player_packet.length == 2) {
+    _.extend(state, {objects: this.objects});
+  }
 
-    //Send the snapshot to the players
-    this.state = state;
-    _.map(local_game.get_active_players(), function(p){
-        p.player.instance.emit( 'onserverupdate', state)})
+  //Send the snapshot to the players
+  this.state = state;
+  _.map(local_game.get_active_players(), function(p){
+    p.player.instance.emit( 'onserverupdate', state);});
 };
 
 // //what is this?
