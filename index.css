@@ -46,30 +46,25 @@ html , body {
 	left:0; right:0; top:10%; bottom: 0;
 	position: absolute;
 }
+
 /*height and width originally 80vh*/
 #viewport {
-	float: bottom;
-	border:solid 1px #333;
-	height: 50vh;
-    width: 180vh;
-	margin: center;    
-	/*margin-right: 2.5%;*/
-	background: #383838; 
-
+    float: bottom;
+    border:solid 1px #333;
+    height: 50vh;
+    width: 150vh;
+    margin: center;    
+    /*margin-right: 2.5%;*/
+    background: #383838; 
 }
 
 #message_panel {
 	height: 40vh;
-	width: 180vh;
+	width: 100vh;
  
 	float: top;
-/*centers message_panel*/
+	/*centers message_panel*/
 	margin: auto;
-
-/*old code*/	
-	/*margin-left: 5%;
-	margin-right: 5%;*/
-	
 	list-style-type: none; 
 
 	border: solid 1px #999; 
@@ -83,32 +78,33 @@ html , body {
 }
 
 #chatarea form {
-	background: #212121; 
 	padding: 3px; 
-	height: 7vh;
-	width: 180vh; 
-	float: bottom;
-
-
+	height: 5vh;
+	width: 100vh; 
 }
 
 #chatarea input {
 	border: 0; 
-	height: 100%;
+	height: 99%;
 	font-size: 125%;
-	width: 90%; 
+	width: 89%; 
 	margin-left: .5%;
-	margin-right: .5%; 
+	margin-right: .5%;
+	margin-top: .5%;
+	margin-bottom: .5%;
 	padding: 5px;
+	float: left;
 }
 
 #chatarea button {
-/*	width: 150%; 
-	height: 100%;*/
+	width: 9%; 
+	height: 5vh;
 	font-size: 150%;
 	background: rgb(130, 224, 255); 
 	border: none; 
 	padding: 5px;
+	margin-left: .5%;
+	margin-right: .5%;
 }
 
 ::-webkit-scrollbar {
