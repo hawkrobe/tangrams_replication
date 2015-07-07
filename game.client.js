@@ -202,13 +202,6 @@ client_connect_to_server = function(game) {
       scrollTop: $("#messages")[0].scrollHeight
     }, 800);
   });
-
-  // Draw objects when someone else moves them
-  game.socket.on('objMove', function(data){
-    game.objects[data.i].trueX = data.x;
-    game.objects[data.i].trueY = data.y;
-    drawScreen(game, game.get_player(my_id));
-  });
   
   //When we connect, we are not 'connected' until we have an id
   //and are placed in a game by the server. The server sends us a message for that.

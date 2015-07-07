@@ -24,17 +24,6 @@ global.window = global.document = global;
 require('./game.core.js');
 utils = require('./utils.js');
 
-// when is this function used?
-var moveObject = function(client, i, x, y) {
-    var obj = client.game.gamecore.objects[i]  //what is this doing?
-    var others = client.game.gamecore.get_others(client.userid);
-    obj.trueX = parseInt(x)
-    obj.trueY = parseInt(y)
-    _.map(others, function(p) {
-      p.player.instance.emit('objMove', {i: i, x: x, y: y})
-  })
-}
-
 // This is the function where the server parses and acts on messages
 // sent from 'clients' aka the browsers of people playing the
 // game. For example, if someone clicks on the map, they send a packet
@@ -56,9 +45,6 @@ game_server.server_onMessage = function(client,message) {
   var target = gc.get_player(client.userid);
   var others = gc.get_others(client.userid);
   switch(message_type) {
-  case 'objMove' :    // One of the clients moved an object -- do something!
-    moveObject(client, message_parts[1], message_parts[2], message_parts[3]);
-    break;
     
     // case 'correctDrop' :
     //     moveObject(client, message_parts[1], message_parts[2], message_parts[3])
