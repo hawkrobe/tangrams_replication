@@ -34,8 +34,8 @@ var drawGrid = function(game){
 // Loop through the object list and draw each one in its specified location
 var drawObjects = function(game, player) {
     _.map(game.objects, function(obj) { 
-      game.ctx.drawImage(obj.matcher.img, obj.matcher.trueX, obj.matcher.trueY,
-			 obj.matcher.width, obj.matcher.height);
+      game.ctx.drawImage(obj.img, obj.trueX, obj.trueY,
+			 obj.width, obj.height);
     });
 };
 
