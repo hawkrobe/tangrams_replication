@@ -1,25 +1,26 @@
 [ ] Interface
-	[ ] General reformatting
-		[ ] Stack text box above board. 
-		[ ] Stretch text box and board horizontally
-	[ ] Change the board
-		[ ] Turn board into 2 row * 6 col
-		[ ] Make all board squares white
+	[x] General reformatting
+		[x] Stack text box above board. 
+		[x] Stretch text box and board horizontally
+	[] Change the board
+		[x] Turn board into 2 row * 6 col
+		[x] Make all board squares white
 		[ ] Replace images with Tangram shapes
 			[ ] Photoshop off white background from Tangram png
 	[ ] Directions
 		[ ] Change director directions to "Have the matcher rearrange their cards to match yours"
 		[ ] Change matcher directions to "Rearrange your cards to match the director's"
 	[ ] Tangram setup
-		[ ] Shuffle director and matcher cards at start of each trial
+		[x] Shuffle director and matcher cards at start of each trial
+		[ ] Re-do assignment if any positions match (i.e. make it pseudorandom)
 [ ] Gameplay
-	[ ]	Remove "Correct/incorrect move!" text
-	[ ] Remove red arrow
-	[ ] Remove prewritten text for director
-	[ ] Do not track mouse movement 
-		[ ] Remove mouse variable and data folder
-		[ ] Remove screen with green dot to track mouse on matcher's screen
-		[ ] Remove screen waiting for matcher to re-position mouse from director's screen
+	[ ] Remove "Correct/incorrect move!" text
+	[x] Remove red arrow
+	[x] Remove prewritten text for director
+	[x] Do not track mouse movement 
+		[x] Remove mouse variable and data folder
+		[x] Remove screen with green dot to track mouse on matcher's screen
+		[x] Remove screen waiting for matcher to re-position mouse from director's screen
 	[ ] Allow matcher to move Tangram figures anywhere on board at any time in game
 	[ ] Keep matcher and director objects seperate
 		[ ] Server keeps track of how many tangram figures on matcher's board match director's board
