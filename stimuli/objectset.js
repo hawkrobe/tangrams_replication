@@ -2,29 +2,29 @@
 
 // TANGRAM OBJECTS
 var tangramA = {
-	url: 'stimuli/tangram_A.png', name: "tangram_A", width: 130, height: 65}
+	url: 'stimuli/tangram_A.png', name: "tangram_A", width: 282.1, height: 275.1}
 var tangramB = {
-	url: 'stimuli/tangram_B.png', name: "tangram_B", width : 100, height: 107}
+	url: 'stimuli/tangram_B.png', name: "tangram_B", width : 235.2, height: 224}
 var tangramC = {
-	url: 'stimuli/tangram_C.png', name: "tangram_C", width: 100, height: 100,}
+	url: 'stimuli/tangram_C.png', name: "tangram_C", width: 293.3, height: 228.9}
 var tangramD = {
-	url: 'stimuli/tangram_D.png', name: "tangram_D", width: 97, height: 130}
+	url: 'stimuli/tangram_D.png', name: "tangram_D", width: 189, height: 271.6}
 var tangramE = {
-	url: 'stimuli/tangram_E.png', name: 'tangram_E', width: 130, height: 60}
+	url: 'stimuli/tangram_E.png', name: 'tangram_E', width: 234.5, height: 280}
 var tangramF = {
-	url: 'stimuli/tangram_F.png', name: 'tangram_F', width: 87, height: 130}
+	url: 'stimuli/tangram_F.png', name: 'tangram_F', width: 261.8, height: 219.8}
 var tangramG = {
-	url: 'stimuli/tangram_G.png', name: 'tangram_G', width: 130, height: 84}
+	url: 'stimuli/tangram_G.png', name: 'tangram_G', width: 284.9, height: 237.3}
 var tangramH = {
-	url: 'stimuli/tangram_H.png', name: 'tangram_H', width: 130, height: 84}
+	url: 'stimuli/tangram_H.png', name: 'tangram_H', width: 175, height: 273.7}
 var tangramI = {
-	url: 'stimuli/tangram_I.png', name: 'tangram_I', width: 130, height: 84}
+	url: 'stimuli/tangram_I.png', name: 'tangram_I', width: 262.5, height: 287}
 var tangramJ = {
-	url: 'stimuli/tangram_J.png', name: 'tangram_J', width: 130, height: 84}
+	url: 'stimuli/tangram_J.png', name: 'tangram_J', width: 151.8, height: 249.2}
 var tangramK = {
-	url: 'stimuli/tangram_K.png', name: 'tangram_K', width: 130, height: 84}
+	url: 'stimuli/tangram_K.png', name: 'tangram_K', width: 184.8, height: 280}
 var tangramL = {
-	url: 'stimuli/tangram_L.png', name: 'tangram_L', width: 130, height: 84}
+	url: 'stimuli/tangram_L.png', name: 'tangram_L', width: 182.7, height: 280.7}
 
 var tangramList = [
 	tangramA, tangramB, tangramC, tangramD, tangramE, tangramF, 
@@ -34,7 +34,30 @@ var tangramList = [
 module.exports = tangramList;
 
 
-
+// var tangramA = {
+// 	url: 'stimuli/tangram_A.png', name: "tangram_A", width: 403, height: 393}
+// var tangramB = {
+// 	url: 'stimuli/tangram_B.png', name: "tangram_B", width : 336, height: 320}
+// var tangramC = {
+// 	url: 'stimuli/tangram_C.png', name: "tangram_C", width: 419, height: 327}
+// var tangramD = {
+// 	url: 'stimuli/tangram_D.png', name: "tangram_D", width: 270, height: 388}
+// var tangramE = {
+// 	url: 'stimuli/tangram_E.png', name: 'tangram_E', width: 335, height: 400}
+// var tangramF = {
+// 	url: 'stimuli/tangram_F.png', name: 'tangram_F', width: 347, height: 314}
+// var tangramG = {
+// 	url: 'stimuli/tangram_G.png', name: 'tangram_G', width: 407, height: 339}
+// var tangramH = {
+// 	url: 'stimuli/tangram_H.png', name: 'tangram_H', width: 250, height: 391}
+// var tangramI = {
+// 	url: 'stimuli/tangram_I.png', name: 'tangram_I', width: 374, height: 410}
+// var tangramJ = {
+// 	url: 'stimuli/tangram_J.png', name: 'tangram_J', width: 253, height: 356}
+// var tangramK = {
+// 	url: 'stimuli/tangram_K.png', name: 'tangram_K', width: 264, height: 400}
+// var tangramL = {
+// 	url: 'stimuli/tangram_L.png', name: 'tangram_L', width: 261, height: 401}
 
 
 
