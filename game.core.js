@@ -90,7 +90,7 @@ var game_player = function( game_instance, player_instance) {
 // server side we set some classes to global types, so that
 // we can use them in other files (specifically, game.server.js)
 if('undefined' != typeof global) {
-  var tangramList = require('./tangramStimuli/objectSet'); // import stimuli
+  var tangramList = require('./stimuli/objectSet'); // import stimuli
   module.exports = global.game_core = game_core;
   module.exports = global.game_player = game_player;
 }
@@ -125,7 +125,7 @@ game_core.prototype.newRound = function() {
   } else {
     // Otherwise, get the preset list of tangrams for the new round
     this.roundNum += 1;
-    this.objects = this.trialList[this.roundNum].objects;
+    this.objects = this.trialList[this.roundNum];
   }
 };
 
@@ -187,8 +187,10 @@ game_core.prototype.makeTrialList = function () {
 // for x = 1,2,3,4; y = 1,2,3,4
 game_core.prototype.getPixelFromCell = function (x, y) {
   return {
-    centerX: this.cellPadding + this.cellDimensions.width * (x - 1) * 1.5,
-    centerY: this.cellPadding + this.cellDimensions.height * (y - 1) * 1.5,
+    centerX: (this.cellPadding/2 + this.cellDimensions.width * (x - 1)
+	      + this.cellDimensions.width / 2),
+    centerY: (this.cellPadding/2 + this.cellDimensions.height * (y - 1)
+	      + this.cellDimensions.height / 2),
     width: this.cellDimensions.width,
     height: this.cellDimensions.height
   };
@@ -227,6 +229,7 @@ game_core.prototype.server_send_update = function(){
     _.extend(state, {objects: this.objects});
   }
 
+  console.log(this.objects);
   //Send the snapshot to the players
   this.state = state;
   _.map(local_game.get_active_players(), function(p){
