@@ -39,8 +39,10 @@ var game_core = function(game_instance){
   this.numVerticalCells = 2;
   this.cellDimensions = {height : 300, width : 300}; // in pixels
   this.cellPadding = 50;
-  this.world = {height : this.cellDimensions.height * this.numVerticalCells,
-		width : this.cellDimensions.width * this.numHorizontalCells}; 
+  this.world = {height : (this.cellDimensions.height * this.numVerticalCells
+		          + this.cellPadding),
+		width : (this.cellDimensions.width * this.numHorizontalCells
+			 + this.cellPadding)}; 
   
   // Which round are we on (initialize at -1 so that first round is 0-indexed)
   this.roundNum = -1;
@@ -147,7 +149,7 @@ game_core.prototype.randomizeLocations = function() {
     return possibilities.splice(randomIndex, 1)[0];
   }
 
-  return _.map(_.range(numObjects), function(v) {
+  return _.map(_.range(this.numHorizontalCells * this.numVerticalCells), function(v) {
     return getRandomFromBucket();
   });
 
@@ -157,8 +159,8 @@ game_core.prototype.randomizeLocations = function() {
 game_core.prototype.makeTrialList = function () {
   var local_this = this;
   var trialList =_.map(_.range(this.numRounds), function(i) { //creating a list?
-    var directorLocs = this.randomizeLocations();
-    var matcherLocs = this.randomizeLocations();
+    var directorLocs = local_this.randomizeLocations();
+    var matcherLocs = local_this.randomizeLocations();
     var localTangramList = _.map(tangramList, _.clone);
     return _.map(_.zip(localTangramList, directorLocs, matcherLocs), function(pair) {
       var tangram = pair[0]   // [[tangramA,[4,1]*director, [3,2]*matcher], [tangramB, [3,2]...]]
@@ -182,18 +184,18 @@ game_core.prototype.makeTrialList = function () {
 // for x = 1,2,3,4; y = 1,2,3,4
 game_core.prototype.getPixelFromCell = function (x, y) {
   return {
-    centerX: this.cellPadding + 137.5 * (x - 1) * 1.5,
-    centerY: this.cellPadding + 137.5 * (y - 1) * 1.5,
-    width: 137.5,
-    height: 137.5
+    centerX: this.cellPadding + this.cellDimensions.width * (x - 1) * 1.5,
+    centerY: this.cellPadding + this.cellDimensions.height * (y - 1) * 1.5,
+    width: this.cellDimensions.width,
+    height: this.cellDimensions.height
   };
 };
 
 // maps a raw pixel coordinate to to the exact pixel coordinates
 // for x = 1,2,3,4; y = 1,2,3,4
 game_core.prototype.getCellFromPixel = function (mx, my) {
-  var cellX = Math.floor((mx - (this.cellPadding / 2)) / 137.5) + 1;
-  var cellY = Math.floor((my - (this.cellPadding / 2)) / 137.5) + 1;
+  var cellX = Math.floor((mx - this.cellPadding / 2) / this.cellDimensions.width) + 1;
+  var cellY = Math.floor((my - this.cellPadding / 2) / this.cellDimensions.height) + 1;
   return [cellX, cellY];
 };
 
