@@ -48,62 +48,54 @@ Explanation: This function is at the center of the problem of
 */
 client_onserverupdate_received = function(data){  
 
-    // Update client versions of variables with data received from
-    // server_send_update function in game.core.js
-    //data refers to server information
-    if(data.players) {
-        _.map(_.zip(data.players, game.players),function(z){
-                //make client's players = server's players
-                z[1].id = z[0].id;  
-    }
+  // Update client versions of variables with data received from
+  // server_send_update function in game.core.js
+  //data refers to server information
+  if(data.players) {
+    _.map(_.zip(data.players, game.players),function(z){
+      z[1].id = z[0].id;  
+    });
+  }
+	  
+  var dataNames = _.map(data.objects, function(e)
+			{ return e.name;});
+  var localNames = _.map(game.objects,function(e)
+			 {return e.name;});
 
-    var dataNames = _.map(data.objects, function(e)
-        { return e.name})
-    var localNames = _.map(game.objects,function(e)
-        {return e.name})
+  // If your objects are out-of-date (i.e. if there's a new round), update them
+  if (game.objects.length == 0 || !_.isEqual(dataNames, localNames)) { 
+    //get new list of objects from server
+    game.objects = _.map(data.objects, function(obj) {
+      var imgObj = new Image(); //initialize object as an image (from HTML5)
+      imgObj.src = obj.url;
+      imgObj.onload = function(){ // Draw image as soon as it loads (this is a callback)
+        game.ctx.drawImage(imgObj, parseInt(obj.trueX), parseInt(obj.trueY),
+			   obj.width, obj.height);
+      };
+      // TODO: check whether this is still necessary
+      return _.extend(_.omit(obj, ['trueX', 'trueY']),
+                      {img: imgObj, trueX : obj.trueX, trueY : obj.trueY});
+    });
+  };
 
-    // If your objects are out-of-date (i.e. if there's a new round), update them
-    if (game.objects.length == 0 || !_.isEqual(dataNames, localNames)) { 
-        //get new list of objects from server
-        game.objects = _.map(data.objects, function(obj) {
-            //initialize object as an image
-            var imgObj = new Image()
-            imgObj.src = obj.url
-            // Set it up to load properly
-            imgObj.onload = function(){  
-                //do I specify Director or Matcher at this point?
-                game.ctx.drawImage(imgObj, parseInt(obj.trueX),  //what is parseInt?
-                    parseInt(obj.trueY), obj.width, obj.height)
-//                if(my_role == "director")  //what is this for?
-                    drawScreen(game, game.get_player(my_id))
-            }
-            return _.extend(_.omit(obj, ['trueX', 'trueY']),
-                {img: imgObj, trueX : obj.trueX, trueY : obj.trueY})
-        })
-    }
+  // TODO: check necessary?
+  _.map(game.objects, function(obj) {
+    var data_obj = _.find(data.objects, function(o) {return o.name == obj.name;});
+    obj.trueX = data_obj.trueX;
+    obj.trueY = data_obj.trueY;
+  });
 
-    // Update local object positions
-    //** Include director and matcher details?
-    _.map(game.objects, function(obj) {
-        data_obj = _.find(data.objects, function(o) {return o.name == obj.name})
-        obj.trueX = data_obj.trueX;
-        obj.trueY = data_obj.trueY;
-    })
+  // Get rid of "waiting" screen if there are multiple players
+  if(data.players.length > 1) 
+    game.get_player(my_id).message = "";
+  
+  game.currentDestination = data.curr_dest;
+  game.game_started = data.gs;
+  game.players_threshold = data.pt;
+  game.player_count = data.pc;
 
-    if(data.players.length > 1) 
-        game.get_player(my_id).message = ""
-
-    game.currentDestination = data.curr_dest;
-    // game.scriptedInstruction = data.scriptedInstruction;
-    // game.instructions = data.instructions
-    // game.instructionNum = data.instructionNum;
-    game.game_started = data.gs;
-    game.players_threshold = data.pt;
-    game.player_count = data.pc;
-
-    // Draw all this new stuff
-    console.log(game.get_player(my_id))
-    drawScreen(game, game.get_player(my_id))
+  // Draw all this new stuff
+  drawScreen(game, game.get_player(my_id));
 }; 
 
 // This is where clients parse socket.io messages from the server. If
