@@ -171,35 +171,14 @@ game_server.findGame = function(player) {
         joined_a_game = true;
         
         // player instances are array of actual client handles
-        game.player_instances.push({
-          id: player.userid, 
-          player: player
-        });
+        game.player_instances.push({id: player.userid, 
+				    player: player});
         game.player_count++;
         
         // players are array of player objects
-        game.gamecore.players.push({
-          id: player.userid, 
-          player: new game_player(gamecore,player)
-        });
+        game.gamecore.players.push({id: player.userid, 
+				    player: new game_player(gamecore,player)});
 
-        // Establish write streams
-        // var d = new Date();
-        // var start_time = d.getFullYear() + '-' + d.getMonth() + 1 + '-' + d.getDate() + '-' + d.getHours() + '-' + d.getMinutes() + '-' + d.getSeconds() + '-' + d.getMilliseconds()
-        // var name = start_time + '_' + game.id;
-        // // var mouse_f = "data/mouse/" + name + ".csv"
-        // // fs.writeFile(mouse_f, "gameid, time, condition, critical, objectSet, instructionNum, attemptNum, targetX, targetY, distractorX, distractorY, mouseX, mouseY\n", function (err) {if(err) throw err;})
-        // // game.gamecore.mouseDataStream = fs.createWriteStream(mouse_f, {'flags' : 'a'});
-
-        // // var error_f = "data/error/" + name + ".csv"
-        // // fs.writeFile(error_f, "gameid, time, condition, critical, objectSet, instructionNum, attemptNum, intendedObj, actualObj, intendedX, intendedY, actualX, actualY\n", function (err) {if(err) throw err;})
-        // // game.gamecore.errorStream = fs.createWriteStream(error_f, {'flags' : 'a'});
-
-        // // var message_f = "data/message/" + name + ".csv"
-        // // fs.writeFile(message_f, "gameid, time, condition, critical, objectSet, instructionNum, attemptNum, sender, contents\n", function (err) {if(err) throw err;})
-        // // game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
-	//                console.log('game ' + game.id + ' starting with ' + game.player_count + ' players...')
-	
         // Attach game to player so server can look at it later
         player.game = game;
         player.role = 'matcher';
@@ -211,6 +190,7 @@ game_server.findGame = function(player) {
         _.map(gamecore.get_others(player.userid), 
               function(p){
 		p.player.instance.send( 's.add_player.' + player.userid);});
+	gamecore.newRound();
         gamecore.server_send_update();
         gamecore.player_count = game.player_count;
       }
