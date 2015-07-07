@@ -413,64 +413,64 @@ MOUSE EVENT LISTENERS
 //     return (0 < dx) && (dx < shape.width) && (0 < dy) && (dy < shape.height)
 // }
 
-// // Automatically registers whether user has switched tabs...
-// (function() {
-//     document.hidden = hidden = "hidden";
+// Automatically registers whether user has switched tabs...
+(function() {
+    document.hidden = hidden = "hidden";
 
-//     // Standards:
-//     if (hidden in document)
-//         document.addEventListener("visibilitychange", onchange);
-//     else if ((hidden = "mozHidden") in document)
-//         document.addEventListener("mozvisibilitychange", onchange);
-//     else if ((hidden = "webkitHidden") in document)
-//         document.addEventListener("webkitvisibilitychange", onchange);
-//     else if ((hidden = "msHidden") in document)
-//         document.addEventListener("msvisibilitychange", onchange);
-//     // IE 9 and lower:
-//     else if ('onfocusin' in document)
-//         document.onfocusin = document.onfocusout = onchange;
-//     // All others:
-//     else
-//         window.onpageshow = window.onpagehide = window.onfocus 
-//              = window.onblur = onchange;
-// })();
+    // Standards:
+    if (hidden in document)
+        document.addEventListener("visibilitychange", onchange);
+    else if ((hidden = "mozHidden") in document)
+        document.addEventListener("mozvisibilitychange", onchange);
+    else if ((hidden = "webkitHidden") in document)
+        document.addEventListener("webkitvisibilitychange", onchange);
+    else if ((hidden = "msHidden") in document)
+        document.addEventListener("msvisibilitychange", onchange);
+    // IE 9 and lower:
+    else if ('onfocusin' in document)
+        document.onfocusin = document.onfocusout = onchange;
+    // All others:
+    else
+        window.onpageshow = window.onpagehide = window.onfocus 
+             = window.onblur = onchange;
+})();
 
-// function onchange (evt) {
-//     var v = 'visible', h = 'hidden',
-//     evtMap = { 
-//         focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h 
-//     };
-//     evt = evt || window.event;
-//     if (evt.type in evtMap) {
-//         document.body.className = evtMap[evt.type];
-//     } else {
-//         document.body.className = evt.target.hidden ? "hidden" : "visible";
-//     }
-//     visible = document.body.className;
-//     game.socket.send("h." + document.body.className);
-// };
+function onchange (evt) {
+    var v = 'visible', h = 'hidden',
+    evtMap = { 
+        focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h 
+    };
+    evt = evt || window.event;
+    if (evt.type in evtMap) {
+        document.body.className = evtMap[evt.type];
+    } else {
+        document.body.className = evt.target.hidden ? "hidden" : "visible";
+    }
+    visible = document.body.className;
+    game.socket.send("h." + document.body.className);
+};
 
-// (function () {
+(function () {
 
-//     var original = document.title;
-//     var timeout;
+    var original = document.title;
+    var timeout;
 
-//     window.flashTitle = function (newMsg, howManyTimes) {
-//         function step() {
-//             document.title = (document.title == original) ? newMsg : original;
-//             if (visible === "hidden") {
-//                 timeout = setTimeout(step, 500);
-//             } else {
-//                 document.title = original;
-//             }
-//         };
-//         cancelFlashTitle(timeout);
-//         step();
-//     };
+    window.flashTitle = function (newMsg, howManyTimes) {
+        function step() {
+            document.title = (document.title == original) ? newMsg : original;
+            if (visible === "hidden") {
+                timeout = setTimeout(step, 500);
+            } else {
+                document.title = original;
+            }
+        };
+        cancelFlashTitle(timeout);
+        step();
+    };
 
-//     window.cancelFlashTitle = function (timeout) {
-//         clearTimeout(timeout);
-//         document.title = original;
-//     };
+    window.cancelFlashTitle = function (timeout) {
+        clearTimeout(timeout);
+        document.title = original;
+    };
 
-// }());
+}());
