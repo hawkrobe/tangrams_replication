@@ -68,18 +68,19 @@ client_onserverupdate_received = function(data){
     game.objects = _.map(data.objects, function(obj) {
       // Extract the coordinates matching your role
       var customCoords = my_role == "director" ? obj.directorCoords : obj.matcherCoords;
-      // Set the object to have these properties 
-      var customObj = _.extend(obj, {img: imgObj,
-				     trueX : customCoords.trueX,
-				     trueY : customCoords.trueY,
-				     gridX : customCoords.gridX,
-				     gridY : customCoords.gridY});
+      // remove the directorCoords and matcherCoords properties
+      var customObj = _.chain(obj)
+	.omit('directorCoords', 'matcherCoords')
+	.extend(obj, {trueX : customCoords.trueX, trueY : customCoords.trueY,
+		      gridX : customCoords.gridX, gridY : customCoords.gridY})
+	.value();
       var imgObj = new Image(); //initialize object as an image (from HTML5)
       imgObj.src = customObj.url; // tell client where to find it
       imgObj.onload = function(){ // Draw image as soon as it loads (this is a callback)
         game.ctx.drawImage(imgObj, parseInt(customObj.trueX), parseInt(customObj.trueY),
 			   customObj.width, customObj.height);
       };
+      return _.extend(customObj, {img: imgObj});
     });
   };
 
@@ -208,7 +209,7 @@ client_connect_to_server = function(game) {
     game.objects[data.i].trueY = data.y;
     drawScreen(game, game.get_player(my_id));
   });
-
+  
   //When we connect, we are not 'connected' until we have an id
   //and are placed in a game by the server. The server sends us a message for that.
   game.socket.on('connect', function(){}.bind(game));
