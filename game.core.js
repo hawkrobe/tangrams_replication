@@ -35,9 +35,11 @@ var game_core = function(game_instance){
   this.server = this.instance !== undefined;
   
   //Dimensions of world in pixels and numberof cells to be divided into;
-  this.world = {height : 600, };  // 160cm * 3
   this.numHorizontalCells = 6;
   this.numVerticalCells = 2;
+  this.cellDimensions = {height : 300, width : 300}; // in pixels
+  this.world = {height : this.cellDimensions.height * this.numVerticalCells,
+		width : this.cellDimensions.width * this.numHorizontalCells}; 
   
   // Which round are we on (initialize at -1 so that first round is 0-indexed)
   this.roundNum = -1;
@@ -51,42 +53,43 @@ var game_core = function(game_instance){
   // This will be populated with the tangram set
   this.objects = [];
   
-// what is this doing?
-    if(this.server) {
-        console.log("making trial list...") 
-        this.trialList = this.makeTrialList() //Is there something wrong here?
-        console.log(this.trialList);
-        this.players = [{
-            id: this.instance.player_instances[0].id, 
-            player: new game_player(this,this.instance.player_instances[0].player)
-        }];
-        this.server_send_update()
-    } else {
-        this.players = [{
-            id: null, 
-            player: new game_player(this)
-        }]
-    }
+  if(this.server) {
+    // If we're initializing the server game copy, pre-create the list of trials
+    // we'll use, make a player object, and tell the player who they are
+    this.trialList = this.makeTrialList();
+    this.players = [{
+      id: this.instance.player_instances[0].id, 
+      player: new game_player(this,this.instance.player_instances[0].player)
+    }];
+    this.server_send_update();
+  } else {
+    // If we're initializing a player's local game copy, create the player object
+    this.players = [{
+      id: null, 
+      player: new game_player(this)
+    }];
+  }
 }; 
 
 var game_player = function( game_instance, player_instance) {
-    //Store the instance, if any
-    this.instance = player_instance;
-    this.game = game_instance;
-    this.role = ''
-    //Set up initial values for our state information
-    this.message = '';
-    this.id = '';
+  //Store the instance, if any (only the server copy will have one)
+  this.instance = player_instance;
+  // Store the game instance, so players can access it
+  this.game = game_instance;
+  // The player will be assigned to director or matcher
+  this.role = '';
+  // This will be displayed in big letters on a plain white screen
+  this.message = '';
+  // This will be set to the player's id, once it is known
+  this.id = '';
 }; 
 
 // server side we set some classes to global types, so that
-// it can use them in other files (specifically, game.server.js)
+// we can use them in other files (specifically, game.server.js)
 if('undefined' != typeof global) {
-    module.exports = global.game_core = game_core;
-    module.exports = global.game_player = game_player;
-    var tangramList = require('./tangramStimuli/objectSet')
-    console.log("import tangramList: ");
-
+  var tangramList = require('./tangramStimuli/objectSet'); // import stimuli
+  module.exports = global.game_core = game_core;
+  module.exports = global.game_player = game_player;
 }
 
 // HELPER FUNCTIONS
