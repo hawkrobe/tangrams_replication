@@ -8,17 +8,22 @@
 */
 
 var 
-    use_db          = false,
+    use_https       = true,
     gameport        = 8888,
+    https           = require('https'),
+    fs              = require('fs'),
     app             = require('express')(),
-    server          = app.listen(gameport),
-    io              = require('socket.io')(server),
-    _               = require('underscore'),
-    fs              = require('fs');
+    _               = require('underscore');
 
-if (use_db) {
-    database        = require(__dirname + "/database"),
-    connection      = database.getConnection();
+if(use_https) {
+    privateKey      = fs.readFileSync('/etc/apache2/ssl/private.key'),
+    certificate     = fs.readFileSync('/etc/apache2/ssl/ssl.crt'),
+    options         = {key: privateKey, cert: certificate},
+    server          = require('https').createServer(options,app).listen(gameport),
+    io              = require('socket.io')(server);
+} else {
+    server          = app.listen(gameport),
+    io              = require('socket.io')(server)
 }
 
 game_server = require('./game.server.js');
