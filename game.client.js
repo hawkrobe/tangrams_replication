@@ -246,7 +246,7 @@ client_onjoingame = function(num_players, role) {
   if(role === "matcher") {
     game.viewport.addEventListener("mousedown", mouseDownListener, false);
   }
-}; 
+};    
 
 /*
  MOUSE EVENT LISTENERS
@@ -272,7 +272,7 @@ function mouseDownListener(evt) {
         dragHoldX = mouseX - game.objects[i].trueX;
         dragHoldY = mouseY - game.objects[i].trueY;
         highestIndex = i;
-        dragIndex = i;
+        game.dragIndex = i;
       }
     }
   }
@@ -290,6 +290,8 @@ function mouseDownListener(evt) {
     evt.returnValue = false;
   } //older IE
   return false;
+
+  //drawScreen(game, game.get_player(my_id));
 }
 
 function mouseUpListener(evt) {    
@@ -300,25 +302,53 @@ function mouseUpListener(evt) {
     var bRect = game.viewport.getBoundingClientRect();
     var dropX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
     var dropY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
-    var obj = game.objects[dragIndex];
+    var obj = game.objects[game.dragIndex];
     var cell = game.getCellFromPixel(dropX, dropY);
-    console.log(cell);
-    console.log([obj.gridX, obj.gridY]);
+    //get info on the tangram your dragged tangram will replace
+    var swapIndex = game.getTangramFromCell(cell[0], cell[1]);
+    var swapObj =  game.objects[swapIndex];
+
+    // var swapObjGridX = obj.gridX;
+    // var swapObjGridY = obj.gridY;
+    // var swapObjTrueX = obj.trueX;
+    // var swapObjTrueY = obj.trueY;
     
     // If you didn't drag it beyond cell bounds, snap it back w/o comment
     if (obj.gridX == cell[0] && obj.gridY == cell[1]) {
-      console.log("here!")
       obj.trueX = game.getPixelFromCell(obj.gridX, obj.gridY).centerX - obj.width/2
       obj.trueY = game.getPixelFromCell(obj.gridX, obj.gridY).centerY - obj.height/2
+      
+      // obj.trueX = game.getTrueCoords(obj, obj).trueX;
+      // obj.trueY = game.getTrueCoords(obj, obj).trueY;
       // If you moved the incorrect object or went to the incorrect location, pause game to readjust mouse
     } else {
-      // center it
+
+      // change swapObj location to origin of dragged object
+     
+      // swap tangram in dropped cell (swapObj) to original cell of dragged tangram (obj)
+      swapObj.gridX = obj.gridX;
+      swapObj.gridY = obj.gridY;
+      // swapObj.trueX = game.getTrueCoords(obj, swapObj).trueX;
+      // swapObj.trueY = game.getTrueCoords(obj, swapObj).trueY;
+      swapObj.trueX = game.getPixelFromCell(obj.gridX, obj.gridY).centerX - swapObj.width/2;
+      swapObj.trueY = game.getPixelFromCell(obj.gridX, obj.gridY).centerY - swapObj.height/2;
+      console.log("trueCoords: " + game.getTrueCoords(obj, swapObj));
+
+
+      // center dragged tangram in its new cell
       obj.gridX = cell[0]
       obj.gridY = cell[1]
-      obj.trueX = game.getPixelFromCell(cell[0], cell[1]).centerX - obj.width/2
-      obj.trueY = game.getPixelFromCell(cell[0], cell[1]).centerY - obj.height/2
-      //      game.socket.send("correctDrop." + dragIndex + "." + Math.round(obj.trueX) + "." + Math.round(obj.trueY))
+      // obj.trueX = game.getTrueCoords(cell, obj).trueX;
+      // obj.trueY = game.getTrueCoords(cell, obj).trueY;
+      obj.trueX = game.getPixelFromCell(cell[0], cell[1]).centerX - obj.width/2;
+      obj.trueY = game.getPixelFromCell(cell[0], cell[1]).centerY - obj.height/2;
+
+      //console.log("new grid X is: " + obj.gridX);
+      //console.log("bob's new location: " + swapObj.gridX);
+      //console.log("bob's new location: " + game.objects[swapIndex].gridX)
+
     }
+
     // Tell server where you dropped it
     drawScreen(game, game.get_player(my_id));
     dragging = false;
@@ -326,98 +356,99 @@ function mouseUpListener(evt) {
   }
 }
 
-// function mouseMoveListener(evt) {
-//     // prevent from dragging offscreen
-//     var minX = 25;
-//     var maxX = game.viewport.width - game.objects[dragIndex].width - 25;
-//     var minY = 25;
-//     var maxY = game.viewport.height - game.objects[dragIndex].height - 25;
 
-//     //getting mouse position correctly 
-//     var bRect = game.viewport.getBoundingClientRect();
-//     mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
-//     mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
+function mouseMoveListener(evt) {
+    // prevent from dragging offscreen
+    var minX = 25;
+    var maxX = game.viewport.width - game.objects[game.dragIndex].width - 25;
+    var minY = 25;
+    var maxY = game.viewport.height - game.objects[game.dragIndex].height - 25;
 
-//     //clamp x and y positions to prevent object from dragging outside of canvas
-//     var posX = mouseX - dragHoldX;
-//     posX = (posX < minX) ? minX : ((posX > maxX) ? maxX : posX);
-//     var posY = mouseY - dragHoldY;
-//     posY = (posY < minY) ? minY : ((posY > maxY) ? maxY : posY);
+    //getting mouse position correctly 
+    var bRect = game.viewport.getBoundingClientRect();
+    mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
+    mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
 
-//     // Update object locally
-//     var obj = game.objects[dragIndex]
-//     obj.trueX = Math.round(posX);
-//     obj.trueY = Math.round(posY);
+    //clamp x and y positions to prevent object from dragging outside of canvas
+    var posX = mouseX - dragHoldX;
+    posX = (posX < minX) ? minX : ((posX > maxX) ? maxX : posX);
+    var posY = mouseY - dragHoldY;
+    posY = (posY < minY) ? minY : ((posY > maxY) ? maxY : posY);
 
-//     // Tell server about it
-//     game.socket.send("objMove." + dragIndex + "." + Math.round(posX) + "." + Math.round(posY))
-//     drawScreen(game, game.get_player(my_id));
-// }
+    // Update object locally
+    var obj = game.objects[game.dragIndex]
+    obj.trueX = Math.round(posX);
+    obj.trueY = Math.round(posY);
 
-// function hitTest(shape,mx,my) {
-//     var dx = mx - shape.trueX;
-//     var dy = my - shape.trueY;
-//     return (0 < dx) && (dx < shape.width) && (0 < dy) && (dy < shape.height)
-// }
+    // Tell server about it
+    game.socket.send("objMove." + game.dragIndex + "." + Math.round(posX) + "." + Math.round(posY))
+    drawScreen(game, game.get_player(my_id));
+}
 
-// Automatically registers whether user has switched tabs...
-(function() {
-  document.hidden = hidden = "hidden";
+function hitTest(shape,mx,my) {
+    var dx = mx - shape.trueX;
+    var dy = my - shape.trueY;
+    return (0 < dx) && (dx < shape.width) && (0 < dy) && (dy < shape.height)
+}
 
-  // Standards:
-  if (hidden in document)
-    document.addEventListener("visibilitychange", onchange);
-  else if ((hidden = "mozHidden") in document)
-    document.addEventListener("mozvisibilitychange", onchange);
-  else if ((hidden = "webkitHidden") in document)
-    document.addEventListener("webkitvisibilitychange", onchange);
-  else if ((hidden = "msHidden") in document)
-    document.addEventListener("msvisibilitychange", onchange);
-  // IE 9 and lower:
-  else if ('onfocusin' in document)
-    document.onfocusin = document.onfocusout = onchange;
-  // All others:
-  else
-    window.onpageshow = window.onpagehide = window.onfocus 
-    = window.onblur = onchange;
-})();
+// // Automatically registers whether user has switched tabs...
+// (function() {
+//   document.hidden = hidden = "hidden";
 
-function onchange (evt) {
-  var v = 'visible', h = 'hidden',
-      evtMap = { 
-        focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h 
-      };
-  evt = evt || window.event;
-  if (evt.type in evtMap) {
-    document.body.className = evtMap[evt.type];
-  } else {
-    document.body.className = evt.target.hidden ? "hidden" : "visible";
-  }
-  visible = document.body.className;
-  game.socket.send("h." + document.body.className);
-};
+//   // Standards:
+//   if (hidden in document)
+//     document.addEventListener("visibilitychange", onchange);
+//   else if ((hidden = "mozHidden") in document)
+//     document.addEventListener("mozvisibilitychange", onchange);
+//   else if ((hidden = "webkitHidden") in document)
+//     document.addEventListener("webkitvisibilitychange", onchange);
+//   else if ((hidden = "msHidden") in document)
+//     document.addEventListener("msvisibilitychange", onchange);
+//   // IE 9 and lower:
+//   else if ('onfocusin' in document)
+//     document.onfocusin = document.onfocusout = onchange;
+//   // All others:
+//   else
+//     window.onpageshow = window.onpagehide = window.onfocus 
+//     = window.onblur = onchange;
+// });
 
-(function () {
+// function onchange (evt) {
+//   var v = 'visible', h = 'hidden',
+//       evtMap = { 
+//         focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h 
+//       };
+//   evt = evt || window.event;
+//   if (evt.type in evtMap) {
+//     document.body.className = evtMap[evt.type];
+//   } else {
+//     document.body.className = evt.target.hidden ? "hidden" : "visible";
+//   }
+//   visible = document.body.className;
+//   game.socket.send("h." + document.body.className);
+// };
 
-  var original = document.title;
-  var timeout;
+// (function () {
 
-  window.flashTitle = function (newMsg, howManyTimes) {
-    function step() {
-      document.title = (document.title == original) ? newMsg : original;
-      if (visible === "hidden") {
-        timeout = setTimeout(step, 500);
-      } else {
-        document.title = original;
-      }
-    };
-    cancelFlashTitle(timeout);
-    step();
-  };
+//   var original = document.title;
+//   var timeout;
 
-  window.cancelFlashTitle = function (timeout) {
-    clearTimeout(timeout);
-    document.title = original;
-  };
+//   window.flashTitle = function (newMsg, howManyTimes) {
+//     function step() {
+//       document.title = (document.title == original) ? newMsg : original;
+//       if (visible === "hidden") {
+//         timeout = setTimeout(step, 500);
+//       } else {
+//         document.title = original;
+//       }
+//     };
+//     cancelFlashTitle(timeout);
+//     step();
+//   };
 
-}());
+//   window.cancelFlashTitle = function (timeout) {
+//     clearTimeout(timeout);
+//     document.title = original;
+//   };
+
+// });

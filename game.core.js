@@ -204,6 +204,28 @@ game_core.prototype.getCellFromPixel = function (mx, my) {
   return [cellX, cellY];
 };
 
+game_core.prototype.getTangramFromCell = function (gridX, gridY) {
+    for (i=0; i < this.objects.length; i++) {
+      if (this.objects[i].gridX == gridX && this.objects[i].gridY == gridY) {
+        var tangram = this.objects[i];
+        var tangramIndex = i;
+        // return tangram;
+        return i;
+        }
+    }
+    console.log("Did not find tangram from cell!")
+  }
+
+// //readjusts trueX and trueY values based on the objLocation and width and height of image (objImage)
+game_core.prototype.getTrueCoords = function (objLocation, objImage) {
+  var trueX = this.getPixelFromCell(objLocation.gridX, objLocation.gridY).centerX - objImage.width/2;
+  var trueY = this.getPixelFromCell(objLocation.gridX, objLocation.gridY).centerY - objImage.height/2;
+  return trueX
+  return trueY
+  // console.log("trueX from drawing.js: " + trueX);
+  // console.log("trueY from drawing.js: " + trueY);
+}
+
 game_core.prototype.server_send_update = function(){
   //Make a snapshot of the current state, for updating the clients
   var local_game = this;
