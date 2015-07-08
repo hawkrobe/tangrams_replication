@@ -191,6 +191,8 @@ game_core.prototype.getPixelFromCell = function (x, y) {
 	      + this.cellDimensions.width / 2),
     centerY: (this.cellPadding/2 + this.cellDimensions.height * (y - 1)
 	      + this.cellDimensions.height / 2),
+    upperLeftX : (this.cellDimensions.width * (x - 1) + this.cellPadding/2),
+    upperLeftY : (this.cellDimensions.height * (y - 1) * this.cellPadding/2),
     width: this.cellDimensions.width,
     height: this.cellDimensions.height
   };
