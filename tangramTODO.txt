@@ -29,6 +29,14 @@
 		[ ] Create timer
 		[ ] Create "Finished" button that matcher/director can press
 
+[ ] Write data for messages
+[ ] Compare scores at end of game
+[ ] sudo random board
+[ ] how do we end the game?
+	[ ] # rounds remaining
+	[ ] exit survey 
+	[ ] mmturky
+
 
 
 
