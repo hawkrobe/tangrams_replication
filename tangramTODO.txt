@@ -2,45 +2,51 @@
 	[x] General reformatting
 		[x] Stack text box above board. 
 		[x] Stretch text box and board horizontally
-	[] Change the board
+	[x] Change the board
 		[x] Turn board into 2 row * 6 col
 		[x] Make all board squares white
-		[ ] Replace images with Tangram shapes
-			[ ] Photoshop off white background from Tangram png
+		[x] Replace images with Tangram shapes
+			[x] Photoshop off white background from Tangram png
 	[ ] Directions
 		[ ] Change director directions to "Have the matcher rearrange their cards to match yours"
 		[ ] Change matcher directions to "Rearrange your cards to match the director's"
 	[ ] Tangram setup
 		[x] Shuffle director and matcher cards at start of each trial
 		[ ] Re-do assignment if any positions match (i.e. make it pseudorandom)
-[ ] Gameplay
-	[ ] Remove "Correct/incorrect move!" text
+[x] Gameplay
+	[x] Remove "Correct/incorrect move!" text
 	[x] Remove red arrow
 	[x] Remove prewritten text for director
 	[x] Do not track mouse movement 
 		[x] Remove mouse variable and data folder
 		[x] Remove screen with green dot to track mouse on matcher's screen
 		[x] Remove screen waiting for matcher to re-position mouse from director's screen
-	[ ] Allow matcher to move Tangram figures anywhere on board at any time in game
-	[ ] Keep matcher and director objects seperate
-		[ ] Server keeps track of how many tangram figures on matcher's board match director's board
-			[ ] update frequently
-	[ ] Create a way to end the game
-		[ ] Create timer
-		[ ] Create "Finished" button that matcher/director can press
-
-[ ] Write data for messages
-[ ] Compare scores at end of game
-[ ] sudo random board
-[ ] how do we end the game?
-	[ ] # rounds remaining
-	[ ] exit survey 
-	[ ] mmturky
-[ ] ending trials
-	[ ] submit button 
-		[ ] where to put that in the interface 
-		[ ] only for matcher 
+	[x] Allow matcher to move Tangram figures anywhere on board at any time in game
+	[x] Keep matcher and director objects seperate
+		[x] Server keeps track of how many tangram figures on matcher's board match director's board
+			[x] update frequently
 
 
+[ ] Gameplay duration
+	[ ] Keep track of round number on matcher and director screens (i.e. Round 1/6)
+	[ ] For individual round
+		[ ] Create "Finished" button that matcher can press to complete a round
+		[ ] When button pressed, end round and restart a new one
+		[ ] Show them each how close their boards were to each other
+			[ ] Show them this for a few seconds? 
+			[ ] Use X and check mark 
+	[ ] At end of final round send matcher and director to survey/pay them
+		[ ] Show them score from each game...give them stats on their gameplay (for fun)
+[ ] Make gameplay more intuitive
+	[ ] Highlight grid space that matcher drags a tangram over
+	[ ] Animate swapped tangram moving to dragged tangram's original position
+[ ] Instruction screen
+	[ ] Write instructions for matcher and director
+	[ ] Add to program...is this done through MTurk?
+[ ] Writedata 
+	[ ] messages from director and matcher
+	[ ] record the starting/end location and ID of the tangram that matcher clicks, drags, releases
+	[ ] Include time stamp
+[ ] sudo random shuffle to avoid matching boards (at least for start position)
 
 
