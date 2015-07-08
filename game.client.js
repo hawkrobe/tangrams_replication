@@ -357,8 +357,7 @@ function mouseMoveListener(evt) {
     obj.trueX = Math.round(posX);
     obj.trueY = Math.round(posY);
 
-    // Tell server about it
-    game.socket.send("objMove." + game.dragIndex + "." + Math.round(posX) + "." + Math.round(posY))
+    // Draw it
     drawScreen(game, game.get_player(my_id));
 }
 

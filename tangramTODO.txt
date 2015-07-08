@@ -36,6 +36,10 @@
 	[ ] # rounds remaining
 	[ ] exit survey 
 	[ ] mmturky
+[ ] ending trials
+	[ ] submit button 
+		[ ] where to put that in the interface 
+		[ ] only for matcher 
 
 
 
