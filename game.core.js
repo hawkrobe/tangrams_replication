@@ -217,13 +217,15 @@ game_core.prototype.getTangramFromCell = function (gridX, gridY) {
   }
 
 // //readjusts trueX and trueY values based on the objLocation and width and height of image (objImage)
-game_core.prototype.getTrueCoords = function (objLocation, objImage) {
+game_core.prototype.getTrueCoords = function (coord, objLocation, objImage) {
   var trueX = this.getPixelFromCell(objLocation.gridX, objLocation.gridY).centerX - objImage.width/2;
   var trueY = this.getPixelFromCell(objLocation.gridX, objLocation.gridY).centerY - objImage.height/2;
-  return trueX
-  return trueY
-  // console.log("trueX from drawing.js: " + trueX);
-  // console.log("trueY from drawing.js: " + trueY);
+  if (coord == "xCoord") {
+    return trueX;
+  }
+  if (coord == "yCoord") {
+    return trueY;
+  }
 }
 
 game_core.prototype.server_send_update = function(){
