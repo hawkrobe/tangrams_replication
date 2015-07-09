@@ -329,7 +329,7 @@ function mouseUpListener(evt) {
       swapObj.gridX = obj.gridX;
       swapObj.gridY = obj.gridY;
       swapObj.trueX = game.getTrueCoords("xCoord", obj, swapObj);
-      swapObj.trueY = game.getTrueCoords("yCoord", obj, swapObj);f
+      swapObj.trueY = game.getTrueCoords("yCoord", obj, swapObj);
 
 
       // center dragged tangram (obj) in its new cell
