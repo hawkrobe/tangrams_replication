@@ -262,6 +262,7 @@ function mouseDownListener(evt) {
   var bRect = game.viewport.getBoundingClientRect();
   mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
   mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
+  
 
   //find which shape was clicked
   for (i=0; i < game.objects.length; i++) {
@@ -278,9 +279,13 @@ function mouseDownListener(evt) {
   }
   if (dragging) {
     window.addEventListener("mousemove", mouseMoveListener, false);
+
+
+
   }
   game.viewport.removeEventListener("mousedown", mouseDownListener, false);
   window.addEventListener("mouseup", mouseUpListener, false);
+
 
   //code below prevents the mouse down from having an effect on the main browser window:
   if (evt.preventDefault) {
@@ -291,6 +296,7 @@ function mouseDownListener(evt) {
   } //older IE
   return false;
 }
+
 
 function mouseUpListener(evt) {    
   game.viewport.addEventListener("mousedown", mouseDownListener, false);
@@ -335,6 +341,7 @@ function mouseUpListener(evt) {
 
 
 function mouseMoveListener(evt) {
+    // console.log("I am mouseMoveListener!");
     // prevent from dragging offscreen
     var minX = 25;
     var maxX = game.viewport.width - game.objects[game.dragIndex].width - 25;
@@ -345,6 +352,12 @@ function mouseMoveListener(evt) {
     var bRect = game.viewport.getBoundingClientRect();
     mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
     mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
+
+    //highlighting cell that is moused over
+    cell = game.getCellFromPixel(mouseX, mouseY);
+    upperLeftX = game.getPixelFromCell(cell[0], cell[1]).upperLeftX;
+    upperLeftY = game.getPixelFromCell(cell[0], cell[1]).upperLeftY;
+    highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
 
     //clamp x and y positions to prevent object from dragging outside of canvas
     var posX = mouseX - dragHoldX;

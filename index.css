@@ -55,7 +55,9 @@ html , body {
     width: 150vh;
     margin: center;    
     /*margin-right: 2.5%;*/
-    background: #383838; 
+    background: #383838;
+    opacity: .5;
+
 }
 
 #message_panel {

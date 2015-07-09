@@ -29,6 +29,13 @@ var drawGrid = function(game){
     game.ctx.lineWidth = 1;
     game.ctx.strokeStyle = "black";
     game.ctx.stroke();
+
+
+    game.ctx.beginPath();
+    game.ctx.lineWidth="6";
+    game.ctx.strokeStyle="red";
+    game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+    game.ctx.stroke();
 };
 
 // Loop through the object list and draw each one in its specified location
@@ -44,6 +51,19 @@ var drawObjects = function(game, player) {
        currentDragObject.width, currentDragObject.height);
     }
 
+};
+
+var highlightCell = function(game, player, upperLeftX, upperLeftY) {
+  // game.ctx.rect(upperLeftX, upperLeftY, 300, 300);
+  // game.ctx.strokeStyle = "red";
+  // game.ctx.stroke();
+  // game.lineWidth=300;
+
+  game.ctx.beginPath();
+  game.ctx.lineWidth="6";
+  game.ctx.strokeStyle="red";
+  game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+  game.ctx.stroke();
 };
 
 var drawScreen = function(game, player) {
