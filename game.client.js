@@ -237,6 +237,11 @@ client_onjoingame = function(num_players, role) {
     $('#instructs').append("Click and drag objects to follow the director's instructions.")
   }
 
+  // Only give Submit board button to agent (matcher)
+  if(role === "director") {
+  $('#submitbutton').remove();
+  }
+
   // set role locally
   my_role = role;
   game.get_player(my_id).role = my_role;
@@ -282,12 +287,6 @@ function mouseDownListener(evt) {
   if (dragging) {
     window.addEventListener("mousemove", mouseMoveListener, false);
 
-    // cell = game.getCellFromPixel(mouseX, mouseY);
-    // upperLeftX = game.getPixelFromCell(cell[0], cell[1]).upperLeftX;
-    // console.log("this is upperLeftX: " + upperLeftX);
-    // upperLeftY = game.getPixelFromCell(cell[0], cell[1]).upperLeftY;
-    // highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
-
   }
   game.viewport.removeEventListener("mousedown", mouseDownListener, false);
   window.addEventListener("mouseup", mouseUpListener, false);
@@ -330,8 +329,7 @@ function mouseUpListener(evt) {
       swapObj.gridX = obj.gridX;
       swapObj.gridY = obj.gridY;
       swapObj.trueX = game.getTrueCoords("xCoord", obj, swapObj);
-      swapObj.trueY = game.getTrueCoords("yCoord", obj, swapObj);
-      highlightCell(game, game.get_player(my_id), swapObj.trueX, swapObj.trueY);
+      swapObj.trueY = game.getTrueCoords("yCoord", obj, swapObj);f
 
 
       // center dragged tangram (obj) in its new cell
@@ -346,6 +344,8 @@ function mouseUpListener(evt) {
     dragging = false;
     window.removeEventListener("mousemove", mouseMoveListener, false);
   }
+
+
 }
 
 
