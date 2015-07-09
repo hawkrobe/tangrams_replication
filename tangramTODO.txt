@@ -38,7 +38,7 @@
 	[ ] At end of final round send matcher and director to survey/pay them
 		[ ] Show them score from each game...give them stats on their gameplay (for fun)
 [ ] Make gameplay more intuitive
-	[ ] Highlight grid space that matcher drags a tangram over
+	[x] Highlight grid space that matcher drags a tangram over
 	[ ] Animate swapped tangram moving to dragged tangram's original position
 [ ] Instruction screen
 	[ ] Write instructions for matcher and director

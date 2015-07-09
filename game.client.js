@@ -322,6 +322,7 @@ function mouseUpListener(evt) {
     if (obj.gridX == cell[0] && obj.gridY == cell[1]) {
       obj.trueX = game.getTrueCoords("xCoord", obj, obj);
       obj.trueY = game.getTrueCoords("yCoord", obj, obj);
+
     
     } 
     else {
@@ -330,6 +331,8 @@ function mouseUpListener(evt) {
       swapObj.gridY = obj.gridY;
       swapObj.trueX = game.getTrueCoords("xCoord", obj, swapObj);
       swapObj.trueY = game.getTrueCoords("yCoord", obj, swapObj);
+      highlightCell(game, game.get_player(my_id), swapObj.trueX, swapObj.trueY);
+
 
       // center dragged tangram (obj) in its new cell
       obj.gridX = cell[0]
