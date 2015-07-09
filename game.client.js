@@ -23,6 +23,8 @@ var visible;
 var incorrect;
 var dragging;
 var waiting;
+var upperLeftX;
+var upperLeftY
 
 client_ondisconnect = function(data) {
   // Redirect to exit survey
@@ -280,7 +282,11 @@ function mouseDownListener(evt) {
   if (dragging) {
     window.addEventListener("mousemove", mouseMoveListener, false);
 
-
+    // cell = game.getCellFromPixel(mouseX, mouseY);
+    // upperLeftX = game.getPixelFromCell(cell[0], cell[1]).upperLeftX;
+    // console.log("this is upperLeftX: " + upperLeftX);
+    // upperLeftY = game.getPixelFromCell(cell[0], cell[1]).upperLeftY;
+    // highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
 
   }
   game.viewport.removeEventListener("mousedown", mouseDownListener, false);
@@ -358,6 +364,13 @@ function mouseMoveListener(evt) {
     upperLeftX = game.getPixelFromCell(cell[0], cell[1]).upperLeftX;
     upperLeftY = game.getPixelFromCell(cell[0], cell[1]).upperLeftY;
     highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
+    drawScreen(game, game.get_player(my_id));
+
+    // game.ctx.beginPath();
+    // game.ctx.lineWidth="6";
+    // game.ctx.strokeStyle="red";
+    // game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+    // game.ctx.stroke();
 
     //clamp x and y positions to prevent object from dragging outside of canvas
     var posX = mouseX - dragHoldX;
