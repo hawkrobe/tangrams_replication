@@ -148,9 +148,14 @@ client_onMessage = function(data) {
     case 'begin_game' :
       client_newgame(); break;
 
+    // case 'new_round' :
+    //   client_newgame(); break;
+
     }
   } 
 }; 
+
+// var sbutton = document.getElementById("submitbutton");
 
 // When loading the page, we store references to our
 // drawing canvases, and initiate a game instance.
@@ -163,6 +168,7 @@ window.onload = function(){
   
   //Fetch the viewport
   game.viewport = document.getElementById('viewport');
+
   
   //Adjust its size
   game.viewport.width = game.world.width;
@@ -174,9 +180,14 @@ window.onload = function(){
   //Set the draw style for the font
   game.ctx.font = '11px "Helvetica"';
 
+  //fetch the submit button (sbutton)
+  // var sbutton = document.getElementById("submitbutton");
+
   document.getElementById('chatbox').focus();
 
 };
+
+
 
 // Associates callback functions corresponding to different socket messages
 client_connect_to_server = function(game) {
@@ -185,16 +196,18 @@ client_connect_to_server = function(game) {
 
   // Tell server when client types something in the chatbox
   $('form').submit(function(){
+    console.log("submitting message to server");
     var msg = 'chatMessage.' + Date.now() + '.' + $('#chatbox').val();
     if($('#chatbox').val() != '') {
       game.socket.send(msg);
       $('#chatbox').val('');
     }
-    return false;   // ???
+    return false;   
   });
 
+
+
   // Update messages log when other players send chat
-  // Why isn't this working?
   game.socket.on('chatMessage', function(data){
     var otherRole = my_role === "director" ? "Matcher" : "Director";
     var source = data.user === my_id ? "You" : otherRole;
@@ -204,6 +217,19 @@ client_connect_to_server = function(game) {
       scrollTop: $("#messages")[0].scrollHeight
     }, 800);
   });
+
+  console.log("submitbutton area")
+  // Advance round by 1 each time matcher presses the submitbutton
+  $(document).ready(function() {
+    $("#submitbutton").click(function(){
+      console.log("submitbutton clicked!")
+      var msg = 'advanceRound';
+      game.socket.send(msg);
+      // $(".hide_div").hide();
+    })
+  });
+
+
   
   //When we connect, we are not 'connected' until we have an id
   //and are placed in a game by the server. The server sends us a message for that.
@@ -255,6 +281,29 @@ client_onjoingame = function(num_players, role) {
   }
 };    
 
+
+// Click submit button! //
+
+  //Fetch the submit button
+// sbutton = document.getElementById("submitbutton");
+// if (sbutton) {
+  // sbutton.addEventListener("click", submitButtonClick, false);
+// }
+// console.log("submitbutton!");
+// sbutton.addEventListener("click", submitButtonClick, false);
+
+
+// //why is it null?
+// function submitButtonClick(evt){
+//   // sbutton = document.getElementById('submitbutton');
+//   sbutton.addEventListener("click", submitButtonClick, false);
+//   var msg = 'advanceRound';
+//   game.socket.send(msg);
+//   // game.submitButton.removeEventListener("click", submitButtonClick, data, false);
+//   console.log("client submit button!");
+// }
+
+// window.addEventListener("click", submitButtonClick, false);
 /*
  MOUSE EVENT LISTENERS
  */

@@ -118,6 +118,7 @@ game_core.prototype.get_active_players = function() {
 // Advance to the next round
 game_core.prototype.newRound = function() {
   if(this.roundNum == this.numRounds - 1) {
+    console.log("numRounds = " + this.numRounds);
     // If you've reached the planned number of rounds, end the game
     var local_game = this;
     _.map(local_game.get_active_players(), function(p){
@@ -125,6 +126,8 @@ game_core.prototype.newRound = function() {
   } else {
     // Otherwise, get the preset list of tangrams for the new round
     this.roundNum += 1;
+    console.log("hi!");
+    // console.log(this.trialList[this.roundNum]);
     this.objects = this.trialList[this.roundNum];
   }
 };

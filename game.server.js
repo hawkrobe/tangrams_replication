@@ -120,7 +120,7 @@ game_server.findGame = function(player) {
         _.map(gamecore.get_others(player.userid), 
               function(p){
 		p.player.instance.send( 's.add_player.' + player.userid);});
-	gamecore.newRound();
+	  gamecore.newRound();
         gamecore.server_send_update();
         gamecore.player_count = game.player_count;
       }
