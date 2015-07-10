@@ -1,3 +1,5 @@
+
+
 //   Copyright (c) 2012 Sven "FuzzYspo0N" Bergström, 
 //                   2013 Robert XD Hawkins
     
@@ -101,7 +103,7 @@ client_onserverupdate_received = function(data){
   game.game_started = data.gs;
   game.players_threshold = data.pt;
   game.player_count = data.pc;
-
+  game.roundNum = data.roundNum
   // Draw all this new stuff
   drawScreen(game, game.get_player(my_id));
 }; 
@@ -148,8 +150,9 @@ client_onMessage = function(data) {
     case 'begin_game' :
       client_newgame(); break;
 
-    // case 'new_round' :
-    //   client_newgame(); break;
+    case 'new_round' :
+      client_addnewround(game);
+      break;
 
     }
   } 
@@ -187,7 +190,9 @@ window.onload = function(){
 
 };
 
-
+client_addnewround = function(game) {
+  $('#roundnumber').append("Hello");
+}
 
 // Associates callback functions corresponding to different socket messages
 client_connect_to_server = function(game) {
@@ -256,12 +261,14 @@ client_onjoingame = function(num_players, role) {
     game.players.unshift({id: null, player: new game_player(game)})});
 
   // Update w/ role (can only move stuff if agent)
+  // $('#roundnumber').append("Hello");
   $('#header').append(role + '.');
   if(role === "director") {
     $('#instructs').append("Type instructions for the matcher to move the object in the direction of the arrow!")
   } else {
     $('#instructs').append("Click and drag objects to follow the director's instructions.")
   }
+
 
   // Only give Submit board button to agent (matcher)
   if(role === "director") {

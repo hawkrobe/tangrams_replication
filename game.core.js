@@ -46,6 +46,7 @@ var game_core = function(game_instance){
   
   // Which round are we on (initialize at -1 so that first round is 0-indexed)
   this.roundNum = -1;
+  // $('#roundnumber').append(this.roundNum + 2);
 
   // How many rounds do we want people to complete?
   this.numRounds = 6;
@@ -127,8 +128,12 @@ game_core.prototype.newRound = function() {
     // Otherwise, get the preset list of tangrams for the new round
     this.roundNum += 1;
     console.log("hi!");
-    // console.log(this.trialList[this.roundNum]);
     this.objects = this.trialList[this.roundNum];
+    console.log("roundNum: " + this.roundNum);
+    this.server_send_update();
+    // $('#roundnumber').append("Hello");
+    // drawScreen(game, game.get_player(my_id));
+    //re draw with new object list
   }
 };
 
@@ -249,7 +254,8 @@ game_core.prototype.server_send_update = function(){
     pc : this.player_count,
     curr_dest : this.currentDestination,
     scriptedInstruction : this.scriptedInstruction,
-    instructionNum : this.instructionNum
+    instructionNum : this.instructionNum,
+    roundNum = this.roundNum
   };
 
   _.extend(state, {players: player_packet});

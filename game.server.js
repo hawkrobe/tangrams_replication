@@ -61,12 +61,16 @@ game_server.server_onMessage = function(client,message) {
     //     _.map(all, function(p) {p.player.instance.send("s.waiting.incorrect") })
     //     break;
     
-    //what is this for?
   case 'advanceRound' :
     gc.newRound();
+    console.log("new round!");
+    // var roundNum = gc.newRound().rounNum;
+    _.map(all, function(p){
+      p.player.instance.emit('newRound', game.roundNum);});
     break;
     
   case 'chatMessage' :
+    console.log("got message");
     // TODO: write data to file or do something with it...
     //    if(client.game.player_count == 2 && !gc.paused) 
     //writeData(client, "message", message_parts)
