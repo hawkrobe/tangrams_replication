@@ -88,6 +88,8 @@ client_onserverupdate_received = function(data){
     });
   };
 
+
+
   // TODO: check if this is necessary
   // _.map(game.objects, function(obj) {
   //   var data_obj = _.find(data.objects, function(o) {return o.name == obj.name;});
@@ -104,7 +106,10 @@ client_onserverupdate_received = function(data){
   game.players_threshold = data.pt;
   game.player_count = data.pc;
   game.roundNum = data.roundNum
-  $('#roundnumber').append(game.roundNum+1);
+
+  //update round number on the scren every new round
+  $('#roundnumber').empty().append("Round: ", game.roundNum+1);
+
 
   // Draw all this new stuff
   drawScreen(game, game.get_player(my_id));
