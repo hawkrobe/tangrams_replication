@@ -47,12 +47,13 @@ var drawObjects = function(game, player) {
 };
 
 var highlightCell = function(game, player, upperLeftX, upperLeftY) {
-
-  game.ctx.beginPath();
-  game.ctx.lineWidth="20";
-  game.ctx.strokeStyle="red";
-  game.ctx.rect(upperLeftX, upperLeftY,300,300); 
-  game.ctx.stroke();
+  if (upperLeftX < 1800 && upperLeftX > 0 && upperLeftY > 0 && upperLeftY < 600) {
+    game.ctx.beginPath();
+    game.ctx.lineWidth="20";
+    game.ctx.strokeStyle="red";
+    game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+    game.ctx.stroke();
+  }
 };
 
 var drawScreen = function(game, player) {

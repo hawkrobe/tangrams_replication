@@ -386,11 +386,26 @@ function mouseUpListener(evt) {
     
     // If you didn't drag it beyond cell bounds, snap it back w/o comment
     if (obj.gridX == cell[0] && obj.gridY == cell[1]) {
+      // mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
+      // mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
+      // console.log("hey mouseX!: " + mouseX);
       obj.trueX = game.getTrueCoords("xCoord", obj, obj);
       obj.trueY = game.getTrueCoords("yCoord", obj, obj);
+    }
+
+
+    // If you drag mouse outside of grid and release, tangram snaps back to its original cell 
+   mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
+   mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
+    if (mouseX > 1825 || mouseX < 25 || mouseY > 625 || mouseY < 25) {
+      console.log("out of bounds");
+      obj.trueX = game.getTrueCoords("xCoord", obj, obj);
+      obj.trueY = game.getTrueCoords("yCoord", obj, obj);
+     }
+
 
     
-    } 
+    
     else {
       // move tangram in dropped cell (swapObj) to original cell of dragged tangram (obj)
       swapObj.gridX = obj.gridX;
@@ -417,7 +432,6 @@ function mouseUpListener(evt) {
 
 
 function mouseMoveListener(evt) {
-    // console.log("I am mouseMoveListener!");
     // prevent from dragging offscreen
     var minX = 25;
     var maxX = game.viewport.width - game.objects[game.dragIndex].width - 25;
@@ -433,14 +447,25 @@ function mouseMoveListener(evt) {
     cell = game.getCellFromPixel(mouseX, mouseY);
     upperLeftX = game.getPixelFromCell(cell[0], cell[1]).upperLeftX;
     upperLeftY = game.getPixelFromCell(cell[0], cell[1]).upperLeftY;
-    highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
-    drawScreen(game, game.get_player(my_id));
+    // if (cell[0] < 6 && cell[0] > -1 && cell[1] > -1 && cell[1] < 1) {
+  
+    // highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
+    // drawScreen(game, game.get_player(my_id));
 
-    // game.ctx.beginPath();
-    // game.ctx.lineWidth="6";
-    // game.ctx.strokeStyle="red";
-    // game.ctx.rect(upperLeftX, upperLeftY,300,300); 
-    // game.ctx.stroke();
+    // if (cell[0] == 2 && cell[1] == 0) {
+    //   console.log("cell [2,1]");
+    // }
+    // console.log('hi!');
+
+
+
+    if (mouseX < 1820 || mouseX > 30 || mouseY < 620 || mouseY > 30) {
+      // console.log("mouseMove out of bounds");
+      console.log("mouseX, mouseY = " + mouseX +' ,' + mouseY);
+      console.log("evt.clientX, event.clientY= " + evt.clientX + ' ,' + evt.clientY);
+      highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
+      drawScreen(game, game.get_player(my_id));
+    }
 
     //clamp x and y positions to prevent object from dragging outside of canvas
     var posX = mouseX - dragHoldX;
