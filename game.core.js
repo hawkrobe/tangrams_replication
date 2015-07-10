@@ -130,10 +130,9 @@ game_core.prototype.newRound = function() {
     console.log("hi!");
     this.objects = this.trialList[this.roundNum];
     console.log("roundNum: " + this.roundNum);
+    //when there is a new round, we want the server to send an update to the client
+    //with the new roundNum;
     this.server_send_update();
-    // $('#roundnumber').append("Hello");
-    // drawScreen(game, game.get_player(my_id));
-    //re draw with new object list
   }
 };
 
@@ -255,7 +254,7 @@ game_core.prototype.server_send_update = function(){
     curr_dest : this.currentDestination,
     scriptedInstruction : this.scriptedInstruction,
     instructionNum : this.instructionNum,
-    roundNum = this.roundNum
+    roundNum : this.roundNum
   };
 
   _.extend(state, {players: player_packet});

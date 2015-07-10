@@ -65,8 +65,8 @@ game_server.server_onMessage = function(client,message) {
     gc.newRound();
     console.log("new round!");
     // var roundNum = gc.newRound().rounNum;
-    _.map(all, function(p){
-      p.player.instance.emit('newRound', game.roundNum);});
+    // _.map(all, function(p){
+    //   p.player.instance.emit('newRound', game.roundNum);});
     break;
     
   case 'chatMessage' :

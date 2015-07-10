@@ -104,6 +104,8 @@ client_onserverupdate_received = function(data){
   game.players_threshold = data.pt;
   game.player_count = data.pc;
   game.roundNum = data.roundNum
+  $('#roundnumber').append(game.roundNum+1);
+
   // Draw all this new stuff
   drawScreen(game, game.get_player(my_id));
 }; 
@@ -150,10 +152,6 @@ client_onMessage = function(data) {
     case 'begin_game' :
       client_newgame(); break;
 
-    case 'new_round' :
-      client_addnewround(game);
-      break;
-
     }
   } 
 }; 
@@ -191,7 +189,7 @@ window.onload = function(){
 };
 
 client_addnewround = function(game) {
-  $('#roundnumber').append("Hello");
+  $('#roundnumber').append(game.roundNum);
 }
 
 // Associates callback functions corresponding to different socket messages
