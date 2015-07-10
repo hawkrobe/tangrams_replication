@@ -254,7 +254,8 @@ game_core.prototype.server_send_update = function(){
     curr_dest : this.currentDestination,
     scriptedInstruction : this.scriptedInstruction,
     instructionNum : this.instructionNum,
-    roundNum : this.roundNum
+    roundNum : this.roundNum,
+    objects: this.objects
   };
 
   _.extend(state, {players: player_packet});
@@ -263,7 +264,7 @@ game_core.prototype.server_send_update = function(){
     _.extend(state, {objects: this.objects});
   }
 
-  console.log(this.objects);
+  // console.log(this.objects);
   //Send the snapshot to the players
   this.state = state;
   _.map(local_game.get_active_players(), function(p){

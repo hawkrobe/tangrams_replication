@@ -61,14 +61,23 @@ client_onserverupdate_received = function(data){
     });
   }
   
+  //get names of objects sent from server and current objects 
   var dataNames = _.map(data.objects, function(e)
 			{ return e.name;});
+  // console.log("dataNames: " + dataNames);
   var localNames = _.map(game.objects,function(e)
 			 {return e.name;});
+  // console.log("localNames: " + localNames);
+
+  // console.log(game.objects);
+  // console.log(data.objects);
+
+
 
   // If your objects are out-of-date (i.e. if there's a new round), set up
   // machinery to draw them
-  if (game.objects.length == 0 || !_.isEqual(dataNames, localNames)) { 
+  // if (game.objects.length == 0 || !_.isEqual(dataNames, localNames)) { 
+    if (game.roundNum != data.roundNum) {
     game.objects = _.map(data.objects, function(obj) {
       // Extract the coordinates matching your role
       var customCoords = my_role == "director" ? obj.directorCoords : obj.matcherCoords;
@@ -84,11 +93,10 @@ client_onserverupdate_received = function(data){
         game.ctx.drawImage(imgObj, parseInt(customObj.trueX), parseInt(customObj.trueY),
 			   customObj.width, customObj.height);
       };
+      // drawObjects(game, game.get_player(my_id));
       return _.extend(customObj, {img: imgObj});
     });
   };
-
-
 
   // TODO: check if this is necessary
   // _.map(game.objects, function(obj) {
