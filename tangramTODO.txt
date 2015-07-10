@@ -28,10 +28,10 @@
 
 
 [ ] Gameplay duration
-	[ ] Keep track of round number on matcher and director screens (i.e. Round 1/6)
+	[x] Keep track of round number on matcher and director screens (i.e. Round 1/6)
 	[ ] For individual round
-		[ ] Create "Finished" button that matcher can press to complete a round
-		[ ] When button pressed, end round and restart a new one
+		[x] Create "Finished" button that matcher can press to complete a round
+		[x] When button pressed, end round and restart a new one
 		[ ] Show them each how close their boards were to each other
 			[ ] Show them this for a few seconds? 
 			[ ] Use X and check mark 
@@ -49,4 +49,5 @@
 	[ ] Include time stamp
 [ ] sudo random shuffle to avoid matching boards (at least for start position)
 
+[ ] Fix layout of screen
 
