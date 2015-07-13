@@ -175,20 +175,35 @@ game_core.prototype.makeTrialList = function () {
       var directorGridCell = local_this.getPixelFromCell(pair[1][0], pair[1][1]); 
       var matcherGridCell = local_this.getPixelFromCell(pair[2][0], pair[2][1]);
       tangram.directorCoords = {
-	gridX : pair[1][0],
-	gridY : pair[1][1],
-	trueX : directorGridCell.centerX - tangram.width/2,
-	trueY : directorGridCell.centerY - tangram.height/2};
+  gridX : pair[1][0],
+  gridY : pair[1][1],
+  trueX : directorGridCell.centerX - tangram.width/2,
+  trueY : directorGridCell.centerY - tangram.height/2};
       tangram.matcherCoords = {
-	gridX : pair[2][0],
-	gridY : pair[2][1],
-	trueX : matcherGridCell.centerX - tangram.width/2,
-	trueY : matcherGridCell.centerY - tangram.height/2};
+  gridX : pair[2][0],
+  gridY : pair[2][1],
+  trueX : matcherGridCell.centerX - tangram.width/2,
+  trueY : matcherGridCell.centerY - tangram.height/2};
       return tangram;
     });
   });
+  //make sure the tangrams locations are different each round (sudo shuffle)
+  for (var i = this.numRounds; i--; i > 0) {
+    this.arraysEqual(trialList[i], trialList[i-1]);
+      if (false) { 
+      this.makeTrialList();
+    }
   return(trialList);
-};
+};};
+
+//helper function to implement sudo shuffle
+game_core.prototype.arraysEqual = function(arr1, arr2) {
+  for(var i = arr1.length; i--;) {
+      if(arr1[i] !== arr2[i])
+          return false;
+  }
+  return true;
+}
 
 // maps a grid location to the exact pixel coordinates
 // for x = 1,2,3,4; y = 1,2,3,4
