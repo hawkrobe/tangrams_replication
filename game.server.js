@@ -86,8 +86,8 @@ game_server.server_onMessage = function(client,message) {
   }
 };
 
-// var writeData = function(client, type, message_parts) {
-//     // var gc = client.game.gamecore
+var writeData = function(client, type, message_parts) {
+    var gc = client.game.gamecore
 //     // var attemptNum = gc.attemptNum;
 //     // var condition = gc.trialList[gc.roundNum].condition      
 //     // var objectSet = gc.trialList[gc.roundNum].objectSet
