@@ -169,8 +169,6 @@ client_onMessage = function(data) {
   } 
 }; 
 
-// var sbutton = document.getElementById("submitbutton");
-
 // When loading the page, we store references to our
 // drawing canvases, and initiate a game instance.
 window.onload = function(){
@@ -193,9 +191,6 @@ window.onload = function(){
 
   //Set the draw style for the font
   game.ctx.font = '11px "Helvetica"';
-
-  //fetch the submit button (sbutton)
-  // var sbutton = document.getElementById("submitbutton");
 
   document.getElementById('chatbox').focus();
 
@@ -275,9 +270,9 @@ client_onjoingame = function(num_players, role) {
   // $('#roundnumber').append("Hello");
   $('#header').append(role + '.');
   if(role === "director") {
-    $('#instructs').append("Type instructions for the matcher to move the object in the direction of the arrow!")
+    $('#instructs').append("Type instructions for the matcher to move their tangrams to match your tangram board!")
   } else {
-    $('#instructs').append("Click and drag objects to follow the director's instructions.")
+    $('#instructs').append("Move your tangrams to match the director's tangram board!")
   }
 
 
@@ -299,29 +294,6 @@ client_onjoingame = function(num_players, role) {
   }
 };    
 
-
-// Click submit button! //
-
-  //Fetch the submit button
-// sbutton = document.getElementById("submitbutton");
-// if (sbutton) {
-  // sbutton.addEventListener("click", submitButtonClick, false);
-// }
-// console.log("submitbutton!");
-// sbutton.addEventListener("click", submitButtonClick, false);
-
-
-// //why is it null?
-// function submitButtonClick(evt){
-//   // sbutton = document.getElementById('submitbutton');
-//   sbutton.addEventListener("click", submitButtonClick, false);
-//   var msg = 'advanceRound';
-//   game.socket.send(msg);
-//   // game.submitButton.removeEventListener("click", submitButtonClick, data, false);
-//   console.log("client submit button!");
-// }
-
-// window.addEventListener("click", submitButtonClick, false);
 /*
  MOUSE EVENT LISTENERS
  */
@@ -461,8 +433,9 @@ function mouseMoveListener(evt) {
 
     if (mouseX < 1820 || mouseX > 30 || mouseY < 620 || mouseY > 30) {
       // console.log("mouseMove out of bounds");
-      console.log("mouseX, mouseY = " + mouseX +' ,' + mouseY);
-      console.log("evt.clientX, event.clientY= " + evt.clientX + ' ,' + evt.clientY);
+      // console.log("mouseX, mouseY = " + mouseX +' ,' + mouseY);
+      // console.log("evt.clientX, event.clientY= " + evt.clientX + ' ,' + evt.clientY);
+
       highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
       drawScreen(game, game.get_player(my_id));
     }
