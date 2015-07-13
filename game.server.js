@@ -44,6 +44,8 @@ game_server.server_onMessage = function(client,message) {
   var all = gc.get_active_players();
   var target = gc.get_player(client.userid);
   var others = gc.get_others(client.userid);
+  // var roundNum = gc.newRound().roundNum;
+  // console.log("the roundNum is: " + roundNum);
   switch(message_type) {
     
     // case 'correctDrop' :
@@ -65,8 +67,6 @@ game_server.server_onMessage = function(client,message) {
     gc.newRound();
     console.log("new round!");
     // var roundNum = gc.newRound().rounNum;
-    // _.map(all, function(p){
-    //   p.player.instance.emit('newRound', game.roundNum);});
     break;
     
   case 'chatMessage' :
@@ -88,6 +88,7 @@ game_server.server_onMessage = function(client,message) {
 
 var writeData = function(client, type, message_parts) {
     var gc = client.game.gamecore
+    var roundNum = gc.state.roundNum;
 //     // var attemptNum = gc.attemptNum;
 //     // var condition = gc.trialList[gc.roundNum].condition      
 //     // var objectSet = gc.trialList[gc.roundNum].objectSet
@@ -122,7 +123,7 @@ var writeData = function(client, type, message_parts) {
             case "message" :
                 var date = message_parts[1]
                 var msg = message_parts[2].replace(/-/g,'.')
-                var line = (id + ',' + date + ',' + client.role + ',"' + msg + '"\n')
+                var line = (id + ',' + date + ',' + roundNum + ',' + client.role + ',"' + msg + '"\n')
                 console.log("message:" + line)
                 gc.messageStream.write(line);
                 break;
@@ -183,7 +184,7 @@ game_server.findGame = function(player) {
         // game.gamecore.errorStream = fs.createWriteStream(error_f, {'flags' : 'a'});
 
         var message_f = "data/message/" + name + ".csv"
-        fs.writeFile(message_f, "gameid, time, sender, contents\n", function (err) {if(err) throw err;})
+        fs.writeFile(message_f, "gameid, time, roundNum, sender, contents\n", function (err) {if(err) throw err;})
         game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
 //       console.log('game ' + game.id + ' starting with ' + game.player_count + ' players...')
     
