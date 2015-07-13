@@ -325,6 +325,8 @@ function mouseDownListener(evt) {
   }
   if (dragging) {
     window.addEventListener("mousemove", mouseMoveListener, false);
+        var msg = 'drag.' + Date.now();
+    game.socket.send(msg);
 
   }
   game.viewport.removeEventListener("mousedown", mouseDownListener, false);
@@ -343,9 +345,12 @@ function mouseDownListener(evt) {
 
 
 function mouseUpListener(evt) {    
+
   game.viewport.addEventListener("mousedown", mouseDownListener, false);
   window.removeEventListener("mouseup", mouseUpListener, false);
   if (dragging) {
+    // var msg = 'drag.' + Date.now();
+    // game.socket.send(msg);
     // Set up the right variables
     var bRect = game.viewport.getBoundingClientRect();
     var dropX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);

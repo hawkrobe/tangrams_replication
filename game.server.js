@@ -63,6 +63,9 @@ game_server.server_onMessage = function(client,message) {
     //     _.map(all, function(p) {p.player.instance.send("s.waiting.incorrect") })
     //     break;
     
+  case 'drag' :
+    writeData(client, "drag", message_parts);
+
   case 'advanceRound' :
     gc.newRound();
     console.log("new round!");
@@ -120,13 +123,19 @@ var writeData = function(client, type, message_parts) {
 // //             console.log("mouse:" + line)
 // //             gc.mouseDataStream.write(line, function (err) {if(err) throw err;}); 
 // //             break;
+            case "drag" :
+              var date = message_parts[1];
+              var line = (id + ',' + date + '"\n');
+              console.log("drag:" + line);
+              gc.dragStream.write(line);
+
             case "message" :
-                var date = message_parts[1]
-                var msg = message_parts[2].replace(/-/g,'.')
-                var line = (id + ',' + date + ',' + roundNum + ',' + client.role + ',"' + msg + '"\n')
-                console.log("message:" + line)
-                gc.messageStream.write(line);
-                break;
+              var date = message_parts[1]
+              var msg = message_parts[2].replace(/-/g,'.')
+              var line = (id + ',' + date + ',' + roundNum + ',' + client.role + ',"' + msg + '"\n')
+              console.log("message:" + line)
+              gc.messageStream.write(line, function (err) {if(err) throw err;});
+              break;
         // case "error" :
         //     var trueItem = gc.instructions[gc.instructionNum].split(' ')[0]
         //     var line = (id + ',' + String(message_parts[6]) + ',' + condition + ',' 
@@ -188,6 +197,10 @@ game_server.findGame = function(player) {
         game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
 //       console.log('game ' + game.id + ' starting with ' + game.player_count + ' players...')
     
+        var drag_f = "data/drag/" + name + ".csv"
+        console.log('hi from drag_f!');
+        fs.writeFile(drag_f, "gameid, time\n", function (err) {if(err) throw err;})
+        game.gamecore.dragStream = fs.createWriteStream(drag_f, {'flags' : 'a'});
 
         // Attach game to player so server can look at it later
         player.game = game;
