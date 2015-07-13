@@ -73,7 +73,7 @@ game_server.server_onMessage = function(client,message) {
     console.log("got message");
     // TODO: write data to file or do something with it...
     if(client.game.player_count == 2 && !gc.paused) 
-    //writeData(client, "message", message_parts)
+    writeData(client, "message", message_parts)
     // Update others
     var msg = message_parts[2].replace(/-/g,'.');
     _.map(all, function(p){
@@ -95,8 +95,8 @@ var writeData = function(client, type, message_parts) {
 //     // var object_name = gc.instructions[gc.instructionNum].split(' ')[0]
 //     // var object = _.find(gc.objects, function(obj) { return obj.name == object_name })
 //     // var critical = object.critical === "filler" ? 0 : 1
-//     //var id = gc.instance.id.slice(0,6)
-//     switch(type) {
+    var id = gc.instance.id.slice(0,6)
+    switch(type) {
 // //         case "mouse" :
 // //             var date = message_parts[1]
 // //             var x = message_parts[2]
@@ -119,14 +119,13 @@ var writeData = function(client, type, message_parts) {
 // //             console.log("mouse:" + line)
 // //             gc.mouseDataStream.write(line, function (err) {if(err) throw err;}); 
 // //             break;
-//             case "message" :
-//                 var date = message_parts[1]
-//                 var msg = message_parts[2].replace(/-/g,'.')
-//                 var line = (id + ',' + date + ',' + condition + ',' + critical + ',' +
-//                     objectSet + ',' + instructionNum + ',' + attemptNum + ',' + client.role + ',"' + msg + '"\n')
-//                 console.log("message:" + line)
-//                 gc.messageStream.write(line);
-//                 break;
+            case "message" :
+                var date = message_parts[1]
+                var msg = message_parts[2].replace(/-/g,'.')
+                var line = (id + ',' + date + ',' + client.role + ',"' + msg + '"\n')
+                console.log("message:" + line)
+                gc.messageStream.write(line);
+                break;
         // case "error" :
         //     var trueItem = gc.instructions[gc.instructionNum].split(' ')[0]
         //     var line = (id + ',' + String(message_parts[6]) + ',' + condition + ',' 
@@ -139,8 +138,8 @@ var writeData = function(client, type, message_parts) {
 //             console.log("incorrect: ", line);
 //             gc.errorStream.write(line)
 //             break;
-//     }
-// }
+    }
+}
 
 // /* 
 //    The following functions should not need to be modified for most purposes
@@ -168,6 +167,26 @@ game_server.findGame = function(player) {
         // players are array of player objects
         game.gamecore.players.push({id: player.userid, 
 				    player: new game_player(gamecore,player)});
+
+
+         // Establish write streams
+        var d = new Date();
+        var start_time = d.getFullYear() + '-' + d.getMonth() + 1 + '-' + d.getDate() + '-' + d.getHours() + '-' + d.getMinutes() + '-' + d.getSeconds() + '-' + d.getMilliseconds()
+        var name = start_time + '_' + game.id;
+        
+        // var mouse_f = "data/mouse/" + name + ".csv"
+        // fs.writeFile(mouse_f, "gameid, time, condition, critical, objectSet, instructionNum, attemptNum, targetX, targetY, distractorX, distractorY, mouseX, mouseY\n", function (err) {if(err) throw err;})
+        // game.gamecore.mouseDataStream = fs.createWriteStream(mouse_f, {'flags' : 'a'});
+
+        // var error_f = "data/error/" + name + ".csv"
+        // fs.writeFile(error_f, "gameid, time, condition, critical, objectSet, instructionNum, attemptNum, intendedObj, actualObj, intendedX, intendedY, actualX, actualY\n", function (err) {if(err) throw err;})
+        // game.gamecore.errorStream = fs.createWriteStream(error_f, {'flags' : 'a'});
+
+        var message_f = "data/message/" + name + ".csv"
+        fs.writeFile(message_f, "gameid, time, sender, contents\n", function (err) {if(err) throw err;})
+        game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
+//       console.log('game ' + game.id + ' starting with ' + game.player_count + ' players...')
+    
 
         // Attach game to player so server can look at it later
         player.game = game;
