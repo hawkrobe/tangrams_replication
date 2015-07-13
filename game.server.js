@@ -88,7 +88,7 @@ game_server.server_onMessage = function(client,message) {
 
 var writeData = function(client, type, message_parts) {
     var gc = client.game.gamecore
-    var roundNum = gc.state.roundNum;
+    var roundNum = gc.state.roundNum + 1;
 //     // var attemptNum = gc.attemptNum;
 //     // var condition = gc.trialList[gc.roundNum].condition      
 //     // var objectSet = gc.trialList[gc.roundNum].objectSet
@@ -175,7 +175,7 @@ game_server.findGame = function(player) {
         var start_time = d.getFullYear() + '-' + d.getMonth() + 1 + '-' + d.getDate() + '-' + d.getHours() + '-' + d.getMinutes() + '-' + d.getSeconds() + '-' + d.getMilliseconds()
         var name = start_time + '_' + game.id;
         
-        // var mouse_f = "data/mouse/" + name + ".csv"
+
         // fs.writeFile(mouse_f, "gameid, time, condition, critical, objectSet, instructionNum, attemptNum, targetX, targetY, distractorX, distractorY, mouseX, mouseY\n", function (err) {if(err) throw err;})
         // game.gamecore.mouseDataStream = fs.createWriteStream(mouse_f, {'flags' : 'a'});
 
