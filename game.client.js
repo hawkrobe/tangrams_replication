@@ -325,8 +325,7 @@ function mouseDownListener(evt) {
   }
   if (dragging) {
     window.addEventListener("mousemove", mouseMoveListener, false);
-        var msg = 'drag.' + Date.now();
-    game.socket.send(msg);
+
 
   }
   game.viewport.removeEventListener("mousedown", mouseDownListener, false);

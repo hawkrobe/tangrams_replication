@@ -98,6 +98,11 @@ if('undefined' != typeof global) {
 
 // HELPER FUNCTIONS
 
+//scores the number of incorrect tangram matches between matcher and director
+game_core.prototype.game_score = function() {
+  //
+}
+
 // Method to easily look up player 
 game_core.prototype.get_player = function(id) {
     var result = _.find(this.players, function(e){ return e.id == id; });
@@ -189,10 +194,12 @@ game_core.prototype.makeTrialList = function () {
   });
   //make sure the tangrams locations are different each round (sudo shuffle)
   for (var i = this.numRounds; i--; i > 0) {
-    this.arraysEqual(trialList[i], trialList[i-1]);
+    this.arraysEqual(trialList[0][i], trialList[0][i-1]);
       if (false) { 
+      console.log("the lists are the same")
       this.makeTrialList();
     }
+  console.log("this is trialList");
   return(trialList);
 };};
 
