@@ -44,8 +44,8 @@ game_server.server_onMessage = function(client,message) {
   var all = gc.get_active_players();
   var target = gc.get_player(client.userid);
   var others = gc.get_others(client.userid);
-  // var roundNum = gc.newRound().roundNum;
-  // console.log("the roundNum is: " + roundNum);
+
+
   switch(message_type) {
     
     // case 'correctDrop' :
@@ -67,8 +67,8 @@ game_server.server_onMessage = function(client,message) {
     writeData(client, "drag", message_parts);
 
   case 'advanceRound' :
-    // gc.game_score(trialList[roundNum][1], trialList[roundNum][2]);
     console.log(gc.objects);
+    gc.game_score(gc.objects);
     gc.newRound();
     console.log("new round!");
     // var roundNum = gc.newRound().rounNum;
@@ -76,6 +76,7 @@ game_server.server_onMessage = function(client,message) {
     
   case 'chatMessage' :
     console.log("got message");
+    // console.log(gc.objects);
     // TODO: write data to file or do something with it...
     if(client.game.player_count == 2 && !gc.paused) 
     writeData(client, "message", message_parts)

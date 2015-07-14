@@ -233,7 +233,9 @@ client_connect_to_server = function(game) {
   // Advance round by 1 each time matcher presses the submitbutton
   $(document).ready(function() {
     $("#submitbutton").click(function(){
-      console.log("submitbutton clicked!")
+      console.log("submitbutton clicked!");
+      // console.log("clients!!!");
+      // console.log(game.objects);
       var msg = 'advanceRound';
       game.socket.send(msg);
       // $(".hide_div").hide();
@@ -389,12 +391,26 @@ function mouseUpListener(evt) {
       swapObj.trueX = game.getTrueCoords("xCoord", obj, swapObj);
       swapObj.trueY = game.getTrueCoords("yCoord", obj, swapObj);
 
+      game.objects[swapIndex].matcherCoords.gridX = swapObj.gridX;
+      game.objects[swapIndex].matcherCoords.gridY = swapObj.gridY;
+      game.objects[swapIndex].matcherCoords.trueX = swapObj.gridX;
+      game.objects[swapIndex].matcherCoords.trueY = swapObj.gridY;
 
       // center dragged tangram (obj) in its new cell
-      obj.gridX = cell[0]
-      obj.gridY = cell[1]
+      obj.gridX = cell[0];
+      obj.gridY = cell[1];
       obj.trueX = game.getPixelFromCell(cell[0], cell[1]).centerX - obj.width/2;
       obj.trueY = game.getPixelFromCell(cell[0], cell[1]).centerY - obj.height/2;
+
+      game.objects[game.dragIndex].matcherCoords.gridX = obj.gridX;
+      game.objects[game.dragIndex].matcherCoords.gridY = obj.gridY;
+      game.objects[game.dragIndex].matcherCoords.trueX = obj.trueX;
+      game.objects[game.dragIndex].matcherCoords.trueY = obj.trueY; 
+
+      // console.log("obj.gridX is " + obj.gridX);
+      // console.log("game.objects[dragIndex].matcherCoords.gridX is " + game.objects[game.dragIndex].matcherCoords.gridX);
+
+       
     }
 
     // Tell server where you dropped it

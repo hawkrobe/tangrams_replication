@@ -201,22 +201,30 @@ game_core.prototype.makeTrialList = function () {
 //helper function to implement sudo shuffle
 game_core.prototype.arraysEqual = function(arr1, arr2) {
   for(var i = arr1.length; i--;) {
-      if(arr1[i] !== arr2[i])
+      if(arr1[i] !== arr2[i]) {
           return false;
+    }
   }
+  console.log("sudo shuffle completed");
   return true;
 }
 
 //scores the number of incorrect tangram matches between matcher and director
 //returns the correct score out of total tangrams
-game_core.prototype.game_score = function(arr1, arr2) {
-   var score = 0;
-   for(var i = arr1.length; i--;) {
-      if(arr1[i] == arr2[i])
-          score = score + 1;
+game_core.prototype.game_score = function(game_objects) {
+   var correct = 0;
+   var incorrect = 0;
+   for(var i = game_objects.length; i--; i>=0) {
+      if(game_objects[i].matcherCoords.gridX == game_objects[i].directorCoords.gridX) {
+        if(game_objects[i].matcherCoords.gridY == game_objects[i].directorCoords.gridY) {
+          console.log("correct!");
+          correct = correct + 1;
+        }
+      }
+      incorrect = incorrect + 1;
   }
-  console.log("you got " + score + " tangrams correct!");
-  return score;
+  console.log("you got " + correct + " tangrams correct!");
+  return correct;
 }
 
 // maps a grid location to the exact pixel coordinates
