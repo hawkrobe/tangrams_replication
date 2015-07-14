@@ -216,6 +216,8 @@ game_core.prototype.game_score = function(game_objects) {
    var incorrect = 0;
    for(var i = game_objects.length; i--; i>=0) {
       if(game_objects[i].matcherCoords.gridX == game_objects[i].directorCoords.gridX) {
+        console.log("matcherGridX is " + game_objects[i].matcherCoords.gridX);
+        console.log("directorGridX is " + game_objects[i].directorCoords.gridX);
         if(game_objects[i].matcherCoords.gridY == game_objects[i].directorCoords.gridY) {
           console.log("correct!");
           correct = correct + 1;

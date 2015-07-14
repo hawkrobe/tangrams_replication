@@ -407,8 +407,17 @@ function mouseUpListener(evt) {
       game.objects[game.dragIndex].matcherCoords.trueX = obj.trueX;
       game.objects[game.dragIndex].matcherCoords.trueY = obj.trueY; 
 
+      console.log("birds gridX is " + game.objects[0].matcherCoords.gridX);
+      var score = game.game_score(game.objects);
+      console.log("the score of the game is " + score);
+      // var msg = 'birdX.' + JSON.stringify(game.objects);
+      // game.socket.send(msg);
+
+
       // console.log("obj.gridX is " + obj.gridX);
       // console.log("game.objects[dragIndex].matcherCoords.gridX is " + game.objects[game.dragIndex].matcherCoords.gridX);
+
+
 
        
     }

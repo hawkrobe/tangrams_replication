@@ -14,6 +14,7 @@
         use_db      = false,
         game_server = module.exports = { games : {}, game_count:0, assignment:0},
         fs          = require('fs');
+        clientTangramList = [];
 	    
     if (use_db) {
 	    database    = require(__dirname + "/database"),
@@ -31,7 +32,7 @@ utils = require('./utils.js');
 // with the coordinates of the click, which this function reads and
 // applies.
 game_server.server_onMessage = function(client,message) {
-  console.log("received message: " + message)
+  // console.log("received message: " + message)
   //Cut the message up into sub components
   var message_parts = message.split('.');
   
@@ -63,11 +64,16 @@ game_server.server_onMessage = function(client,message) {
     //     _.map(all, function(p) {p.player.instance.send("s.waiting.incorrect") })
     //     break;
     
+  // case 'birdX' :
+  //   console.log(message_parts[1]);
+  //   break;
+
   case 'drag' :
     writeData(client, "drag", message_parts);
+    break;
 
   case 'advanceRound' :
-    console.log(gc.objects);
+    // console.log(gc.objects);
     gc.game_score(gc.objects);
     gc.newRound();
     console.log("new round!");
@@ -75,7 +81,9 @@ game_server.server_onMessage = function(client,message) {
     break;
     
   case 'chatMessage' :
-    console.log("got message");
+    // console.log("got message");
+    // gc.game_score(gc.objects);
+    // console.log("bird's gridX is " + gc.objects[0].matcherCoords.gridX);
     // console.log(gc.objects);
     // TODO: write data to file or do something with it...
     if(client.game.player_count == 2 && !gc.paused) 
