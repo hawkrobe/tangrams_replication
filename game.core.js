@@ -98,11 +98,6 @@ if('undefined' != typeof global) {
 
 // HELPER FUNCTIONS
 
-//scores the number of incorrect tangram matches between matcher and director
-game_core.prototype.game_score = function() {
-  //
-}
-
 // Method to easily look up player 
 game_core.prototype.get_player = function(id) {
     var result = _.find(this.players, function(e){ return e.id == id; });
@@ -210,6 +205,18 @@ game_core.prototype.arraysEqual = function(arr1, arr2) {
           return false;
   }
   return true;
+}
+
+//scores the number of incorrect tangram matches between matcher and director
+//returns the correct score out of total tangrams
+game_core.prototype.game_score = function(arr1, arr2) {
+   var score = 0;
+   for(var i = arr1.length; i--;) {
+      if(arr1[i] == arr2[i])
+          score = score + 1;
+  }
+  console.log("you got " + score + " tangrams correct!");
+  return score;
 }
 
 // maps a grid location to the exact pixel coordinates

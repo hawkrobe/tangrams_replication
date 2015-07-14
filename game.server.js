@@ -67,6 +67,8 @@ game_server.server_onMessage = function(client,message) {
     writeData(client, "drag", message_parts);
 
   case 'advanceRound' :
+    // gc.game_score(trialList[roundNum][1], trialList[roundNum][2]);
+    console.log(gc.objects);
     gc.newRound();
     console.log("new round!");
     // var roundNum = gc.newRound().rounNum;
