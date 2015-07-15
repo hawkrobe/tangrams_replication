@@ -58,7 +58,10 @@ game_server.server_onMessage = function(client,message) {
     var swapObjTrueX = message_parts[5];
     var swapObjTrueY = message_parts[6];
 
-    // console.log("test objTrueX " + objTrueX);
+
+    console.log("swapObjTrueY: " + swapObjTrueY);
+    console.log("ObjTrueY: " + objTrueY);
+
     
     // Update the local copy to match the new positions of these items!
     gc.objects[objIndex].matcherCoords.trueX = objTrueX;
@@ -66,26 +69,19 @@ game_server.server_onMessage = function(client,message) {
     gc.objects[swapIndex].matcherCoords.trueX = swapObjTrueY;
     gc.objects[swapIndex].matcherCoords.trueY = swapObjTrueY;
 
-    // console.log("test objTrueX " + gc.objects[objIndex].matcherCoords.trueX);
-
-
-
     //get the gridX and gridY values
     var objCell = gc.getCellFromPixel(objTrueX, objTrueY);
-
-    console.log(objCell);
     var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
 
     //Update local copy with correct gridX and gridY values
     gc.objects[objIndex].matcherCoords.gridX = objCell[0];
     gc.objects[objIndex].matcherCoords.gridY = objCell[1];
     gc.objects[swapIndex].matcherCoords.gridX = swapObjCell[0];
-    gc.objects[swapIndex].matcherCoords.gridY = swapObjCell[1];
+    gc.objects[swapIndex].matcherCoords.gridY = swapObjCell[1];  
 
-    console.log("bird is " + gc.objects[0].matcherCoords.gridX);  
-
-    var score = gc.game_score(gc.objects);
-    console.log("from dropObj you have a score of: " + score);
+    // var score = gc.game_score(gc.objects);
+    // console.log("from dropObj you have a score of: " + score);
+    writeData(client, "dropObj", message_parts);
 
     break;
 
@@ -152,11 +148,31 @@ var writeData = function(client, type, message_parts) {
 // //             console.log("mouse:" + line)
 // //             gc.mouseDataStream.write(line, function (err) {if(err) throw err;}); 
 // //             break;
-            case "drag" :
-              var date = message_parts[1];
-              var line = (id + ',' + date + '"\n');
-              console.log("drag:" + line);
-              gc.dragStream.write(line);
+            case "dropObj" :
+              var dragObjIndex = message_parts[1];
+              var swapObjIndex = message_parts[2];
+              var dragObjTrueX = message_parts[3];
+              var dragObjTrueY = message_parts[4];
+              var swapObjTrueX = message_parts[5];
+              var swapObjTrueY = message_parts[6];
+              // console.log("dragObjTrueY: " + dragObjTrueY);
+              // console.log("swapObjTrueY: " + swapObjTrueY);
+              var date = message_parts[7];
+
+              var dragObjCell = gc.getCellFromPixel(dragObjTrueX, dragObjTrueY);
+              // console.log("dragObjCell: " + dragObjCell);
+              var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
+              // console.log("swapObjCell: " + swapObjCell);
+
+              var line = (id + ',' + date + ',' + roundNum + ',' + dragObjIndex + ',' + dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + '"\n');
+              console.log("dropObj: " + line);
+              gc.dropObjStream.write(line, function (err) {if(err) throw err;});
+
+            // case "drag" :
+            //   var date = message_parts[1];
+            //   var line = (id + ',' + date + '"\n');
+            //   console.log("drag:" + line);
+            //   gc.dragStream.write(line, function (err) {if(err) throw err;});
 
             case "message" :
               var date = message_parts[1]
@@ -226,10 +242,19 @@ game_server.findGame = function(player) {
         game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
 //       console.log('game ' + game.id + ' starting with ' + game.player_count + ' players...')
     
-        var drag_f = "data/drag/" + name + ".csv"
-        console.log('hi from drag_f!');
-        fs.writeFile(drag_f, "gameid, time\n", function (err) {if(err) throw err;})
-        game.gamecore.dragStream = fs.createWriteStream(drag_f, {'flags' : 'a'});
+
+        var dropObj_f = "data/dropObj/" + name + ".csv"
+        fs.writeFile(dropObj_f, "gameid, time, roundNum, dragObjIndex, dragObjCell(x,y), swapObjIndex, swapObjCell(x,y)\n", function (err) {if(err) throw err;})
+        game.gamecore.dropObjStream = fs.createWriteStream(dropObj_f, {'flags' : 'a'});
+
+
+
+        // var drag_f = "data/drag/" + name + ".csv"
+        // console.log('hi from drag_f!');
+        // fs.writeFile(drag_f, ("gameid, time, roundNum, dragObjIndex, dragObjCell(x,y), swapObjIndex, swapObjCell(x,y)\n", function (err) {if(err) throw err;})
+        // game.gamecore.dragStream = fs.createWriteStream(drag_f, {'flags' : 'a'});
+
+
 
         // Attach game to player so server can look at it later
         player.game = game;

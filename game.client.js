@@ -413,9 +413,11 @@ function mouseUpListener(evt) {
       game.socket.send("dropObj."
 		       + game.dragIndex + "." + swapIndex + "."
 		       + Math.round(obj.trueX) + "." + Math.round(obj.trueY) + "."
-		       + Math.round(swapObj.trueX) + "." + Math.round(swapObj.trueY));
+		       + Math.round(swapObj.trueX) + "." + Math.round(swapObj.trueY) + "." + Date.now());
 
     }
+    // console.log("swapObjtrueY: " + swapObj.trueY);
+    // console.log("dragObjtrueY: " + obj.trueY);
 
     // Tell server where you dropped it
     drawScreen(game, game.get_player(my_id));
