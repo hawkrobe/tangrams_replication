@@ -44,10 +44,9 @@
 	[ ] Write instructions for matcher and director
 	[ ] Add to program...is this done through MTurk?
 [ ] Writedata 
-	[ ] messages from director and matcher
-	[ ] record the starting/end location and ID of the tangram that matcher clicks, drags, releases
-	[ ] Include time stamp
+	[x] messages from director and matcher
+	[x] record the starting/end location and ID of the tangram that matcher clicks, drags, releases
+	[x] Include time stamp
 [ ] sudo random shuffle to avoid matching boards (at least for start position)
-
-[ ] Fix layout of screen
+	-put in some code but I don't think that it is working
 

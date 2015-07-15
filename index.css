@@ -48,6 +48,19 @@ html , body {
 	position: absolute;
 }
 
+#score {
+	height: 10%;
+	width: 20%;
+	text-align: center;
+	margin-left: 75%;
+	margin-top: 6%;
+	margin-right: auto;
+	margin-bottom: auto ;
+	left:0; right:0; top:7%; bottom: 0;
+	position: absolute;
+	font-size: 150%;
+}
+
 #submitbutton {
 
 /*trying to change around attributes of click button reduces the clickable area
