@@ -233,9 +233,10 @@ client_connect_to_server = function(game) {
   // Advance round by 1 each time matcher presses the submitbutton
   $(document).ready(function() {
     $("#submitbutton").click(function(){
-      // console.log("submitbutton clicked!");
+      //update score on the screen
       var score = game.game_score(game.objects);
       $('#score').empty().empty().append("Round " + (game.roundNum+1) + " score: " + score + " correct!");
+      $('#messages').empty();
 
 
       var msg = 'advanceRound';
