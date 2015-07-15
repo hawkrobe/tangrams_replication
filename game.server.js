@@ -49,24 +49,16 @@ game_server.server_onMessage = function(client,message) {
 
   switch(message_type) {
     
-    // case 'correctDrop' :
-    //     moveObject(client, message_parts[1], message_parts[2], message_parts[3])
-    //     gc.attemptNum = 0;
-    //     _.map(all, function(p) {p.player.instance.send("s.waiting.correct")})
-    //     gc.paused = true;
-    //     break;
-    
-    // case 'incorrectDrop' :
-    //     writeData(client, "error", message_parts)
-    //     moveObject(client, message_parts[1], message_parts[2], message_parts[3])
-    //     gc.paused = true;
-    //     gc.attemptNum += 1;
-    //     _.map(all, function(p) {p.player.instance.send("s.waiting.incorrect") })
-    //     break;
-    
-  // case 'birdX' :
-  //   console.log(message_parts[1]);
-  //   break;
+  case 'dropObj' :
+    // parse the message
+    var objIndex = message_parts[1];
+    var swapIndex = message_parts[2];
+    var objTrueX = message_parts[3];
+    var objTrueY = message_parts[4];
+    var swapObjTrueX = message_parts[5];
+    var swapObjTrueY = message_parts[6];
+    // Update the local copy to match the new positions of these items!
+    break;
 
   case 'drag' :
     writeData(client, "drag", message_parts);

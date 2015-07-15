@@ -406,10 +406,15 @@ function mouseUpListener(evt) {
       game.objects[game.dragIndex].matcherCoords.gridY = obj.gridY;
       game.objects[game.dragIndex].matcherCoords.trueX = obj.trueX;
       game.objects[game.dragIndex].matcherCoords.trueY = obj.trueY; 
-
+      
       console.log("birds gridX is " + game.objects[0].matcherCoords.gridX);
       var score = game.game_score(game.objects);
       console.log("the score of the game is " + score);
+      // 
+      game.socket.send("dropObj."
+		       + game.dragIndex + "." + swapIndex + "."
+		       + Math.round(obj.trueX) + "." + Math.round(obj.trueY) + "."
+		       + Math.round(swapObj.trueX) + "." + Math.round(swapObj.trueY));
       // var msg = 'birdX.' + JSON.stringify(game.objects);
       // game.socket.send(msg);
 
