@@ -407,7 +407,9 @@ function mouseUpListener(evt) {
       game.objects[game.dragIndex].matcherCoords.trueX = obj.trueX;
       game.objects[game.dragIndex].matcherCoords.trueY = obj.trueY; 
 
-      
+      var bird = obj.trueX;
+      console.log("bird is " + bird);
+
       game.socket.send("dropObj."
 		       + game.dragIndex + "." + swapIndex + "."
 		       + Math.round(obj.trueX) + "." + Math.round(obj.trueY) + "."

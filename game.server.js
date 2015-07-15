@@ -57,19 +57,42 @@ game_server.server_onMessage = function(client,message) {
     var objTrueY = message_parts[4];
     var swapObjTrueX = message_parts[5];
     var swapObjTrueY = message_parts[6];
+
+    // console.log("test objTrueX " + objTrueX);
+    
     // Update the local copy to match the new positions of these items!
+    gc.objects[objIndex].matcherCoords.trueX = objTrueX;
+    gc.objects[objIndex].matcherCoords.trueY = objTrueY;
+    gc.objects[swapIndex].matcherCoords.trueX = swapObjTrueY;
+    gc.objects[swapIndex].matcherCoords.trueY = swapObjTrueY;
+
+    // console.log("test objTrueX " + gc.objects[objIndex].matcherCoords.trueX);
+
+
+
+    //get the gridX and gridY values
+    var objCell = gc.getCellFromPixel(objTrueX, objTrueY);
+
+    console.log(objCell);
+    var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
+
+    //Update local copy with correct gridX and gridY values
+    gc.objects[objIndex].matcherCoords.gridX = objCell[0];
+    gc.objects[objIndex].matcherCoords.gridY = objCell[1];
+    gc.objects[swapIndex].matcherCoords.gridX = swapObjCell[0];
+    gc.objects[swapIndex].matcherCoords.gridY = swapObjCell[1];
+
+    console.log("bird is " + gc.objects[0].matcherCoords.gridX);  
+
+    var score = gc.game_score(gc.objects);
+    console.log("from dropObj you have a score of: " + score);
+
     break;
 
   case 'drag' :
     writeData(client, "drag", message_parts);
     break;
 
-  case 'updateTangramList' :
-    console.log(message_parts[1]);
-    var score = gc.game_score(message_parts[1]);
-    console.log("this is your score: " + score);
-    // console.log(JSON.stringify(message_parts[1]));
-    break;
 
   case 'advanceRound' :
     // console.log(gc.objects);
@@ -80,10 +103,6 @@ game_server.server_onMessage = function(client,message) {
     break;
     
   case 'chatMessage' :
-    // console.log("got message");
-    // gc.game_score(gc.objects);
-    // console.log("bird's gridX is " + gc.objects[0].matcherCoords.gridX);
-    // console.log(gc.objects);
     // TODO: write data to file or do something with it...
     if(client.game.player_count == 2 && !gc.paused) 
     writeData(client, "message", message_parts)
