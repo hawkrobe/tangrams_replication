@@ -72,6 +72,13 @@ game_server.server_onMessage = function(client,message) {
     writeData(client, "drag", message_parts);
     break;
 
+  case 'updateTangramList' :
+    console.log(message_parts[1]);
+    var score = gc.game_score(message_parts[1]);
+    console.log("this is your score: " + score);
+    // console.log(JSON.stringify(message_parts[1]));
+    break;
+
   case 'advanceRound' :
     // console.log(gc.objects);
     gc.game_score(gc.objects);
