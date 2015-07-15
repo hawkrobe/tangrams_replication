@@ -407,27 +407,12 @@ function mouseUpListener(evt) {
       game.objects[game.dragIndex].matcherCoords.trueX = obj.trueX;
       game.objects[game.dragIndex].matcherCoords.trueY = obj.trueY; 
 
-      // console.log("birds gridX is " + game.objects[0].matcherCoords.gridX);
-      // var score = game.game_score(game.objects);
-      // console.log("the score of the game is " + score);
       
-      //send server the updated tangram list
-      // var newTangramList = _.map(game.objects, function(p) {
-      //   JSON.stringify(p); 
-      // });
-      // console.log(newTangramList);
-      // console.log(game.objects);
-      var msg = 'updateTangramList.' + game.objects;
-      game.socket.send(msg);
+      game.socket.send("dropObj."
+		       + game.dragIndex + "." + swapIndex + "."
+		       + Math.round(obj.trueX) + "." + Math.round(obj.trueY) + "."
+		       + Math.round(swapObj.trueX) + "." + Math.round(swapObj.trueY));
 
-
-
-      // console.log("obj.gridX is " + obj.gridX);
-      // console.log("game.objects[dragIndex].matcherCoords.gridX is " + game.objects[game.dragIndex].matcherCoords.gridX);
-
-
-
-       
     }
 
     // Tell server where you dropped it
