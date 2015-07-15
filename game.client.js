@@ -116,7 +116,7 @@ client_onserverupdate_received = function(data){
   game.roundNum = data.roundNum
 
   //update round number on the scren every new round
-  $('#roundnumber').empty().append("Round: ", game.roundNum+1);
+  $('#roundnumber').empty().append("Round ", game.roundNum+1);
 
 
   // Draw all this new stuff

@@ -119,7 +119,6 @@ game_core.prototype.get_active_players = function() {
 // Advance to the next round
 game_core.prototype.newRound = function() {
   if(this.roundNum == this.numRounds - 1) {
-    console.log("numRounds = " + this.numRounds);
     // If you've reached the planned number of rounds, end the game
     var local_game = this;
     _.map(local_game.get_active_players(), function(p){
@@ -129,7 +128,7 @@ game_core.prototype.newRound = function() {
     this.roundNum += 1;
     console.log("hi!");
     this.objects = this.trialList[this.roundNum];
-    console.log("roundNum: " + this.roundNum);
+    // console.log("roundNum: " + this.roundNum);
     //when there is a new round, we want the server to send an update to the client
     //with the new roundNum;
     this.server_send_update();
@@ -216,16 +215,12 @@ game_core.prototype.game_score = function(game_objects) {
    var incorrect = 0;
    for(var i = game_objects.length; i--; i>=0) {
       if(game_objects[i].matcherCoords.gridX == game_objects[i].directorCoords.gridX) {
-        console.log("matcherGridX is " + game_objects[i].matcherCoords.gridX);
-        console.log("directorGridX is " + game_objects[i].directorCoords.gridX);
         if(game_objects[i].matcherCoords.gridY == game_objects[i].directorCoords.gridY) {
-          console.log("correct!");
           correct = correct + 1;
         }
       }
       incorrect = incorrect + 1;
   }
-  console.log("you got " + correct + " tangrams correct!");
   return correct;
 }
 
