@@ -36,7 +36,7 @@
 			[ ] Show them this for a few seconds? 
 			[ ] Use X and check mark 
 	[ ] At end of final round send matcher and director to survey/pay them
-		[ ] Show them score from each game...give them stats on their gameplay (for fun)
+		[x] Show them score from each game...give them stats on their gameplay (for fun)
 [ ] Make gameplay more intuitive
 	[x] Highlight grid space that matcher drags a tangram over
 	[ ] Animate swapped tangram moving to dragged tangram's original position
@@ -49,4 +49,9 @@
 	[x] Include time stamp
 [ ] sudo random shuffle to avoid matching boards (at least for start position)
 	-put in some code but I don't think that it is working
+
+
+[ ] sudo shuffle still needs to be implemented...maybe. 
+[ ] set up submiterator
+	[ ] instruction page
 
