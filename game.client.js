@@ -276,19 +276,12 @@ client_onjoingame = function(num_players, role) {
     game.players.unshift({id: null, player: new game_player(game)})});
 
   // Update w/ role (can only move stuff if agent)
-  // $('#roundnumber').append("Hello");
   $('#header').append(role + '.');
   if(role === "director") {
     $('#instructs').append("Type instructions for the matcher to move their tangrams to match your tangram board!")
   } else {
     $('#instructs').append("Move your tangrams to match the director's tangram board!")
   }
-
-
-  // Only give Submit board button to agent (matcher)
-  // if(role === "director") {
-  // $('#submitbutton').remove();
-  // }
 
   // set role locally
   my_role = role;

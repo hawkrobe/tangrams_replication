@@ -53,7 +53,8 @@
 
 [ ] sudo shuffle still needs to be implemented...maybe. 
 [ ] Place numbers next to gird spaces
-[ ] Have score show up on both screens
+[x] Have score show up on both screens
 [ ] set up submiterator
+	[ ] create mTurk account
 	[ ] instruction page
 

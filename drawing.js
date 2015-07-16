@@ -56,6 +56,45 @@ var highlightCell = function(game, player, upperLeftX, upperLeftY) {
   }
 };
 
+var drawGridNums = function(game, player) {
+
+  // for (var gridNumber=1; gridNumber++; gridNumber<=2) {
+  //   for (var x=25; x++; x < 1800) {
+  //     game.ctx.font = '40pt Calibri';
+  //     game.ctx.fillStyle = 'blue';
+  //     game.ctx.fillText(gridNumber, x, 70);
+  //   }
+  // }
+
+var numberCells = 6
+var topGridNums = 1;
+var bottomGridNums = 7;
+var topX = 25;
+var bottomX = 25;
+var topY = 70;
+var bottomY = 370;
+     //top cells
+     _.map(_.range(numberCells), function(v) {
+      game.ctx.font = '40pt Calibri';
+      game.ctx.fillStyle = 'blue'; 
+      game.ctx.fillText(topGridNums, topX, topY);
+      topGridNums++;
+      topX= topX + 300;
+    });    
+     //bottom cells
+    _.map(_.range(numberCells), function(v) {
+      game.ctx.font = '40pt Calibri';
+      game.ctx.fillStyle = 'blue'; 
+      game.ctx.fillText(bottomGridNums, bottomX, bottomY);
+      bottomGridNums++;
+      bottomX = bottomX + 300;
+    });   
+  };
+
+
+
+
+
 var drawScreen = function(game, player) {
   // draw background
   game.ctx.fillStyle = "#FFFFFF";
@@ -74,6 +113,9 @@ var drawScreen = function(game, player) {
     highlightCell(game, player, upperLeftX, upperLeftY);
     drawGrid(game);
     drawObjects(game, player);  
+    //draw grid numbers
+    drawGridNums(game, player);
+
 
   }
 };
