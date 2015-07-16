@@ -52,9 +52,11 @@
 
 
 [ ] sudo shuffle still needs to be implemented...maybe. 
-[ ] Place numbers next to gird spaces
+[x] Place numbers next to gird spaces
+	[ ] Have numbers on top of screen at start of each round
 [x] Have score show up on both screens
 [ ] set up submiterator
 	[ ] create mTurk account
 	[ ] instruction page
+[ ] need to remove submitbutton from director's page
 

@@ -162,51 +162,77 @@ game_core.prototype.randomizeLocations = function() {
 
 };
 
+// get a set of non matching director and matcher locations
+game_core.prototype.notMatchingLocs = function() {
+  var local_this = this;
+  var directorLocs = local_this.randomizeLocations();
+  var matcherLocs = local_this.randomizeLocations();
+  if (this.arraysDifferent (directorLocs, matcherLocs)==true) {
+    return [directorLocs, matcherLocs];
+  }
+  return this.notMatchingLocs();
+};
+
+
+//helper function to check if two arrays are completely different from each other
+game_core.prototype.arraysDifferent = function(arr1, arr2) {
+  for(var i = arr1.length; i--;) {
+      if(arr1[i] == arr2[i]) {
+          console.log("the arrays are not different");
+          return false;
+    };
+  }
+  console.log("the arrays ARE different");
+  return true;
+};
+
+
+
 // Randomly sets tangram locations for each trial
 game_core.prototype.makeTrialList = function () {
   var local_this = this;
   var trialList =_.map(_.range(this.numRounds), function(i) { //creating a list?
-    var directorLocs = local_this.randomizeLocations();
-    var matcherLocs = local_this.randomizeLocations();
+    var locs = local_this.notMatchingLocs();
+    var matcherLocs = locs[0];
+    var directorLocs = locs[1];
+    // console.log("these are directorLocs " + directorLocs);
+    // var matcherLocs = local_this.notMatchingLocs().matcherLocs;  
+    // console.log("these are matcherLocs " + matcherLocs);
+    // var directorLocs = local_this.randomizeLocations();
+    // var matcherLocs = local_this.randomizeLocations();
+    // if (local_this.arraysDifferent(directorLocs, matcherLocs)==false) {
+    //   console.log("hello, the lists are different!");
+    //   local_this.makeTrialList();
+    // };
+
+    // debugger;
     var localTangramList = _.map(tangramList, _.clone);
     return _.map(_.zip(localTangramList, directorLocs, matcherLocs), function(pair) {
       var tangram = pair[0]   // [[tangramA,[4,1]*director, [3,2]*matcher], [tangramB, [3,2]...]]
       var directorGridCell = local_this.getPixelFromCell(pair[1][0], pair[1][1]); 
       var matcherGridCell = local_this.getPixelFromCell(pair[2][0], pair[2][1]);
       tangram.directorCoords = {
-  gridX : pair[1][0],
-  gridY : pair[1][1],
-  trueX : directorGridCell.centerX - tangram.width/2,
-  trueY : directorGridCell.centerY - tangram.height/2};
+        gridX : pair[1][0],
+        gridY : pair[1][1],
+        trueX : directorGridCell.centerX - tangram.width/2,
+        trueY : directorGridCell.centerY - tangram.height/2
+      };
       tangram.matcherCoords = {
-  gridX : pair[2][0],
-  gridY : pair[2][1],
-  trueX : matcherGridCell.centerX - tangram.width/2,
-  trueY : matcherGridCell.centerY - tangram.height/2};
+        gridX : pair[2][0],
+        gridY : pair[2][1],
+        trueX : matcherGridCell.centerX - tangram.width/2,
+        trueY : matcherGridCell.centerY - tangram.height/2
+      };
       return tangram;
     });
   });
   //make sure the tangrams locations are different each round (sudo shuffle)
-  for (var i = this.numRounds; i--; i > 0) {
-    this.arraysEqual(trialList[0][i], trialList[0][i-1]);
-      if (false) { 
-      console.log("the lists are the same")
-      this.makeTrialList();
-    }
-  console.log("this is trialList");
   return(trialList);
-};};
+};
+//
 
-//helper function to implement sudo shuffle
-game_core.prototype.arraysEqual = function(arr1, arr2) {
-  for(var i = arr1.length; i--;) {
-      if(arr1[i] !== arr2[i]) {
-          return false;
-    }
-  }
-  console.log("sudo shuffle completed");
-  return true;
-}
+
+
 
 //scores the number of incorrect tangram matches between matcher and director
 //returns the correct score out of total tangrams
