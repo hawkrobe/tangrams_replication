@@ -116,7 +116,9 @@ client_onserverupdate_received = function(data){
   game.roundNum = data.roundNum
 
   //update round number on the scren every new round
-  $('#roundnumber').empty().append("Round ", game.roundNum+1);
+  // $('#roundnumber').empty().append("Round ", game.roundNum+1);
+  // $('#messages').empty();
+
 
 
   // Draw all this new stuff
@@ -207,7 +209,7 @@ client_connect_to_server = function(game) {
 
   // Tell server when client types something in the chatbox
   $('form').submit(function(){
-    console.log("submitting message to server");
+    // console.log("submitting message to server");
     var msg = 'chatMessage.' + Date.now() + '.' + $('#chatbox').val();
     if($('#chatbox').val() != '') {
       game.socket.send(msg);
@@ -227,22 +229,24 @@ client_connect_to_server = function(game) {
     $('#messages').stop().animate({
       scrollTop: $("#messages")[0].scrollHeight
     }, 800);
+
   });
 
-  console.log("submitbutton area")
-  // Advance round by 1 each time matcher presses the submitbutton
+
+  // Tell server when matncher presses the submit round button in order to advance to the next round
   $(document).ready(function() {
     $("#submitbutton").click(function(){
-      //update score on the screen
-      var score = game.game_score(game.objects);
-      $('#score').empty().empty().append("Round " + (game.roundNum+1) + " score: " + score + " correct!");
-      $('#messages').empty();
-
-
       var msg = 'advanceRound';
       game.socket.send(msg);
-      // $(".hide_div").hide();
     })
+  });
+
+    // Set up new round on client's browsers after submit round button is pressed. 
+  // This means, clear the chatboxes, update round number, and update score on screen
+  game.socket.on('newRoundUpdate', function(data){
+  $('#messages').empty();
+  $('#roundnumber').empty().append("Round ", game.roundNum+1);
+  $('#score').empty().append("Round " + (game.roundNum) + " score: " + data.score + " correct!");
   });
 
 
@@ -282,9 +286,9 @@ client_onjoingame = function(num_players, role) {
 
 
   // Only give Submit board button to agent (matcher)
-  if(role === "director") {
-  $('#submitbutton').remove();
-  }
+  // if(role === "director") {
+  // $('#submitbutton').remove();
+  // }
 
   // set role locally
   my_role = role;

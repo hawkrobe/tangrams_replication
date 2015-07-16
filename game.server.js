@@ -85,11 +85,12 @@ game_server.server_onMessage = function(client,message) {
 
 
   case 'advanceRound' :
-    // console.log(gc.objects);
-    gc.game_score(gc.objects);
+    var score = gc.game_score(gc.objects);
     gc.newRound();
-    console.log("new round!");
-    // var roundNum = gc.newRound().rounNum;
+    var msg = score;
+    // var msg = message_parts[2].replace(/-/g,'.');
+    _.map(all, function(p){
+      p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score});});
     break;
     
   case 'chatMessage' :

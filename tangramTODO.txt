@@ -52,6 +52,8 @@
 
 
 [ ] sudo shuffle still needs to be implemented...maybe. 
+[ ] Place numbers next to gird spaces
+[ ] Have score show up on both screens
 [ ] set up submiterator
 	[ ] instruction page
 
