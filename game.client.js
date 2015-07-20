@@ -287,7 +287,7 @@ client_onjoingame = function(num_players, role) {
 
 
   // Only give Submit board button to agent (matcher)
-  if(role === "Director") {
+  if(role === "director") {
   $('#submitbutton').remove();
   }
 
