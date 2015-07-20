@@ -41,7 +41,7 @@
 	[x] Highlight grid space that matcher drags a tangram over
 	[ ] Animate swapped tangram moving to dragged tangram's original position
 [ ] Instruction screen
-	[ ] Write instructions for matcher and director
+	[x] Write instructions for matcher and director
 	[ ] Add to program...is this done through MTurk?
 [ ] Writedata 
 	[x] messages from director and matcher
@@ -53,10 +53,23 @@
 
 [ ] sudo shuffle still needs to be implemented...maybe. 
 [x] Place numbers next to gird spaces
-	[ ] Have numbers on top of screen at start of each round
+	[x] Have numbers on top of screen at start of each round
 [x] Have score show up on both screens
 [ ] set up submiterator
-	[ ] create mTurk account
-	[ ] instruction page
+	[x] create mTurk account
+	[x] instruction page
 [ ] need to remove submitbutton from director's page
 
+
+As of 7/20
+
+[ ] Remove submit Button from director's page
+[ ] overlay tangrams on numbers at the start of each round
+[ ] Fix sudo shuffle
+[ ] Make submit button bigger?
+[ ] move numbers in directo'r squares slightly to the right...why are they different for director?
+[ ] Figure out a way to show score for final round
+[ ] Link instructions to the start of the game
+[ ] Get Screen application on computer
+	[ ] figure out how to use Screen...need to close server's application
+	

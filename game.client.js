@@ -241,10 +241,7 @@ client_connect_to_server = function(game) {
     })
   });
 
-  // // remove submit button from director's screen
-  // if(role === "director") {
-  // $('#submitbutton').remove();
-  // }
+
 
     // Set up new round on client's browsers after submit round button is pressed. 
   // This means, clear the chatboxes, update round number, and update score on screen
@@ -286,6 +283,12 @@ client_onjoingame = function(num_players, role) {
     $('#instructs').append("Type instructions for the matcher to move their tangrams to match your tangram board!")
   } else {
     $('#instructs').append("Move your tangrams to match the director's tangram board!")
+  }
+
+
+  // Only give Submit board button to agent (matcher)
+  if(role === "Director") {
+  $('#submitbutton').remove();
   }
 
   // set role locally
