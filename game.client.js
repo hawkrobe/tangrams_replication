@@ -284,8 +284,10 @@ client_onjoingame = function(num_players, role) {
   $('#header').append(role + '.');
   if(role === "director") {
     $('#instructs').append("Type instructions for the matcher to move their tangrams to match your tangram board!")
+    $("#submitbutton").remove();
   } else {
     $('#instructs').append("Move your tangrams to match the director's tangram board!")
+    $("#submitbutton").show();
   }
 
   // set role locally
