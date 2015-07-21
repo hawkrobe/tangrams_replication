@@ -73,6 +73,8 @@ var topX = 25;
 var bottomX = 25;
 var topY = 70;
 var bottomY = 370;
+    // ensure text is left-aligned
+    game.ctx.textAlign = 'left';
      //top cells
      _.map(_.range(numberCells), function(v) {
       game.ctx.font = '40pt Calibri';
