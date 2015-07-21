@@ -177,7 +177,7 @@ game_core.prototype.notMatchingLocs = function() {
 //helper function to check if two arrays are completely different from each other
 game_core.prototype.arraysDifferent = function(arr1, arr2) {
   for(var i = arr1.length; i--;) {
-      if(arr1[i] == arr2[i]) {
+      if(_.isEqual(arr1[i], arr2[i])) {
           console.log("the arrays are not different");
           return false;
     };
