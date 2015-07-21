@@ -10,7 +10,7 @@ var tangramC = {
 var tangramD = {
 	url: 'stimuli/tangram_D.png', name: "tangram_D", width: 189, height: 271.6}
 var tangramE = {
-	url: 'stimuli/tangram_E.png', name: 'tangram_E', width: 234.5, height: 280}
+	url: 'stimuli/tangram_E.png', name: 'tangram_E', width: 204.5, height: 250}
 var tangramF = {
 	url: 'stimuli/tangram_F.png', name: 'tangram_F', width: 261.8, height: 219.8}
 var tangramG = {
@@ -18,7 +18,7 @@ var tangramG = {
 var tangramH = {
 	url: 'stimuli/tangram_H.png', name: 'tangram_H', width: 175, height: 273.7}
 var tangramI = {
-	url: 'stimuli/tangram_I.png', name: 'tangram_I', width: 262.5, height: 287}
+	url: 'stimuli/tangram_I.png', name: 'tangram_I', width: 222.5, height: 247}
 var tangramJ = {
 	url: 'stimuli/tangram_J.png', name: 'tangram_J', width: 151.8, height: 249.2}
 var tangramK = {
