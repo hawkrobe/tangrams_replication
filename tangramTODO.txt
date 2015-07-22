@@ -63,13 +63,13 @@
 
 As of 7/20
 
-[ ] Remove submit Button from director's page
+[x] Remove submit Button from director's page
 [ ] overlay tangrams on numbers at the start of each round
+	[ ] especially important for director's board
 [ ] Fix sudo shuffle
 [ ] Make submit button bigger?
-[ ] move numbers in directo'r squares slightly to the right...why are they different for director?
+[ ] move numbers in director's squares slightly to the right...why are they different for director?
 [ ] Figure out a way to show score for final round
 [ ] Link instructions to the start of the game
 [ ] Get Screen application on computer
 	[ ] figure out how to use Screen...need to close server's application
-	

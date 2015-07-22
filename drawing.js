@@ -69,8 +69,8 @@ var drawGridNums = function(game, player) {
 var numberCells = 6
 var topGridNums = 1;
 var bottomGridNums = 7;
-var topX = 25;
-var bottomX = 25;
+var topX = 40;
+var bottomX = 40;
 var topY = 70;
 var bottomY = 370;
      //top cells
@@ -115,9 +115,8 @@ var drawScreen = function(game, player) {
     drawObjects(game, player);  
     //draw grid numbers
     drawGridNums(game, player);
-
-
   }
+
 };
 
 // This is a helper function to write a text string onto the HTML5 canvas.

@@ -92,18 +92,15 @@ client_onserverupdate_received = function(data){
       imgObj.onload = function(){ // Draw image as soon as it loads (this is a callback)
         game.ctx.drawImage(imgObj, parseInt(customObj.trueX), parseInt(customObj.trueY),
 			   customObj.width, customObj.height);
-      };
+
+     };
+             // game.ctx.drawGrid();
       // drawObjects(game, game.get_player(my_id));
       return _.extend(customObj, {img: imgObj});
     });
   };
 
-  // TODO: check if this is necessary
-  // _.map(game.objects, function(obj) {
-  //   var data_obj = _.find(data.objects, function(o) {return o.name == obj.name;});
-  //   obj.trueX = data_obj.trueX;
-  //   obj.trueY = data_obj.trueY;
-  // });
+          // game.ctx.drawGrid();
 
   // Get rid of "waiting" screen if there are multiple players
   if(data.players.length > 1) 
@@ -115,15 +112,13 @@ client_onserverupdate_received = function(data){
   game.player_count = data.pc;
   game.roundNum = data.roundNum
 
-  //update round number on the scren every new round
-  // $('#roundnumber').empty().append("Round ", game.roundNum+1);
-  // $('#messages').empty();
-
-
-
   // Draw all this new stuff
   drawScreen(game, game.get_player(my_id));
 }; 
+
+
+
+
 
 // This is where clients parse socket.io messages from the server. If
 // you want to add another event (labeled 'x', say), just add another
@@ -249,6 +244,8 @@ client_connect_to_server = function(game) {
   $('#messages').empty();
   $('#roundnumber').empty().append("Round ", game.roundNum+1);
   $('#score').empty().append("Round " + (game.roundNum) + " score: " + data.score + " correct!");
+  drawScreen(game, game.get_player(my_id));
+
   });
 
 
@@ -270,6 +267,8 @@ client_onconnected = function(data) {
   //The server responded that we are now in a game. Remember who we are
   my_id = data.id;
   game.players[0].id = my_id;
+    drawScreen(game, game.get_player(my_id));
+
 };
 
 client_onjoingame = function(num_players, role) {

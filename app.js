@@ -96,7 +96,10 @@ var initialize = function(query, client, id) {
   // We'll just pass messages off to the server_onMessage function for now.
   client.on('message', function(m) {
     game_server.server_onMessage(client, m);
-  }); 
+  });
+
+
+ 
 
   // When this client disconnects, we want to tell the game server
   // about that as well, so it can remove them from the game they are
