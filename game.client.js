@@ -281,7 +281,7 @@ client_onjoingame = function(num_players, role) {
     game.players.unshift({id: null, player: new game_player(game)})});
 
   // Update w/ role (can only move stuff if agent)
-  $('#header').append(role + '.');
+  $('#roleLabel').append(role + '.');
   if(role === "director") {
     $('#instructs').append("Type instructions for the matcher to move their tangrams to match your tangram board!")
     $("#submitbutton").remove();
