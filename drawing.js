@@ -69,10 +69,14 @@ var drawGridNums = function(game, player) {
 var numberCells = 6
 var topGridNums = 1;
 var bottomGridNums = 7;
+
 var topX = 40;
 var bottomX = 40;
 var topY = 70;
 var bottomY = 370;
+
+    // ensure text is left-aligned
+    game.ctx.textAlign = 'left';
      //top cells
      _.map(_.range(numberCells), function(v) {
       game.ctx.font = '40pt Calibri';
