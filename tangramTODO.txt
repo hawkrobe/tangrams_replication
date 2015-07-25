@@ -75,10 +75,10 @@ As of 7/20
 	[x] figure out how to use Screen...need to close server's application
 
 
-[ ] Check instructions out
+[x] Check instructions out
 [ ] mmTurky stuff
 [ ] check workflow of instruction page sandbox
-[ ] link to consent.html 
+[x] link to consent.html 
 [ ] make sure game works on the internet 
 
 
