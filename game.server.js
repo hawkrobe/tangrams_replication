@@ -227,12 +227,12 @@ game_server.findGame = function(player) {
         // game.gamecore.errorStream = fs.createWriteStream(error_f, {'flags' : 'a'});
 
         var message_f = "data/message/" + name + ".csv"
-        fs.writeFile(message_f, "gameid, time, roundNum, sender, contents\n", function (err) {if(err) throw err;})
+        fs.writeFile(message_f, "gameid, time, roundNum, sender, contents, score\n", function (err) {if(err) throw err;})
         game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
     
 
         var dropObj_f = "data/dropObj/" + name + ".csv"
-        fs.writeFile(dropObj_f, "gameid, time, roundNum, dragObjIndex, dragObjCell(x,y), swapObjIndex, swapObjCell(x,y)\n", function (err) {if(err) throw err;})
+        fs.writeFile(dropObj_f, "gameid, time, roundNum, dragObjIndex, dragObjCell(x,y), swapObjIndex, swapObjCell(x,y), score\n", function (err) {if(err) throw err;})
         game.gamecore.dropObjStream = fs.createWriteStream(dropObj_f, {'flags' : 'a'});
 
 
