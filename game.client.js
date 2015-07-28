@@ -240,10 +240,15 @@ client_connect_to_server = function(game) {
     // Set up new round on client's browsers after submit round button is pressed. 
   // This means, clear the chatboxes, update round number, and update score on screen
   game.socket.on('newRoundUpdate', function(data){
-  $('#messages').empty();
-  $('#roundnumber').empty().append("Round ", game.roundNum+1);
-  $('#score').empty().append("Round " + (game.roundNum) + " score: " + data.score + " correct!");
-  drawScreen(game, game.get_player(my_id));
+    $('#messages').empty();
+    if(game.roundNum+2 > game.numRounds) {
+      $('#roundnumber').empty()
+    } else {
+      $('#roundnumber').empty().append("Round ", game.roundNum+2);
+    }
+    $('#score').empty().append("Round " + (game.roundNum + 1) + 
+			       " score: " + data.score + " correct!");
+    drawScreen(game, game.get_player(my_id));
 
   });
 

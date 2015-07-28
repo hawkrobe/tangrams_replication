@@ -49,7 +49,7 @@ var game_core = function(game_instance){
   // $('#roundnumber').append(this.roundNum + 2);
 
   // How many rounds do we want people to complete?
-  this.numRounds = 7;
+  this.numRounds = 6;
 
   // How many mistakes have the pair made on the current trial?
   this.attemptNum = 0;

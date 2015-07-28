@@ -86,10 +86,9 @@ game_server.server_onMessage = function(client,message) {
 
   case 'advanceRound' :
     var score = gc.game_score(gc.objects);
-    gc.newRound();
-    var msg = score;
     _.map(all, function(p){
       p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score});});
+    gc.newRound()
     break;
     
   case 'chatMessage' :
