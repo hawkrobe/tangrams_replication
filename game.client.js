@@ -247,7 +247,7 @@ client_connect_to_server = function(game) {
 
   });
 
-
+  game.startTime = Date.now();
   
   //When we connect, we are not 'connected' until we have an id
   //and are placed in a game by the server. The server sends us a message for that.
@@ -506,7 +506,11 @@ function dropdownTip(data){
   case 'language' :
     game.data.subj_data = _.extend(game.data.subj_data, {'nativeEnglish' : commands[1]}); break;
   case 'submit' :
-    game.data.subj_data = _.extend(game.data.subj_data, {'comments' : $('#comments').val(), 'role' : my_role}); 
+    game.data.subj_data = _.extend(game.data.subj_data, 
+				   {'comments' : $('#comments').val(), 
+				    'role' : my_role}); 
+    game.data.subj_data = _.extend(game.data.subj_data, 
+				   {'totalLength' : Date.now() - game.startTime});
     var urlParams;
     var match,
     pl     = /\+/g,  // Regex for replacing addition symbol with a space
