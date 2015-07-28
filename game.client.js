@@ -37,6 +37,9 @@ submitInfoAndClose = function() {
   console.log("server booted")      
   game.viewport.style.display="none";
   $('#message_panel').hide();
+  $('#submitbutton').hide();
+  $('#roleLabel').hide();
+  $('#score').hide();
   $('#exit_survey').show()
 }
 
@@ -243,6 +246,8 @@ client_connect_to_server = function(game) {
     $('#messages').empty();
     if(game.roundNum+2 > game.numRounds) {
       $('#roundnumber').empty()
+      $('#instructs').empty().append("Round " + (game.roundNum + 1) + 
+				     " score: " + data.score + " correct!");
     } else {
       $('#roundnumber').empty().append("Round ", game.roundNum+2);
     }
