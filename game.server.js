@@ -128,7 +128,7 @@ var writeData = function(client, type, message_parts) {
 
 
     var line = (id + ',' + date + ',' + roundNum + ',' + score + ',' + dragObjIndex + ',' + 
-		dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + '\n');
+		            dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + '\n');
     console.log("dropObj: " + line);
     gc.dropObjStream.write(line, function (err) {if(err) throw err;});
     break;
@@ -136,7 +136,7 @@ var writeData = function(client, type, message_parts) {
   case "message" :
     var msg = message_parts[1].replace('~~~','.')
     // console.log(Date.now())
-    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + client.role + ',' + msg + '\n')
+    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + client.role + ',"' + msg + '"\n')
     console.log("message:" + line);
     gc.messageStream.write(line, function (err) {if(err) throw err;});
     break;
