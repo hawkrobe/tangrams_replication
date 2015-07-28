@@ -86,11 +86,9 @@ game_server.server_onMessage = function(client,message) {
 
   case 'advanceRound' :
     var score = gc.game_score(gc.objects);
-    gc.newRound();
-    var msg = score;
-    // var msg = message_parts[2].replace(/-/g,'.');
     _.map(all, function(p){
       p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score});});
+    gc.newRound()
     break;
     
   case 'chatMessage' :
@@ -98,7 +96,8 @@ game_server.server_onMessage = function(client,message) {
     if(client.game.player_count == 2 && !gc.paused) 
     writeData(client, "message", message_parts)
     // Update others
-    var msg = message_parts[2].replace(/-/g,'.');
+    console.log(message_parts);
+    var msg = message_parts[1].replace(/~~~/g,'.');
     _.map(all, function(p){
       p.player.instance.emit( 'chatMessage', {user: client.userid, msg: msg});});
     break;
@@ -110,79 +109,40 @@ game_server.server_onMessage = function(client,message) {
 };
 
 var writeData = function(client, type, message_parts) {
-    var gc = client.game.gamecore;
-    var roundNum = gc.state.roundNum + 1;
-    var score = gc.game_score(gc.objects);
-//     // var attemptNum = gc.attemptNum;
-//     // var condition = gc.trialList[gc.roundNum].condition      
-//     // var objectSet = gc.trialList[gc.roundNum].objectSet
-//     // var instructionNum = gc.instructionNum
-//     // var object_name = gc.instructions[gc.instructionNum].split(' ')[0]
-//     // var object = _.find(gc.objects, function(obj) { return obj.name == object_name })
-//     // var critical = object.critical === "filler" ? 0 : 1
-    var id = gc.instance.id.slice(0,6)
-    switch(type) {
-// //         case "mouse" :
-// //             var date = message_parts[1]
-// //             var x = message_parts[2]
-// //             var y = message_parts[3]
-// //             if(object.critical === "filler") {
-// //                 var distractorX = "none"
-// //                 var distractorY = "none"
-// //             } else {
-// //                 var distractor = _.find(gc.objects, function(obj) { return obj.critical == "distractor" })
-// //                 var distractorX = distractor.trueX + distractor.width/2
-// //                 var distractorY = distractor.trueY + distractor.height/2
-// //             }
+  var gc = client.game.gamecore;
+  var roundNum = gc.state.roundNum + 1;
+  var score = gc.game_score(gc.objects);
+  var id = gc.instance.id.slice(0,6)
+  switch(type) {
+  case "dropObj" :
+    var dragObjIndex = message_parts[1];
+    var swapObjIndex = message_parts[2];
+    var dragObjTrueX = message_parts[3];
+    var dragObjTrueY = message_parts[4];
+    var swapObjTrueX = message_parts[5];
+    var swapObjTrueY = message_parts[6];
+    var date = message_parts[7];
 
-// //             var objX = object.trueX + object.width/2
-// //             var objY = object.trueY + object.height/2
-
-// //             var line = String(id + ',' + date + ',' + condition + ',' + critical + ',' + 
-// //                 objectSet + ',' + instructionNum + ',' + attemptNum + ',' + objX + ',' + objY + ',' +
-// //                 distractorX + ',' + distractorY + ',' + x + ',' + y ) + "\n"
-// //             console.log("mouse:" + line)
-// //             gc.mouseDataStream.write(line, function (err) {if(err) throw err;}); 
-// //             break;
-            case "dropObj" :
-              var dragObjIndex = message_parts[1];
-              var swapObjIndex = message_parts[2];
-              var dragObjTrueX = message_parts[3];
-              var dragObjTrueY = message_parts[4];
-              var swapObjTrueX = message_parts[5];
-              var swapObjTrueY = message_parts[6];
-              var date = message_parts[7];
-
-              var dragObjCell = gc.getCellFromPixel(dragObjTrueX, dragObjTrueY);
-              var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
+    var dragObjCell = gc.getCellFromPixel(dragObjTrueX, dragObjTrueY);
+    var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
 
 
-              var line = (id + ',' + date + ',' + roundNum + ',' + dragObjIndex + ',' + dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + ',' + score +'"\n');
-              console.log("dropObj: " + line);
-              gc.dropObjStream.write(line, function (err) {if(err) throw err;});
-              break;
+    var line = (id + ',' + date + ',' + roundNum + ',' + dragObjIndex + ',' + 
+		dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + ',' + 
+		score +'"\n');
+    console.log("dropObj: " + line);
+    gc.dropObjStream.write(line, function (err) {if(err) throw err;});
+    break;
 
-            case "message" :
-              var date = message_parts[1]
-              var msg = message_parts[2].replace(/-/g,'.')
-              var line = (id + ',' + date + ',' + roundNum + ',' + client.role + ',"' + msg + ',' + score + '"\n')
-              console.log("message:" + line);
-              gc.messageStream.write(line, function (err) {if(err) throw err;});
-              break;
+  case "message" :
+    var msg = message_parts[1].replace('~~~','.')
+    console.log(Date.now())
+    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + client.role + ',"' + msg + ',' + score + '"\n')
+    console.log("message:" + line);
+    gc.messageStream.write(line, function (err) {if(err) throw err;});
+    break;
 
-        // case "error" :
-        //     var trueItem = gc.instructions[gc.instructionNum].split(' ')[0]
-        //     var line = (id + ',' + String(message_parts[6]) + ',' + condition + ',' 
-        //                 + critical + ',' + objectSet + ',' + instructionNum + ',' 
-        //                 + attemptNum + ',' +trueItem + ',' 
-        //                 + gc.objects[message_parts[1]].name + ','
-        //                 + parseInt(gc.currentDestination[0]) + ',' 
-//                         + parseInt(gc.currentDestination[1]) + ','
-//                         + parseInt(message_parts[4]) + ',' + parseInt(message_parts[5]) + '\n')
-//             console.log("incorrect: ", line);
-//             gc.errorStream.write(line)
-//             break;
-    }
+  }
 }
 
 // /* 

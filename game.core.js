@@ -61,6 +61,9 @@ var game_core = function(game_instance){
     // If we're initializing the server game copy, pre-create the list of trials
     // we'll use, make a player object, and tell the player who they are
     this.trialList = this.makeTrialList();
+    this.data = {id : this.instance.id.slice(0,6), trials : [],
+		 catch_trials : [], system : {}, subj_data : {}}
+
     this.players = [{
       id: this.instance.player_instances[0].id, 
       player: new game_player(this,this.instance.player_instances[0].player)
@@ -311,9 +314,7 @@ game_core.prototype.server_send_update = function(){
     gs : this.game_started,                      // true when game's started
     pt : this.players_threshold,
     pc : this.player_count,
-    curr_dest : this.currentDestination,
-    scriptedInstruction : this.scriptedInstruction,
-    instructionNum : this.instructionNum,
+    dataObj  : this.data,
     roundNum : this.roundNum,
     objects: this.objects
   };

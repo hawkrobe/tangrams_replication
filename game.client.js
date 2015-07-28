@@ -29,12 +29,19 @@ var upperLeftX;
 var upperLeftY
 
 client_ondisconnect = function(data) {
-  // Redirect to exit survey
-  console.log("server booted")
-  var URL = 'http://web.stanford.edu/~rxdh/psych254/replication_project/forms/end.html?id=' + my_id;
-  window.location.replace(URL);
+  submitInfoAndClose()
 };
 
+submitInfoAndClose = function() {
+    // Redirect to exit survey
+  console.log("server booted")      
+  game.viewport.style.display="none";
+  $('#message_panel').hide();
+  $('#submitbutton').hide();
+  $('#roleLabel').hide();
+  $('#score').hide();
+  $('#exit_survey').show()
+}
 
 /* 
  Note: If you add some new variable to your game that must be shared
@@ -67,12 +74,6 @@ client_onserverupdate_received = function(data){
   // console.log("dataNames: " + dataNames);
   var localNames = _.map(game.objects,function(e)
 			 {return e.name;});
-  // console.log("localNames: " + localNames);
-
-  // console.log(game.objects);
-  // console.log(data.objects);
-
-
 
   // If your objects are out-of-date (i.e. if there's a new round), set up
   // machinery to draw them
@@ -106,11 +107,11 @@ client_onserverupdate_received = function(data){
   if(data.players.length > 1) 
     game.get_player(my_id).message = "";
   
-  game.currentDestination = data.curr_dest;
   game.game_started = data.gs;
   game.players_threshold = data.pt;
   game.player_count = data.pc;
   game.roundNum = data.roundNum
+  game.data = data.dataObj
 
   // Draw all this new stuff
   drawScreen(game, game.get_player(my_id));
@@ -140,9 +141,9 @@ client_onMessage = function(data) {
     switch(subcommand) {    
     case 'end' :
       // Redirect to exit survey
-      console.log("received end message...");
-      var URL = 'http://web.stanford.edu/~rxdh/psych254/replication_project/forms/end.html?id=' + my_id;
-      window.location.replace(URL); break;
+      submitInfoAndClose();
+      console.log("received end message...")
+      break;
 
     case 'alert' : // Not in database, so you can't play...
       alert('You did not enter an ID'); 
@@ -204,8 +205,9 @@ client_connect_to_server = function(game) {
 
   // Tell server when client types something in the chatbox
   $('form').submit(function(){
+    var origMsg = $('#chatbox').val()
     // console.log("submitting message to server");
-    var msg = 'chatMessage.' + Date.now() + '.' + $('#chatbox').val();
+    var msg = 'chatMessage.' + origMsg.replace(/\./g, '~~~');
     if($('#chatbox').val() != '') {
       game.socket.send(msg);
       $('#chatbox').val('');
@@ -241,14 +243,21 @@ client_connect_to_server = function(game) {
     // Set up new round on client's browsers after submit round button is pressed. 
   // This means, clear the chatboxes, update round number, and update score on screen
   game.socket.on('newRoundUpdate', function(data){
-  $('#messages').empty();
-  $('#roundnumber').empty().append("Round ", game.roundNum+1);
-  $('#score').empty().append("Round " + (game.roundNum) + " score: " + data.score + " correct!");
-  drawScreen(game, game.get_player(my_id));
+    $('#messages').empty();
+    if(game.roundNum+2 > game.numRounds) {
+      $('#roundnumber').empty()
+      $('#instructs').empty().append("Round " + (game.roundNum + 1) + 
+				     " score: " + data.score + " correct!");
+    } else {
+      $('#roundnumber').empty().append("Round ", game.roundNum+2);
+    }
+    $('#score').empty().append("Round " + (game.roundNum + 1) + 
+			       " score: " + data.score + " correct!");
+    drawScreen(game, game.get_player(my_id));
 
   });
 
-
+  game.startTime = Date.now();
   
   //When we connect, we are not 'connected' until we have an id
   //and are placed in a game by the server. The server sends us a message for that.
@@ -494,6 +503,46 @@ function hitTest(shape,mx,my) {
     var dx = mx - shape.trueX;
     var dy = my - shape.trueY;
     return (0 < dx) && (dx < shape.width) && (0 < dy) && (dy < shape.height)
+}
+
+// This gets called when someone selects something in the menu during the exit survey...
+// collects data from drop-down menus and submits using mmturkey
+function dropdownTip(data){
+  var commands = data.split('::')
+  switch(commands[0]) {
+  case 'human' :
+    $('#humanResult').show()
+    game.data.subj_data = _.extend(game.data.subj_data, {'thinksHuman' : commands[1]}); break;
+  case 'language' :
+    game.data.subj_data = _.extend(game.data.subj_data, {'nativeEnglish' : commands[1]}); break;
+  case 'submit' :
+    game.data.subj_data = _.extend(game.data.subj_data, 
+				   {'comments' : $('#comments').val(), 
+				    'role' : my_role}); 
+    game.data.subj_data = _.extend(game.data.subj_data, 
+				   {'totalLength' : Date.now() - game.startTime});
+    var urlParams;
+    var match,
+    pl     = /\+/g,  // Regex for replacing addition symbol with a space
+    search = /([^&=]+)=?([^&]*)/g,
+    decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+    query  = location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+      urlParams[decode(match[1])] = decode(match[2]);
+    
+    if(_.size(urlParams) == 4) {
+      window.opener.turk.submit(game.data, true)
+      window.close(); 
+    } else {
+      console.log("would have submitted the following :")
+      console.log(game.data);
+      // var URL = 'http://web.stanford.edu/~rxdh/psych254/replication_project/forms/end.html?id=' + my_id;
+      // window.location.replace(URL);
+    }
+    break;
+  }
 }
 
 // // Automatically registers whether user has switched tabs...
