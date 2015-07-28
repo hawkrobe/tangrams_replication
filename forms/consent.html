@@ -16,6 +16,8 @@
     <!-- Bootstrap theme -->
     <link href="../dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+    </script>
     <!-- Custom styles for this template -->
     <!-- <link href="cocolab-style.css" rel="stylesheet" type="text/css"/> -->
 
@@ -54,7 +56,7 @@
       </div>
 
       <p>
-        <center><button id="agree" type="button" class="btn btn-sm btn-primary">SUBMIT</button></center>
+        <center><button id="agree" type="button" style="display: none" class="btn btn-sm btn-primary">CONTINUE</button></center>
 	<noscript><strong>JavaScript must be enabled to start.</strong></noscript>
       </p>
       <hr>
@@ -80,8 +82,8 @@
 
     <script type="text/javascript">
       $(document).ready(function () {
-          var urlParams;
-	var match,
+        var urlParams;
+        var match,
 	      pl     = /\+/g,  // Regex for replacing addition symbol with a space
 	      search = /([^&=]+)=?([^&]*)/g,
 	      decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
@@ -93,8 +95,8 @@
       
       console.log(urlParams)
       if(urlParams.assignmentId != "ASSIGNMENT_ID_NOT_AVAILABLE") {
-      $("#agree").show()
-      }      
+         $("#agree").show()
+      } 
 
       document.getElementById("agree").onclick = function () {
         var workerId = urlParams.workerId;
@@ -124,10 +126,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
     <script src="../dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
