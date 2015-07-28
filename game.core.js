@@ -129,7 +129,8 @@ game_core.prototype.newRound = function() {
   } else {
     // Otherwise, get the preset list of tangrams for the new round
     this.roundNum += 1;
-    console.log("hi!");
+    roundNow = this.roundNum + 1;
+    console.log("now on round " + roundNow);
     this.objects = this.trialList[this.roundNum];
     // console.log("roundNum: " + this.roundNum);
     //when there is a new round, we want the server to send an update to the client

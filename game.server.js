@@ -96,7 +96,7 @@ game_server.server_onMessage = function(client,message) {
     if(client.game.player_count == 2 && !gc.paused) 
     writeData(client, "message", message_parts)
     // Update others
-    console.log(message_parts);
+    // console.log(message_parts);  
     var msg = message_parts[1].replace(/~~~/g,'.');
     _.map(all, function(p){
       p.player.instance.emit( 'chatMessage', {user: client.userid, msg: msg});});
@@ -127,17 +127,16 @@ var writeData = function(client, type, message_parts) {
     var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
 
 
-    var line = (id + ',' + date + ',' + roundNum + ',' + dragObjIndex + ',' + 
-		dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + ',' + 
-		score +'"\n');
+    var line = (id + ',' + date + ',' + roundNum + ',' + score + ',' + dragObjIndex + ',' + 
+		dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + '\n');
     console.log("dropObj: " + line);
     gc.dropObjStream.write(line, function (err) {if(err) throw err;});
     break;
 
   case "message" :
     var msg = message_parts[1].replace('~~~','.')
-    console.log(Date.now())
-    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + client.role + ',"' + msg + ',' + score + '"\n')
+    // console.log(Date.now())
+    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + client.role + ',' + msg + '\n')
     console.log("message:" + line);
     gc.messageStream.write(line, function (err) {if(err) throw err;});
     break;
@@ -187,12 +186,12 @@ game_server.findGame = function(player) {
         // game.gamecore.errorStream = fs.createWriteStream(error_f, {'flags' : 'a'});
 
         var message_f = "data/message/" + name + ".csv"
-        fs.writeFile(message_f, "gameid, time, roundNum, sender, contents, score\n", function (err) {if(err) throw err;})
+        fs.writeFile(message_f, "gameid, time, roundNum, score, sender, contents\n", function (err) {if(err) throw err;})
         game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
     
 
         var dropObj_f = "data/dropObj/" + name + ".csv"
-        fs.writeFile(dropObj_f, "gameid, time, roundNum, dragObjIndex, dragObjCell(x,y), swapObjIndex, swapObjCell(x,y), score\n", function (err) {if(err) throw err;})
+        fs.writeFile(dropObj_f, "gameid, time, roundNum, score, dragObjIndex, dragObjX, dragObjY swapObjIndex, swapObjX, swapObjY\n", function (err) {if(err) throw err;})
         game.gamecore.dropObjStream = fs.createWriteStream(dropObj_f, {'flags' : 'a'});
 
 
