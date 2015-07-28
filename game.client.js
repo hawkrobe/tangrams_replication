@@ -29,12 +29,16 @@ var upperLeftX;
 var upperLeftY
 
 client_ondisconnect = function(data) {
-  // Redirect to exit survey
-  console.log("server booted")
-  var URL = 'http://web.stanford.edu/~rxdh/psych254/replication_project/forms/end.html?id=' + my_id;
-  window.location.replace(URL);
+  submitInfoAndClose()
 };
 
+submitInfoAndClose = function() {
+    // Redirect to exit survey
+  console.log("server booted")      
+  game.viewport.style.display="none";
+  $('#message_panel').hide();
+  $('#exit_survey').show()
+}
 
 /* 
  Note: If you add some new variable to your game that must be shared
@@ -67,12 +71,6 @@ client_onserverupdate_received = function(data){
   // console.log("dataNames: " + dataNames);
   var localNames = _.map(game.objects,function(e)
 			 {return e.name;});
-  // console.log("localNames: " + localNames);
-
-  // console.log(game.objects);
-  // console.log(data.objects);
-
-
 
   // If your objects are out-of-date (i.e. if there's a new round), set up
   // machinery to draw them
@@ -106,11 +104,11 @@ client_onserverupdate_received = function(data){
   if(data.players.length > 1) 
     game.get_player(my_id).message = "";
   
-  game.currentDestination = data.curr_dest;
   game.game_started = data.gs;
   game.players_threshold = data.pt;
   game.player_count = data.pc;
   game.roundNum = data.roundNum
+  game.data = data.dataObj
 
   // Draw all this new stuff
   drawScreen(game, game.get_player(my_id));
@@ -140,9 +138,9 @@ client_onMessage = function(data) {
     switch(subcommand) {    
     case 'end' :
       // Redirect to exit survey
-      console.log("received end message...");
-      var URL = 'http://web.stanford.edu/~rxdh/psych254/replication_project/forms/end.html?id=' + my_id;
-      window.location.replace(URL); break;
+      submitInfoAndClose();
+      console.log("received end message...")
+      break;
 
     case 'alert' : // Not in database, so you can't play...
       alert('You did not enter an ID'); 
