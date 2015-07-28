@@ -204,8 +204,9 @@ client_connect_to_server = function(game) {
 
   // Tell server when client types something in the chatbox
   $('form').submit(function(){
+    var origMsg = $('#chatbox').val()
     // console.log("submitting message to server");
-    var msg = 'chatMessage.' + Date.now() + '.' + $('#chatbox').val();
+    var msg = 'chatMessage.' + origMsg.replace(/\./g, '~~~');
     if($('#chatbox').val() != '') {
       game.socket.send(msg);
       $('#chatbox').val('');
