@@ -62,7 +62,8 @@ var game_core = function(game_instance){
     // we'll use, make a player object, and tell the player who they are
     this.trialList = this.makeTrialList();
     this.data = {id : this.instance.id.slice(0,6), trials : [],
-		 catch_trials : [], system : {}, subj_data : {}}
+		 catch_trials : [], system : {}, 
+		 subject_information : {gameID: this.instance.id.slice(0,6)}}
 
     this.players = [{
       id: this.instance.player_instances[0].id, 

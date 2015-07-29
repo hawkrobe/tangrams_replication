@@ -493,19 +493,21 @@ function hitTest(shape,mx,my) {
 // This gets called when someone selects something in the menu during the exit survey...
 // collects data from drop-down menus and submits using mmturkey
 function dropdownTip(data){
+  console.log(game);
   var commands = data.split('::')
   switch(commands[0]) {
   case 'human' :
     $('#humanResult').show()
-    game.data.subj_data = _.extend(game.data.subj_data, {'thinksHuman' : commands[1]}); break;
+    game.data.subject_information = _.extend(game.data.subject_information, 
+					     {'thinksHuman' : commands[1]}); break;
   case 'language' :
-    game.data.subj_data = _.extend(game.data.subj_data, {'nativeEnglish' : commands[1]}); break;
+    game.data.subject_information = _.extend(game.data.subject_information, 
+					     {'nativeEnglish' : commands[1]}); break;
   case 'submit' :
-    game.data.subj_data = _.extend(game.data.subj_data, 
+    game.data.subject_information = _.extend(game.data.subject_information, 
 				   {'comments' : $('#comments').val(), 
-				    'role' : my_role}); 
-    game.data.subj_data = _.extend(game.data.subj_data, 
-				   {'totalLength' : Date.now() - game.startTime});
+				    'role' : my_role,
+				    'totalLength' : Date.now() - game.startTime});
     var urlParams;
     var match,
     pl     = /\+/g,  // Regex for replacing addition symbol with a space
