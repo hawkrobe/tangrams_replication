@@ -46,15 +46,20 @@ var drawObjects = function(game, player) {
 
 };
 
-var highlightCell = function(game, player, upperLeftX, upperLeftY) {
-  if (upperLeftX < 1800 && upperLeftX > 0 && upperLeftY > 0 && upperLeftY < 600) {
-    game.ctx.beginPath();
-    game.ctx.lineWidth="20";
-    game.ctx.strokeStyle="red";
-    game.ctx.rect(upperLeftX, upperLeftY,300,300); 
-    game.ctx.stroke();
+var highlightCell = function(game, player) {
+  var upperLeftX = player.currentHighlightX;
+  var upperLeftY = player.currentHighlightY;
+  if (upperLeftX != null && upperLeftY != null) {
+    if (upperLeftX < 1800 && upperLeftX > 0 && upperLeftY > 0 && upperLeftY < 600) {
+      game.ctx.beginPath();
+      game.ctx.lineWidth="20";
+      game.ctx.strokeStyle="red";
+      game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+      game.ctx.stroke();
+    }
   }
 };
+
 
 var drawGridNums = function(game, player) {
 
@@ -113,8 +118,10 @@ var drawScreen = function(game, player) {
              game.world.width/2, game.world.height/4,
              game.world.width*4/5,
              25);
-  } else {
-    highlightCell(game, player, upperLeftX, upperLeftY);
+  }
+  else {
+    highlightCell(game, player);
+    // eraseHighlight(game, player, upperLeftY, upperLeftY);
     drawGrid(game);
     drawObjects(game, player);  
     //draw grid numbers

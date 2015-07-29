@@ -25,8 +25,8 @@ var visible;
 var incorrect;
 var dragging;
 var waiting;
-var upperLeftX;
-var upperLeftY
+// var upperLeftX;
+// var upperLeftY
 
 client_ondisconnect = function(data) {
   submitInfoAndClose()
@@ -79,6 +79,7 @@ client_onserverupdate_received = function(data){
   // machinery to draw them
   // if (game.objects.length == 0 || !_.isEqual(dataNames, localNames)) { 
     if (game.roundNum != data.roundNum) {
+    // eraseHighlight(game, game.get_player(my_id), 0, 0);
     game.objects = _.map(data.objects, function(obj) {
       // Extract the coordinates matching your role
       var customCoords = my_role == "director" ? obj.directorCoords : obj.matcherCoords;
@@ -101,7 +102,6 @@ client_onserverupdate_received = function(data){
     });
   };
 
-          // game.ctx.drawGrid();
 
   // Get rid of "waiting" screen if there are multiple players
   if(data.players.length > 1) 
@@ -244,17 +244,20 @@ client_connect_to_server = function(game) {
   // This means, clear the chatboxes, update round number, and update score on screen
   game.socket.on('newRoundUpdate', function(data){
     $('#messages').empty();
+
     if(game.roundNum+2 > game.numRounds) {
       $('#roundnumber').empty()
       $('#instructs').empty().append("Round " + (game.roundNum + 1) + 
 				     " score: " + data.score + " correct!");
     } else {
-      $('#roundnumber').empty().append("Round ", game.roundNum+2);
+      $('#roundnumber').empty().append("Round ", game.roundNum + 2);
     }
     $('#score').empty().append("Round " + (game.roundNum + 1) + 
 			       " score: " + data.score + " correct!");
-    drawScreen(game, game.get_player(my_id));
 
+    var player = game.get_player(my_id)
+    player.currentHighlightX = null;
+    player.currentHighlightY = null;
   });
 
   game.startTime = Date.now();
@@ -460,29 +463,11 @@ function mouseMoveListener(evt) {
     mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
 
     //highlighting cell that is moused over
-    cell = game.getCellFromPixel(mouseX, mouseY);
-    upperLeftX = game.getPixelFromCell(cell[0], cell[1]).upperLeftX;
-    upperLeftY = game.getPixelFromCell(cell[0], cell[1]).upperLeftY;
-    // if (cell[0] < 6 && cell[0] > -1 && cell[1] > -1 && cell[1] < 1) {
-  
-    // highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
-    // drawScreen(game, game.get_player(my_id));
+    var cell = game.getCellFromPixel(mouseX, mouseY);
+    var player = game.get_player(my_id)
+    player.currentHighlightX = game.getPixelFromCell(cell[0], cell[1]).upperLeftX;
+    player.currentHighlightY = game.getPixelFromCell(cell[0], cell[1]).upperLeftY;
 
-    // if (cell[0] == 2 && cell[1] == 0) {
-    //   console.log("cell [2,1]");
-    // }
-    // console.log('hi!');
-
-
-
-    if (mouseX < 1820 || mouseX > 30 || mouseY < 620 || mouseY > 30) {
-      // console.log("mouseMove out of bounds");
-      // console.log("mouseX, mouseY = " + mouseX +' ,' + mouseY);
-      // console.log("evt.clientX, event.clientY= " + evt.clientX + ' ,' + evt.clientY);
-
-      highlightCell(game, game.get_player(my_id), upperLeftX, upperLeftY);
-      drawScreen(game, game.get_player(my_id));
-    }
 
     //clamp x and y positions to prevent object from dragging outside of canvas
     var posX = mouseX - dragHoldX;
@@ -495,7 +480,7 @@ function mouseMoveListener(evt) {
     obj.trueX = Math.round(posX);
     obj.trueY = Math.round(posY);
 
-    // Draw it
+    // Draw its
     drawScreen(game, game.get_player(my_id));
 }
 
