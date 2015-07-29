@@ -1,0 +1,5 @@
+gameid, time, roundNum, score, sender, contents
+5120-8,1438193173931,1,1,matcher,"hello"
+5120-8,1438193176369,1,1,matcher,"what do i do?"
+5120-8,1438193216782,6,0,director,"this is going fast"
+5120-8,1438193222796,6,0,matcher,"yeah i do'nt get it? "
