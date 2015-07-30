@@ -112,7 +112,9 @@ var writeData = function(client, type, message_parts) {
   var gc = client.game.gamecore;
   var roundNum = gc.state.roundNum + 1;
   var score = gc.game_score(gc.objects);
-  var id = gc.instance.id.slice(0,6)
+  var id = gc.instance.id.slice(0,6);
+  // var board = gc.objects;
+  // console.log(board);
   switch(type) {
   case "dropObj" :
     var dragObjIndex = message_parts[1];
@@ -127,7 +129,7 @@ var writeData = function(client, type, message_parts) {
     var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
 
 
-    var line = (id + ',' + date + ',' + roundNum + ',' + score + ',' + dragObjIndex + ',' + 
+    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + dragObjIndex + ',' + 
 		            dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + '\n');
     console.log("dropObj: " + line);
     gc.dropObjStream.write(line, function (err) {if(err) throw err;});
@@ -140,6 +142,12 @@ var writeData = function(client, type, message_parts) {
     console.log("message:" + line);
     gc.messageStream.write(line, function (err) {if(err) throw err;});
     break;
+
+  // case "tangramBoards" :
+  //   var line = (id + ',' + Date.now() + ',' + roundNum +  '\n')
+  //   console.log("tangramBoard:" + line);
+  //   gc.tangramBoardsStream.write(line, function (err) {if(err) throw err;});
+  //   break;
 
   }
 }
@@ -185,6 +193,10 @@ game_server.findGame = function(player) {
         // fs.writeFile(error_f, "gameid, time, condition, critical, objectSet, instructionNum, attemptNum, intendedObj, actualObj, intendedX, intendedY, actualX, actualY\n", function (err) {if(err) throw err;})
         // game.gamecore.errorStream = fs.createWriteStream(error_f, {'flags' : 'a'});
 
+        // var tangramBoards_f = "data/tangramBoards/" + name + ".csv"
+        // fs.writeFile(tangramBoards_f, "gameid, time, roundNum, board\n", function (err) {if(err) throw err;})
+        // game.gamecore.tangramBoards = fs.createWriteStream(tangramBoards_f, {'flags' : 'a'});
+       
         var message_f = "data/message/" + name + ".csv"
         fs.writeFile(message_f, "gameid, time, roundNum, score, sender, contents\n", function (err) {if(err) throw err;})
         game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});

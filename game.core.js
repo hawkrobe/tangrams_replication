@@ -150,10 +150,37 @@ var cartesianProductOf = function(listOfLists) {
     }, [ [] ]);
 };
 
+//returns the box number of a tangram given it's x,y location on the grid
+game_core.prototype.getBoxLoc = function(loc) {
+  var box = 0;
+  if (loc[1] == 1) { 
+    console.log("y val is: " + loc[1] );
+    boxLoc = loc[0]; //
+    return boxLoc;
+  }
+  else {
+    boxLoc = loc[0] + 6;
+    return boxLoc;
+  }
+};
+
+//given a list of tangram grid locations, returns a list of box locations
+boxLocList = function(locList) {
+  return _.map(locList, function(x) {
+    boxLoc = getBoxLoc(x);
+    console.log(boxLoc);
+    return boxLoc;
+  });
+};
+
+
+
+
 // Returns random set of unique grid locations
 game_core.prototype.randomizeLocations = function() {
   var possibilities = cartesianProductOf([_.range(1, this.numHorizontalCells + 1),
 					  _.range(1, this.numVerticalCells + 1)]);
+
 
   // Makes sure we select locations WITHOUT replacement
   function getRandomFromBucket() {
@@ -162,7 +189,10 @@ game_core.prototype.randomizeLocations = function() {
   }
 
   return _.map(_.range(this.numHorizontalCells * this.numVerticalCells), function(v) {
-    return getRandomFromBucket();
+    getRandomFromBucket();
+    _.map(tangramList, function(pair) {
+      _.zip(getBoxLoc(pair), pair);
+    }
   });
 
 };
@@ -183,11 +213,11 @@ game_core.prototype.notMatchingLocs = function() {
 game_core.prototype.arraysDifferent = function(arr1, arr2) {
   for(var i = arr1.length; i--;) {
       if(_.isEqual(arr1[i], arr2[i])) {
-          console.log("the arrays are not different");
+          // console.log("the arrays are not different");
           return false;
     };
   }
-  console.log("the arrays ARE different");
+  // console.log("the arrays ARE different");
   return true;
 };
 
@@ -196,19 +226,11 @@ game_core.prototype.arraysDifferent = function(arr1, arr2) {
 // Randomly sets tangram locations for each trial
 game_core.prototype.makeTrialList = function () {
   var local_this = this;
-  var trialList =_.map(_.range(this.numRounds), function(i) { //creating a list?
+  var trialList =_.map(_.range(this.numRounds), function(i) { 
     var locs = local_this.notMatchingLocs();
     var matcherLocs = locs[0];
     var directorLocs = locs[1];
-    // console.log("these are directorLocs " + directorLocs);
-    // var matcherLocs = local_this.notMatchingLocs().matcherLocs;  
-    // console.log("these are matcherLocs " + matcherLocs);
-    // var directorLocs = local_this.randomizeLocations();
-    // var matcherLocs = local_this.randomizeLocations();
-    // if (local_this.arraysDifferent(directorLocs, matcherLocs)==false) {
-    //   console.log("hello, the lists are different!");
-    //   local_this.makeTrialList();
-    // };
+    console.log(directorLocs);
 
     // debugger;
     var localTangramList = _.map(tangramList, _.clone);
@@ -248,10 +270,12 @@ game_core.prototype.game_score = function(game_objects) {
       if(game_objects[i].matcherCoords.gridX == game_objects[i].directorCoords.gridX) {
         if(game_objects[i].matcherCoords.gridY == game_objects[i].directorCoords.gridY) {
           correct = correct + 1;
+
         }
       }
       incorrect = incorrect + 1;
   }
+
   return correct;
 }
 
