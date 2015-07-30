@@ -81,14 +81,24 @@ As of 7/20
 [x] link to consent.html 
 [ ] make sure game works on the internet 
 
-[ ] conventions 
-
-[ ] Write director's board to file
-[ ] Bonus people for correct tangrams
+7/29/15
 
 [ ] arbitratryness of conventions
+[ ] metaphor concrete
 
-[ ] move message files into analysis folder and pilot folder. make clear where data is from. Check it in to github. commit 
+
+[ ] What happened to the data?
+	[ ] Did the 5th game get cut off? Did some exit out? 
+	[ ] Don't let them click through the rounds (give bonus)
+	[ ] Only 9 submits? What happened?
+[ ] Get more fluid dialogue between matcher and director
+	[ ] rewrite instructions. Was it clear enough? Include money
+[ ] Write director's board to file
+[ ] Bonus people for correct tangrams
+	[ ] Need assignment number and workerID number. WriteData?
+	[ ] Learn how to do this via command line. Talk to Noah about his thoughts on this. 
+	[ ] Make sure to look at dropObj for final score!
+[x] move message files into analysis folder and pilot folder. make clear where data is from. Check it in to github. commit 
+	[ ] problem with commit/push from nmaslan16 via var path. Works from tmp path
 [ ] Submiterator getresults to get the subject data. Push pull
-[ ] metaphor concrete? 
-[ ] write Data of director board and the matcher board at start and end of round
+	[ ] Does submiterator overwrite the results each time getresults/reformat is called?
