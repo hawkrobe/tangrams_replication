@@ -81,4 +81,14 @@ As of 7/20
 [x] link to consent.html 
 [ ] make sure game works on the internet 
 
+[ ] conventions 
 
+[ ] Write director's board to file
+[ ] Bonus people for correct tangrams
+
+[ ] arbitratryness of conventions
+
+[ ] move message files into analysis folder and pilot folder. make clear where data is from. Check it in to github. commit 
+[ ] Submiterator getresults to get the subject data. Push pull
+[ ] metaphor concrete? 
+[ ] write Data of director board and the matcher board at start and end of round
