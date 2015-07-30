@@ -5,7 +5,6 @@
     written for : http://buildnewgames.com/real-time-multiplayer/
     
     substantially modified for collective behavior experiments on the web
-
     MIT Licensed.
 */
 
@@ -40,9 +39,9 @@ var game_core = function(game_instance){
   this.cellDimensions = {height : 300, width : 300}; // in pixels
   this.cellPadding = 50;
   this.world = {height : (this.cellDimensions.height * this.numVerticalCells
-		          + this.cellPadding),
-		width : (this.cellDimensions.width * this.numHorizontalCells
-			 + this.cellPadding)}; 
+              + this.cellPadding),
+    width : (this.cellDimensions.width * this.numHorizontalCells
+       + this.cellPadding)}; 
   
   // Which round are we on (initialize at -1 so that first round is 0-indexed)
   this.roundNum = -1;
@@ -62,8 +61,8 @@ var game_core = function(game_instance){
     // we'll use, make a player object, and tell the player who they are
     this.trialList = this.makeTrialList();
     this.data = {id : this.instance.id.slice(0,6), trials : [],
-		 catch_trials : [], system : {}, 
-		 subject_information : {gameID: this.instance.id.slice(0,6)}}
+     catch_trials : [], system : {}, 
+     subject_information : {gameID: this.instance.id.slice(0,6)}}
 
     this.players = [{
       id: this.instance.player_instances[0].id, 
@@ -111,7 +110,7 @@ game_core.prototype.get_player = function(id) {
 // Method to get list of players that aren't the given id
 game_core.prototype.get_others = function(id) {
   return _.without(_.map(_.filter(this.players, function(e){return e.id != id;}), 
-			 function(p){return p.player ? p : null;}), null);
+       function(p){return p.player ? p : null;}), null);
 };
 
 // Returns all players
@@ -150,6 +149,23 @@ var cartesianProductOf = function(listOfLists) {
     }, [ [] ]);
 };
 
+// Returns random set of unique grid locations
+game_core.prototype.randomizeLocations = function() {
+  var possibilities = cartesianProductOf([_.range(1, this.numHorizontalCells + 1),
+            _.range(1, this.numVerticalCells + 1)]);
+
+  // Makes sure we select locations WITHOUT replacement
+  function getRandomFromBucket() {
+    var randomIndex = Math.floor(Math.random()*possibilities.length);
+    return possibilities.splice(randomIndex, 1)[0];
+  }
+
+  return _.map(_.range(this.numHorizontalCells * this.numVerticalCells), function(v) {
+    return getRandomFromBucket();
+  });
+
+};
+
 //returns the box number of a tangram given it's x,y location on the grid
 game_core.prototype.getBoxLoc = function(loc) {
   var box = 0;
@@ -173,30 +189,6 @@ boxLocList = function(locList) {
   });
 };
 
-
-
-
-// Returns random set of unique grid locations
-game_core.prototype.randomizeLocations = function() {
-  var possibilities = cartesianProductOf([_.range(1, this.numHorizontalCells + 1),
-					  _.range(1, this.numVerticalCells + 1)]);
-
-
-  // Makes sure we select locations WITHOUT replacement
-  function getRandomFromBucket() {
-    var randomIndex = Math.floor(Math.random()*possibilities.length);
-    return possibilities.splice(randomIndex, 1)[0];
-  }
-
-  return _.map(_.range(this.numHorizontalCells * this.numVerticalCells), function(v) {
-    getRandomFromBucket();
-    _.map(tangramList, function(pair) {
-      _.zip(getBoxLoc(pair), pair);
-    }
-  });
-
-};
-
 // get a set of non matching director and matcher locations
 game_core.prototype.notMatchingLocs = function() {
   var local_this = this;
@@ -213,11 +205,11 @@ game_core.prototype.notMatchingLocs = function() {
 game_core.prototype.arraysDifferent = function(arr1, arr2) {
   for(var i = arr1.length; i--;) {
       if(_.isEqual(arr1[i], arr2[i])) {
-          // console.log("the arrays are not different");
+          console.log("the arrays are not different");
           return false;
     };
   }
-  // console.log("the arrays ARE different");
+  console.log("the arrays ARE different");
   return true;
 };
 
@@ -226,11 +218,19 @@ game_core.prototype.arraysDifferent = function(arr1, arr2) {
 // Randomly sets tangram locations for each trial
 game_core.prototype.makeTrialList = function () {
   var local_this = this;
-  var trialList =_.map(_.range(this.numRounds), function(i) { 
+  var trialList =_.map(_.range(this.numRounds), function(i) { //creating a list?
     var locs = local_this.notMatchingLocs();
     var matcherLocs = locs[0];
     var directorLocs = locs[1];
-    console.log(directorLocs);
+    // console.log("these are directorLocs " + directorLocs);
+    // var matcherLocs = local_this.notMatchingLocs().matcherLocs;  
+    // console.log("these are matcherLocs " + matcherLocs);
+    // var directorLocs = local_this.randomizeLocations();
+    // var matcherLocs = local_this.randomizeLocations();
+    // if (local_this.arraysDifferent(directorLocs, matcherLocs)==false) {
+    //   console.log("hello, the lists are different!");
+    //   local_this.makeTrialList();
+    // };
 
     // debugger;
     var localTangramList = _.map(tangramList, _.clone);
@@ -270,12 +270,10 @@ game_core.prototype.game_score = function(game_objects) {
       if(game_objects[i].matcherCoords.gridX == game_objects[i].directorCoords.gridX) {
         if(game_objects[i].matcherCoords.gridY == game_objects[i].directorCoords.gridY) {
           correct = correct + 1;
-
         }
       }
       incorrect = incorrect + 1;
   }
-
   return correct;
 }
 
@@ -284,9 +282,9 @@ game_core.prototype.game_score = function(game_objects) {
 game_core.prototype.getPixelFromCell = function (x, y) {
   return {
     centerX: (this.cellPadding/2 + this.cellDimensions.width * (x - 1)
-	      + this.cellDimensions.width / 2),
+        + this.cellDimensions.width / 2),
     centerY: (this.cellPadding/2 + this.cellDimensions.height * (y - 1)
-	      + this.cellDimensions.height / 2),
+        + this.cellDimensions.height / 2),
     upperLeftX : (this.cellDimensions.width * (x - 1) + this.cellPadding/2),
     upperLeftY : (this.cellDimensions.height * (y - 1) + this.cellPadding/2),
     width: this.cellDimensions.width,
@@ -361,3 +359,4 @@ game_core.prototype.server_send_update = function(){
 // //what is this?
 // (4.22208334636).fixed(n) will return fixed point value to n places, default n = 3
 // Number.prototype.fixed = function(n) { n = n || 3; return parseFloat(this.toFixed(n)); };
+
