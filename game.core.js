@@ -63,7 +63,7 @@ var game_core = function(game_instance){
     this.data = {id : this.instance.id.slice(0,6), trials : [],
      catch_trials : [], system : {}, 
      subject_information : {gameID: this.instance.id.slice(0,6), 
-        trialList : this.trialList}}
+        directorBoards : nameAndBoxAll(this.trialList)}}
 
     this.players = [{
       id: this.instance.player_instances[0].id, 
@@ -195,57 +195,61 @@ game_core.prototype.randomizeLocations = function() {
 
 };
 
-//returns the box number of a tangram given it's x,y location on the grid
-game_core.prototype.getBoxLoc = function(loc) {
-  var box = 0;
-  if (loc[1] == 1) { 
-    console.log("y val is: " + loc[1] );
-    boxLoc = loc[0]; //
-    return boxLoc;
-  }
-  else {
-    boxLoc = loc[0] + 6;
-    return boxLoc;
-  }
-};
-
-//given a list of tangram grid locations, returns a list of box locations
-game_core.prototype.boxLocList = function(locList) {
-  return _.map(locList, function(x) {
-    boxLoc = getBoxLoc(x);
-    return boxLoc;
-  });
-};
-
-game_core.prototype.getNames = function(trialList) {
-  return _.map(trialList, function(x) {
-    var name = trialList[x][1];
-    return name;
-  });
-};
-
-game_core.prototype.getDirectorLocs = function(trialList) {
-  return _.map(trialList, function(x) {
-    var directorLocs = trialList[x][4];
-    return directorLocs;
-    });
-  };
-
-game_core.prototype.getMatcherLocs = function(trialList) {
-  return _.map(trialList, function(x) {
-    var matcherLocs = trialList[x][5];
-    return matcherLocs;
-  });
+//returns names of tangrams from single round tangramlist
+getNames = function(trialList) {
+  return _.pluck(trialList, 'name');
 }
 
-game_core.prototype.makeNameBoxList = function(trialList) {
-  var directorGridLocs = getDirectorLocs(trialList);
-  var directorBoxLocs = boxLocList(directorGridLocs);
-  var directorTangramNames = getNames(trialList);
-  _.map(directorTangramNames, function(x) {
-    _.map(directorBoxLocs, function(y) {
-      _.zip(x, y) 
+//returns list of director [x,y] coords for each tangram (only for 1 round)
+getGridLocs = function(trialList, role) {
+  if (role == 'director') {
+    var directorCoords = _.pluck(trialList, 'directorCoords');
+    var gridX = _.pluck(directorCoords, 'gridX');
+    var gridY = _.pluck(directorCoords, 'gridY');
+    return _.zip(gridX, gridY);
+}
+  else {
+    var matcherCoords = _.pluck(trialList, 'matcherCoords');
+    var gridX = _.pluck(matcherCoords, 'gridX');
+    var gridY = _.pluck(matcherCoords, 'gridY');
+    return _.zip(gridX, gridY);
+  }
+};
+
+//returns box location range(1,12) of tangram given [x,y] loc pair
+boxLoc = function(loc) {
+  var box = 0;
+  var x = loc[0];
+  var y = loc[1];
+  if (y == 1) { 
+    box = x; 
+    return box;
+  }
+  else {
+    box = x + 6;
+    return box;
+  }
+};
+
+// //returns list of boxes for each tangram 
+getBoxLocs = function(trialList, role) {
+  var tangramGridLocs = getGridLocs(trialList, role);
+  return _.map(tangramGridLocs, function(pair) {
+    return boxLoc(pair);
   });
+};
+
+//returns list of name and box for all tangrams (1 round only)
+nameAndBox = function(trialList, role) {
+    var boxLocs = getBoxLocs(trialList, role);
+    var names = getNames(trialList);
+    return _.zip(names, boxLocs);
+};
+
+// //returns list of name and box for all tangrams in all rounds
+nameAndBoxAll = function(totalTrialList, role) {
+  return _.map(totalTrialList, function(x) {
+    return nameAndBox(x, role);
   });
 };
 
@@ -303,7 +307,6 @@ game_core.prototype.makeTrialList = function () {
     });
   });
   //make sure the tangrams locations are different each round (sudo shuffle)
-  console.log(trialList);
   return(trialList);
 };
 //
