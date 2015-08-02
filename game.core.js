@@ -62,7 +62,8 @@ var game_core = function(game_instance){
     this.trialList = this.makeTrialList();
     this.data = {id : this.instance.id.slice(0,6), trials : [],
      catch_trials : [], system : {}, 
-     subject_information : {gameID: this.instance.id.slice(0,6)}}
+     subject_information : {gameID: this.instance.id.slice(0,6), 
+        trialList : this.trialList}}
 
     this.players = [{
       id: this.instance.player_instances[0].id, 
@@ -76,7 +77,35 @@ var game_core = function(game_instance){
       player: new game_player(this)
     }];
   }
-}; 
+};
+
+//   // This will be populated with the tangram set
+//   this.objects = [];
+  
+//   if(this.server) {
+//     // If we're initializing the server game copy, pre-create the list of trials
+//     // we'll use, make a player object, and tell the player who they are
+//     this.trialList = this.makeTrialList();
+//     //include director board info
+
+//     this.data = {id : this.instance.id.slice(0,6), trials : [],
+//      catch_trials : [], system : {}, 
+//      subject_information : {gameID: this.instance.id.slice(0,6)
+//                             tangramList : this.tangramList }
+
+//     this.players = [{
+//       id: this.instance.player_instances[0].id, 
+//       player: new game_player(this,this.instance.player_instances[0].player)
+//     }];
+//     this.server_send_update();
+//   } else {
+//     // If we're initializing a player's local game copy, create the player object
+//     this.players = [{
+//       id: null, 
+//       player: new game_player(this)
+//     }];
+//   }
+// }; 
 
 var game_player = function( game_instance, player_instance) {
   //Store the instance, if any (only the server copy will have one)
@@ -181,11 +210,42 @@ game_core.prototype.getBoxLoc = function(loc) {
 };
 
 //given a list of tangram grid locations, returns a list of box locations
-boxLocList = function(locList) {
+game_core.prototype.boxLocList = function(locList) {
   return _.map(locList, function(x) {
     boxLoc = getBoxLoc(x);
-    console.log(boxLoc);
     return boxLoc;
+  });
+};
+
+game_core.prototype.getNames = function(trialList) {
+  return _.map(trialList, function(x) {
+    var name = trialList[x][1];
+    return name;
+  });
+};
+
+game_core.prototype.getDirectorLocs = function(trialList) {
+  return _.map(trialList, function(x) {
+    var directorLocs = trialList[x][4];
+    return directorLocs;
+    });
+  };
+
+game_core.prototype.getMatcherLocs = function(trialList) {
+  return _.map(trialList, function(x) {
+    var matcherLocs = trialList[x][5];
+    return matcherLocs;
+  });
+}
+
+game_core.prototype.makeNameBoxList = function(trialList) {
+  var directorGridLocs = getDirectorLocs(trialList);
+  var directorBoxLocs = boxLocList(directorGridLocs);
+  var directorTangramNames = getNames(trialList);
+  _.map(directorTangramNames, function(x) {
+    _.map(directorBoxLocs, function(y) {
+      _.zip(x, y) 
+  });
   });
 };
 
@@ -205,11 +265,9 @@ game_core.prototype.notMatchingLocs = function() {
 game_core.prototype.arraysDifferent = function(arr1, arr2) {
   for(var i = arr1.length; i--;) {
       if(_.isEqual(arr1[i], arr2[i])) {
-          console.log("the arrays are not different");
           return false;
     };
   }
-  console.log("the arrays ARE different");
   return true;
 };
 
@@ -222,15 +280,6 @@ game_core.prototype.makeTrialList = function () {
     var locs = local_this.notMatchingLocs();
     var matcherLocs = locs[0];
     var directorLocs = locs[1];
-    // console.log("these are directorLocs " + directorLocs);
-    // var matcherLocs = local_this.notMatchingLocs().matcherLocs;  
-    // console.log("these are matcherLocs " + matcherLocs);
-    // var directorLocs = local_this.randomizeLocations();
-    // var matcherLocs = local_this.randomizeLocations();
-    // if (local_this.arraysDifferent(directorLocs, matcherLocs)==false) {
-    //   console.log("hello, the lists are different!");
-    //   local_this.makeTrialList();
-    // };
 
     // debugger;
     var localTangramList = _.map(tangramList, _.clone);
@@ -254,11 +303,10 @@ game_core.prototype.makeTrialList = function () {
     });
   });
   //make sure the tangrams locations are different each round (sudo shuffle)
+  console.log(trialList);
   return(trialList);
 };
 //
-
-
 
 
 //scores the number of incorrect tangram matches between matcher and director
