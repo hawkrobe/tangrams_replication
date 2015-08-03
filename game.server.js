@@ -91,6 +91,8 @@ game_server.server_onMessage = function(client,message) {
 
   case 'advanceRound' :
     var score = gc.game_score(gc.objects);
+    var boxLocations = message_parts[1];
+    writeData(client, "finalBoard", message_parts)
     _.map(all, function(p){
       p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score});});
     gc.newRound()
@@ -150,6 +152,13 @@ var writeData = function(client, type, message_parts) {
     console.log("message:" + line);
     gc.messageStream.write(line, function (err) {if(err) throw err;});
     break;
+
+  case "finalBoard" :
+    var board = message_parts[1];
+    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + board + '\n')
+    console.log("finalBoard:" + line);
+    gc.finalBoardStream.write(line, function (err) {if(err) throw err;});
+    break;
   }
 }
 
@@ -185,19 +194,7 @@ game_server.findGame = function(player) {
         var d = new Date();
         var start_time = d.getFullYear() + '-' + d.getMonth() + 1 + '-' + d.getDate() + '-' + d.getHours() + '-' + d.getMinutes() + '-' + d.getSeconds() + '-' + d.getMilliseconds()
         var name = start_time + '_' + game.id;
-        
-
-        // fs.writeFile(mouse_f, "gameid, time, condition, critical, objectSet, instructionNum, attemptNum, targetX, targetY, distractorX, distractorY, mouseX, mouseY\n", function (err) {if(err) throw err;})
-        // game.gamecore.mouseDataStream = fs.createWriteStream(mouse_f, {'flags' : 'a'});
-
-        // var error_f = "data/error/" + name + ".csv"
-        // fs.writeFile(error_f, "gameid, time, condition, critical, objectSet, instructionNum, attemptNum, intendedObj, actualObj, intendedX, intendedY, actualX, actualY\n", function (err) {if(err) throw err;})
-        // game.gamecore.errorStream = fs.createWriteStream(error_f, {'flags' : 'a'});
-
-        // var tangramBoards_f = "data/tangramBoards/" + name + ".csv"
-        // fs.writeFile(tangramBoards_f, "gameid, time, roundNum, board\n", function (err) {if(err) throw err;})
-        // game.gamecore.tangramBoards = fs.createWriteStream(tangramBoards_f, {'flags' : 'a'});
-       
+               
         var message_f = "data/message/" + name + ".csv"
         fs.writeFile(message_f, "gameid, time, roundNum, score, sender, contents\n", function (err) {if(err) throw err;})
         game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
@@ -206,6 +203,11 @@ game_server.findGame = function(player) {
         var dropObj_f = "data/dropObj/" + name + ".csv"
         fs.writeFile(dropObj_f, "gameid, time, roundNum, score, name, draggedTo\n", function (err) {if(err) throw err;})
         game.gamecore.dropObjStream = fs.createWriteStream(dropObj_f, {'flags' : 'a'});
+
+
+        var finalBoard_f = "data/finalBoard/" + name + ".csv"
+        fs.writeFile(dropObj_f, "gameid, time, roundNum, score, finalBoardLocations\n", function (err) {if(err) throw err;})
+        game.gamecore.finalBoardStream = fs.createWriteStream(finalBoard_f, {'flags' : 'a'});
 
 
         // Attach game to player so server can look at it later

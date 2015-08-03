@@ -232,10 +232,13 @@ client_connect_to_server = function(game) {
 
 
   // Tell server when matncher presses the submit round button in order to advance to the next round
+ 
+  // console.log(tangramNames);
+  // console.log(boxLocations);
   $(document).ready(function() {
     $("#submitbutton").click(function(){
-      var msg = 'advanceRound';
-      game.socket.send(msg);
+      var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
+      game.socket.send('advanceRound.' + matcherBoxLocations);
     })
   });
 
@@ -435,6 +438,15 @@ function mouseUpListener(evt) {
       game.objects[game.dragIndex].matcherCoords.trueY = obj.trueY; 
       game.objects[game.dragIndex].matcherCoords.box = obj.box;
 
+      // console.log(game.objects);
+      
+      // var self = game;
+      // var info = _.zip(self.getNames(self.objects), self.getBoxLocs(self.objects, 'matcher'));
+      // console.log(info);
+
+      var tangramNames = game.getNames(game.objects);
+      var boxLocations = game.getBoxLocs(game.objects, 'matcher');
+
 
       // dragIndex = swapIndex 
       game.socket.send("dropObj."
@@ -454,6 +466,7 @@ function mouseUpListener(evt) {
 
 
 }
+
 
 
 function mouseMoveListener(evt) {

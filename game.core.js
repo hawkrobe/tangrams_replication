@@ -63,8 +63,8 @@ var game_core = function(game_instance){
     this.data = {id : this.instance.id.slice(0,6), trials : [],
      catch_trials : [], system : {}, 
      subject_information : {gameID: this.instance.id.slice(0,6), 
-        directorBoards : this.nameAndBoxAll(this.trialList, 'director'),
-        matcherBoards : this.nameAndBoxAll(this.trialList, 'matcher')}}
+        initialDirectorBoards : this.nameAndBoxAll(this.trialList, 'director'),
+        initialMatcherBoards : this.nameAndBoxAll(this.trialList, 'matcher')}}
 
     this.players = [{
       id: this.instance.player_instances[0].id, 
