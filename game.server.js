@@ -155,7 +155,7 @@ var writeData = function(client, type, message_parts) {
 
   case "finalBoard" :
     var board = message_parts[1];
-    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + board + '\n')
+    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + board + ',' + score + '\n')
     console.log("finalBoard:" + line);
     gc.finalBoardStream.write(line, function (err) {if(err) throw err;});
     break;
@@ -206,7 +206,7 @@ game_server.findGame = function(player) {
 
 
         var finalBoard_f = "data/finalBoard/" + name + ".csv"
-        fs.writeFile(dropObj_f, "gameid, time, roundNum, score, finalBoardLocations\n", function (err) {if(err) throw err;})
+        fs.writeFile(finalBoard_f, "gameid, time, roundNum, finalBoardLocations, score\n", function (err) {if(err) throw err;})
         game.gamecore.finalBoardStream = fs.createWriteStream(finalBoard_f, {'flags' : 'a'});
 
 
