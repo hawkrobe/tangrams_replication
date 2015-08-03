@@ -2,29 +2,29 @@
 
 // TANGRAM OBJECTS
 var tangramA = {
-	url: 'stimuli/tangram_A.png', name: "tangram_A", width: 282.1, height: 275.1}
+	url: 'stimuli/tangram_A.png', name: "A_bird", width: 282.1, height: 275.1}
 var tangramB = {
-	url: 'stimuli/tangram_B.png', name: "tangram_B", width : 235.2, height: 224}
+	url: 'stimuli/tangram_B.png', name: "B_helpbunny", width : 235.2, height: 224}
 var tangramC = {
-	url: 'stimuli/tangram_C.png', name: "tangram_C", width: 293.3, height: 228.9}
+	url: 'stimuli/tangram_C.png', name: "C_ghost", width: 293.3, height: 228.9}
 var tangramD = {
-	url: 'stimuli/tangram_D.png', name: "tangram_D", width: 189, height: 271.6}
+	url: 'stimuli/tangram_D.png', name: "D_monk", width: 189, height: 271.6}
 var tangramE = {
-	url: 'stimuli/tangram_E.png', name: 'tangram_E', width: 204.5, height: 250}
+	url: 'stimuli/tangram_E.png', name: 'E_bunny', width: 204.5, height: 250}
 var tangramF = {
-	url: 'stimuli/tangram_F.png', name: 'tangram_F', width: 261.8, height: 219.8}
+	url: 'stimuli/tangram_F.png', name: 'F_sadperson', width: 261.8, height: 219.8}
 var tangramG = {
-	url: 'stimuli/tangram_G.png', name: 'tangram_G', width: 284.9, height: 237.3}
+	url: 'stimuli/tangram_G.png', name: 'G_seal', width: 284.9, height: 237.3}
 var tangramH = {
-	url: 'stimuli/tangram_H.png', name: 'tangram_H', width: 175, height: 273.7}
+	url: 'stimuli/tangram_H.png', name: 'H_baby', width: 175, height: 273.7}
 var tangramI = {
-	url: 'stimuli/tangram_I.png', name: 'tangram_I', width: 222.5, height: 247}
+	url: 'stimuli/tangram_I.png', name: 'I_iceskater', width: 222.5, height: 247}
 var tangramJ = {
-	url: 'stimuli/tangram_J.png', name: 'tangram_J', width: 151.8, height: 249.2}
+	url: 'stimuli/tangram_J.png', name: 'J_compact', width: 151.8, height: 249.2}
 var tangramK = {
-	url: 'stimuli/tangram_K.png', name: 'tangram_K', width: 184.8, height: 280}
+	url: 'stimuli/tangram_K.png', name: 'K_waiter', width: 184.8, height: 280}
 var tangramL = {
-	url: 'stimuli/tangram_L.png', name: 'tangram_L', width: 182.7, height: 280.7}
+	url: 'stimuli/tangram_L.png', name: 'L_egypt', width: 182.7, height: 280.7}
 
 var tangramList = [
 	tangramA, tangramB, tangramC, tangramD, tangramE, tangramF, 

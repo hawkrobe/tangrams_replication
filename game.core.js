@@ -250,7 +250,12 @@ game_core.prototype.arraysDifferent = function(arr1, arr2) {
   return true;
 };
 
-
+game_core.prototype.direcBoxes = function(directorLocs) {
+ var self = this;
+_.map(directorLocs, function(x) {
+  return this.boxLoc;
+  })
+};
 
 // Randomly sets tangram locations for each trial
 game_core.prototype.makeTrialList = function () {
@@ -258,16 +263,17 @@ game_core.prototype.makeTrialList = function () {
   var trialList =_.map(_.range(this.numRounds), function(i) { //creating a list?
     var locs = local_this.notMatchingLocs();
     var matcherLocs = locs[0];
-    // console.log(matcherBoxes);
     var directorLocs = locs[1];
-    // var directorBoxes = _.map(directorLocs, function(x) {
-    //   return local_this.boxLoc;
-    
-    // console.log(directorBoxes);
+    var directorBoxes = _.map(directorLocs, function(x) {
+      return local_this.boxLoc(x);
+    });
+    var matcherBoxes = _.map(matcherLocs, function(x) {
+      return local_this.boxLoc(x);
+    });
 
     // debugger;
     var localTangramList = _.map(tangramList, _.clone);
-    return _.map(_.zip(localTangramList, directorLocs, matcherLocs), function(pair) {
+    return _.map(_.zip(localTangramList, directorLocs, matcherLocs, directorBoxes, matcherBoxes), function(pair) {
       var tangram = pair[0]   // [[tangramA,[4,1]*director, [3,2]*matcher], [tangramB, [3,2]...]]
       var directorGridCell = local_this.getPixelFromCell(pair[1][0], pair[1][1]); 
       var matcherGridCell = local_this.getPixelFromCell(pair[2][0], pair[2][1]);
@@ -275,17 +281,15 @@ game_core.prototype.makeTrialList = function () {
         gridX : pair[1][0],
         gridY : pair[1][1],
         trueX : directorGridCell.centerX - tangram.width/2,
-        trueY : directorGridCell.centerY - tangram.height/2
-        // box : pair[3];
-        // box : boxLoc([gridX, gridY]);
-        // box : pair[1][0];
-        // console.log(box);
+        trueY : directorGridCell.centerY - tangram.height/2,
+        box : pair[3]
       };
       tangram.matcherCoords = {
         gridX : pair[2][0],
         gridY : pair[2][1],
         trueX : matcherGridCell.centerX - tangram.width/2,
-        trueY : matcherGridCell.centerY - tangram.height/2
+        trueY : matcherGridCell.centerY - tangram.height/2,
+        box :pair[4]
       };
       return tangram;
     });

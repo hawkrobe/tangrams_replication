@@ -87,7 +87,8 @@ client_onserverupdate_received = function(data){
       var customObj = _.chain(obj)
 	.omit('directorCoords', 'matcherCoords')
 	.extend(obj, {trueX : customCoords.trueX, trueY : customCoords.trueY,
-		      gridX : customCoords.gridX, gridY : customCoords.gridY})
+		      gridX : customCoords.gridX, gridY : customCoords.gridY,
+          box : customCoords.box})
 	.value();
       var imgObj = new Image(); //initialize object as an image (from HTML5)
       imgObj.src = customObj.url; // tell client where to find it
@@ -378,16 +379,15 @@ function mouseUpListener(evt) {
     var dropX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
     var dropY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
     var obj = game.objects[game.dragIndex];
+
+    //find cell that the dragged tangram is moving to
     var cell = game.getCellFromPixel(dropX, dropY);
-    //get info on the tangram your dragged tangram will replace (swapObj)
+    //find the tangram in the cell (the swapObj)
     var swapIndex = game.getTangramFromCell(cell[0], cell[1]);
     var swapObj =  game.objects[swapIndex];
-    
+
     // If you didn't drag it beyond cell bounds, snap it back w/o comment
     if (obj.gridX == cell[0] && obj.gridY == cell[1]) {
-      // mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
-      // mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
-      // console.log("hey mouseX!: " + mouseX);
       obj.trueX = game.getTrueCoords("xCoord", obj, obj);
       obj.trueY = game.getTrueCoords("yCoord", obj, obj);
     }
@@ -401,9 +401,6 @@ function mouseUpListener(evt) {
       obj.trueX = game.getTrueCoords("xCoord", obj, obj);
       obj.trueY = game.getTrueCoords("yCoord", obj, obj);
      }
-
-
-    
     
     else {
       // move tangram in dropped cell (swapObj) to original cell of dragged tangram (obj)
@@ -411,34 +408,43 @@ function mouseUpListener(evt) {
       swapObj.gridY = obj.gridY;
       swapObj.trueX = game.getTrueCoords("xCoord", obj, swapObj);
       swapObj.trueY = game.getTrueCoords("yCoord", obj, swapObj);
+      //update box location
+      swapObj.box = obj.box;
+      //fix indexes
+      console.log("swapIndex is: " + swapIndex);
+      swapIndex = 
 
       game.objects[swapIndex].matcherCoords.gridX = swapObj.gridX;
       game.objects[swapIndex].matcherCoords.gridY = swapObj.gridY;
       game.objects[swapIndex].matcherCoords.trueX = swapObj.gridX;
       game.objects[swapIndex].matcherCoords.trueY = swapObj.gridY;
+      //updata box location
+      game.objects[swapIndex].matcherCoords.box = swapObj.box;
 
       // center dragged tangram (obj) in its new cell
       obj.gridX = cell[0];
       obj.gridY = cell[1];
       obj.trueX = game.getPixelFromCell(cell[0], cell[1]).centerX - obj.width/2;
       obj.trueY = game.getPixelFromCell(cell[0], cell[1]).centerY - obj.height/2;
+      //update box
+      obj.box = game.boxLoc(cell);
 
       game.objects[game.dragIndex].matcherCoords.gridX = obj.gridX;
       game.objects[game.dragIndex].matcherCoords.gridY = obj.gridY;
       game.objects[game.dragIndex].matcherCoords.trueX = obj.trueX;
       game.objects[game.dragIndex].matcherCoords.trueY = obj.trueY; 
+      game.objects[game.dragIndex].matcherCoords.box = obj.box;
 
-      var bird = obj.trueX;
-      console.log("bird is " + bird);
 
+      // dragIndex = swapIndex 
       game.socket.send("dropObj."
 		       + game.dragIndex + "." + swapIndex + "."
 		       + Math.round(obj.trueX) + "." + Math.round(obj.trueY) + "."
-		       + Math.round(swapObj.trueX) + "." + Math.round(swapObj.trueY) + "." + Date.now());
+		       + Math.round(swapObj.trueX) + "." + Math.round(swapObj.trueY) + "."
+           + obj.box + "." + swapObj.box + "." + obj.name + "." + Date.now());
 
     }
-    // console.log("swapObjtrueY: " + swapObj.trueY);
-    // console.log("dragObjtrueY: " + obj.trueY);
+
 
     // Tell server where you dropped it
     drawScreen(game, game.get_player(my_id));

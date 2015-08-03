@@ -57,13 +57,18 @@ game_server.server_onMessage = function(client,message) {
     var objTrueY = message_parts[4];
     var swapObjTrueX = message_parts[5];
     var swapObjTrueY = message_parts[6];
+    var objBox = message_parts[7];
+    var swapObjBox = message_parts[8];
+
 
     
     // Update the local copy to match the new positions of these items!
     gc.objects[objIndex].matcherCoords.trueX = objTrueX;
     gc.objects[objIndex].matcherCoords.trueY = objTrueY;
+    gc.objects[objIndex].matcherCoords.box = objBox;
     gc.objects[swapIndex].matcherCoords.trueX = swapObjTrueY;
     gc.objects[swapIndex].matcherCoords.trueY = swapObjTrueY;
+    gc.objects[swapIndex].matcherCoords.box = swapObjBox;
 
     //get the gridX and gridY values
     var objCell = gc.getCellFromPixel(objTrueX, objTrueY);
@@ -123,14 +128,17 @@ var writeData = function(client, type, message_parts) {
     var dragObjTrueY = message_parts[4];
     var swapObjTrueX = message_parts[5];
     var swapObjTrueY = message_parts[6];
-    var date = message_parts[7];
+    var dropObjBox = message_parts[7];
+    var swapObjBox = message_parts[8];
+    var dropObjName = message_parts[9];
 
     var dragObjCell = gc.getCellFromPixel(dragObjTrueX, dragObjTrueY);
     var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
 
 
-    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + dragObjIndex + ',' + 
-		            dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + '\n');
+    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + dropObjName + ',' + dropObjBox + '\n');
+    // var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + dragObjIndex + ',' + 
+		  //           dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + '\n');
     console.log("dropObj: " + line);
     gc.dropObjStream.write(line, function (err) {if(err) throw err;});
     break;
@@ -142,13 +150,6 @@ var writeData = function(client, type, message_parts) {
     console.log("message:" + line);
     gc.messageStream.write(line, function (err) {if(err) throw err;});
     break;
-
-  // case "tangramBoards" :
-  //   var line = (id + ',' + Date.now() + ',' + roundNum +  '\n')
-  //   console.log("tangramBoard:" + line);
-  //   gc.tangramBoardsStream.write(line, function (err) {if(err) throw err;});
-  //   break;
-
   }
 }
 
@@ -203,7 +204,7 @@ game_server.findGame = function(player) {
     
 
         var dropObj_f = "data/dropObj/" + name + ".csv"
-        fs.writeFile(dropObj_f, "gameid, time, roundNum, score, dragObjIndex, dragObjX, dragObjY swapObjIndex, swapObjX, swapObjY\n", function (err) {if(err) throw err;})
+        fs.writeFile(dropObj_f, "gameid, time, roundNum, score, name, draggedTo\n", function (err) {if(err) throw err;})
         game.gamecore.dropObjStream = fs.createWriteStream(dropObj_f, {'flags' : 'a'});
 
 
