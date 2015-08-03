@@ -235,10 +235,11 @@ client_connect_to_server = function(game) {
  
   // console.log(tangramNames);
   // console.log(boxLocations);
+  var score = game.game_score(game.objects);
   $(document).ready(function() {
     $("#submitbutton").click(function(){
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
-      game.socket.send('advanceRound.' + matcherBoxLocations);
+      game.socket.send('advanceRound.' + matcherBoxLocations + "." + score);
     })
   });
 
@@ -252,7 +253,7 @@ client_connect_to_server = function(game) {
     if(game.roundNum+2 > game.numRounds) {
       $('#roundnumber').empty()
       $('#instructs').empty().append("Round " + (game.roundNum + 1) + 
-				     " score: " + data.score + " correct!");
+				     " score: " + score + " correct!");
     } else {
       $('#roundnumber').empty().append("Round ", game.roundNum + 2);
     }
@@ -390,10 +391,10 @@ function mouseUpListener(evt) {
     var swapObj =  game.objects[swapIndex];
 
     // If you didn't drag it beyond cell bounds, snap it back w/o comment
-    if (obj.gridX == cell[0] && obj.gridY == cell[1]) {
-      obj.trueX = game.getTrueCoords("xCoord", obj, obj);
-      obj.trueY = game.getTrueCoords("yCoord", obj, obj);
-    }
+    // if (obj.gridX == cell[0] && obj.gridY == cell[1]) {
+    //   obj.trueX = game.getTrueCoords("xCoord", obj, obj);
+    //   obj.trueY = game.getTrueCoords("yCoord", obj, obj);
+    // }
 
 
     // If you drag mouse outside of grid and release, tangram snaps back to its original cell 
@@ -401,8 +402,10 @@ function mouseUpListener(evt) {
    mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
     if (mouseX > 1825 || mouseX < 25 || mouseY > 625 || mouseY < 25) {
       console.log("out of bounds");
+
       obj.trueX = game.getTrueCoords("xCoord", obj, obj);
       obj.trueY = game.getTrueCoords("yCoord", obj, obj);
+
      }
     
     else {
@@ -414,8 +417,6 @@ function mouseUpListener(evt) {
       //update box location
       swapObj.box = obj.box;
       //fix indexes
-      console.log("swapIndex is: " + swapIndex);
-      swapIndex = 
 
       game.objects[swapIndex].matcherCoords.gridX = swapObj.gridX;
       game.objects[swapIndex].matcherCoords.gridY = swapObj.gridY;
@@ -447,13 +448,13 @@ function mouseUpListener(evt) {
       var tangramNames = game.getNames(game.objects);
       var boxLocations = game.getBoxLocs(game.objects, 'matcher');
 
-
-      // dragIndex = swapIndex 
+      var score = game.game_score(game.objects);
+      console.log("score is: " + score);
       game.socket.send("dropObj."
 		       + game.dragIndex + "." + swapIndex + "."
 		       + Math.round(obj.trueX) + "." + Math.round(obj.trueY) + "."
 		       + Math.round(swapObj.trueX) + "." + Math.round(swapObj.trueY) + "."
-           + obj.box + "." + swapObj.box + "." + obj.name + "." + Date.now());
+           + obj.box + "." + swapObj.box + "." + obj.name + "." + Date.now() + "." + score);
 
     }
 

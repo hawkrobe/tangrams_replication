@@ -118,7 +118,7 @@ game_server.server_onMessage = function(client,message) {
 var writeData = function(client, type, message_parts) {
   var gc = client.game.gamecore;
   var roundNum = gc.state.roundNum + 1;
-  var score = gc.game_score(gc.objects);
+  // var score = gc.game_score(gc.objects);
   var id = gc.instance.id.slice(0,6);
   // var board = gc.objects;
   // console.log(board);
@@ -133,14 +133,13 @@ var writeData = function(client, type, message_parts) {
     var dropObjBox = message_parts[7];
     var swapObjBox = message_parts[8];
     var dropObjName = message_parts[9];
+    var score = message_parts[11];
+    console.log(score);
 
     var dragObjCell = gc.getCellFromPixel(dragObjTrueX, dragObjTrueY);
     var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
 
-
     var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + dropObjName + ',' + dropObjBox + '\n');
-    // var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + dragObjIndex + ',' + 
-		  //           dragObjCell  + ',' + swapObjIndex + ',' + swapObjCell + '\n');
     console.log("dropObj: " + line);
     gc.dropObjStream.write(line, function (err) {if(err) throw err;});
     break;
@@ -148,13 +147,14 @@ var writeData = function(client, type, message_parts) {
   case "message" :
     var msg = message_parts[1].replace('~~~','.')
     // console.log(Date.now())
-    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + client.role + ',"' + msg + '"\n')
+    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + client.role + ',"' + msg + '"\n')
     console.log("message:" + line);
     gc.messageStream.write(line, function (err) {if(err) throw err;});
     break;
 
   case "finalBoard" :
     var board = message_parts[1];
+    var score = message_parts[2];
     var line = (id + ',' + Date.now() + ',' + roundNum + ',' + board + ',' + score + '\n')
     console.log("finalBoard:" + line);
     gc.finalBoardStream.write(line, function (err) {if(err) throw err;});
@@ -196,7 +196,7 @@ game_server.findGame = function(player) {
         var name = start_time + '_' + game.id;
                
         var message_f = "data/message/" + name + ".csv"
-        fs.writeFile(message_f, "gameid, time, roundNum, score, sender, contents\n", function (err) {if(err) throw err;})
+        fs.writeFile(message_f, "gameid, time, roundNum, sender, contents\n", function (err) {if(err) throw err;})
         game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
     
 

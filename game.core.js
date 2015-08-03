@@ -63,7 +63,7 @@ var game_core = function(game_instance){
     this.data = {id : this.instance.id.slice(0,6), trials : [],
      catch_trials : [], system : {}, 
      subject_information : {gameID: this.instance.id.slice(0,6), 
-        initialDirectorBoards : this.nameAndBoxAll(this.trialList, 'director'),
+        DirectorBoards : this.nameAndBoxAll(this.trialList, 'director'),
         initialMatcherBoards : this.nameAndBoxAll(this.trialList, 'matcher')}}
 
     this.players = [{
@@ -299,6 +299,16 @@ game_core.prototype.makeTrialList = function () {
 };
 //
 
+//
+// game_core.prototype.game_score = function(game_objects) {
+// var correct;
+// return _.map(game_objects.matcherCoords.box, function(x) {
+//   if (x == game_objects[x].directorCoords.box) {
+//     correct = correct + 1;
+//   }
+//   return correct;
+//   })
+// };
 
 //scores the number of incorrect tangram matches between matcher and director
 //returns the correct score out of total tangrams
@@ -313,6 +323,7 @@ game_core.prototype.game_score = function(game_objects) {
       }
       incorrect = incorrect + 1;
   }
+  console.log(correct);
   return correct;
 }
 
