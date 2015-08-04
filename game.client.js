@@ -252,20 +252,18 @@ client_connect_to_server = function(game) {
 
   });
 
-  var totalScore = 0;  
+  game.totalScore = 0;  
+
   // Tell server when matncher presses the submit round button in order to advance to the next round
   $(document).ready(function() {
     $("#submitbutton").click(function(){
       var score = game.game_score(game.objects);
-      totalScore = totalScore + score;
-      console.log("totalScore is: " + totalScore);
+      game.totalScore = game.totalScore + score;
+      console.log("totalScore is: " + game.totalScore);
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
       game.socket.send('advanceRound.' + matcherBoxLocations + "." + score);
     })
   });
-  // var self = game;
-  _.extend(self.data, 
-               {'totalScore' : totalScore});
   
     // Set up new round on client's browsers after submit round button is pressed. 
   // This means, clear the chatboxes, update round number, and update score on screen
@@ -550,7 +548,8 @@ function dropdownTip(data){
     game.data.subject_information = _.extend(game.data.subject_information, 
 				   {'comments' : $('#comments').val(), 
 				    'role' : my_role,
-				    'totalLength' : Date.now() - game.startTime});
+				    'totalLength' : Date.now() - game.startTime,
+            'score' : game.totalScore});
     var urlParams;
     var match,
     pl     = /\+/g,  // Regex for replacing addition symbol with a space
