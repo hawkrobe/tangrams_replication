@@ -274,11 +274,10 @@ client_connect_to_server = function(game) {
   // This means, clear the chatboxes, update round number, and update score on screen
   game.socket.on('newRoundUpdate', function(data){
     $('#messages').empty();
-
     if(game.roundNum+2 > game.numRounds) {
       $('#roundnumber').empty()
       $('#instructs').empty().append("Round " + (game.roundNum + 1) + 
-				     " score: " + score + " correct!");
+				     " score: " + data.score + " correct!");
     } else {
       $('#roundnumber').empty().append("Round ", game.roundNum + 2);
     }
