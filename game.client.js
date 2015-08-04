@@ -252,21 +252,21 @@ client_connect_to_server = function(game) {
 
   });
 
-
+  var totalScore = 0;  
   // Tell server when matncher presses the submit round button in order to advance to the next round
- 
-  // console.log(tangramNames);
-  // console.log(boxLocations);
-  var score = game.game_score(game.objects);
   $(document).ready(function() {
     $("#submitbutton").click(function(){
+      var score = game.game_score(game.objects);
+      totalScore = totalScore + score;
+      console.log("totalScore is: " + totalScore);
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
       game.socket.send('advanceRound.' + matcherBoxLocations + "." + score);
     })
   });
-
-
-
+  // var self = game;
+  _.extend(self.data, 
+               {'totalScore' : totalScore});
+  
     // Set up new round on client's browsers after submit round button is pressed. 
   // This means, clear the chatboxes, update round number, and update score on screen
   game.socket.on('newRoundUpdate', function(data){
@@ -489,6 +489,7 @@ function mouseUpListener(evt) {
 
 
 }
+
 
 
 
