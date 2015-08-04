@@ -261,12 +261,10 @@ client_connect_to_server = function(game) {
       //at the end of the last round, send in the totalScore through mmturkey (look at dropDownTip function )
       if (game.roundNum + 1 == 6) {
         console.log('round6 totalScore: ' + totalScore);
-        game.data.totalScore = _.extend(game.data.totalScore, 
-               {'totalScore' : totalScore}); 
+        game.data.totalScore = totalScore;
+        // game.data.totalScore = _.extend(game.data.totalScore, 
+        //        {'totalScore' : totalScore}); 
       };
-      console.log('totalScore is: ' + totalScore);
-      
-      // console.log("totalScore is: " + totalScore);
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
       game.socket.send('advanceRound.' + matcherBoxLocations + "." + score);
     })
@@ -555,8 +553,7 @@ function dropdownTip(data){
     game.data.subject_information = _.extend(game.data.subject_information, 
 				   {'comments' : $('#comments').val(), 
 				    'role' : my_role,
-				    'totalLength' : Date.now() - game.startTime,
-            'totalScore' : game.totalScore});
+				    'totalLength' : Date.now() - game.startTime});
     var urlParams;
     var match,
     pl     = /\+/g,  // Regex for replacing addition symbol with a space
