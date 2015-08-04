@@ -258,9 +258,15 @@ client_connect_to_server = function(game) {
     $("#submitbutton").click(function(){
       var score = game.game_score(game.objects);
       totalScore = totalScore + score;
-      game.data.totalScore = _.extend(game.data.totalScore, 
+      //at the end of the last round, send in the totalScore through mmturkey (look at dropDownTip function )
+      if (game.roundNum + 1 == 6) {
+        console.log('round6 totalScore: ' + totalScore);
+        game.data.totalScore = _.extend(game.data.totalScore, 
                {'totalScore' : totalScore}); 
-      console.log("totalScore is: " + totalScore);
+      };
+      console.log('totalScore is: ' + totalScore);
+      
+      // console.log("totalScore is: " + totalScore);
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
       game.socket.send('advanceRound.' + matcherBoxLocations + "." + score);
     })
