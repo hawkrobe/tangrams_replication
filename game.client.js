@@ -25,15 +25,13 @@ var visible;
 var incorrect;
 var dragging;
 var waiting;
-// var upperLeftX;
-// var upperLeftY
 
 client_ondisconnect = function(data) {
   submitInfoAndClose()
 };
 
 submitInfoAndClose = function() {
-    // Redirect to exit survey
+  // Redirect to exit survey
   console.log("server booted")      
   game.viewport.style.display="none";
   $('#message_panel').hide();
@@ -71,15 +69,12 @@ client_onserverupdate_received = function(data){
   //get names of objects sent from server and current objects 
   var dataNames = _.map(data.objects, function(e)
 			{ return e.name;});
-  // console.log("dataNames: " + dataNames);
   var localNames = _.map(game.objects,function(e)
 			 {return e.name;});
 
   // If your objects are out-of-date (i.e. if there's a new round), set up
   // machinery to draw them
-  // if (game.objects.length == 0 || !_.isEqual(dataNames, localNames)) { 
     if (game.roundNum != data.roundNum) {
-    // eraseHighlight(game, game.get_player(my_id), 0, 0);
     game.objects = _.map(data.objects, function(obj) {
       // Extract the coordinates matching your role
       var customCoords = my_role == "director" ? obj.directorCoords : obj.matcherCoords;
@@ -97,9 +92,7 @@ client_onserverupdate_received = function(data){
 			   customObj.width, customObj.height);
 
      };
-             // game.ctx.drawGrid();
-      // drawObjects(game, game.get_player(my_id));
-      return _.extend(customObj, {img: imgObj});
+     return _.extend(customObj, {img: imgObj});
     });
   };
 
@@ -107,20 +100,15 @@ client_onserverupdate_received = function(data){
   // Get rid of "waiting" screen if there are multiple players
   if(data.players.length > 1) 
     game.get_player(my_id).message = "";
-  
-  game.game_started = data.gs;
-  game.players_threshold = data.pt;
-  game.player_count = data.pc;
-  game.roundNum = data.roundNum
-  game.data = data.dataObj
+    game.game_started = data.gs;
+    game.players_threshold = data.pt;
+    game.player_count = data.pc;
+    game.roundNum = data.roundNum
+    game.data = data.dataObj
 
   // Draw all this new stuff
   drawScreen(game, game.get_player(my_id));
 }; 
-
-
-
-
 
 // This is where clients parse socket.io messages from the server. If
 // you want to add another event (labeled 'x', say), just add another
@@ -180,7 +168,6 @@ window.onload = function(){
   //Fetch the viewport
   game.viewport = document.getElementById('viewport');
 
-  
   //Adjust its size
   game.viewport.width = game.world.width;
   game.viewport.height = game.world.height;
@@ -197,7 +184,7 @@ window.onload = function(){
 
 client_addnewround = function(game) {
   $('#roundnumber').append(game.roundNum);
-}
+};
 
 // Associates callback functions corresponding to different socket messages
 client_connect_to_server = function(game) {
@@ -466,23 +453,15 @@ function mouseUpListener(evt) {
       game.objects[game.dragIndex].matcherCoords.trueY = obj.trueY; 
       game.objects[game.dragIndex].matcherCoords.box = obj.box;
 
-      // console.log(game.objects);
-      
-      // var self = game;
-      // var info = _.zip(self.getNames(self.objects), self.getBoxLocs(self.objects, 'matcher'));
-      // console.log(info);
-
       var tangramNames = game.getNames(game.objects);
       var boxLocations = game.getBoxLocs(game.objects, 'matcher');
 
-      var score = game.game_score(game.objects);
-      console.log("score is: " + score);
+      //send information so that server can update their copy of the tangram board
       game.socket.send("dropObj."
 		       + game.dragIndex + "." + swapIndex + "."
 		       + Math.round(obj.trueX) + "." + Math.round(obj.trueY) + "."
 		       + Math.round(swapObj.trueX) + "." + Math.round(swapObj.trueY) + "."
-           + obj.box + "." + swapObj.box + "." + obj.name + "." + Date.now() + "." + score);
-
+           + obj.box + "." + swapObj.box + "." + obj.name);
     }
 
 
