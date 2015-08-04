@@ -15,6 +15,7 @@
         game_server = module.exports = { games : {}, game_count:0, assignment:0},
         fs          = require('fs');
         clientTangramList = [];
+        totalScore = 0;
 	    
     if (use_db) {
 	    database    = require(__dirname + "/database"),
@@ -88,13 +89,17 @@ game_server.server_onMessage = function(client,message) {
     writeData(client, "drag", message_parts);
     break;
 
-
+// var totalScore = 0;
   case 'advanceRound' :
+    // var totalScore;
     var score = gc.game_score(gc.objects);
+    totalScore = totalScore + score;
+    console.log("totalScore is: " + totalScore);
+    console.log("score is: " + score);
     var boxLocations = message_parts[1];
     writeData(client, "finalBoard", message_parts)
     _.map(all, function(p){
-      p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score});});
+      p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score, totalScore: totalScore});});
     gc.newRound()
     break;
   case 'playerTyping' :
