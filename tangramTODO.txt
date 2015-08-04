@@ -102,3 +102,4 @@ As of 7/20
 	[ ] problem with commit/push from nmaslan16 via var path. Works from tmp path
 [ ] Submiterator getresults to get the subject data. Push pull
 	[ ] Does submiterator overwrite the results each time getresults/reformat is called?
+
