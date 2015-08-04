@@ -97,7 +97,13 @@ game_server.server_onMessage = function(client,message) {
       p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score});});
     gc.newRound()
     break;
-    
+  case 'playerTyping' :
+    console.log("player is typing?", message_parts[1]);
+    _.map(others, function(p) {
+      p.player.instance.emit( 'playerTyping',
+			      {typing: message_parts[1]});
+    });
+    break;
   case 'chatMessage' :
     // TODO: write data to file or do something with it...
     if(client.game.player_count == 2 && !gc.paused) 
