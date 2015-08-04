@@ -204,6 +204,20 @@ client_connect_to_server = function(game) {
   //Store a local reference to our connection to the server
   game.socket = io.connect();
 
+  // Tell other player if someone is typing...
+  $('#chatbox').change(function() {
+    var sentTyping = false;
+    if($('#chatbox').val() != "" && !sentTyping) {
+      game.socket.send('playerTyping.true');
+      sentTyping = true;
+      console.log("typing");
+    } else if($("#chatbox").val() == "") {
+      game.socket.send('playerTyping.false');
+      sentTyping = false;
+      console.log("not typing");
+    }
+  });
+  
   // Tell server when client types something in the chatbox
   $('form').submit(function(){
     var origMsg = $('#chatbox').val()
@@ -216,13 +230,21 @@ client_connect_to_server = function(game) {
     return false;   
   });
 
-
+  game.socket.on('playerTyping', function(data){
+    console.log(data);
+    if(data.typing == "true") {
+      $('#messages').append('<span class="typing-msg">Other player is typing...</span>');
+    } else {
+      $('.typing-msg').remove();
+    }
+  });
 
   // Update messages log when other players send chat
   game.socket.on('chatMessage', function(data){
     var otherRole = my_role === "director" ? "Matcher" : "Director";
     var source = data.user === my_id ? "You" : otherRole;
     var col = source === "You" ? "#363636" : "#707070";
+    $('.typing-msg').remove();
     $('#messages').append($('<li style="padding: 5px 10px; background: ' + col + '">').text(source + ": " + data.msg));
     $('#messages').stop().animate({
       scrollTop: $("#messages")[0].scrollHeight
