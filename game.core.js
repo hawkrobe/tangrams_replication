@@ -62,7 +62,7 @@ var game_core = function(game_instance){
     this.trialList = this.makeTrialList();
     this.data = {id : this.instance.id.slice(0,6), trials : [],
      catch_trials : [], system : {}, 
-     totalScore : {greetings: 'greetings'},
+     totalScore : {},
      subject_information : {gameID: this.instance.id.slice(0,6), 
         DirectorBoards : this.nameAndBoxAll(this.trialList, 'director'),
         initialMatcherBoards : this.nameAndBoxAll(this.trialList, 'matcher')}}

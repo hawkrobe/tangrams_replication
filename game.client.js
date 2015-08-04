@@ -252,21 +252,21 @@ client_connect_to_server = function(game) {
 
   });
   
-  var totalScore = 0;  
+  // var totalScore = 0;  
   // Tell server when matncher presses the submit round button in order to advance to the next round
   $(document).ready(function() {
     $("#submitbutton").click(function(){
-      var score = game.game_score(game.objects);
-      totalScore = totalScore + score;
-      //at the end of the last round, send in the totalScore through mmturkey (look at dropDownTip function )
-      if (game.roundNum + 1 == 6) {
-        console.log('round6 totalScore: ' + totalScore);
+      // var score = game.game_score(game.objects);
+      // totalScore = totalScore + score;
+      // at the end of the last round, send in the totalScore through mmturkey (look at dropDownTip function )
+      // if (game.roundNum + 1 == 6) {
+        // console.log('round6 totalScore: ' + totalScore);
         // game.data.totalScore = totalScore;
-        game.data.totalScore = _.extend(game.data.totalScore, 
-               {'totalScore' : totalScore}); 
-      };
+        // game.data.totalScore = _.extend(game.data.totalScore, 
+        //        {'totalScore' : totalScore}); 
+      // };
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
-      game.socket.send('advanceRound.' + matcherBoxLocations + "." + score);
+      game.socket.send('advanceRound.' + matcherBoxLocations);
     })
   });
   
@@ -278,6 +278,9 @@ client_connect_to_server = function(game) {
       $('#roundnumber').empty()
       $('#instructs').empty().append("Round " + (game.roundNum + 1) + 
 				     " score: " + data.score + " correct!");
+      //when game is over we want to store the totalScore of the game to send to mmturkey
+      game.data.totalScore = _.extend(game.data.totalScore, 
+        {'totalScore' : data.totalScore}); 
     } else {
       $('#roundnumber').empty().append("Round ", game.roundNum + 2);
     }
