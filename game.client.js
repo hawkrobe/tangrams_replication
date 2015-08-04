@@ -261,9 +261,9 @@ client_connect_to_server = function(game) {
       //at the end of the last round, send in the totalScore through mmturkey (look at dropDownTip function )
       if (game.roundNum + 1 == 6) {
         console.log('round6 totalScore: ' + totalScore);
-        game.data.totalScore = totalScore;
-        // game.data.totalScore = _.extend(game.data.totalScore, 
-        //        {'totalScore' : totalScore}); 
+        // game.data.totalScore = totalScore;
+        game.data.totalScore = _.extend(game.data.totalScore, 
+               {'totalScore' : totalScore}); 
       };
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
       game.socket.send('advanceRound.' + matcherBoxLocations + "." + score);
