@@ -257,10 +257,10 @@ client_connect_to_server = function(game) {
   $(document).ready(function() {
     $("#submitbutton").click(function(){
       var score = game.game_score(game.objects);
-      totalScore = game.totalScore + score;
+      totalScore = totalScore + score;
       game.data.totalScore = _.extend(game.data.totalScore, 
                {'totalScore' : totalScore}); 
-      console.log("totalScore is: " + game.totalScore);
+      console.log("totalScore is: " + totalScore);
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
       game.socket.send('advanceRound.' + matcherBoxLocations + "." + score);
     })
