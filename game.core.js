@@ -40,8 +40,8 @@ var game_core = function(game_instance){
   this.cellPadding = 50;
   this.world = {height : (this.cellDimensions.height * this.numVerticalCells
               + this.cellPadding),
-    width : (this.cellDimensions.width * this.numHorizontalCells
-       + this.cellPadding)}; 
+              width : (this.cellDimensions.width * this.numHorizontalCells
+              + this.cellPadding)}; 
   
   // Which round are we on (initialize at -1 so that first round is 0-indexed)
   this.roundNum = -1;
@@ -63,7 +63,8 @@ var game_core = function(game_instance){
     this.data = {id : this.instance.id.slice(0,6), trials : [],
      catch_trials : [], system : {}, 
      totalScore : {},
-     subject_information : {gameID: this.instance.id.slice(0,6), 
+     subject_information : 
+        {gameID: this.instance.id.slice(0,6), 
         DirectorBoards : this.nameAndBoxAll(this.trialList, 'director'),
         initialMatcherBoards : this.nameAndBoxAll(this.trialList, 'matcher')}}
 
@@ -135,7 +136,6 @@ game_core.prototype.newRound = function() {
     roundNow = this.roundNum + 1;
     console.log("now on round " + roundNow);
     this.objects = this.trialList[this.roundNum];
-    // console.log("roundNum: " + this.roundNum);
     //when there is a new round, we want the server to send an update to the client
     //with the new roundNum;
     this.server_send_update();
@@ -162,7 +162,6 @@ game_core.prototype.randomizeLocations = function() {
     var randomIndex = Math.floor(Math.random()*possibilities.length);
     return possibilities.splice(randomIndex, 1)[0];
   }
-
   return _.map(_.range(this.numHorizontalCells * this.numVerticalCells), function(v) {
     return getRandomFromBucket();
   });
@@ -190,7 +189,7 @@ game_core.prototype.getGridLocs = function(trialList, role) {
   }
 };
 
-//returns box location range(1,12) of tangram given [x,y] loc pair
+// returns box location range(1,12) of tangram, given [x,y] loc pair
 game_core.prototype.boxLoc = function(loc) {
   var box = 0;
   var x = loc[0];
@@ -205,7 +204,7 @@ game_core.prototype.boxLoc = function(loc) {
   }
 };
 
-// //returns list of boxes for each tangram 
+// returns list of boxes for each tangram (1 round only)
 game_core.prototype.getBoxLocs = function(trialList, role) {
   var tangramGridLocs = this.getGridLocs(trialList, role);
   var self = this;
@@ -221,7 +220,7 @@ game_core.prototype.nameAndBox = function(trialList, role) {
     return _.zip(names, boxLocs);
 };
 
-// //returns list of name and box for all tangrams in all rounds
+// returns list of name and box for all tangrams in all rounds
 game_core.prototype.nameAndBoxAll = function(totalTrialList, role) {
   var self = this;
   return _.map(totalTrialList, function(x) {
@@ -258,7 +257,7 @@ _.map(directorLocs, function(x) {
   })
 };
 
-// Randomly sets tangram locations for each trial
+// Randomly sets tangram locations for each round
 game_core.prototype.makeTrialList = function () {
   var local_this = this;
   var trialList =_.map(_.range(this.numRounds), function(i) { //creating a list?
@@ -295,21 +294,8 @@ game_core.prototype.makeTrialList = function () {
       return tangram;
     });
   });
-  //make sure the tangrams locations are different each round (sudo shuffle)
   return(trialList);
 };
-//
-
-//
-// game_core.prototype.game_score = function(game_objects) {
-// var correct;
-// return _.map(game_objects.matcherCoords.box, function(x) {
-//   if (x == game_objects[x].directorCoords.box) {
-//     correct = correct + 1;
-//   }
-//   return correct;
-//   })
-// };
 
 //scores the number of incorrect tangram matches between matcher and director
 //returns the correct score out of total tangrams
@@ -362,7 +348,7 @@ game_core.prototype.getTangramFromCell = function (gridX, gridY) {
     console.log("Did not find tangram from cell!")
   }
 
-// //readjusts trueX and trueY values based on the objLocation and width and height of image (objImage)
+// readjusts trueX and trueY values based on the objLocation and width and height of image (objImage)
 game_core.prototype.getTrueCoords = function (coord, objLocation, objImage) {
   var trueX = this.getPixelFromCell(objLocation.gridX, objLocation.gridY).centerX - objImage.width/2;
   var trueY = this.getPixelFromCell(objLocation.gridX, objLocation.gridY).centerY - objImage.height/2;
@@ -385,7 +371,7 @@ game_core.prototype.server_send_update = function(){
   });
 
   var state = {
-    gs : this.game_started,                      // true when game's started
+    gs : this.game_started,   // true when game's started
     pt : this.players_threshold,
     pc : this.player_count,
     dataObj  : this.data,
@@ -399,14 +385,12 @@ game_core.prototype.server_send_update = function(){
     _.extend(state, {objects: this.objects});
   }
 
-  // console.log(this.objects);
   //Send the snapshot to the players
   this.state = state;
   _.map(local_game.get_active_players(), function(p){
     p.player.instance.emit( 'onserverupdate', state);});
 };
 
-// //what is this?
 // (4.22208334636).fixed(n) will return fixed point value to n places, default n = 3
 // Number.prototype.fixed = function(n) { n = n || 3; return parseFloat(this.toFixed(n)); };
 

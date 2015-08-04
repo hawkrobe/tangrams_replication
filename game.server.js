@@ -7,9 +7,6 @@
 
     MIT Licensed.
 */
-
-//require('look').start()
-
     var
         use_db      = false,
         game_server = module.exports = { games : {}, game_count:0, assignment:0},
@@ -62,7 +59,6 @@ game_server.server_onMessage = function(client,message) {
     var swapObjBox = message_parts[8];
 
 
-    
     // Update the local copy to match the new positions of these items!
     gc.objects[objIndex].matcherCoords.trueX = objTrueX;
     gc.objects[objIndex].matcherCoords.trueY = objTrueY;
@@ -82,26 +78,18 @@ game_server.server_onMessage = function(client,message) {
     gc.objects[swapIndex].matcherCoords.gridY = swapObjCell[1];  
 
     writeData(client, "dropObj", message_parts);
-
     break;
-
-  case 'drag' :
-    writeData(client, "drag", message_parts);
-    break;
-
-// var totalScore = 0;
+  
   case 'advanceRound' :
-    // var totalScore;
     var score = gc.game_score(gc.objects);
     totalScore = totalScore + score;
-    console.log("totalScore is: " + totalScore);
-    console.log("score is: " + score);
     var boxLocations = message_parts[1];
     writeData(client, "finalBoard", message_parts)
     _.map(all, function(p){
       p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score, totalScore: totalScore});});
     gc.newRound()
     break;
+  
   case 'playerTyping' :
     console.log("player is typing?", message_parts[1]);
     _.map(others, function(p) {
@@ -109,12 +97,11 @@ game_server.server_onMessage = function(client,message) {
 			      {typing: message_parts[1]});
     });
     break;
+  
   case 'chatMessage' :
-    // TODO: write data to file or do something with it...
     if(client.game.player_count == 2 && !gc.paused) 
     writeData(client, "message", message_parts)
     // Update others
-    // console.log(message_parts);  
     var msg = message_parts[1].replace(/~~~/g,'.');
     _.map(all, function(p){
       p.player.instance.emit( 'chatMessage', {user: client.userid, msg: msg});});
@@ -129,47 +116,31 @@ game_server.server_onMessage = function(client,message) {
 var writeData = function(client, type, message_parts) {
   var gc = client.game.gamecore;
   var roundNum = gc.state.roundNum + 1;
-  // var score = gc.game_score(gc.objects);
   var id = gc.instance.id.slice(0,6);
-  // var board = gc.objects;
-  // console.log(board);
   switch(type) {
-  case "dropObj" :
-    var dragObjIndex = message_parts[1];
-    var swapObjIndex = message_parts[2];
-    var dragObjTrueX = message_parts[3];
-    var dragObjTrueY = message_parts[4];
-    var swapObjTrueX = message_parts[5];
-    var swapObjTrueY = message_parts[6];
-    var dropObjBox = message_parts[7];
-    var swapObjBox = message_parts[8];
-    var dropObjName = message_parts[9];
-    var score = message_parts[11];
-    console.log(score);
+    case "dropObj" :
+      var dropObjBox = message_parts[7];
+      var dropObjName = message_parts[9];
+      var score = gc.game_score(gc.objects);  //compute the score based on the updated tangram board
+      var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + dropObjName + ',' + dropObjBox + '\n');
+      console.log("dropObj: " + line);
+      gc.dropObjStream.write(line, function (err) {if(err) throw err;});
+      break;
 
-    var dragObjCell = gc.getCellFromPixel(dragObjTrueX, dragObjTrueY);
-    var swapObjCell = gc.getCellFromPixel(swapObjTrueX, swapObjTrueY);
+    case "message" :
+      var msg = message_parts[1].replace('~~~','.')
+      var line = (id + ',' + Date.now() + ',' + roundNum + ',' + client.role + ',"' + msg + '"\n')
+      console.log("message:" + line);
+      gc.messageStream.write(line, function (err) {if(err) throw err;});
+      break;
 
-    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + score + ',' + dropObjName + ',' + dropObjBox + '\n');
-    console.log("dropObj: " + line);
-    gc.dropObjStream.write(line, function (err) {if(err) throw err;});
-    break;
-
-  case "message" :
-    var msg = message_parts[1].replace('~~~','.')
-    // console.log(Date.now())
-    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + client.role + ',"' + msg + '"\n')
-    console.log("message:" + line);
-    gc.messageStream.write(line, function (err) {if(err) throw err;});
-    break;
-
-  case "finalBoard" :
-    var board = message_parts[1];
-    var score = message_parts[2];
-    var line = (id + ',' + Date.now() + ',' + roundNum + ',' + board + ',' + score + '\n')
-    console.log("finalBoard:" + line);
-    gc.finalBoardStream.write(line, function (err) {if(err) throw err;});
-    break;
+    case "finalBoard" :
+      var board = message_parts[1];
+      var score = gc.game_score(gc.objects); //compute score with updated board
+      var line = (id + ',' + Date.now() + ',' + roundNum + ',' + board + ',' + score + '\n')
+      console.log("finalBoard:" + line);
+      gc.finalBoardStream.write(line, function (err) {if(err) throw err;});
+      break;
   }
 }
 
@@ -199,7 +170,6 @@ game_server.findGame = function(player) {
         // players are array of player objects
         game.gamecore.players.push({id: player.userid, 
 				    player: new game_player(gamecore,player)});
-
 
          // Establish write streams
         var d = new Date();
@@ -259,11 +229,11 @@ game_server.createGame = function(player) {
     
     //Create a new game instance
     var game = {
-	//generate a new id for the game
+	       //generate a new id for the game
         id : gameID,           
-	//store list of players in the game
+	       //store list of players in the game
         player_instances: [{id: player.userid, player: player}],
-	//for simple checking of state
+	       //for simple checking of state
         player_count: 1             
     };
     

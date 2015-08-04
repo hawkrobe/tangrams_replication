@@ -25,15 +25,13 @@ var visible;
 var incorrect;
 var dragging;
 var waiting;
-// var upperLeftX;
-// var upperLeftY
 
 client_ondisconnect = function(data) {
   submitInfoAndClose()
 };
 
 submitInfoAndClose = function() {
-    // Redirect to exit survey
+  // Redirect to exit survey
   console.log("server booted")      
   game.viewport.style.display="none";
   $('#message_panel').hide();
@@ -71,15 +69,12 @@ client_onserverupdate_received = function(data){
   //get names of objects sent from server and current objects 
   var dataNames = _.map(data.objects, function(e)
 			{ return e.name;});
-  // console.log("dataNames: " + dataNames);
   var localNames = _.map(game.objects,function(e)
 			 {return e.name;});
 
   // If your objects are out-of-date (i.e. if there's a new round), set up
   // machinery to draw them
-  // if (game.objects.length == 0 || !_.isEqual(dataNames, localNames)) { 
     if (game.roundNum != data.roundNum) {
-    // eraseHighlight(game, game.get_player(my_id), 0, 0);
     game.objects = _.map(data.objects, function(obj) {
       // Extract the coordinates matching your role
       var customCoords = my_role == "director" ? obj.directorCoords : obj.matcherCoords;
@@ -97,9 +92,7 @@ client_onserverupdate_received = function(data){
 			   customObj.width, customObj.height);
 
      };
-             // game.ctx.drawGrid();
-      // drawObjects(game, game.get_player(my_id));
-      return _.extend(customObj, {img: imgObj});
+     return _.extend(customObj, {img: imgObj});
     });
   };
 
@@ -107,20 +100,15 @@ client_onserverupdate_received = function(data){
   // Get rid of "waiting" screen if there are multiple players
   if(data.players.length > 1) 
     game.get_player(my_id).message = "";
-  
-  game.game_started = data.gs;
-  game.players_threshold = data.pt;
-  game.player_count = data.pc;
-  game.roundNum = data.roundNum
-  game.data = data.dataObj
+    game.game_started = data.gs;
+    game.players_threshold = data.pt;
+    game.player_count = data.pc;
+    game.roundNum = data.roundNum
+    game.data = data.dataObj
 
   // Draw all this new stuff
   drawScreen(game, game.get_player(my_id));
 }; 
-
-
-
-
 
 // This is where clients parse socket.io messages from the server. If
 // you want to add another event (labeled 'x', say), just add another
@@ -180,7 +168,6 @@ window.onload = function(){
   //Fetch the viewport
   game.viewport = document.getElementById('viewport');
 
-  
   //Adjust its size
   game.viewport.width = game.world.width;
   game.viewport.height = game.world.height;
@@ -197,7 +184,7 @@ window.onload = function(){
 
 client_addnewround = function(game) {
   $('#roundnumber').append(game.roundNum);
-}
+};
 
 // Associates callback functions corresponding to different socket messages
 client_connect_to_server = function(game) {
@@ -249,29 +236,18 @@ client_connect_to_server = function(game) {
     $('#messages').stop().animate({
       scrollTop: $("#messages")[0].scrollHeight
     }, 800);
-
   });
   
-  // var totalScore = 0;  
   // Tell server when matncher presses the submit round button in order to advance to the next round
   $(document).ready(function() {
     $("#submitbutton").click(function(){
-      // var score = game.game_score(game.objects);
-      // totalScore = totalScore + score;
-      // at the end of the last round, send in the totalScore through mmturkey (look at dropDownTip function )
-      // if (game.roundNum + 1 == 6) {
-        // console.log('round6 totalScore: ' + totalScore);
-        // game.data.totalScore = totalScore;
-        // game.data.totalScore = _.extend(game.data.totalScore, 
-        //        {'totalScore' : totalScore}); 
-      // };
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
       game.socket.send('advanceRound.' + matcherBoxLocations);
     })
   });
   
-    // Set up new round on client's browsers after submit round button is pressed. 
-  // This means, clear the chatboxes, update round number, and update score on screen
+  // Set up new round on client's browsers after submit round button is pressed. 
+  // This means clear the chatboxes, update round number, and update score on screen
   game.socket.on('newRoundUpdate', function(data){
     $('#messages').empty();
     if(game.roundNum+2 > game.numRounds) {
@@ -286,12 +262,12 @@ client_connect_to_server = function(game) {
     }
     $('#score').empty().append("Round " + (game.roundNum + 1) + 
 			       " score: " + data.score + " correct!");
-
     var player = game.get_player(my_id)
     player.currentHighlightX = null;
     player.currentHighlightY = null;
   });
 
+  //so that we can measure the duration of the game
   game.startTime = Date.now();
   
   //When we connect, we are not 'connected' until we have an id
@@ -330,7 +306,6 @@ client_onjoingame = function(num_players, role) {
     $("#submitbutton").show();
   }
 
-
   // Only give Submit board button to agent (matcher)
   if(role === "director") {
   $('#submitbutton').remove();
@@ -364,7 +339,6 @@ function mouseDownListener(evt) {
   mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
   mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
   
-
   //find which shape was clicked
   for (i=0; i < game.objects.length; i++) {
     if (hitTest(game.objects[i], mouseX, mouseY)) {
@@ -380,12 +354,10 @@ function mouseDownListener(evt) {
   }
   if (dragging) {
     window.addEventListener("mousemove", mouseMoveListener, false);
-
-
   }
+
   game.viewport.removeEventListener("mousedown", mouseDownListener, false);
   window.addEventListener("mouseup", mouseUpListener, false);
-
 
   //code below prevents the mouse down from having an effect on the main browser window:
   if (evt.preventDefault) {
@@ -397,14 +369,10 @@ function mouseDownListener(evt) {
   return false;
 }
 
-
 function mouseUpListener(evt) {    
-
   game.viewport.addEventListener("mousedown", mouseDownListener, false);
   window.removeEventListener("mouseup", mouseUpListener, false);
   if (dragging) {
-    // var msg = 'drag.' + Date.now();
-    // game.socket.send(msg);
     // Set up the right variables
     var bRect = game.viewport.getBoundingClientRect();
     var dropX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
@@ -413,6 +381,7 @@ function mouseUpListener(evt) {
 
     //find cell that the dragged tangram is moving to
     var cell = game.getCellFromPixel(dropX, dropY);
+    
     //find the tangram in the cell (the swapObj)
     var swapIndex = game.getTangramFromCell(cell[0], cell[1]);
     var swapObj =  game.objects[swapIndex];
@@ -423,7 +392,6 @@ function mouseUpListener(evt) {
     //   obj.trueY = game.getTrueCoords("yCoord", obj, obj);
     // }
 
-
     // If you drag mouse outside of grid and release, tangram snaps back to its original cell 
    mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
    mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
@@ -432,7 +400,6 @@ function mouseUpListener(evt) {
 
       obj.trueX = game.getTrueCoords("xCoord", obj, obj);
       obj.trueY = game.getTrueCoords("yCoord", obj, obj);
-
      }
     
     else {
@@ -441,62 +408,52 @@ function mouseUpListener(evt) {
       swapObj.gridY = obj.gridY;
       swapObj.trueX = game.getTrueCoords("xCoord", obj, swapObj);
       swapObj.trueY = game.getTrueCoords("yCoord", obj, swapObj);
+      
       //update box location
       swapObj.box = obj.box;
-      //fix indexes
-
+      
+      //fix location properties for the swapped object
       game.objects[swapIndex].matcherCoords.gridX = swapObj.gridX;
       game.objects[swapIndex].matcherCoords.gridY = swapObj.gridY;
       game.objects[swapIndex].matcherCoords.trueX = swapObj.gridX;
       game.objects[swapIndex].matcherCoords.trueY = swapObj.gridY;
-      //updata box location
+      
+      //update box location
       game.objects[swapIndex].matcherCoords.box = swapObj.box;
-
+      
       // center dragged tangram (obj) in its new cell
       obj.gridX = cell[0];
       obj.gridY = cell[1];
       obj.trueX = game.getPixelFromCell(cell[0], cell[1]).centerX - obj.width/2;
       obj.trueY = game.getPixelFromCell(cell[0], cell[1]).centerY - obj.height/2;
+      
       //update box
       obj.box = game.boxLoc(cell);
 
+      //fix location properties for the dropped object
       game.objects[game.dragIndex].matcherCoords.gridX = obj.gridX;
       game.objects[game.dragIndex].matcherCoords.gridY = obj.gridY;
       game.objects[game.dragIndex].matcherCoords.trueX = obj.trueX;
       game.objects[game.dragIndex].matcherCoords.trueY = obj.trueY; 
       game.objects[game.dragIndex].matcherCoords.box = obj.box;
 
-      // console.log(game.objects);
-      
-      // var self = game;
-      // var info = _.zip(self.getNames(self.objects), self.getBoxLocs(self.objects, 'matcher'));
-      // console.log(info);
-
       var tangramNames = game.getNames(game.objects);
       var boxLocations = game.getBoxLocs(game.objects, 'matcher');
 
-      var score = game.game_score(game.objects);
-      console.log("score is: " + score);
+      //send information so that server can update their copy of the tangram board
       game.socket.send("dropObj."
 		       + game.dragIndex + "." + swapIndex + "."
 		       + Math.round(obj.trueX) + "." + Math.round(obj.trueY) + "."
 		       + Math.round(swapObj.trueX) + "." + Math.round(swapObj.trueY) + "."
-           + obj.box + "." + swapObj.box + "." + obj.name + "." + Date.now() + "." + score);
-
+           + obj.box + "." + swapObj.box + "." + obj.name);
     }
-
 
     // Tell server where you dropped it
     drawScreen(game, game.get_player(my_id));
     dragging = false;
     window.removeEventListener("mousemove", mouseMoveListener, false);
   }
-
-
 }
-
-
-
 
 function mouseMoveListener(evt) {
     // prevent from dragging offscreen
@@ -516,7 +473,6 @@ function mouseMoveListener(evt) {
     player.currentHighlightX = game.getPixelFromCell(cell[0], cell[1]).upperLeftX;
     player.currentHighlightY = game.getPixelFromCell(cell[0], cell[1]).upperLeftY;
 
-
     //clamp x and y positions to prevent object from dragging outside of canvas
     var posX = mouseX - dragHoldX;
     posX = (posX < minX) ? minX : ((posX > maxX) ? maxX : posX);
@@ -528,7 +484,7 @@ function mouseMoveListener(evt) {
     obj.trueX = Math.round(posX);
     obj.trueY = Math.round(posY);
 
-    // Draw its
+    // Draw it
     drawScreen(game, game.get_player(my_id));
 }
 
