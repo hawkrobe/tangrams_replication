@@ -250,7 +250,7 @@ client_connect_to_server = function(game) {
           {'totalScore' : totalScore}); 
       };
       var matcherBoxLocations = game.getBoxLocs(game.objects, 'matcher');
-      game.socket.send('advanceRound.' + matcherBoxLocations);
+      game.socket.send('advanceRound.' + matcherBoxLocations + score);
     })
   });
   

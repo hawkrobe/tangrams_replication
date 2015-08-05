@@ -82,11 +82,10 @@ game_server.server_onMessage = function(client,message) {
   
   case 'advanceRound' :
     var score = gc.game_score(gc.objects);
-    // totalScore = totalScore + score;
     var boxLocations = message_parts[1];
     writeData(client, "finalBoard", message_parts)
     _.map(all, function(p){
-      p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score, totalScore: totalScore});});
+      p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score});});
     gc.newRound()
     break;
   
@@ -136,7 +135,7 @@ var writeData = function(client, type, message_parts) {
 
     case "finalBoard" :
       var board = message_parts[1];
-      // var score = gc.game_score(gc.objects); //compute score with updated board
+      var score = gc.game_score(gc.objects);       //compute score with updated board
       var line = (id + ',' + Date.now() + ',' + roundNum + ',' + board + ',' + score + '\n')
       console.log("finalBoard:" + line);
       gc.finalBoardStream.write(line, function (err) {if(err) throw err;});
@@ -187,7 +186,7 @@ game_server.findGame = function(player) {
 
 
         var finalBoard_f = "data/finalBoard/" + name + ".csv"
-        fs.writeFile(finalBoard_f, "gameid, time, roundNum, A, B, C, D, E, F, G, H, I, J, K ,L , score\n", function (err) {if(err) throw err;})
+        fs.writeFile(finalBoard_f, "gameid, time, roundNum, A, B, C, D, E, F, G, H, I, J, K, L, score\n", function (err) {if(err) throw err;})
         game.gamecore.finalBoardStream = fs.createWriteStream(finalBoard_f, {'flags' : 'a'});
 
 
