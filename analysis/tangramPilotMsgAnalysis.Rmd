@@ -1,0 +1,43 @@
+---
+title: "tangramPilotMessage"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+Import pilot Message file
+```{r}
+tangramMsg <- read.csv('tangramPilotMsg.csv')
+```
+
+```{r explorMsg}
+str(tangramMsg)
+head(tangramMsg)
+summary(tangramMsg)
+```
+
+```{r wordCount}
+wordcount <- function(str) {
+  sapply(gregexpr("\\b\\W+\\b", str, perl=TRUE), function(x) sum(x>0) ) + 1 
+}
+```
+
+```{r wordcount2}
+wordcount2 <- function(str) {
+sapply(gregexpr("\\W+", str1), length) + 1
+}
+```
