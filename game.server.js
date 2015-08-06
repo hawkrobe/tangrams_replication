@@ -83,6 +83,7 @@ game_server.server_onMessage = function(client,message) {
   case 'advanceRound' :
     var score = gc.game_score(gc.objects);
     var boxLocations = message_parts[1];
+    console.log(boxLocations);
     writeData(client, "finalBoard", message_parts)
     _.map(all, function(p){
       p.player.instance.emit( 'newRoundUpdate', {user: client.userid, score: score});});
