@@ -28,3 +28,5 @@ gameid, time, roundNum, sender, contents
 0392-4,1438802857037,3,matcher,"Hello?"
 0392-4,1438802939534,3,matcher,"Echo!"
 0392-4,1438802980847,4,matcher,"Woot! Got one!"
+
+//did not see any message about disconnecting
