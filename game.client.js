@@ -307,10 +307,10 @@ client_onjoingame = function(num_players, role) {
   // Update w/ role (can only move stuff if agent)
   $('#roleLabel').append(role + '.');
   if(role === "director") {
-    $('#instructs').append("Send messages to help the matcher move their images to match yours. Please do NOT refresh page!")
+    $('#instructs').append("Send messages to help the matcher move their images to match yours. Please do not refresh page!")
     $("#submitbutton").remove();
   } else {
-    $('#instructs').append("Move your images to match the director's board. Please do NOT refresh page!")
+    $('#instructs').append("Move your images to match the director's board. Please do not refresh page!")
     $("#submitbutton").show();
   }
 
