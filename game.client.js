@@ -307,10 +307,10 @@ client_onjoingame = function(num_players, role) {
   // Update w/ role (can only move stuff if agent)
   $('#roleLabel').append(role + '.');
   if(role === "director") {
-    $('#instructs').append("Send messages to help the matcher move their tangrams to match yours!")
+    $('#instructs').append("Send messages to help the matcher move their images to match yours. Please do NOT refresh page!")
     $("#submitbutton").remove();
   } else {
-    $('#instructs').append("Move your tangrams to match the director's tangram board!")
+    $('#instructs').append("Move your images to match the director's board. Please do NOT refresh page!")
     $("#submitbutton").show();
   }
 
@@ -324,7 +324,7 @@ client_onjoingame = function(num_players, role) {
   game.get_player(my_id).role = my_role;
 
   if(num_players == 1)
-    game.get_player(my_id).message = 'Waiting for other player to connect...'; //why does this need to be on?
+    game.get_player(my_id).message = 'Waiting for other player to connect...Please do not refresh this page or at any other point in the game!'; //why does this need to be on?
 
   //     set mouse-tracking event handler
   if(role === "matcher") {
