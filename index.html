@@ -82,7 +82,17 @@
 		<option value="yes">Yes</option>
 		<option value="no">No</option>
 	      </select>
-	      <br><br>
+	   <br><br>
+          <p> How much did you like working with your partner? </p>
+            <select onChange="dropdownTip('partner::' + this.value)">
+        <option value = ""></option>
+        <option value="not much">Not that much</option>
+        <option value="okay">My partner was fine</option>
+        <option value="liked">I liked working with my partner</option>
+        <option value="loved">I really enjoyed working with my partner</option>
+          </select>
+        <br><br>
+
 	      <p> Do you have any comments on the experiment? </p>
 	      <textarea id='comments' rows="4" cols="50"></textarea>
 	      <br>

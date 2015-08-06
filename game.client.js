@@ -515,6 +515,9 @@ function dropdownTip(data){
   case 'language' :
     game.data.subject_information = _.extend(game.data.subject_information, 
 					     {'nativeEnglish' : commands[1]}); break;
+  case 'partner' :
+    game.data.subject_information = _.extend(game.data.subject_information,
+                {'ratePartner' : commands[1]}); break;
   case 'submit' :
     game.data.subject_information = _.extend(game.data.subject_information, 
 				   {'comments' : $('#comments').val(), 
