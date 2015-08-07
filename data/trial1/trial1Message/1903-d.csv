@@ -1,4 +1,4 @@
-gameid, time, roundNum, sender, contents
+gameid,time,roundNum,sender,contents
 1903-d,1438804327539,1,matcher,"hello?"
 1903-d,1438804329687,1,director,"hi"
 1903-d,1438804346910,1,director,"1. kind of looks like a rabbit"

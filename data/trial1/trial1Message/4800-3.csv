@@ -1,4 +1,4 @@
-gameid, time, roundNum, sender, contents
+gameid,time,roundNum,sender,contents
 4800-3,1438802508715,1,matcher,"hi"
 4800-3,1438802532448,1,director,"#1 has a diamond on top and looks like a pacman on the right"
 4800-3,1438802555932,1,matcher,"okay "

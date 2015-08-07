@@ -1,4 +1,4 @@
-gameid, time, roundNum, sender, contents
+gameid,time,roundNum,sender,contents
 4060-2,1438805807682,1,director,"Hi"
 4060-2,1438805811946,1,matcher,"Hi"
 4060-2,1438805825575,1,director,"OK, so #1 looks kind of like a person pointing to their left"

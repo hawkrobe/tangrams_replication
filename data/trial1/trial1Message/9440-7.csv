@@ -1,4 +1,4 @@
-gameid, time, roundNum, sender, contents
+gameid,time,roundNum,sender,contents
 9440-7,1438806347263,1,director,"Hello"
 9440-7,1438806351460,1,matcher,"heyo"
 9440-7,1438806375329,1,matcher,"What do you have"

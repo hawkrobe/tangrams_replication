@@ -1,4 +1,4 @@
-gameid, time, roundNum, sender, contents
+gameid,time,roundNum,sender,contents
 6510-9,1438802974584,1,matcher,"Ready"
 6510-9,1438802999827,1,director,"1 is has a square and a triangle at the top with the triangle to the left of the square"
 6510-9,1438803034182,1,director,"It comes to a point at the left of the square"

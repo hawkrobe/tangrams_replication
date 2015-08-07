@@ -1,4 +1,4 @@
-gameid, time, roundNum, sender, contents
+gameid,time,roundNum,sender,contents
 3891-4,1438803416035,1,matcher,"Hello"
 3891-4,1438803448836,1,director,"Hello"
 3891-4,1438803456142,1,matcher,"What do you have in 1?"

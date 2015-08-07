@@ -1,4 +1,4 @@
-gameid, time, roundNum, sender, contents
+gameid,time,roundNum,sender,contents
 2388-c,1438808788498,1,matcher,"Hello"
 2388-c,1438808804413,1,director,"The first spot looks like a the profile of a person sitting with their knees up"
 2388-c,1438808823278,1,matcher,"are they facing left?"

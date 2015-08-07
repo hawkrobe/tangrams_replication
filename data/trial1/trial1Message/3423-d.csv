@@ -1,4 +1,4 @@
-gameid, time, roundNum, sender, contents
+gameid,time,roundNum,sender,contents
 3423-d,1438804876121,1,matcher,"hello there"
 3423-d,1438804896022,1,matcher,"I am the matcher"
 3423-d,1438804948898,1,director,"hi"
