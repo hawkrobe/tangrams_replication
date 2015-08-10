@@ -1,0 +1,222 @@
+gameid,time,roundNum,sender,contents,tangram
+3891-4,1438803416035,1,matcher,"Hello",0
+3891-4,1438803448836,1,director,"Hello",0
+3891-4,1438803456142,1,matcher,"What do you have in 1?",A
+3891-4,1438803470045,1,director,"man looking back, kicking forward",A
+3891-4,1438803476964,1,director,"with right leg",A
+3891-4,1438803488745,1,matcher,"In 2?",I
+3891-4,1438803501544,1,director,"man leaning forward, arms forward, kicking back with right foot",I
+3891-4,1438803511996,1,matcher,"3?",L
+3891-4,1438803525061,1,director,"leaning forward, reading a book",L
+3891-4,1438803530398,1,director,"to the right",L
+3891-4,1438803546250,1,matcher,"4?",J
+3891-4,1438803571627,1,director,"sitted, facing camera, straight on",J
+3891-4,1438803585841,1,matcher,"5?",F
+3891-4,1438803605994,1,director,"sitting on ground, looking at knees, feet bent in front, to the left",F
+3891-4,1438803616500,1,matcher,"6?",H
+3891-4,1438803634513,1,director,"kneeling down, looking to the right",H
+3891-4,1438803642483,1,matcher,"7?",G
+3891-4,1438803652917,1,matcher,"Good descriptions by the way",0
+3891-4,1438803657627,1,director,"thanks",0
+3891-4,1438803678900,1,director,"surfing-like arm stretched to the right, but sitting on ground, feet to the left",G
+3891-4,1438803723994,1,matcher,"8?",E
+3891-4,1438803730615,1,director,"bunny looking to the right",E
+3891-4,1438803738089,1,matcher,"Heh. 9?",B
+3891-4,1438803770548,1,director,"child carrying napsack, heading to the left",B
+3891-4,1438803779106,1,matcher,"10?",C
+3891-4,1438803789226,1,director,"falling down to the left, arms outstretched",C
+3891-4,1438803799262,1,matcher,"The ghost! 11?",C
+3891-4,1438803818817,1,director,"reading a book while standing, looking to the left",D
+3891-4,1438803834654,1,matcher,"And 12 is pointing right?",K
+3891-4,1438803837781,1,director,"yep",K
+3891-4,1438803846631,2,matcher,"Boo, only 9.",0
+3891-4,1438803848352,2,matcher,"1?",L
+3891-4,1438803860168,2,director,"One is slight kneel, reading book, looking to the right",L
+3891-4,1438803866053,2,director,"or pointing",L
+3891-4,1438803876140,2,matcher,"Knees bent but not kneeling?",L
+3891-4,1438803880932,2,director,"knees bent",L
+3891-4,1438803886156,2,matcher,"2?",K
+3891-4,1438803902455,2,director,"kneeling, reading book, looking to the right",K
+3891-4,1438803912021,2,director,"the feet go back behind ",K
+3891-4,1438803914797,2,director,"more",K
+3891-4,1438803928106,2,matcher,"Call 1 knees bent and 2 kneeling for future rounds",K
+3891-4,1438803930851,2,matcher,"3?",C
+3891-4,1438803934196,2,director,"okay",C
+3891-4,1438803942606,2,director,"man falling to the left",C
+3891-4,1438803952741,2,matcher,"No legs?",C
+3891-4,1438803960436,2,director,"no legs",C
+3891-4,1438803966664,2,director,"ghost?",C
+3891-4,1438803968039,2,matcher,"3 is the ghost",C
+3891-4,1438803970136,2,matcher,"4?",E
+3891-4,1438803977194,2,director,"bunny, looking to the right",E
+3891-4,1438803985460,2,matcher,"4 is bunny",E
+3891-4,1438803986406,2,matcher,"5?",F
+3891-4,1438804002016,2,director,"child sitting, looking at knees, to the left",F
+3891-4,1438804008799,2,director,"knees bent",F
+3891-4,1438804024067,2,matcher,"Like someone resting under a tree?",F
+3891-4,1438804026619,2,director,"yep",F
+3891-4,1438804033339,2,matcher,"Tree man then",F
+3891-4,1438804034422,2,matcher,"6?",J
+3891-4,1438804053930,2,director,"looking at camera, straight on",J
+3891-4,1438804065882,2,director,"trianglish arm pointing right",J
+3891-4,1438804086905,2,matcher,"Hmm, no idea",J
+3891-4,1438804093637,2,matcher,"Do 7 instead"D
+3891-4,1438804108062,2,director,"reading book, looking to the left, standing",D
+3891-4,1438804127024,2,matcher,"7 is Mr Left",D
+3891-4,1438804129926,2,matcher,"8?",G
+3891-4,1438804141944,2,director,"surfing man",G
+3891-4,1438804155521,2,director,"or yoga",G
+3891-4,1438804167428,2,matcher,"9?",I
+3891-4,1438804180318,2,director,"running to the left, arms outstretched",I
+3891-4,1438804191540,2,director,"right foot back",I
+3891-4,1438804204169,2,matcher,"Running man",I
+3891-4,1438804206210,2,matcher,"10?",B
+3891-4,1438804211844,2,director,"napsack boy",B
+3891-4,1438804239010,2,matcher,"Head like an axe?",B
+3891-4,1438804242186,2,director,"yep",B
+3891-4,1438804245364,2,matcher,"11?",H
+3891-4,1438804279021,2,director,"full kneel, looking down",H
+3891-4,1438804283520,2,director,"no book",H
+3891-4,1438804294503,2,matcher,"Head split in 2?",H
+3891-4,1438804304011,2,director,"no",H
+3891-4,1438804312146,2,director,"it could be tombstone with shadow",H
+3891-4,1438804325336,2,director,"with square on top",H
+3891-4,1438804335095,2,matcher,"Got it. Swaddled baby is what that looks like to me",H
+3891-4,1438804342618,2,director,"okay",H
+3891-4,1438804346839,2,matcher,"12?",A
+3891-4,1438804374718,2,director,"man looking back, feet going to the left",A
+3891-4,1438804388845,2,director,"like he's ready to run",A
+3891-4,1438804410378,2,matcher,"Small triangle to the bottom right?",A
+3891-4,1438804449713,2,director,"there is a foot sticking out to the left, one planted on the ground .",A
+3891-4,1438804456734,2,director,"middle section is like a triangle with the top sliced off",A
+3891-4,1438804463247,2,director,"and a small triangle on the top left",A
+3891-4,1438804471108,2,director,"top right is a square",A
+3891-4,1438804499289,2,director,"the triangle with top sliced off's bottom is to the left",A
+3891-4,1438804525001,3,matcher,"Damn!",0
+3891-4,1438804529041,3,matcher,"Ok, 1",L
+3891-4,1438804544807,3,director,"kneeling ",L
+3891-4,1438804548120,3,director,"while reading",L
+3891-4,1438804551659,3,matcher,"2",H
+3891-4,1438804551799,3,director,"to the right",H
+3891-4,1438804561475,3,director,"tombstone",H
+3891-4,1438804568286,3,matcher,"3",A
+3891-4,1438804592129,3,director,"same as 12 on last one",A
+3891-4,1438804593233,3,director,"um",A
+3891-4,1438804597409,3,director,"man revving up to run",A
+3891-4,1438804606048,3,matcher,"Ok, where is bunny?",E
+3891-4,1438804612143,3,director,"bunny is 4",E
+3891-4,1438804622362,3,matcher,"napsack",B
+3891-4,1438804625708,3,director,"six",B
+3891-4,1438804635907,3,matcher,"man resting under tree?",F
+3891-4,1438804639924,3,director,"10",F
+3891-4,1438804647034,3,matcher,"Ghost?",C
+3891-4,1438804652951,3,director,"7",C
+3891-4,1438804668859,3,matcher,"Knees bent reading book to the right?",K
+3891-4,1438804674004,3,director,"8",K
+3891-4,1438804690143,3,matcher,"Standing man pointing left?",D
+3891-4,1438804698564,3,director,"9",D
+3891-4,1438804714280,3,matcher,"Standing man pointing right",J
+3891-4,1438804717497,3,director,"11",J
+3891-4,1438804742349,3,matcher,"Man doing tai chi (one leg in the air)",I
+3891-4,1438804749882,3,director,"12",I
+3891-4,1438804762790,3,director,"um",I
+3891-4,1438804772612,3,director,"running man is 12",I
+3891-4,1438804781177,3,director,"is that what you mean?",I
+3891-4,1438804804433,3,matcher,"One leg down, one leg back to the right, both arms to the left",I
+3891-4,1438804809914,3,director,"yes",I
+3891-4,1438804811469,3,director,"right",I
+3891-4,1438804851068,3,matcher,"So the 2 I can't understand are the one that looks like he's throwing up into his hat to the right",G
+3891-4,1438804870149,3,matcher,"And the one that looks like a mess",A
+3891-4,1438804882193,3,director,"hm",0
+3891-4,1438804888453,3,matcher,"Where is the one being sick in his hat?",G
+3891-4,1438804917966,3,matcher,"Kneeling with leg to the left",G
+3891-4,1438804930222,3,director,"number 5",G
+3891-4,1438804977138,3,matcher,"And 3 is the weird one like a demented rabbit leaning backwards to the right?",A
+3891-4,1438804983988,3,director,"yep",A
+3891-4,1438804992990,4,matcher,"I think it is making this up",0
+3891-4,1438805000776,4,director,"yep, the score doesn't seem right",0
+3891-4,1438805017801,4,matcher,"Aye. Anyway~~~ Bunny?",E
+3891-4,1438805020690,4,director,"3",E
+3891-4,1438805032692,4,matcher,"Tai chi guy",I
+3891-4,1438805043028,4,director,"9",I
+3891-4,1438805050040,4,matcher,"Tombstone",H
+3891-4,1438805056740,4,director,"5",H
+3891-4,1438805066752,4,matcher,"Kneeling reading",L
+3891-4,1438805081250,4,director,"1",L
+3891-4,1438805088593,4,matcher,"knees bent reading",K
+3891-4,1438805100191,4,director,"8",K
+3891-4,1438805105787,4,matcher,"napsack",B
+3891-4,1438805109865,4,director,"6",B
+3891-4,1438805115101,4,matcher,"Ghost",C
+3891-4,1438805121356,4,director,"11",C
+3891-4,1438805132537,4,matcher,"Resting under tree",F
+3891-4,1438805137851,4,director,"10",F
+3891-4,1438805148974,4,matcher,"Man vomiting in hat",G
+3891-4,1438805159457,4,director,"4",G
+3891-4,1438805170557,4,matcher,"Standing pointing left",D
+3891-4,1438805177301,4,director,"12",D
+3891-4,1438805188737,4,matcher,"Standing pointing right",J
+3891-4,1438805199790,4,director,"2",J
+3891-4,1438805211917,4,matcher,"Demented leaning bunny is &?",A
+3891-4,1438805214390,4,matcher,"7?",A
+3891-4,1438805218877,4,director,"yep",A
+3891-4,1438805232654,5,matcher,"Defo taking the mick",0
+3891-4,1438805237440,5,matcher,"bunny",E
+3891-4,1438805244269,5,director,"11",E
+3891-4,1438805258956,5,matcher,"Seated bunny that is",E
+3891-4,1438805263236,5,director,"yep, seated bunny",E
+3891-4,1438805283401,5,matcher,"Leaning back demented bunny with one square ear and a triangle ear?",G
+3891-4,1438805303284,5,director,"7",G
+3891-4,1438805309108,5,matcher,"Ghost",C
+3891-4,1438805313220,5,director,"8",C
+3891-4,1438805318366,5,matcher,"napsack",B
+3891-4,1438805325220,5,director,"10",B
+3891-4,1438805339267,5,matcher,"Man vomiting in hat while knelt down",J
+3891-4,1438805343361,5,director,"7",G
+3891-4,1438805345818,5,director,"wait",0
+3891-4,1438805349873,5,director,"6",0
+3891-4,1438805353674,5,director,"sorry",0
+3891-4,1438805370468,5,matcher,"knees bent",L
+3891-4,1438805390641,5,director,"12",L
+3891-4,1438805411615,5,matcher,"kneeling reading",K
+3891-4,1438805422143,5,director,"4",K
+3891-4,1438805434467,5,matcher,"tombstone",H
+3891-4,1438805438637,5,director,"2",H
+3891-4,1438805446119,5,matcher,"man resting under tree",F
+3891-4,1438805456488,5,director,"1",F
+3891-4,1438805465904,5,matcher,"standing pointing left",D
+3891-4,1438805474340,5,director,"3",D
+3891-4,1438805482688,5,matcher,"tai chi guy",I
+3891-4,1438805496367,5,director,"9",I
+3891-4,1438805506914,5,matcher,"standing pointing right",J
+3891-4,1438805524713,5,director,"5",J
+3891-4,1438805536934,6,matcher,"Last one!",0
+3891-4,1438805540282,6,director,"yay"
+3891-4,1438805543649,6,matcher,"Man resting under tree",F
+3891-4,1438805550796,6,director,"3",F
+3891-4,1438805562996,6,matcher,"Man kneeling reading to the right",K
+3891-4,1438805580571,6,director,"4",K
+3891-4,1438805598139,6,matcher,"Demented bunny leaning back on one arm",G
+3891-4,1438805608261,6,director,"11",G
+3891-4,1438805613715,6,matcher,"Tombstone",H
+3891-4,1438805618817,6,director,"8",H
+3891-4,1438805628531,6,matcher,"Man vomiting in hat",G
+3891-4,1438805635394,6,director,"6",G
+3891-4,1438805647122,6,matcher,"Standing man pointing right",J
+3891-4,1438805660961,6,director,"10",J
+3891-4,1438805666473,6,matcher,"Ghost",C
+3891-4,1438805671601,6,director,"7",C
+3891-4,1438805680720,6,matcher,"Sitting bunny",E
+3891-4,1438805693100,6,director,"1",E
+3891-4,1438805703063,6,matcher,"Tai chi guy",I
+3891-4,1438805710644,6,director,"5",I
+3891-4,1438805717462,6,matcher,"napsack",B
+3891-4,1438805725410,6,director,"12",B
+3891-4,1438805737976,6,matcher,"knees bent reading",K
+3891-4,1438805752248,6,director,"9",K
+3891-4,1438805759922,6,matcher,"Standing pointing left",D
+3891-4,1438805772244,6,director,"2",D
+3891-4,1438805792105,6,matcher,"Ok, that's it. Thanks for playing!",0
+3891-4,1438805795306,6,director,"thanks",0
+3891-4,1438805798276,6,director,"have a great day",0
+3891-4,1438805801247,6,matcher,"See ya and good luck!",0
