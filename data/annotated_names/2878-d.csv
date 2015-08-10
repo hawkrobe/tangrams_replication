@@ -1,0 +1,145 @@
+gameid,time,roundNum,sender,contents,tangram
+2878-d,1438802329175,1,matcher,"which is your first image",B
+2878-d,1438802364656,1,matcher,"does your first image resemble someone standing on one leg?",I
+2878-d,1438802373124,1,director,"there is a square and triangle on top.  the triangle is a little on the right side down a bit (at the top)",I
+2878-d,1438802411020,1,director,"no the one leg is image 5",I
+2878-d,1438802429957,1,matcher,"there is one that sort of has bunny ears, where does it go?",E
+2878-d,1438802436818,1,matcher,"two distinct triangles at the top",E
+2878-d,1438802440677,1,director,"8",E
+2878-d,1438802455356,1,director,"3 resembles someone sitting under a tree ",F
+2878-d,1438802477587,1,matcher,"one sort of looks like a falling person with their arms out (falling backwards)",A
+2878-d,1438802482579,1,matcher,"what number is that one",A
+2878-d,1438802504967,1,director,"10",A
+2878-d,1438802541610,1,matcher,"okay one of them doesnt have any distinct triangles.  looks kind of like a lego",H
+2878-d,1438802546665,1,matcher,"where does it go",H
+2878-d,1438802584043,1,director,"2",H
+2878-d,1438802600660,1,matcher,"there is one that looks like a person facing the left carrying a tray",D
+2878-d,1438802604066,1,matcher,"where does it go",D
+2878-d,1438802622436,1,director,"9",D
+2878-d,1438802635615,1,matcher,"there is one carrying a tray facing right, where does it go",L
+2878-d,1438802679385,1,director,"11 ",L
+2878-d,1438802691958,1,matcher,"okay lemme tell you what i have",0
+2878-d,1438802711168,1,matcher,"1. sort of an angel looking thing (reminds me of a kneeling angel praying) something with a wing",C
+2878-d,1438802715040,1,matcher,"2. lego dude",H
+2878-d,1438802720504,1,matcher,"3.  sitting under a tree",F
+2878-d,1438802751690,1,matcher,"4.  you can almost see 2 of the diamond/squares balanced on top of each other at the top",G
+2878-d,1438802758727,1,matcher,"5.  balancing on one leg",I
+2878-d,1438802781495,1,matcher,"6. two traingle looking arm things flailed out to the right",C
+2878-d,1438802802924,1,matcher,"7.  almost totally rectangular on teh left side with 2 triangle points",J
+2878-d,1438802806648,1,matcher,"8.  bunny ears",E
+2878-d,1438802813810,1,matcher,"9.  carrying tray facing left",D
+2878-d,1438802819088,1,matcher,"10.  falling backward",A
+2878-d,1438802824660,1,matcher,"11.  carrying tray to the right",L
+2878-d,1438802845763,1,matcher,"12.  looks like a soldier marching with a flag (square flag) slung over his shoulder",K
+2878-d,1438802911482,1,director,"switch your 10 and 12.  should be good",0
+2878-d,1438802923960,1,matcher,"cool thanks!",0
+2878-d,1438802939075,2,matcher,"where's the one sitting under the tree",F
+2878-d,1438802951396,2,director,"10",F
+2878-d,1438802959358,2,matcher,"where's the guy falling backward",B
+2878-d,1438802976462,2,director,"9",I
+2878-d,1438802985402,2,matcher,"where's the guy standing on one leg",I
+2878-d,1438803015807,2,director,"sorry falling backwards is 7, one leg is 9",I
+2878-d,1438803026353,2,director,"soldier with flag is 11",A
+2878-d,1438803034133,2,director,"angel praying is 12",B
+2878-d,1438803044831,2,matcher,"bunny?",E
+2878-d,1438803044992,2,director,"carrying a tray to the left is 6",D
+2878-d,1438803064544,2,director,"carring tray to right is 8",K
+2878-d,1438803067647,2,director,"bunny at 3",E
+2878-d,1438803104777,2,matcher,"lego dude with no distinct triangles?",H
+2878-d,1438803128452,2,director,"1",H
+2878-d,1438803167697,2,matcher,"mkay, what about the weird one with two triangle arms to the left and one square head to the right",G
+2878-d,1438803200737,2,director,"5",G
+2878-d,1438803237110,2,matcher,"and number 2 is the thing that is mostly rectangular on the left side but has two traingles to the right?",J
+2878-d,1438803324123,3,matcher,"balancing on one leg?",I
+2878-d,1438803330331,3,director,"12",I
+2878-d,1438803337773,3,matcher,"bunny?",E
+2878-d,1438803341292,3,director,"9",E
+2878-d,1438803348135,3,matcher,"lego dude",J
+2878-d,1438803356319,3,director,"10",J
+2878-d,1438803363257,3,matcher,"sitting under tree",F
+2878-d,1438803368015,3,director,"5",F
+2878-d,1438803376068,3,matcher,"soldier marching with flag",A
+2878-d,1438803385644,3,director,"2",A
+2878-d,1438803393232,3,matcher,"tray to the right",K
+2878-d,1438803400206,3,director,"1",K
+2878-d,1438803405562,3,matcher,"tray to left",D
+2878-d,1438803408529,3,director,"6",D
+2878-d,1438803415951,3,matcher,"dude falling backwards",C
+2878-d,1438803419579,3,director,"8",C
+2878-d,1438803425373,3,matcher,"angel",B
+2878-d,1438803432042,3,director,"7",B
+2878-d,1438803450523,3,matcher,"mostly rectangle on left side with 2 pointy triangles to the right?",G
+2878-d,1438803465124,3,director,"3",G
+2878-d,1438803483012,3,matcher,"two square/diamonds stacked on top of each other at the top",L
+2878-d,1438803518690,3,director,"10",L
+2878-d,1438803532198,3,director,"no sorry 11",L
+2878-d,1438803532664,3,matcher,"so lego dude is NOT 10?",J
+2878-d,1438803535069,3,matcher,"ok",0
+2878-d,1438803538032,3,matcher,"gotcha :)",0
+2878-d,1438803549692,4,matcher,"angel",B
+2878-d,1438803558322,4,director,"11",B
+2878-d,1438803564224,4,matcher,"lego dude",J
+2878-d,1438803574823,4,director,"5",J
+2878-d,1438803578965,4,matcher,"bunny",E
+2878-d,1438803581513,4,director,"1",E
+2878-d,1438803586043,4,matcher,"one leg",I
+2878-d,1438803591384,4,director,"3",I
+2878-d,1438803595638,4,matcher,"tray left",D
+2878-d,1438803600341,4,director,"2",D
+2878-d,1438803604405,4,matcher,"tray right",K
+2878-d,1438803606932,4,director,"12",K
+2878-d,1438803612765,4,matcher,"soldier",A
+2878-d,1438803616166,4,director,"7",A
+2878-d,1438803622427,4,matcher,"sitting under tree",F
+2878-d,1438803626517,4,director,"8",F
+2878-d,1438803632414,4,matcher,"falling backward",C
+2878-d,1438803638310,4,director,"9",C
+2878-d,1438803653041,4,matcher,"mostly rectangle on left side, 2 triangles on right",G
+2878-d,1438803670158,4,director,"6",G
+2878-d,1438803686001,4,matcher,"two stacked diamond/squares on top",H
+2878-d,1438803711911,4,director,"10",H
+2878-d,1438803722435,5,matcher,"lego dude",L
+2878-d,1438803734205,5,director,"1",L
+2878-d,1438803737819,5,matcher,"one leg",I
+2878-d,1438803742300,5,director,"9",I
+2878-d,1438803749320,5,matcher,"soldier",A
+2878-d,1438803756484,5,director,"2",A
+2878-d,1438803761721,5,matcher,"falling backward",C
+2878-d,1438803765654,5,director,"8",C
+2878-d,1438803772398,5,matcher,"sitting under tree",F
+2878-d,1438803777450,5,director,"11",F
+2878-d,1438803816954,5,matcher,"mostly rectangular on left side, 2 triangle EDGES on right? has a diamond head (rotated square) directly on top",J
+2878-d,1438803827167,5,matcher,"in center",J
+2878-d,1438803874783,5,director,"4",J
+2878-d,1438803887982,5,matcher,"bunny",E
+2878-d,1438803892705,5,director,"6",E
+2878-d,1438803902829,5,matcher,"tray right",K
+2878-d,1438803908521,5,director,"7",K
+2878-d,1438803914001,5,matcher,"angel",B
+2878-d,1438803918385,5,director,"3",B
+2878-d,1438803942264,5,matcher,"two squares stacked on top",H
+2878-d,1438803955333,5,director,"10",H
+2878-d,1438803964787,5,matcher,"tray left is 12?",D
+2878-d,1438803983011,5,director,"tray left is 5",D
+2878-d,1438803998256,6,matcher,"soldier",A
+2878-d,1438804016929,6,director,"12",A
+2878-d,1438804023786,6,matcher,"falling backwards",C
+2878-d,1438804039830,6,director,"5",C
+2878-d,1438804045337,6,matcher,"sit under tree",F
+2878-d,1438804048635,6,director,"7",F
+2878-d,1438804053075,6,matcher,"one leg",I
+2878-d,1438804058089,6,director,"6",I
+2878-d,1438804062471,6,matcher,"lego dude",L
+2878-d,1438804069706,6,director,"8",L
+2878-d,1438804073910,6,matcher,"angel",B
+2878-d,1438804078167,6,director,"10",B
+2878-d,1438804082312,6,matcher,"bunny",E
+2878-d,1438804090334,6,director,"3",E
+2878-d,1438804097045,6,matcher,"squares stacked at top",H
+2878-d,1438804114852,6,director,"2",H
+2878-d,1438804119913,6,matcher,"tray left",D
+2878-d,1438804123664,6,director,"1",D
+2878-d,1438804128894,6,matcher,"tray right",K
+2878-d,1438804131022,6,director,"9",K
+2878-d,1438804148832,6,matcher,"mostly rectangle on left and 2 triangle edges on right",G
+2878-d,1438804173172,6,director,"4",G
