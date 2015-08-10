@@ -1,0 +1,174 @@
+gameid, time, roundNum, score, name, draggedTo
+0156-a,1438803461076,1,0,H_baby,2
+0156-a,1438803481029,1,0,D_monk,9
+0156-a,1438803484851,1,0,D_monk,1
+0156-a,1438803501735,1,2,F_sadperson,2
+0156-a,1438804006364,1,3,J_compact,3
+0156-a,1438804014755,1,4,G_seal,4
+0156-a,1438804023550,1,5,I_iceskater,5
+0156-a,1438804039556,1,6,B_helpbunny,6
+0156-a,1438804044197,1,6,H_baby,7
+0156-a,1438804060078,1,8,K_waiter,8
+0156-a,1438804093942,1,10,C_ghost,10
+0156-a,1438804103396,1,9,A_bird,12
+0156-a,1438804123924,1,9,L_egypt,11
+0156-a,1438804141578,1,10,A_bird,11
+0156-a,1438804188427,2,1,A_bird,1
+0156-a,1438804202431,2,3,B_helpbunny,2
+0156-a,1438804212873,2,5,I_iceskater,3
+0156-a,1438804220729,2,6,J_compact,4
+0156-a,1438804246982,2,6,K_waiter,5
+0156-a,1438804248659,2,6,F_sadperson,6
+0156-a,1438804295886,2,7,H_baby,7
+0156-a,1438804303558,2,8,G_seal,8
+0156-a,1438804307117,2,9,E_bunny,9
+0156-a,1438804315832,2,8,C_ghost,9
+0156-a,1438804317901,2,9,C_ghost,11
+0156-a,1438804318855,2,10,C_ghost,10
+0156-a,1438804321237,2,12,D_monk,11
+0156-a,1438804347614,3,1,G_seal,1
+0156-a,1438804351441,3,2,B_helpbunny,2
+0156-a,1438804358376,3,3,K_waiter,3
+0156-a,1438804375534,3,3,J_compact,4
+0156-a,1438804378451,3,4,C_ghost,5
+0156-a,1438804413780,3,5,J_compact,7
+0156-a,1438804416010,3,6,H_baby,6
+0156-a,1438804418626,3,6,D_monk,4
+0156-a,1438804422963,3,7,F_sadperson,8
+0156-a,1438804435370,3,8,A_bird,9
+0156-a,1438804439573,3,10,I_iceskater,10
+0156-a,1438804465301,4,1,G_seal,1
+0156-a,1438804477608,4,1,K_waiter,2
+0156-a,1438804478782,4,2,D_monk,3
+0156-a,1438804481131,4,3,L_egypt,2
+0156-a,1438804506657,4,4,H_baby,4
+0156-a,1438804511337,4,5,F_sadperson,5
+0156-a,1438804514712,4,6,A_bird,6
+0156-a,1438804520072,4,8,E_bunny,7
+0156-a,1438804522826,4,10,C_ghost,8
+0156-a,1438804534871,4,12,K_waiter,11
+0156-a,1438804565683,5,1,E_bunny,1
+0156-a,1438804568285,5,2,C_ghost,2
+0156-a,1438804571456,5,3,I_iceskater,3
+0156-a,1438804580428,5,3,K_waiter,4
+0156-a,1438804585215,5,4,B_helpbunny,5
+0156-a,1438804591573,5,5,A_bird,6
+0156-a,1438804599995,5,6,H_baby,7
+0156-a,1438804612005,5,6,L_egypt,8
+0156-a,1438804615125,5,7,J_compact,9
+0156-a,1438804627448,5,8,G_seal,10
+0156-a,1438804628725,5,10,F_sadperson,11
+0156-a,1438804648964,6,2,L_egypt,1
+0156-a,1438804664755,6,4,D_monk,3
+0156-a,1438804668648,6,6,G_seal,4
+0156-a,1438804677748,6,7,K_waiter,5
+0156-a,1438804679556,6,8,E_bunny,6
+0156-a,1438804717194,6,9,B_helpbunny,8
+0156-a,1438804718958,6,10,C_ghost,9
+0156-a,1438804720312,6,12,I_iceskater,10
+0156-a,1438804721802,6,12,H_baby,12
+gameid,time,roundNum,sender,contents
+0156-a,1438803446631,1,matcher,"what should i do"
+0156-a,1438803456350,1,director,"i'll go in order top to bottom left to right"
+0156-a,1438803464287,1,matcher,"okay"
+0156-a,1438803469623,1,director,"first: person reading a book looking right"
+0156-a,1438803487325,1,matcher,"okay"
+0156-a,1438803498041,1,director,"second: person sitting down looking left"
+0156-a,1438803504369,1,matcher,"okay"
+0156-a,1438803554237,1,director,"third: square head with a body with just a straight line all the way down on the left side"
+0156-a,1438803586903,1,director,"third one is little hard to describe"
+0156-a,1438803709380,1,director,"forth: looks similar to the guy sitting down looking left but is a little more abstract; almost looks like a boot"
+0156-a,1438803746245,1,director,"fifth: guy standing on one leg looking left; almost like a figure skater"
+0156-a,1438803862510,1,director,"sixth: guy sitting down with a triangle for arms, the triangle isn't together and separates at the head"
+0156-a,1438803902884,1,director,"7: looks almost like 3 but doesn't have straight line on left side"
+0156-a,1438804035509,1,director,"8: almost looks like the guy reading a book like in 1 but his leg's are jacked (lower leg goes up to the left and not down to the left)"
+0156-a,1438804057189,1,director,"9: guy sitting looking right and is wearing bunny ears"
+0156-a,1438804066607,1,matcher,"okay"
+0156-a,1438804085408,1,director,"10: guy laying down or looking up and looks like his arms are spread open"
+0156-a,1438804090061,1,director,"like he is praying"
+0156-a,1438804099727,1,matcher,"okay"
+0156-a,1438804137068,1,director,"11: guy standing on one leg but has his arms to the upper left and his head his right"
+0156-a,1438804151312,2,matcher,"please begin"
+0156-a,1438804172287,2,director,"1: guy standing on one leg with his head on the right and both arms locked together on the left"
+0156-a,1438804192110,2,matcher,"okay"
+0156-a,1438804197181,2,director,"2: guy sitting down with broken triangle arms"
+0156-a,1438804205615,2,matcher,"okay"
+0156-a,1438804205758,2,director,"3:figure skater"
+0156-a,1438804214992,2,matcher,"okay"
+0156-a,1438804216357,2,director,"4: dude with solid left line"
+0156-a,1438804223419,2,matcher,"okay"
+0156-a,1438804234174,2,director,"5:guy reading book looking right with jacked legs"
+0156-a,1438804244408,2,director,"6: guy siting down looking left"
+0156-a,1438804253512,2,matcher,"okay"
+0156-a,1438804282996,2,director,"7:like 4 but not a straight line on left side"
+0156-a,1438804291391,2,director,"8: abstract boot"
+0156-a,1438804301996,2,director,"9: sitting looking right with bunny ears"
+0156-a,1438804307453,2,director,"10: guy praying"
+0156-a,1438804318611,2,director,"11: guy reading book looking left"
+0156-a,1438804327334,3,matcher,"please begin"
+0156-a,1438804335782,3,director,"1: abstract boot"
+0156-a,1438804342292,3,director,"2: broken triangle arms"
+0156-a,1438804353822,3,director,"3: reader looking right jacked up legs"
+0156-a,1438804353912,3,matcher,"okay"
+0156-a,1438804361774,3,director,"4: reader looking right normal"
+0156-a,1438804366658,3,director,"5: prayer"
+0156-a,1438804380596,3,matcher,"okay"
+0156-a,1438804387600,3,director,"6: like 7 but not straight line on left"
+0156-a,1438804399265,3,director,"7: straight line on left"
+0156-a,1438804417506,3,director,"8: guy sitting down looking left"
+0156-a,1438804426599,3,matcher,"okay"
+0156-a,1438804430417,3,director,"9:standing on one foot with arms together"
+0156-a,1438804437322,3,director,"10: figure skater"
+0156-a,1438804437887,3,matcher,"okay"
+0156-a,1438804441982,3,director,"11: bunny ears"
+0156-a,1438804449776,4,matcher,"please begin"
+0156-a,1438804454713,4,director,"1: abstract boot"
+0156-a,1438804462804,4,director,"2: reader looking right normal legs"
+0156-a,1438804470064,4,director,"3: reader looking left"
+0156-a,1438804488541,4,matcher,"okay"
+0156-a,1438804490744,4,director,"4: not the straight line (12)"
+0156-a,1438804498415,4,director,"5: guy sitting looking left"
+0156-a,1438804511093,4,director,"6: one leg arms together"
+0156-a,1438804515958,4,director,"7: bunny ears"
+0156-a,1438804520614,4,director,"8: preacher"
+0156-a,1438804528117,4,director,"9: broken triangle"
+0156-a,1438804528364,4,matcher,"okay"
+0156-a,1438804533222,4,director,"10: figure skater"
+0156-a,1438804544479,4,matcher,"okay"
+0156-a,1438804546603,4,director,"11: reader looking right with jacked legs"
+0156-a,1438804551145,4,director,"12: straight line"
+0156-a,1438804558807,5,matcher,"please begin"
+0156-a,1438804561083,5,director,"1: bunny ears"
+0156-a,1438804564823,5,director,"2: prayer"
+0156-a,1438804568696,5,director,"3: figure skater"
+0156-a,1438804577281,5,director,"4: reader looking right normal"
+0156-a,1438804582113,5,matcher,"okay"
+0156-a,1438804582257,5,director,"5: broken triangle"
+0156-a,1438804587902,5,matcher,"okay"
+0156-a,1438804588618,5,director,"6: one foot arms together"
+0156-a,1438804595681,5,matcher,"okay"
+0156-a,1438804596757,5,director,"7: not straight line (9)"
+0156-a,1438804607341,5,director,"8: reader looking right jacked"
+0156-a,1438804607862,5,matcher,"okay"
+0156-a,1438804612831,5,director,"9: straight"
+0156-a,1438804619784,5,director,"10: boot"
+0156-a,1438804622826,5,matcher,"okay"
+0156-a,1438804624704,5,director,"11: sitter looking left"
+0156-a,1438804634117,6,matcher,"please begin"
+0156-a,1438804645542,6,director,"1: reader normal looking right"
+0156-a,1438804654445,6,matcher,"okay"
+0156-a,1438804655637,6,director,"2: one foot arms together"
+0156-a,1438804661563,6,director,"3: reader looking left"
+0156-a,1438804661702,6,matcher,"okay"
+0156-a,1438804664505,6,director,"4: boot"
+0156-a,1438804672542,6,matcher,"okay"
+0156-a,1438804673277,6,director,"5: reader looking right jacked legs"
+0156-a,1438804676685,6,director,"6: bunny"
+0156-a,1438804682235,6,matcher,"okay"
+0156-a,1438804688814,6,director,"7: sitter looking left"
+0156-a,1438804693500,6,matcher,"okay"
+0156-a,1438804693738,6,director,"8: triangle"
+0156-a,1438804697344,6,director,"9: preacher"
+0156-a,1438804701252,6,director,"10: figure skater"
+0156-a,1438804705889,6,director,"11: straight line"
+0156-a,1438804712760,6,director,"12: not straight line"
