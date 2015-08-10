@@ -1,0 +1,85 @@
+gameid,time,roundNum,sender,contents,tangram
+7764-f,1438808295385,1,director,"ok",0
+7764-f,1438808300342,1,matcher,"ok",0
+7764-f,1438808313032,1,director,"the figure that looks like an ice skater goes in spot 11",I
+7764-f,1438808320637,1,matcher,"ok",I
+7764-f,1438808345296,1,director,"figure with like a bowtie in her hair sitting down is 7",E
+7764-f,1438808358009,1,director,"man sitting down is 8",E
+7764-f,1438808375217,1,director,"figure kneeling and praying is 10",K
+7764-f,1438808389192,1,director,"figure lifting a leg up is 9",A
+7764-f,1438808399574,1,director,"man standing holding a dish is 12",D
+7764-f,1438808421323,1,director,"guy lunging diagonally is 1",C
+7764-f,1438808441660,1,director,"zig zag like figure with a plate is 2",L
+7764-f,1438808455682,1,director,"3 is sort of a hlaf square with a diamond on top",J
+7764-f,1438808465820,1,director,"4 looks like a man dragging something",G
+7764-f,1438808490035,1,director,"6 looks like a a crooked octogon with a diamon on top",H
+7764-f,1438808499234,1,director,"5 is justr a bunch of shapes",G
+7764-f,1438808510020,2,director,"haha wow",0
+7764-f,1438808514557,2,matcher,"nice work!!",0
+7764-f,1438808523583,2,director,"ok 12 is the ice skater",I
+7764-f,1438808534133,2,director,"11 is the man standing holding a dish",D
+7764-f,1438808548460,2,director,"10 is the zigzag shape holding a plate",L
+7764-f,1438808557694,2,director,"9 is the bowtie in hair figure",E
+7764-f,1438808567844,2,director,"8 is half of a square with a diamond on top",J
+7764-f,1438808573474,2,director,"7 is guy lungin diagonally",C
+7764-f,1438808585177,2,director,"6 is figure lifting a leg up",A
+7764-f,1438808601064,2,director,"5 is a man sitting down against a wall",F
+7764-f,1438808614653,2,director,"1 is someone keeling or praying",K
+7764-f,1438808619706,2,director,"2 is guy dragging something",G
+7764-f,1438808628432,2,director,"3 is crooked octogon with diamond on top",H
+7764-f,1438808637892,2,director,"4 is bunch of shapes",G
+7764-f,1438808646393,3,director,":)",0
+7764-f,1438808649817,3,matcher,"haha, this is great!",0
+7764-f,1438808663754,3,director,"1 is ice skater",I
+7764-f,1438808668184,3,director,"2 guy draggin something",G
+7764-f,1438808675978,3,director,"3 crooked octogon with diamond",H
+7764-f,1438808684718,3,director,"4 is half square with diamond on top",J
+7764-f,1438808691899,3,director,"5 is guy standing holding plate",D
+7764-f,1438808697007,3,director,"6 is lunging diagonal",C
+7764-f,1438808706450,3,director,"7 guy sitting down against wall",F
+7764-f,1438808711873,3,director,"8 kneeling a praying",K
+7764-f,1438808718363,3,director,"9 guy lifting leg up",A
+7764-f,1438808727045,3,director,"10 zig zag guy holding a plate",L
+7764-f,1438808731288,3,director,"12 bowtie",E
+7764-f,1438808734582,3,director,"11 bunch of shapes",B
+7764-f,1438808747384,4,matcher,"crap, i missed something there",0
+7764-f,1438808756366,4,director,"yeah my bad i went out of order at the end",0
+7764-f,1438808764914,4,matcher,"ooo, didn't notice that",0
+7764-f,1438808773162,4,director,"1 half square with diamond on top",J
+7764-f,1438808776470,4,director,"2 guy lifting leg",A
+7764-f,1438808780887,4,director,"3 kneeling a praying",K
+7764-f,1438808791943,4,director,"4 zigzag guy holding plate",L
+7764-f,1438808800401,4,director,"5 guy sitting against wall",F
+7764-f,1438808806182,4,director,"6 luging diagonal",C
+7764-f,1438808812503,4,director,"7 man standing with plate",D
+7764-f,1438808818816,4,director,"8 ice skater",I
+7764-f,1438808824064,4,director,"9 bunch of shapes"B
+7764-f,1438808827514,4,director,"10 bow tie",E
+7764-f,1438808833001,4,director,"11 guy dragging something",G
+7764-f,1438808842102,4,director,"12 crooked octogon with diamond",H
+7764-f,1438808851287,5,director,"1 guy draggin somehing",G
+7764-f,1438808858714,5,director,"2 guy lifting leg up",A
+7764-f,1438808870131,5,director,"3 praying or kneeling",K
+7764-f,1438808875245,5,director,"4 lunging diagonal",C
+7764-f,1438808881532,5,director,"5 guy sitting against wall",F
+7764-f,1438808889428,5,director,"6 zig zag guy with dish",L
+7764-f,1438808893738,5,director,"7 ice skater",I
+7764-f,1438808900609,5,director,"8 bunch of shapes",B
+7764-f,1438808908830,5,director,"9 crooked octogon with diamond on top",H
+7764-f,1438808912669,5,director,"10 bow tie",E
+7764-f,1438808917791,5,director,"11 half sqaure with diamond",J
+7764-f,1438808928085,5,director,"12 standing with plate",D
+7764-f,1438808935794,6,matcher,"awesome",0
+7764-f,1438808939650,6,director,"we rock",0
+7764-f,1438808944344,6,director,"1 guy dragging something",G
+7764-f,1438808949193,6,director,"2 guy sitting against wall",F
+7764-f,1438808954280,6,director,"3 bow tie",E
+7764-f,1438808960570,6,director,"4 guy lifting leg up",A
+7764-f,1438808966934,6,director,"5 zig zag guy with plate",L
+7764-f,1438808974735,6,director,"6 crooked octogon with diamond",H
+7764-f,1438808982866,6,director,"7 standing with plate",D
+7764-f,1438808989274,6,director,"8 half square - diamond on top",J
+7764-f,1438808993609,6,director,"9 bunch of shapes",B
+7764-f,1438808995970,6,director,"10 ice skater",I
+7764-f,1438809002598,6,director,"11 kneeling and praying",K
+7764-f,1438809005796,6,director,"12 lunge diagonal",C

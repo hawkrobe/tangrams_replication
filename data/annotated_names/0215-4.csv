@@ -1,157 +1,157 @@
 gameid,time,roundNum,sender,contents,tangram
-0215-4,1438804111703,1,matcher,"so what's your number one",C
+0215-4,1438804111703,1,matcher,"so what's your number one",0
 0215-4,1438804126194,1,director,"Hi. the guy with his arms spread out",C
-0215-4,1438804138187,1,matcher,"2",B
+0215-4,1438804138187,1,matcher,"2",0
 0215-4,1438804154725,1,director,"The guy with a triangle pointing at his neck",B
 0215-4,1438804154881,1,matcher,"is the first one sitting or standing",C
 0215-4,1438804163077,1,director,"first one is standing",C
-0215-4,1438804185357,1,matcher,"ok 3",D
+0215-4,1438804185357,1,matcher,"ok 3",0
 0215-4,1438804189858,1,director,"the second one the front of his face is pointing left",B
 0215-4,1438804231468,1,director,"number 3: he's facing left, looks like he's holding a dish with both hands wearing a robe",D
-0215-4,1438804251095,1,matcher,"ok 4",G
+0215-4,1438804251095,1,matcher,"ok 4",0
 0215-4,1438804277590,1,director,"number 4: like his feet are on the left side, doing a pushup maybe",G
 0215-4,1438804302464,1,director,"number 4: also, a square is balanced on his neck, left side.",G
 0215-4,1438804334201,1,director,"5: his head shaped like a diamond, has no arms at all",H
-0215-4,1438804344239,1,matcher,"ok what is 5",H
+0215-4,1438804344239,1,matcher,"ok what is 5",0
 0215-4,1438804351149,1,matcher,"oops nvm",0
-0215-4,1438804368968,1,matcher,"ok 6",F
+0215-4,1438804368968,1,matcher,"ok 6",0
 0215-4,1438804389198,1,director,"6: he could be sitting against a wall, facing left",F
-0215-4,1438804395559,1,matcher,"ok 7",A
+0215-4,1438804395559,1,matcher,"ok 7",0
 0215-4,1438804423965,1,director,"7: right side of his neck, his "face is falling off"",A
-0215-4,1438804437267,1,matcher,"ok 8",L
+0215-4,1438804437267,1,matcher,"ok 8",0
 0215-4,1438804453276,1,director,"8: he's facing right, knees bent, holding something with both arms.",L
-0215-4,1438804470018,1,matcher,"ok 9",I
+0215-4,1438804470018,1,matcher,"ok 9",0
 0215-4,1438804488870,1,director,"9: he's facing left, right leg in the air, resting on his left leg/foot",I
-0215-4,1438804503553,1,matcher,"ok 10",J
+0215-4,1438804503553,1,matcher,"ok 10",0
 0215-4,1438804531879,1,director,"10: his head is shaped like a diamond, no neck at all, just a flat surface",J
-0215-4,1438804538715,1,matcher,"ok 11",E
+0215-4,1438804538715,1,matcher,"ok 11",0
 0215-4,1438804568938,1,director,"11: his head is a block, facing right side, sitting against a wall, two triangles resting on his head",E
 0215-4,1438804596061,1,matcher,"is 12 a dude praying like",K
 0215-4,1438804619286,1,director,"12: yes, his head is a diamond, kneeling down, facing the right side",K
 0215-4,1438804626680,1,matcher,"ok submitting",*
 0215-4,1438804630193,1,director,"thanks",0
-0215-4,1438804654719,2,matcher,"hi again, what is your number 1",J
+0215-4,1438804654719,2,matcher,"hi again, what is your number 1",0
 0215-4,1438804674442,2,director,"1: his face is a diamond, no neck, just a flat surface, his diamond head resting on a flat surface",J
-0215-4,1438804684046,2,matcher,"ok 2",F
+0215-4,1438804684046,2,matcher,"ok 2",0
 0215-4,1438804718011,2,director,"2: he's sitting against a wall his head is a block, with two triangles pointing down, resting on his head",F
-0215-4,1438804727984,2,matcher,"ok 3",C
+0215-4,1438804727984,2,matcher,"ok 3",0
 0215-4,1438804751134,2,director,"3: he's standing diagonally, facing right side, arms spread out.",C
 0215-4,1438804772100,2,matcher,"leaning left?",C
-0215-4,1438804789086,2,director,"yes",C
-0215-4,1438804791581,2,matcher,"ok 4",I
+0215-4,1438804789086,2,director,"yes",0
+0215-4,1438804791581,2,matcher,"ok 4",0
 0215-4,1438804822194,2,director,"4: he's facing left, right leg in air, left foot/leg supporting him",I
-0215-4,1438804829401,2,matcher,"ok 5",D
+0215-4,1438804829401,2,matcher,"ok 5",0
 0215-4,1438804857071,2,director,"5: he's facing left, head is a diamond, like he's holding a big plate with both hands, wearing a robe",D
 0215-4,1438804891361,2,matcher,"does four have a square on his back or is it the other one with leg in the air",I
 0215-4,1438804894703,2,director,"6: as if kneeling to pray, facing right side, knees on the ground",K
-0215-4,1438804898852,2,director,"back to 4:",I
+0215-4,1438804898852,2,director,"back to 4:",0
 0215-4,1438804918355,2,director,"4: no square on the back",I
-0215-4,1438804923308,2,matcher,"ok 7",G
+0215-4,1438804923308,2,matcher,"ok 7",0
 0215-4,1438804962490,2,director,"7: weird, his head is rolling down his neck to the left, as if doing a pushup but facing right",G
-0215-4,1438804972282,2,matcher,"ok 8",L
+0215-4,1438804972282,2,matcher,"ok 8",0
 0215-4,1438804984464,2,director,"8: facing right, knees bent",L
-0215-4,1438804990615,2,matcher,"ok 9",F
+0215-4,1438804990615,2,matcher,"ok 9",0
 0215-4,1438805012964,2,director,"9: facing left "sitting against a wall" knees bent",F
-0215-4,1438805020073,2,matcher,"ok 10",B
+0215-4,1438805020073,2,matcher,"ok 10",0
 0215-4,1438805054630,2,director,"10: facing left, the face is a block, pointing diagonally up in the air, a triangle pointing at his neck",B
-0215-4,1438805080005,2,matcher,"ok 11",A
+0215-4,1438805080005,2,matcher,"ok 11",0
 0215-4,1438805104635,2,director,"11: facing left, standing, long pointy nose like bird, right leg is raised up, block rolling off neck",A
 0215-4,1438805113047,2,matcher,"ok 12 has no arms?",H
-0215-4,1438805121397,2,director,"yes, you got it",H
+0215-4,1438805121397,2,director,"yes, you got it",0
 0215-4,1438805124265,2,matcher,"submitting",*
-0215-4,1438805132855,3,matcher,"so what's your no. 1",B
+0215-4,1438805132855,3,matcher,"so what's your no. 1",0
 0215-4,1438805139945,3,director,"1: the guy with no arms",B
-0215-4,1438805145852,3,matcher,"and 2",I
+0215-4,1438805145852,3,matcher,"and 2",0
 0215-4,1438805169825,3,director,"2: facing left, right leg in air, left leg/foot supporting him",I
-0215-4,1438805177368,3,matcher,"ok 3",K
+0215-4,1438805177368,3,matcher,"ok 3",0
 0215-4,1438805198837,3,director,"3: facing right, kneeling as if in prayer",K
-0215-4,1438805205768,3,matcher,"ok 4",L
+0215-4,1438805205768,3,matcher,"ok 4",0
 0215-4,1438805244887,3,director,"4: very similar to 3, except knees are bent, not kneeling all the way",L
-0215-4,1438805249922,3,matcher,"ok 5",E
+0215-4,1438805249922,3,matcher,"ok 5",0
 0215-4,1438805283243,3,director,"5: sitting against a wall like facing right side, head is a block pointing down, with two triangles resting on his head.",E
-0215-4,1438805290810,3,matcher,"ok 6",C
+0215-4,1438805290810,3,matcher,"ok 6",0
 0215-4,1438805313872,3,director,"6: the guy who's standing diagonally with arms spread out",C
-0215-4,1438805327983,3,matcher,"ok 7",B
+0215-4,1438805327983,3,matcher,"ok 7",0
 0215-4,1438805369975,3,director,"7: facing left, his block head is pointing diagonally up to the left, with a triangle pointing leftward on his neck",B
-0215-4,1438805385500,3,matcher,"ok 8",F
+0215-4,1438805385500,3,matcher,"ok 8",0
 0215-4,1438805417374,3,director,"8: he's sitting against a wall like facing left, block head is facing down, knees bent",F
-0215-4,1438805423908,3,matcher,"ok 9",D
+0215-4,1438805423908,3,matcher,"ok 9",0
 0215-4,1438805449734,3,director,"9: facing left, diamond head, he's holding a big plate with both hands, wearing a robe",D
-0215-4,1438805452993,3,matcher,"ok 10",J
+0215-4,1438805452993,3,matcher,"ok 10",0
 0215-4,1438805473867,3,director,"10: diamond head, no neck, head is resting on a flat surface",J
-0215-4,1438805481825,3,matcher,"ok 11",A
+0215-4,1438805481825,3,matcher,"ok 11",0
 0215-4,1438805499606,3,director,"11: it's the dude with the bird nose, facing left, nose pointing downward",A
 0215-4,1438805508904,3,matcher,"ok 12 is pushup guy",K
 0215-4,1438805518990,3,director,"12: yes or maybe doing yoga",K
-0215-4,1438805532868,4,matcher,"okay, onward",K
+0215-4,1438805532868,4,matcher,"okay, onward",0
 0215-4,1438805536173,4,director,"yes",0
-0215-4,1438805538546,4,matcher,"numero uno",C
+0215-4,1438805538546,4,matcher,"numero uno",0
 0215-4,1438805551215,4,director,"1: the guy with the arms spread out, standing diagonally",C
-0215-4,1438805556647,4,matcher,"and 2",K
+0215-4,1438805556647,4,matcher,"and 2",0
 0215-4,1438805575692,4,director,"2: facing right, kneeling, as if praying"K
-0215-4,1438805582337,4,matcher,"ok 3",G
+0215-4,1438805582337,4,matcher,"ok 3",0
 0215-4,1438805585046,4,director,"2: knees are on floor",K
 0215-4,1438805605316,4,director,"3: that yoga guy, with head rolling off to the left",G
-0215-4,1438805614899,4,matcher,"ok 4",F
+0215-4,1438805614899,4,matcher,"ok 4",0
 0215-4,1438805630131,4,director,"4: sitting against a wall, facing left, knees bent",F
-0215-4,1438805635824,4,matcher,"ok 5",J
+0215-4,1438805635824,4,matcher,"ok 5",0
 0215-4,1438805648474,4,director,"5: the guy with a diamond head and no neck, just a flat surface",J
-0215-4,1438805652993,4,matcher,"ok 6",D
+0215-4,1438805652993,4,matcher,"ok 6",0
 0215-4,1438805668333,4,director,"6: facing left, holding a plate with both hands, wearing a robe",D
-0215-4,1438805674705,4,matcher,"ok 7",L
+0215-4,1438805674705,4,matcher,"ok 7",0
 0215-4,1438805692686,4,director,"7: facing right side, knees bent, diamond head, as if holding a plate",L
-0215-4,1438805701781,4,matcher,"ok 8",E
+0215-4,1438805701781,4,matcher,"ok 8",0
 0215-4,1438805724006,4,director,"8: sitting against a wall, facing right side block head facing down, with 2 triangles on his head",E
-0215-4,1438805735678,4,matcher,"ok 9",I
+0215-4,1438805735678,4,matcher,"ok 9",0
 0215-4,1438805751752,4,director,"9: facing left, arms extended, right leg in air, left leg supporting him",I
-0215-4,1438805761379,4,matcher,"ok 10",B
+0215-4,1438805761379,4,matcher,"ok 10",0
 0215-4,1438805791269,4,director,"10: facing left, block head is pointing up a little, triangle pointing at neck",B
-0215-4,1438805802253,4,matcher,"ok 11",H
+0215-4,1438805802253,4,matcher,"ok 11",0
 0215-4,1438805806843,4,director,"11: the dude with no arms",H
 0215-4,1438805824877,4,director,"12: the bird nose"A
-0215-4,1438805834718,5,matcher,"ok and one again",L
+0215-4,1438805834718,5,matcher,"ok and one again",0
 0215-4,1438805851746,5,director,"1: facing right, knees bent, as if holding a plate",L
-0215-4,1438805857421,5,matcher,"and 2",E
+0215-4,1438805857421,5,matcher,"and 2",0
 0215-4,1438805876768,5,director,"2: two triangles resting on his head",E
-0215-4,1438805882549,5,matcher,"ok 3",D
+0215-4,1438805882549,5,matcher,"ok 3",0
 0215-4,1438805893001,5,director,"3: facing left, holding plate, wearing a robe",D
-0215-4,1438805900917,5,matcher,"ok 4",G
+0215-4,1438805900917,5,matcher,"ok 4",0
 0215-4,1438805915595,5,director,"4: the one doing either a pushup or yoga",G
-0215-4,1438805923825,5,matcher,"ok 5",J
+0215-4,1438805923825,5,matcher,"ok 5",0
 0215-4,1438805936013,5,director,"5: the guy with the diamond face, no neck, flat surface",J
-0215-4,1438805939168,5,matcher,"ok 6",H
+0215-4,1438805939168,5,matcher,"ok 6",0
 0215-4,1438805945101,5,director,"6: he has no arms at all",H
-0215-4,1438805948926,5,matcher,"ok 7",K
+0215-4,1438805948926,5,matcher,"ok 7",0
 0215-4,1438805963540,5,director,"7: facing right, kneeling, praying, holding a plate",K
-0215-4,1438805967152,5,matcher,"ok 8",A
+0215-4,1438805967152,5,matcher,"ok 8",0
 0215-4,1438805980134,5,director,"8: its birdman! that beak!",A
-0215-4,1438806001139,5,matcher,"lol ok 9",F
+0215-4,1438806001139,5,matcher,"lol ok 9",0
 0215-4,1438806002415,5,director,"9: facing left, against a wall",F
-0215-4,1438806010005,5,matcher,"and 10",C
+0215-4,1438806010005,5,matcher,"and 10",0
 0215-4,1438806018543,5,director,"10: the guy singing, with arms spread out",C
-0215-4,1438806023084,5,matcher,"ok 11",I
+0215-4,1438806023084,5,matcher,"ok 11",0
 0215-4,1438806040990,5,director,"11: facing left, right leg up, left foot/leg supporting him",I
 0215-4,1438806050730,5,matcher,"and 12 is triangle pointing at neck",B
-0215-4,1438806055121,5,director,"12: yes",B
-0215-4,1438806063251,6,matcher,"and 1 for the last time",G
+0215-4,1438806055121,5,director,"12: yes",0
+0215-4,1438806063251,6,matcher,"and 1 for the last time",0
 0215-4,1438806082126,6,director,"1: the yoga dude ",G
-0215-4,1438806085176,6,matcher,"ok 2",I
+0215-4,1438806085176,6,matcher,"ok 2",0
 0215-4,1438806100119,6,director,"2: facing left, left leg supporting him",I
-0215-4,1438806103529,6,matcher,"ok 3",K
+0215-4,1438806103529,6,matcher,"ok 3",0
 0215-4,1438806131009,6,director,"3: facing right, kneeling, knees on ground, holding plate",K
-0215-4,1438806134050,6,matcher,"ok 4",A
+0215-4,1438806134050,6,matcher,"ok 4",0
 0215-4,1438806140905,6,director,"4: birdman beak",A
-0215-4,1438806144578,6,matcher,"and 5",F
+0215-4,1438806144578,6,matcher,"and 5",0
 0215-4,1438806154717,6,director,"5: sitting against a wall, facing left",F
-0215-4,1438806158483,6,matcher,"ok 6",C
+0215-4,1438806158483,6,matcher,"ok 6",0
 0215-4,1438806163270,6,director,"6: the singer, arms spread",C
-0215-4,1438806166565,6,matcher,"ok 7",E
+0215-4,1438806166565,6,matcher,"ok 7",0
 0215-4,1438806172469,6,director,"7: two triangles resting on head",E
-0215-4,1438806175187,6,matcher,"ok 8",B
+0215-4,1438806175187,6,matcher,"ok 8",0
 0215-4,1438806190686,6,director,"8: facing left, triangle pointing at neck",B
-0215-4,1438806194458,6,matcher,"ok 9",D
+0215-4,1438806194458,6,matcher,"ok 9",0
 0215-4,1438806205505,6,director,"9: facing left, holding plate, robe",D
-0215-4,1438806212789,6,matcher,"ok 10",J
+0215-4,1438806212789,6,matcher,"ok 10",0
 0215-4,1438806219633,6,director,"the guy with no neck",J
-0215-4,1438806226972,6,matcher,"ok 11",H
+0215-4,1438806226972,6,matcher,"ok 11",0
 0215-4,1438806227762,6,director,"11: has no arms",H

@@ -1,0 +1,207 @@
+gameid,time,roundNum,sender,contents,tangram
+1490-f,1438969179918,1,matcher,"HELLO?",0
+1490-f,1438969197561,1,director,"Hello",0
+1490-f,1438969229566,1,matcher,"so what is your image 1",0
+1490-f,1438969231229,1,matcher,"?",0
+1490-f,1438969234243,1,director,"Number 1 looks like a person facing the right.",J
+1490-f,1438969248143,1,director,"The whole left side is flat",J
+1490-f,1438969255785,1,matcher,"got it",0
+1490-f,1438969255787,1,director,"Straight up and down.",J
+1490-f,1438969268226,1,director,"2 looks like he's facing right and kneeling with his hands out.",L
+1490-f,1438969279832,1,matcher,"feet flat on ground? or lifted?",L
+1490-f,1438969280868,1,director,"but his feet are on the ground",L
+1490-f,1438969284026,1,director,"flat",L
+1490-f,1438969294102,1,matcher,"k",0
+1490-f,1438969295002,1,matcher,"got it",0
+1490-f,1438969300506,1,director,"3 facing left arms zstretched out",B
+1490-f,1438969311732,1,director,"front arm is like a triangle gap from his body",B
+1490-f,1438969328493,1,matcher,"flat back?",B
+1490-f,1438969335827,1,director,"no",0
+1490-f,1438969349004,1,director,"iit's like a triangle",B
+1490-f,1438969357145,1,director,"and his feet are another triangle. ",B
+1490-f,1438969380798,1,director,"on his knees",B
+1490-f,1438969394128,1,matcher,"facing left?",B
+1490-f,1438969399201,1,director,"sorry, right",B
+1490-f,1438969401871,1,director,"My bad!!!",0
+1490-f,1438969406050,1,matcher,"and that was number 4?",0
+1490-f,1438969417560,1,director,"3",0
+1490-f,1438969422573,1,matcher,"okay",0
+1490-f,1438969423246,1,matcher,"got it",0
+1490-f,1438969428443,1,director,"4 is facing left",D
+1490-f,1438969431454,1,director,"holding a bowl",D
+1490-f,1438969434916,1,matcher,"flat back?",D
+1490-f,1438969435742,1,director,"flat back",D
+1490-f,1438969438231,1,matcher,"got it",0
+1490-f,1438969438264,1,director,"yup",0
+1490-f,1438969445712,1,director,"5 looks like a baby bunting",H
+1490-f,1438969449534,1,director,"facing right",H
+1490-f,1438969461033,1,matcher,"got it",0
+1490-f,1438969468639,1,director,"6 facing right sitting down. Crazy hair",E
+1490-f,1438969478113,1,matcher,"bunny ears kind of?",E
+1490-f,1438969480611,1,director,"yes",0
+1490-f,1438969484077,1,matcher,"got it",0
+1490-f,1438969488086,1,director,"7 looks like a ghost",C
+1490-f,1438969493959,1,matcher,"facing left?",C
+1490-f,1438969496051,1,director,"arms outstretched",C
+1490-f,1438969496819,1,director,"yes",0
+1490-f,1438969497978,1,matcher,"got it",0
+1490-f,1438969509427,1,director,"8 looks like a guy sitting left",F
+1490-f,1438969516265,1,matcher,"no arms?",F
+1490-f,1438969519394,1,director,"right",0
+1490-f,1438969520216,1,matcher,"got it",0
+1490-f,1438969531082,1,director,"9 he's got one leg stretched back, facing left",I
+1490-f,1438969536475,1,director,"both arms out",I
+1490-f,1438969538420,1,matcher,"go tit",0
+1490-f,1438969540534,1,matcher,"lol",0
+1490-f,1438969541715,1,matcher,"got it",0
+1490-f,1438969543562,1,director,"lol",0
+1490-f,1438969547002,1,director,"10 looks like he's praying",K
+1490-f,1438969552387,1,director,"on his knees to the rigght",K
+1490-f,1438969555096,1,matcher,"got it",0
+1490-f,1438969560239,1,director,"11 looks like a zombie walk",A
+1490-f,1438969563595,1,director,"facing left",A
+1490-f,1438969570091,1,matcher,"okay",0
+1490-f,1438969573042,1,director,"and 12 kind of resembles a seal",G
+1490-f,1438969575963,1,matcher,"perfect",0
+1490-f,1438969616576,2,matcher,"ready whenever",0
+1490-f,1438969625230,2,director,"1 flat back facing right",J
+1490-f,1438969630967,2,matcher,"done",0
+1490-f,1438969639850,2,director,"2 on knees one arm out",B
+1490-f,1438969645369,2,director,"both arms are out",B
+1490-f,1438969648207,2,director,"ones front one is back",B
+1490-f,1438969652584,2,director,"facing right",B
+1490-f,1438969659242,2,matcher,"got it",0
+1490-f,1438969670823,2,director,"3 is sitting with legs stretched out",F
+1490-f,1438969673855,2,director,"facing left",F
+1490-f,1438969676886,2,matcher,"done",0
+1490-f,1438969686887,2,director,"4 crouching with arms out facing right",L
+1490-f,1438969698296,2,matcher,"done",0
+1490-f,1438969702455,2,director,"5 is kneeling facing right",K
+1490-f,1438969709766,2,matcher,"done",0
+1490-f,1438969713079,2,director,"6 looks like a seal",G
+1490-f,1438969717477,2,matcher,"done",0
+1490-f,1438969719160,2,director,"7 looks like a ghost",C
+1490-f,1438969726790,2,matcher,"one arm to either side, right?",C
+1490-f,1438969731834,2,director,"yes",0
+1490-f,1438969735139,2,matcher,"done",0
+1490-f,1438969747804,2,director,"8 is a hunched over walking guy",A
+1490-f,1438969752771,2,director,"walking left",A
+1490-f,1438969779723,2,director,"1 foot is up taking a step",A
+1490-f,1438969784338,2,matcher,"head is on right?",A
+1490-f,1438969787693,2,matcher,"feet facing left?",A
+1490-f,1438969787724,2,director,"yes",0
+1490-f,1438969789729,2,matcher,"done",0
+1490-f,1438969799555,2,director,"9 looks like a bundled baby.",H
+1490-f,1438969808518,2,matcher,"done",0
+1490-f,1438969816730,2,director,"10 is facing left holding something out",D
+1490-f,1438969822067,2,director,"flat back",D
+1490-f,1438969823893,2,matcher,"done",0
+1490-f,1438969834274,2,director,"11 is a yoga post. His foot is up on the right side",I
+1490-f,1438969836950,2,matcher,"done",0
+1490-f,1438969839352,2,matcher,"last one is bunny ears",E
+1490-f,1438969841485,2,director,"12 has ears",E
+1490-f,1438969842956,2,director,"yes",0
+1490-f,1438969847569,3,matcher,"yay!",0
+1490-f,1438969848484,3,director,"yay",0
+1490-f,1438969854855,3,director,"1 facing left holding a bowl",D
+1490-f,1438969859923,3,matcher,"done",0
+1490-f,1438969860226,3,director,"flat back",D
+1490-f,1438969862855,3,director,"2 is the seal",G
+1490-f,1438969867845,3,matcher,"done",0
+1490-f,1438969872814,3,director,"3 facing right arms going both ways",B
+1490-f,1438969879765,3,matcher,"done",0
+1490-f,1438969887774,3,director,"4 is the zombie guy walking left",A
+1490-f,1438969895006,3,matcher,"done",0
+1490-f,1438969897698,3,director,"5 on knees facing right",K
+1490-f,1438969913301,3,matcher,"on knees, not the crouching one, right?",K
+1490-f,1438969916464,3,director,"right",0
+1490-f,1438969919279,3,matcher,"done",0
+1490-f,1438969920353,3,director,"6 is crouching right",L
+1490-f,1438969925198,3,matcher,"done",0
+1490-f,1438969930047,3,director,"7 baby bunting",H
+1490-f,1438969933580,3,matcher,"done",0
+1490-f,1438969937288,3,director,"8 ghost guy",C
+1490-f,1438969946406,3,matcher,"done",0
+1490-f,1438969951507,3,director,"9 facing left sitting down",F
+1490-f,1438969956057,3,matcher,"done",0
+1490-f,1438969957879,3,director,"10 has ears",E
+1490-f,1438969961187,3,matcher,"done",0
+1490-f,1438969968458,3,director,"11 is standing on one leg facing left",I
+1490-f,1438969972061,3,matcher,"done",0
+1490-f,1438969975339,3,director,"12 flat back facing right",J
+1490-f,1438969977779,3,matcher,"done",0
+1490-f,1438969981986,4,director,"yayyyy",0
+1490-f,1438969985399,4,director,"1 baby bunting",H
+1490-f,1438969986220,4,matcher,":)",0
+1490-f,1438969988841,4,matcher,"k",0
+1490-f,1438969993326,4,director,"2 facing right kneeling",K
+1490-f,1438969995530,4,director,"3 is crouching",L
+1490-f,1438970001838,4,matcher,"done and done",0
+1490-f,1438970007004,4,director,"4 on one leg facing left",I
+1490-f,1438970012273,4,matcher,"k",0
+1490-f,1438970014963,4,director,"the yoga post one",I
+1490-f,1438970020012,4,director,"5 is flat back facing right",J
+1490-f,1438970024486,4,director,"6 seal",G
+1490-f,1438970029522,4,matcher,"k",0
+1490-f,1438970036370,4,director,"7 ghost",C
+1490-f,1438970038380,4,matcher,"k",0
+1490-f,1438970043559,4,director,"8 holding bowl facing left",D
+1490-f,1438970047964,4,matcher,"k",0
+1490-f,1438970048886,4,director,"9 bunny ears",E
+1490-f,1438970052440,4,matcher,"k",0
+1490-f,1438970055579,4,director,"10 zombie guy",A
+1490-f,1438970058913,4,matcher,"k",0
+1490-f,1438970065638,4,director,"11 on knees facing right",B
+1490-f,1438970070908,4,director,"12 sitting down facing left",F
+1490-f,1438970071968,4,matcher,"hands to each side",B
+1490-f,1438970073180,4,matcher,"on 11",0
+1490-f,1438970074764,4,director,"yes",0
+1490-f,1438970087251,5,director,"1 knees right hands on both sides",B
+1490-f,1438970097213,5,matcher,"k",0
+1490-f,1438970099415,5,director,"2 ears",E
+1490-f,1438970102797,5,matcher,"k",0
+1490-f,1438970104252,5,director,"3 seal",G
+1490-f,1438970107549,5,matcher,"k",0
+1490-f,1438970109139,5,director,"4 crouching right",L
+1490-f,1438970114076,5,matcher,"k",0
+1490-f,1438970114916,5,director,"5 zombie",A
+1490-f,1438970118277,5,matcher,"k",0
+1490-f,1438970120462,5,director,"5 holding bowl facing left",D
+1490-f,1438970123023,5,director,"6",0
+1490-f,1438970124023,5,director,"sorry,",0
+1490-f,1438970127605,5,matcher,"k",0
+1490-f,1438970128545,5,director,"6 is bowl",D
+1490-f,1438970131966,5,director,"7 baby bunting",H
+1490-f,1438970135212,5,matcher,"k",0
+1490-f,1438970141526,5,director,"8 sitting facing left",F
+1490-f,1438970146784,5,matcher,"k",0
+1490-f,1438970148306,5,director,"9 flat back facing right",J
+1490-f,1438970151926,5,matcher,"k",0
+1490-f,1438970153847,5,director,"10 ghost",C
+1490-f,1438970156874,5,matcher,"k",0
+1490-f,1438970160232,5,director,"11 yoga on one leg",I
+1490-f,1438970163905,5,matcher,"k",0
+1490-f,1438970166215,5,director,"12 kneeling right",K
+1490-f,1438970174806,6,director,"1 crouching right",L
+1490-f,1438970184256,6,matcher,"k",0
+1490-f,1438970184920,6,director,"2 baby",H
+1490-f,1438970188136,6,matcher,"k",0
+1490-f,1438970190415,6,director,"3 holding bowl facing left",D
+1490-f,1438970195051,6,matcher,"k",0
+1490-f,1438970195967,6,director,"4 flat back facing right",J
+1490-f,1438970200756,6,matcher,"k",0
+1490-f,1438970201362,6,director,"5 zombie",A
+1490-f,1438970204661,6,matcher,"k",0
+1490-f,1438970205139,6,director,"6 seal",G
+1490-f,1438970210082,6,director,"7 sitting facing left",F
+1490-f,1438970210085,6,matcher,"k",0
+1490-f,1438970217045,6,matcher,"k",0
+1490-f,1438970219489,6,director,"8 yoga post on one leg",I
+1490-f,1438970223642,6,matcher,"k",0
+1490-f,1438970224403,6,director,"9 ghost",C
+1490-f,1438970227411,6,matcher,"k",0
+1490-f,1438970238712,6,director,"10 kneeling right one arm forward",K
+1490-f,1438970253016,6,director,"11 kneeling arms on both sides",B
+1490-f,1438970270889,6,matcher,"12 ears",E
+1490-f,1438970273540,6,director,"yes!",0
+1490-f,1438970274795,6,director,"yay",0
