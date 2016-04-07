@@ -17,7 +17,7 @@ gameid,time,roundNum,sender,contents,tangram
 0215-4,1438804368968,1,matcher,"ok 6",0
 0215-4,1438804389198,1,director,"6: he could be sitting against a wall, facing left",F
 0215-4,1438804395559,1,matcher,"ok 7",0
-0215-4,1438804423965,1,director,"7: right side of his neck, his "face is falling off"",A
+0215-4,1438804423965,1,director,"7: right side of his neck, his 'face is falling off'",A
 0215-4,1438804437267,1,matcher,"ok 8",0
 0215-4,1438804453276,1,director,"8: he's facing right, knees bent, holding something with both arms.",L
 0215-4,1438804470018,1,matcher,"ok 9",0
@@ -51,7 +51,7 @@ gameid,time,roundNum,sender,contents,tangram
 0215-4,1438804972282,2,matcher,"ok 8",0
 0215-4,1438804984464,2,director,"8: facing right, knees bent",L
 0215-4,1438804990615,2,matcher,"ok 9",0
-0215-4,1438805012964,2,director,"9: facing left "sitting against a wall" knees bent",F
+0215-4,1438805012964,2,director,"9: facing left 'sitting against a wall' knees bent",F
 0215-4,1438805020073,2,matcher,"ok 10",0
 0215-4,1438805054630,2,director,"10: facing left, the face is a block, pointing diagonally up in the air, a triangle pointing at his neck",B
 0215-4,1438805080005,2,matcher,"ok 11",0
@@ -155,7 +155,6 @@ gameid,time,roundNum,sender,contents,tangram
 0215-4,1438806219633,6,director,"the guy with no neck",J
 0215-4,1438806226972,6,matcher,"ok 11",0
 0215-4,1438806227762,6,director,"11: has no arms",H
-gameid,time,roundNum,sender,contents,tangram
 0619-a,1438802704528,1,director,"Hello",0
 0619-a,1438802707700,1,matcher,"hey",0
 0619-a,1438802749784,1,director,"I'm not sure how to descrive these tiles, but i'll try my best",0
@@ -402,7 +401,6 @@ gameid,time,roundNum,sender,contents,tangram
 0619-a,1438805632025,6,director,"12 fish",K
 0619-a,1438805632206,6,matcher,"k",K
 0619-a,1438805641304,6,matcher,"ok.~~~~~~here we go",0
-gameid,time,roundNum,sender,contents
 1903-d,1438804327539,1,matcher,"hello?",0
 1903-d,1438804329687,1,director,"hi",0
 1903-d,1438804346910,1,director,"1. kind of looks like a rabbit",E
@@ -572,7 +570,6 @@ gameid,time,roundNum,sender,contents
 1903-d,1438805775509,6,director,"12 rabbit facing right / looking down",E
 1903-d,1438805796773,6,matcher,"alright i think that's it.  thanks for your help!",0
 1903-d,1438805801976,6,director,"u 2",0
-gameid,time,roundNum,sender,contents,tangram
 2121-8,1438802378678,1,matcher,"Hello",0
 2121-8,1438802384338,1,director,"Hello",0
 2121-8,1438802396458,1,matcher,"Start with your #1 and let me know what it is?",A
@@ -679,7 +676,6 @@ gameid,time,roundNum,sender,contents,tangram
 2121-8,1438803859963,6,director,"10 dancing women",G
 2121-8,1438803868322,6,director,"11 podium left",D
 2121-8,1438803873333,6,director,"12 shadow",H
-gameid,time,roundNum,sender,contents,tangram
 2388-c,1438808788498,1,matcher,"Hello",0
 2388-c,1438808804413,1,director,"The first spot looks like a the profile of a person sitting with their knees up",F
 2388-c,1438808823278,1,matcher,"are they facing left?",F
@@ -838,7 +834,6 @@ gameid,time,roundNum,sender,contents,tangram
 2388-c,1438810172107,6,director,"pointer",L
 2388-c,1438810172107,6,director,"triangle man",G
 2388-c,1438810178029,6,matcher,"perfect!",0
-gameid,time,roundNum,sender,contents,tangram
 2878-d,1438802329175,1,matcher,"which is your first image",B
 2878-d,1438802364656,1,matcher,"does your first image resemble someone standing on one leg?",I
 2878-d,1438802373124,1,director,"there is a square and triangle on top.  the triangle is a little on the right side down a bit (at the top)",I
@@ -983,7 +978,6 @@ gameid,time,roundNum,sender,contents,tangram
 2878-d,1438804131022,6,director,"9",K
 2878-d,1438804148832,6,matcher,"mostly rectangle on left and 2 triangle edges on right",G
 2878-d,1438804173172,6,director,"4",G
-gameid,time,roundNum,sender,contents
 3409-e,1438802605864,1,director,"1 is pointing to the right and slightly crouching",L
 3409-e,1438802628394,1,director,"you here?",0
 3409-e,1438802655727,1,director,"2 is sitting with legs stretched out to left",F
@@ -1221,7 +1215,6 @@ gameid,time,roundNum,sender,contents
 3409-e,1438806990107,6,matcher,"*is too thorough sometimes*",0
 3409-e,1438806996297,6,director,"5 and 8",0
 3409-e,1438806996373,6,matcher,"*grins*",0
-gameid,time,roundNum,sender,contents
 3423-d,1438804876121,1,matcher,"hello there",0
 3423-d,1438804896022,1,matcher,"I am the matcher",0
 3423-d,1438804948898,1,director,"hi",0
@@ -1437,7 +1430,6 @@ gameid,time,roundNum,sender,contents
 3423-d,1438808722022,6,director,"12 ziggy",A
 3423-d,1438808724106,6,matcher,"ziggy",A
 3423-d,1438808726752,6,matcher,"ok",A
-gameid,time,roundNum,sender,contents,tangram
 3682-d,1438802839764,1,director,"hi",0
 3682-d,1438802842355,1,matcher,"hi",0
 3682-d,1438802851200,1,matcher,"i'm kind of confused lol",0
@@ -1597,7 +1589,6 @@ gameid,time,roundNum,sender,contents,tangram
 3682-d,1438804750926,6,director,"backwards L 12",G
 3682-d,1438804751568,6,matcher,"k",0
 3682-d,1438804761725,6,matcher,"k",0
-gameid,time,roundNum,sender,contents,tangram
 3891-4,1438803416035,1,matcher,"Hello",0
 3891-4,1438803448836,1,director,"Hello",0
 3891-4,1438803456142,1,matcher,"What do you have in 1?",A
@@ -1819,7 +1810,6 @@ gameid,time,roundNum,sender,contents,tangram
 3891-4,1438805795306,6,director,"thanks",0
 3891-4,1438805798276,6,director,"have a great day",0
 3891-4,1438805801247,6,matcher,"See ya and good luck!",0
-gameid,time,roundNum,sender,contents,tangram
 4060-2,1438805807682,1,director,"Hi",0
 4060-2,1438805811946,1,matcher,"Hi",0
 4060-2,1438805825575,1,director,"OK, so #1 looks kind of like a person pointing to their left",D
@@ -2042,7 +2032,6 @@ gameid,time,roundNum,sender,contents,tangram
 4060-2,1438807731687,6,director,"and 12 is ghost!",C
 4060-2,1438807736866,6,matcher,"done",0
 4060-2,1438807738745,6,director,"yay",0
-gameid,time,roundNum,sender,contents,tangram
 4404-5,1438803840852,1,matcher,"Hi",0
 4404-5,1438803849122,1,director,"Hello",0
 4404-5,1438803856791,1,matcher,"Let's start with #1?",L
@@ -2190,7 +2179,6 @@ gameid,time,roundNum,sender,contents,tangram
 4404-5,1438805792708,6,matcher,"Guess that's it",0
 4404-5,1438805795495,6,matcher,"good luck turking :P",0
 4404-5,1438805797608,6,director,"haha you too",0
-gameid,time,roundNum,sender,contents,tangram
 4800-3,1438802508715,1,matcher,"hi",0
 4800-3,1438802532448,1,director,"#1 has a diamond on top and looks like a pacman on the right",K
 4800-3,1438802555932,1,matcher,"okay ",K
@@ -2344,7 +2332,6 @@ gameid,time,roundNum,sender,contents,tangram
 4800-3,1438804519614,6,director,"11 indian",E
 4800-3,1438804521505,6,director,"12 y",C
 4800-3,1438804532125,6,matcher,"okay ",0
-gameid,time,roundNum,sender,contents,tangram
 6510-9,1438802974584,1,matcher,"Ready",0
 6510-9,1438802999827,1,director,"1 is has a square and a triangle at the top with the triangle to the left of the square",B
 6510-9,1438803034182,1,director,"It comes to a point at the left of the square",B
@@ -2500,7 +2487,6 @@ gameid,time,roundNum,sender,contents,tangram
 6510-9,1438805082793,6,matcher,"ok",G
 6510-9,1438805084808,6,director,"12. Person pointing left",D
 6510-9,1438805116820,6,matcher,"ok done",D
-gameid,time,roundNum,sender,contents,tangram
 7764-f,1438808295385,1,director,"ok",0
 7764-f,1438808300342,1,matcher,"ok",0
 7764-f,1438808313032,1,director,"the figure that looks like an ice skater goes in spot 11",I
@@ -2585,7 +2571,6 @@ gameid,time,roundNum,sender,contents,tangram
 7764-f,1438808995970,6,director,"10 ice skater",I
 7764-f,1438809002598,6,director,"11 kneeling and praying",K
 7764-f,1438809005796,6,director,"12 lunge diagonal",C
-gameid,time,roundNum,sender,contents,tangram
 9440-7,1438806347263,1,director,"Hello",0
 9440-7,1438806351460,1,matcher,"heyo",0
 9440-7,1438806375329,1,matcher,"What do you have",0
@@ -2712,7 +2697,6 @@ gameid,time,roundNum,sender,contents,tangram
 9440-7,1438807843331,6,director,"#10 bunny",E
 9440-7,1438807849559,6,director,"#11 cap and gown",D
 9440-7,1438807854154,6,director,"#12 no descr",K
-gameid,time,roundNum,sender,contents,tangram
 0770-e,1438962733437,1,director,"hi",0
 0770-e,1438962740405,1,matcher,"hey",0
 0770-e,1438962752762,1,director,"I'm a bit lost",0
@@ -2853,7 +2837,6 @@ gameid,time,roundNum,sender,contents,tangram
 0770-e,1438964731287,6,director,"dancer 10",G
 0770-e,1438964733895,6,director,"bear 11",A
 0770-e,1438964744720,6,matcher,"ok, submit",0
-gameid,time,roundNum,sender,contents,tangram
 1490-f,1438969179918,1,matcher,"HELLO?",0
 1490-f,1438969197561,1,director,"Hello",0
 1490-f,1438969229566,1,matcher,"so what is your image 1",0
@@ -3060,7 +3043,6 @@ gameid,time,roundNum,sender,contents,tangram
 1490-f,1438970270889,6,matcher,"12 ears",E
 1490-f,1438970273540,6,director,"yes!",0
 1490-f,1438970274795,6,director,"yay",0
-gameid,time,roundNum,sender,contents,tangram
 2760-0,1438969779337,1,matcher,"Hello?",0
 2760-0,1438969783628,1,director,"Hello",0
 2760-0,1438969805819,1,matcher,"any ideas?",0
@@ -3145,7 +3127,6 @@ gameid,time,roundNum,sender,contents,tangram
 2760-0,1438971586474,6,director,"10: diamond head, no limbs",H
 2760-0,1438971600943,6,director,"11: diamond head, stretching",G
 2760-0,1438971610949,6,director,"12: diamond head, right arm slightly extended ",J
-gameid,time,roundNum,sender,contents,tangram
 4927-0,1438964304723,1,director,"Hello",0
 4927-0,1438964314352,1,matcher,"Hello",0
 4927-0,1438964352279,1,matcher,"What's in square 1?",0
@@ -3292,7 +3273,6 @@ gameid,time,roundNum,sender,contents,tangram
 4927-0,1438965742445,6,director,"12 is facing left straight back arm out",D
 4927-0,1438965748285,6,director,"last round - thanks!",0
 4927-0,1438965756540,6,matcher,"got it, thanks to you too!",0
-gameid,time,roundNum,sender,contents,tangram
 5204-4,1438962970986,1,director,"Hello",0
 5204-4,1438962975578,1,matcher,"Hello",0
 5204-4,1438962990835,1,director,"OK, for the first one",0
@@ -3559,7 +3539,6 @@ gameid,time,roundNum,sender,contents,tangram
 5204-4,1438965377205,6,matcher,"ok then triangles on head?",E
 5204-4,1438965382436,6,director,"yes for 12",0
 5204-4,1438965387387,6,matcher,"ok done! submitting",0
-gameid,time,roundNum,sender,contents,tangram
 7264-8,1438966868133,1,matcher,"Anyone there?",0
 7264-8,1438966870056,1,director,"Ok #1 on my board looks like a person praying",K
 7264-8,1438966878453,1,director,"i don't have a clue how to describe these :/",0
@@ -3673,7 +3652,6 @@ gameid,time,roundNum,sender,contents,tangram
 7264-8,1438967983015,6,director,"11 is wide person",J
 7264-8,1438967983015,6,director,"12 is weird bunny with square ear",G
 7264-8,1438967988652,6,director,"we got this!",0
-gameid,time,roundNum,sender,contents,tangram
 8762-d,1438966572737,1,matcher,"hey",0
 8762-d,1438966593732,1,director,"first box has a person sitting facing forward, no limbs showing, sitting on legs",H
 8762-d,1438966611104,1,matcher,"ok",0
@@ -3776,7 +3754,6 @@ gameid,time,roundNum,sender,contents,tangram
 8762-d,1438968049180,6,director,"box 10 dancer facing right",G
 8762-d,1438968066254,6,director,"box 11 person sitting facing right two triangles top of head",E
 8762-d,1438968072687,6,matcher,"gg",0
-gameid,time,roundNum,sender,contents,tangram
 9409-4,1438965046669,1,matcher,"Woot.",0
 9409-4,1438965049542,1,director,"Hi!",0
 9409-4,1438965055986,1,matcher,"Hey!",0
