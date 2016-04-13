@@ -1,0 +1,267 @@
+gameid,time,roundNum,sender,contents,tangram
+5204-4,1438962970986,1,director,"Hello",0
+5204-4,1438962975578,1,matcher,"Hello",0
+5204-4,1438962990835,1,director,"OK, for the first one",0
+5204-4,1438963003796,1,director,"the person is pointing to the left",B
+5204-4,1438963019248,1,matcher,"Does he have like a long sleeve?",B
+5204-4,1438963022215,1,director,"he has a triangle pointing at his neck his arms are up ",B
+5204-4,1438963025903,1,director,"Yes!!!",0
+5204-4,1438963045351,1,director,"I will number each description",0
+5204-4,1438963054827,1,matcher,"Triangle or square? I see all square heads",0
+5204-4,1438963102731,1,director,"Ok, for 1: his head is like a block, he's pointing left, but a triangle is pointing right on his bottom neck, his arms are up",B
+5204-4,1438963116558,1,matcher,"oh ok I think I have it",0
+5204-4,1438963122785,1,director,"good: ",0
+5204-4,1438963144540,1,director,"2: for this one, he's pointing left, he has a bird beak",A
+5204-4,1438963158263,1,director,"2: left leg/foot up in the air",A
+5204-4,1438963165295,1,matcher,"got it",0
+5204-4,1438963204433,1,director,"3: pointing left, right leg is up, left leg on ground, head looks like a diamond",I
+5204-4,1438963226378,1,matcher,"got it",0
+5204-4,1438963258509,1,director,"4: he's pointing right, diamond head again, like he's holding a big plate, knees are bent",L
+5204-4,1438963273091,1,matcher,"got it",0
+5204-4,1438963273421,1,director,"4: note: his knees are not on the ground",L
+5204-4,1438963277352,1,matcher,"ok",0
+5204-4,1438963293217,1,director,"5: very much like four, but his knees are on the ground",K
+5204-4,1438963305960,1,matcher,"got it",0
+5204-4,1438963325776,1,director,"6: head is a diamond, no neck, instead a flat surface",J
+5204-4,1438963341863,1,matcher,"one shoulder is pointing to the right?",J
+5204-4,1438963356612,1,director,"I think so",0
+5204-4,1438963357681,1,director,"ok",0
+5204-4,1438963364338,1,matcher,"ok got it",0
+5204-4,1438963365398,1,director,"his entire left side is flat",J
+5204-4,1438963370183,1,matcher,"yes got it",0
+5204-4,1438963383013,1,director,"7: his head is a diamond, no arms",H
+5204-4,1438963413012,1,director,"his legs are sloping down to the right",H
+5204-4,1438963415090,1,matcher,"sitting down and legs are kinda to the right?",H
+5204-4,1438963419823,1,matcher,"got it",0
+5204-4,1438963434004,1,director,"8: this ones hard, give me time",0
+5204-4,1438963438295,1,matcher,"ok",0
+5204-4,1438963455617,1,director,"8: ok, his head is like a diamond, rolling down to the left",G
+5204-4,1438963473796,1,director,"looks like he could be doing yoga, or a pushup",G
+5204-4,1438963475599,1,matcher,"his arms are like kinda behind him?",G
+5204-4,1438963504901,1,director,"give me a secon",0
+5204-4,1438963512054,1,matcher,"has a boob? lol",G
+5204-4,1438963522960,1,director,"i don't see that",0
+5204-4,1438963527266,1,matcher,"ok",0
+5204-4,1438963533279,1,director,"his face is real flat",G
+5204-4,1438963539142,1,director,"pointing down to the right",G
+5204-4,1438963551889,1,director,"like a suction thingy",G
+5204-4,1438963555449,1,matcher,"Does he have 2 triangles on his head?",G
+5204-4,1438963561121,1,director,"no, not that one",0
+5204-4,1438963582234,1,director,"looks like he could be doing a pushup",G
+5204-4,1438963597096,1,director,"on left side, as is legs are on the ground",G
+5204-4,1438963609083,1,director,"right side pushing up",G
+5204-4,1438963611595,1,matcher,"ok I think that I have that one for number 1",0
+5204-4,1438963632250,1,director,"ok for 8 he's pointing to the right",G
+5204-4,1438963637423,1,matcher,"please describe number 1 again",0
+5204-4,1438963641465,1,director,"ok",0
+5204-4,1438963652174,1,director,"1: he's pointing to the left",B
+5204-4,1438963658584,1,director,"1: his head is a block",B
+5204-4,1438963675545,1,director,"1: bottom of neck, a pointy triangle is at bottom of neck",B
+5204-4,1438963677311,1,matcher,"flat body on the right?",B
+5204-4,1438963684800,1,director,"no",0
+5204-4,1438963700745,1,director,"1: his arms are extending to the left",B
+5204-4,1438963715533,1,director,"1: as if long robe like sleeves on arm",B
+5204-4,1438963726204,1,matcher,"yes ok I think I have it",0
+5204-4,1438963731276,1,director,"ok good",0
+5204-4,1438963734710,1,director,"8?",0
+5204-4,1438963735704,1,matcher,"feet are pointing left too",G
+5204-4,1438963742338,1,matcher,"yes I think I have 8",0
+5204-4,1438963749016,1,director,"Yes, that's correct for 1",0
+5204-4,1438963753274,1,director,"8:",0
+5204-4,1438963773959,1,director,"8:kind of like a yoga position or pushup",G
+5204-4,1438963785020,1,director,"the face is funny like its flat",G
+5204-4,1438963797632,1,director,"flat, pointing down to the right",G
+5204-4,1438963801081,1,matcher,"ok I think I have it",0
+5204-4,1438963805166,1,director,"9:",0
+5204-4,1438963833213,1,director,"9: he's standing, pointing to the left,head is a triangle, holding a plate with both robe like arms",D
+5204-4,1438963877800,1,matcher,"ok that is what I have for number 1",0
+5204-4,1438963896258,1,director,"lets try one again",0
+5204-4,1438963899799,1,matcher,"ok",0
+5204-4,1438963906369,1,director,"the difference is for one, ",0
+5204-4,1438963914957,1,director,"he's not standing (sorry)",0
+5204-4,1438963939512,1,director,"one is pointing to the left, kind of like sitting",B
+5204-4,1438963957545,1,director,"look at his block head",B
+5204-4,1438963961169,1,matcher,"ok I have another one that I tried",0
+5204-4,1438963976617,1,director,"there is a triangle trying to pierce the bottom of his neck",B
+5204-4,1438963995131,1,matcher,"ok I think I have it",0
+5204-4,1438963999168,1,director,"ok",0
+5204-4,1438964000700,1,matcher,"ready for 10",F
+5204-4,1438964003381,1,director,"ok",0
+5204-4,1438964025281,1,director,"10: like he's sitting on a fence, facing left",F
+5204-4,1438964033709,1,director,"back is flat against fence",F
+5204-4,1438964039076,1,director,"knees bent up",F
+5204-4,1438964039542,1,matcher,"got it",0
+5204-4,1438964046251,1,matcher,"yep",0
+5204-4,1438964060879,1,director,"11: standing, arms raised, singing to the choir lol",C
+5204-4,1438964066788,1,matcher,"yep got it",0
+5204-4,1438964076222,1,director,"12: two triangle resting on head",E
+5204-4,1438964077296,1,matcher,"the last one should be triangles on head",E
+5204-4,1438964080776,1,matcher,"yep got it",0
+5204-4,1438964081103,1,director,"yes",0
+5204-4,1438964100707,1,matcher,"submit?",0
+5204-4,1438964104263,1,director,"yes",0
+5204-4,1438964115532,2,director,"this should get easier",0
+5204-4,1438964118272,2,matcher,"yay we got them all!",0
+5204-4,1438964123135,2,director,"great!!!",0
+5204-4,1438964123692,2,matcher,"good",0
+5204-4,1438964133920,2,director,"1: 2 triangles resting on head",E
+5204-4,1438964142070,2,matcher,"got it",0
+5204-4,1438964156317,2,director,"2: knelling to the right as if holding a plate, triangle head",K
+5204-4,1438964171975,2,matcher,"got it",0
+5204-4,1438964181527,2,matcher,"knees on ground right?",K
+5204-4,1438964186675,2,director,"3: yes",0
+5204-4,1438964190590,2,matcher,"ok",0
+5204-4,1438964191969,2,director,"opps for 2",0
+5204-4,1438964202360,2,matcher,"yes for 2",0
+5204-4,1438964217967,2,director,"3: facing left, knees bent up, as if sitting along fence",F
+5204-4,1438964234192,2,matcher,"got it",0
+5204-4,1438964235361,2,director,"4: choir guy with arms up in air",D
+5204-4,1438964253891,2,matcher,"got it",0
+5204-4,1438964256654,2,director,"5: traingle head guy with no neck, flat surface",J
+5204-4,1438964269441,2,matcher,"left body straight?",J
+5204-4,1438964272530,2,director,"5: left is flat",J
+5204-4,1438964275596,2,matcher,"got it",0
+5204-4,1438964292637,2,director,"6: the birdman guy with a beak",A
+5204-4,1438964301220,2,matcher,"got it",0
+5204-4,1438964317244,2,director,"7: facing left, diamond head, right leg up in air",I
+5204-4,1438964325219,2,matcher,"got it",0
+5204-4,1438964326012,2,director,"7: "ice scater"",I
+5204-4,1438964328449,2,director,"ok",0
+5204-4,1438964331496,2,matcher,"ok",0
+5204-4,1438964356673,2,director,"8: pointing left, diamond is trying to pierce bottom neck",B
+5204-4,1438964373667,2,matcher,"the pushup guy?",0
+5204-4,1438964378553,2,director,"no",0
+5204-4,1438964413137,2,director,"8: facing left, sitting, block head facing diagonally up, triangle piercing very bottom of neck",B
+5204-4,1438964423412,2,matcher,"ok I think I have it",0
+5204-4,1438964430912,2,director,"Ok, hey for 8",0
+5204-4,1438964450369,2,director,"nickname him "triangle victim" for future rounds?",B
+5204-4,1438964456435,2,matcher,"lol ok",0
+5204-4,1438964481303,2,director,"9: facing left, diamond head, standing",D
+5204-4,1438964485745,2,director,"9: holding plate",D
+5204-4,1438964490747,2,director,"robe like",D
+5204-4,1438964491210,2,matcher,"robe guy?",D
+5204-4,1438964493680,2,director,"yes",0
+5204-4,1438964499945,2,matcher,"ok go it",0
+5204-4,1438964504527,2,matcher,"*got",0
+5204-4,1438964515237,2,director,"10: for 10, can we c all him "yoga guy"?",G
+5204-4,1438964523766,2,matcher,"sure got it",0
+5204-4,1438964525101,2,director,"10: facing right",G
+5204-4,1438964544353,2,director,"11: knees bent facing right, holding plate, back is flat",L
+5204-4,1438964552654,2,matcher,"got it",0
+5204-4,1438964558177,2,director,"12: no arms guy",H
+5204-4,1438964558548,2,matcher,"last one is no arms guy right?",H
+5204-4,1438964562310,2,matcher,"perfect",0
+5204-4,1438964563501,2,director,"great!",0
+5204-4,1438964565838,2,matcher,"submitting",0
+5204-4,1438964580136,3,matcher,"got them all correct. ok go for it",0
+5204-4,1438964594180,3,director,"1: facing left standing, back flat, robe guy, holding plate",D
+5204-4,1438964600385,3,matcher,"got it",0
+5204-4,1438964621884,3,director,"2: facing right, diamond head, knees bent, with plate",L
+5204-4,1438964638483,3,matcher,"got it",0
+5204-4,1438964639472,3,director,"3: bird man with beak",A
+5204-4,1438964646257,3,matcher,"got it",0
+5204-4,1438964662420,3,director,"4: triangle in the neck victim guy",B
+5204-4,1438964669900,3,matcher,"got it",0
+5204-4,1438964679253,3,director,"5: ice skater guy facing left",I
+5204-4,1438964686384,3,matcher,"got it",0
+5204-4,1438964696417,3,director,"6: Plate holder guy, kneeling right",K
+5204-4,1438964702411,3,matcher,"got it",0
+5204-4,1438964705578,3,director,"7: preaching to the choir guy",C
+5204-4,1438964712630,3,matcher,"got it",0
+5204-4,1438964717136,3,director,"8: 2 triangles on head",E
+5204-4,1438964725706,3,matcher,"got it",0
+5204-4,1438964733932,3,director,"9: fence sitter guy, facing left",F
+5204-4,1438964742366,3,matcher,"got it",0
+5204-4,1438964743881,3,director,"10: no arms guy",H
+5204-4,1438964748787,3,matcher,"got it",0
+5204-4,1438964750932,3,director,"11: yoga guy",G
+5204-4,1438964766368,3,matcher,"got it and last guy should be flat left back",J
+5204-4,1438964769420,3,director,"12: diamond head no neck guy",J
+5204-4,1438964773132,3,director,"yes",0
+5204-4,1438964777467,3,matcher,"ok submitting",0
+5204-4,1438964786811,4,matcher,"perfect ok go ahead",0
+5204-4,1438964799649,4,director,"1: facing right, plate guy, knees bent",L
+5204-4,1438964816943,4,matcher,"got it",0
+5204-4,1438964818469,4,director,"2: facing right, plate guy, but knees on floor",K
+5204-4,1438964833916,4,matcher,"got it",0
+5204-4,1438964839715,4,director,"3: ice skater guy, going left",I
+5204-4,1438964848169,4,director,"4: bird man beak",A
+5204-4,1438964848516,4,matcher,"got it",0
+5204-4,1438964853909,4,matcher,"got it",0
+5204-4,1438964860716,4,director,"5: no neck guy diamond head",J
+5204-4,1438964872521,4,matcher,"got it",0
+5204-4,1438964873630,4,director,"6: yoga, push up guy",G
+5204-4,1438964878684,4,matcher,"got it",0
+5204-4,1438964892984,4,director,"7: plate holder guy, standing, facing left",D
+5204-4,1438964901598,4,matcher,"got it",0
+5204-4,1438964904812,4,director,"8: two triangles on head guy",E
+5204-4,1438964909643,4,matcher,"got it",0
+5204-4,1438964916542,4,director,"9: triangle victim in neck guy",B
+5204-4,1438964943842,4,matcher,"oh i had him for number 5.~~~~~~~~~can you explain 5 again? is that the one with the straight left side?",B
+5204-4,1438964950373,4,director,"sure",0
+5204-4,1438964971090,4,director,"5: diamond head, no neck, neck resting on a tree stump?",J
+5204-4,1438964982530,4,matcher,"straight left side?",J
+5204-4,1438964987194,4,director,"yes",0
+5204-4,1438964992379,4,matcher,"ok got it",0
+5204-4,1438965010484,4,matcher,"ready for 10",0
+5204-4,1438965021587,4,director,"10: preacher guy, arms raised",C
+5204-4,1438965027148,4,matcher,"got it",0
+5204-4,1438965030749,4,director,"11: no arms guy",H
+5204-4,1438965040248,4,matcher,"got it and last guy should be fence sitter",F
+5204-4,1438965041225,4,director,"12: fence sitter to the left",F
+5204-4,1438965045912,4,matcher,"perfect submitting",0
+5204-4,1438965052724,5,matcher,"okay ready",0
+5204-4,1438965055694,5,director,"1: preacher guy",C
+5204-4,1438965062703,5,matcher,"got it",0
+5204-4,1438965063732,5,director,"2: no arms guy",H
+5204-4,1438965071175,5,matcher,"got it",0
+5204-4,1438965072024,5,director,"3: tree stump guy?",J
+5204-4,1438965077729,5,matcher,"got it",0
+5204-4,1438965090116,5,director,"4: plate holder guy, facing left, standing",D
+5204-4,1438965095054,5,matcher,"got it",0
+5204-4,1438965107836,5,director,"5: two triangles on head",E
+5204-4,1438965112105,5,matcher,"got it",0
+5204-4,1438965118217,5,director,"6: triangle victim guy",B
+5204-4,1438965124352,5,matcher,"got it",0
+5204-4,1438965136217,5,director,"7: plate holder guy, knees bent facing right",L
+5204-4,1438965142385,5,matcher,"got it",0
+5204-4,1438965148588,5,director,"8: yoga guy!",G
+5204-4,1438965154857,5,matcher,"got it",0
+5204-4,1438965172611,5,director,"9: facing right, knees on floor, plate guy",K
+5204-4,1438965178438,5,matcher,"got it",0
+5204-4,1438965184124,5,director,"10: ice skater",I
+5204-4,1438965188490,5,matcher,"got it",0
+5204-4,1438965189368,5,director,"11: bird man",A
+5204-4,1438965197738,5,director,"12 fence sitter, facing left",F
+5204-4,1438965199649,5,matcher,"got it and then should be fence sitter",0
+5204-4,1438965203088,5,matcher,"perfect submitting",0
+5204-4,1438965208151,6,matcher,"ok go ahead",0
+5204-4,1438965211940,6,director,"last round!!",0
+5204-4,1438965216606,6,matcher,"yay!",0
+5204-4,1438965219378,6,director,"1: tree stump guy",J
+5204-4,1438965226357,6,matcher,"got it",0
+5204-4,1438965233828,6,director,"2: plate guy, knees bent to the right",L
+5204-4,1438965239429,6,director,"3: no arms guy",H
+5204-4,1438965245730,6,matcher,"ok got both",0
+5204-4,1438965251949,6,director,"4: plate holder guy, knees on floor",K
+5204-4,1438965258274,6,matcher,"got it",0
+5204-4,1438965262004,6,director,"5: triangle victim guy",B
+5204-4,1438965267523,6,matcher,"got it",0
+5204-4,1438965271108,6,director,"6: fence sitter, facing left",L
+5204-4,1438965276602,6,matcher,"got it",0
+5204-4,1438965281708,6,director,"7: bird man",A
+5204-4,1438965291145,6,matcher,"got it",0
+5204-4,1438965295431,6,director,"9: plate guy, standing, facing left",D
+5204-4,1438965300539,6,director,"10: ice skater",I
+5204-4,1438965306715,6,matcher,"got them both",0
+5204-4,1438965307637,6,director,"11: preacher guy",C
+5204-4,1438965316474,6,matcher,"wait I missed 8",0
+5204-4,1438965318632,6,director,"12: two triangle on head guy",E
+5204-4,1438965319925,6,director,"ok",0
+5204-4,1438965326068,6,director,"8: yoga guy?",G
+5204-4,1438965340220,6,director,"8 would be yoga guy",G
+5204-4,1438965354316,6,matcher,"okay 8 is yoga guy, 9 is robe guy, 10 is ice skater, what is 11?",0
+5204-4,1438965368232,6,director,"11 is preacher singing guy",C
+5204-4,1438965377205,6,matcher,"ok then triangles on head?",E
+5204-4,1438965382436,6,director,"yes for 12",0
+5204-4,1438965387387,6,matcher,"ok done! submitting",0

@@ -1,0 +1,154 @@
+gameid,time,roundNum,sender,contents,tangram
+4800-3,1438802508715,1,matcher,"hi",0
+4800-3,1438802532448,1,director,"#1 has a diamond on top and looks like a pacman on the right",K
+4800-3,1438802555932,1,matcher,"okay ",K
+4800-3,1438802594589,1,director,"2 is very similar to 1",L
+4800-3,1438802603465,1,matcher,"yep ",L
+4800-3,1438802658774,1,director,"3 has a square on the top left and the left bottom extends farther out than the square",G
+4800-3,1438802679954,1,matcher,"ok",G
+4800-3,1438802710567,1,director,"4 has a right angle at the very bottom and 2 triangles on top",E
+4800-3,1438802798433,1,director,"5 has a diamond on top and the right bottom has a triangle pointing to the right",E
+4800-3,1438802816536,1,director,"got those?",E
+4800-3,1438802844090,1,matcher,"yes",E
+4800-3,1438802877587,1,director,"6 looks like a man sitting down where his head is a square and his feet would be to the left",F
+4800-3,1438802885428,1,matcher,"ok",F
+4800-3,1438802915882,1,director,"7 is a diamond on top of a table, the left of the table is a right angle",J
+4800-3,1438802947373,1,director,"8 looks like a bird carrying a flag",A
+4800-3,1438802972621,1,director,"9 is a Y with a square in the middle",C
+4800-3,1438803010138,1,matcher,"ok",C
+4800-3,1438803037018,1,director,"skipping to 12 it looks like a square headed man wearing a rob with his arms facing left",D
+4800-3,1438803049104,1,matcher,"okay should i submit it ",0
+4800-3,1438803051571,1,director,"can you see which ones you haven't moved?",0
+4800-3,1438803065011,1,matcher,"yeah 10 and 11 look like opposites of each other ",I
+4800-3,1438803067196,1,matcher,"sort of ",I
+4800-3,1438803098421,1,director,"we may be mixed up then",I
+4800-3,1438803110646,1,director,"11 kind of looks like a tree stump",B
+4800-3,1438803123813,1,matcher,"okay i think i have 11 and 3 mixed up",B
+4800-3,1438803151450,1,director,"could be, the descriptions would be similar",B
+4800-3,1438803169580,1,matcher,"okay ill just submit now should be close if not the same ",0
+4800-3,1438803182378,2,director,"we suck",0
+4800-3,1438803184034,2,matcher,"okay that didnt go well ",0
+4800-3,1438803185674,2,matcher,"haha ",0
+4800-3,1438803188575,2,matcher,"lets try again ",0
+4800-3,1438803202245,2,matcher,"where is the man sitting one? ",F
+4800-3,1438803206541,2,director,"5",F
+4800-3,1438803220676,2,director,"other than the man sitting, 1 is the shortest",B
+4800-3,1438803234848,2,director,"there is a square and a triangle in the top right",B
+4800-3,1438803245123,2,matcher,"okay got it ",B
+4800-3,1438803267184,2,matcher,"how about the one with the guy with his arm out to the left?",D
+4800-3,1438803274439,2,director,"11",D
+4800-3,1438803293796,2,director,"3 looks like a diamond on a pedestal",J
+4800-3,1438803313855,2,matcher,"is the bottom a weird triangle on the right?",J
+4800-3,1438803340070,2,director,"yea, the left side goes straight down ",J
+4800-3,1438803347926,2,matcher,"okay how about 2?",K
+4800-3,1438803397230,2,director,"2 has a diamond at the top and is fairly tall, theres the pacman on the right of it",K
+4800-3,1438803425385,2,matcher,"okay got it. 4? ",I
+4800-3,1438803446923,2,director,"does figure skater make sense?",I
+4800-3,1438803449008,2,director,"for 4",I
+4800-3,1438803453852,2,matcher,"yes haha actually ",I
+4800-3,1438803463955,2,matcher,"5 is guy sitting. what about 6",F
+4800-3,1438803484996,2,director,"6 is similar to 3 except 3 has a straight line for the left side",H
+4800-3,1438803520268,2,matcher,"ok i think i have that one ",H
+4800-3,1438803534874,2,director,"7 looks like a man kneeling",L
+4800-3,1438803536178,2,matcher,"is it a similar pac man shape maybe the mouth is a little weird? ",L
+4800-3,1438803540679,2,director,"yep",L
+4800-3,1438803571647,2,matcher,"okay just need 8, 9, 10, 12 ",0
+4800-3,1438803580970,2,director,"8 is the right facing bird holding a flag, look at the bottom and it looks like feet",A
+4800-3,1438803588083,2,director,"head would be looking down",A
+4800-3,1438803592740,2,director,"one foot off the ground",A
+4800-3,1438803613973,2,matcher,"okay ",A
+4800-3,1438803618631,2,director,"9 is Y",C
+4800-3,1438803628525,2,matcher,"got it ",C
+4800-3,1438803646477,2,director,"10 is 2 triangles at the top touching a square",E
+4800-3,1438803670375,2,director,"right triangle at the bottom where the hypoteneus would be facing left",E
+4800-3,1438803672889,2,matcher,"okay i have that 11 is guy with the arm out 12 is square on left weird looking shape ",0
+4800-3,1438803672889,2,matcher,"okay i have that 11 is guy with the arm out",D
+4800-3,1438803672889,2,matcher,"12 is square on left weird looking shape ",G
+4800-3,1438803679027,2,director,"yep",G
+4800-3,1438803683369,2,matcher,"okay im submitting ",0
+4800-3,1438803691564,3,matcher,"better! ",0
+4800-3,1438803698884,3,director,"i wonder which ones we missed",0
+4800-3,1438803710645,3,matcher,"maybe i mixed up the pac mans ",0
+4800-3,1438803720021,3,director,"ok 1 is diamond at the top, triangle at the bottom right",H
+4800-3,1438803722235,3,matcher,"okay do you want to just start with 1 ",H
+4800-3,1438803754421,3,matcher,"okay i think i have that one ",H
+4800-3,1438803762512,3,director,"2 is kneeling man",L
+4800-3,1438803770852,3,matcher,"is there also a weird triangle thing on the right on 1? ",H
+4800-3,1438803783200,3,director,"with a pacman, but less pacman looking than the other",J
+4800-3,1438803793485,3,director,"triangle on the right bottom of 1",H
+4800-3,1438803801960,3,matcher,"okay ",H
+4800-3,1438803820586,3,director,"3 is triangles on top of square on top of triangle",E
+4800-3,1438803827728,3,director,"it looks like an indian headress to me",E
+4800-3,1438803847769,3,matcher,"i agree so i think that one is right haha ",E
+4800-3,1438803884174,3,director,"skip 4 for now",G
+4800-3,1438803896573,3,director,"5 is man sitting down facing left",F
+4800-3,1438803905145,3,matcher,"ok",F
+4800-3,1438803907567,3,director,"6 is y",C
+4800-3,1438803955892,3,director,"7 has a square on top, below and to the right in a triangle and a stump looking thing below it",B
+4800-3,1438803977576,3,matcher,"ok",B
+4800-3,1438803982493,3,director,"8 is the other pacman",K
+4800-3,1438803996836,3,director,"9 figure skater",I
+4800-3,1438804005207,3,director,"10 man with robe",D
+4800-3,1438804015770,3,director,"11 birdman flag",A
+4800-3,1438804024581,3,matcher,"yep ",A
+4800-3,1438804029818,3,director,"12 diamond on broken pedestal",J
+4800-3,1438804037818,3,director,"right side broken",J
+4800-3,1438804041125,3,matcher,"okay i think i have it ",J
+4800-3,1438804054562,4,matcher,"damn 10 again not bad tho ",0
+4800-3,1438804072705,4,director,"are there rules to this? i could link a screen shot",0
+4800-3,1438804095836,4,matcher,"thats prob against the rules just describe them quickly now that we have names for them",0
+4800-3,1438804110045,4,director,"the bottom of 1 extends the farthest to the left",G
+4800-3,1438804122541,4,director,"i think this may be one we're messing up",G
+4800-3,1438804134874,4,director,"square on the top left",G
+4800-3,1438804142296,4,matcher,"okay its a rectangle mostly ok yeah i got it ",G
+4800-3,1438804168660,4,director,"2 is kinda similar to one but it doesnt go as far to the left at the bottom",B
+4800-3,1438804181430,4,matcher,"ok",B
+4800-3,1438804189671,4,director,"figure skater 3",I
+4800-3,1438804195504,4,director,"indian 4",E
+4800-3,1438804203762,4,director,"birdman flag 4",0
+4800-3,1438804208850,4,director,"sorry",0
+4800-3,1438804211418,4,director,"birdman 5",A
+4800-3,1438804222814,4,director,"man sitting down facing left 6",F
+4800-3,1438804229076,4,director,"man kneeling 7",L
+4800-3,1438804245597,4,director,"pacman 8",K
+4800-3,1438804261476,4,director,"9 y",C
+4800-3,1438804266381,4,director,"10 man with robe",D
+4800-3,1438804279431,4,director,"11 diamond on broken pedestal",J
+4800-3,1438804291770,4,matcher,"is it straight down on the left like the whole thing? ",J
+4800-3,1438804292775,4,director,"12 similar to 11 but without the right angle at the bottom left",J
+4800-3,1438804298077,4,director,"which one?",J
+4800-3,1438804301264,4,matcher,"11",J
+4800-3,1438804304893,4,director,"yea",J
+4800-3,1438804307109,4,matcher,"okay ",0
+4800-3,1438804312075,5,matcher,"nice ",0
+4800-3,1438804318865,5,director,"bingo",0
+4800-3,1438804327380,5,director,"do you remember 1 from last time?",G
+4800-3,1438804328028,5,matcher,"okay 2 more rounds we got this ",J
+4800-3,1438804340591,5,matcher,"extends all the way to the right ",A
+4800-3,1438804344189,5,director,"yea",A
+4800-3,1438804350835,5,matcher,"i mean left ",A
+4800-3,1438804351764,5,director,"left",A
+4800-3,1438804373405,5,director,"2 was 11 i think, diamond pedestal straight line on the left",J
+4800-3,1438804378986,5,director,"3 indian",E
+4800-3,1438804383818,5,director,"4 man sitting",F
+4800-3,1438804389224,5,director,"5 birdman",A
+4800-3,1438804392762,5,director,"6 man kneeling",L
+4800-3,1438804397822,5,director,"7 man robe",D
+4800-3,1438804408612,5,director,"8 same as 2 but not straight on the left",H
+4800-3,1438804412180,5,director,"9 y",C
+4800-3,1438804422039,5,director,"10 pacman",K
+4800-3,1438804426189,5,director,"12 figure skater",I
+4800-3,1438804442853,5,matcher,"okay ",0
+4800-3,1438804457438,6,matcher,"we got it ",0
+4800-3,1438804459993,6,director,"1 diamond pedestal straight left",J
+4800-3,1438804464708,6,director,"2 man sitting",F
+4800-3,1438804467981,6,director,"3 figure skater",I
+4800-3,1438804477412,6,director,"4 was 1 last time, extends to the left",G
+4800-3,1438804486196,6,director,"5 man kneeling",L
+4800-3,1438804489652,6,director,"6 man robe",D
+4800-3,1438804494260,6,director,"7 pacman",K
+4800-3,1438804512746,6,director,"8 similar to 1 not straight on the left",H
+4800-3,1438804516846,6,director,"10 birdman",A
+4800-3,1438804519614,6,director,"11 indian",E
+4800-3,1438804521505,6,director,"12 y",C
+4800-3,1438804532125,6,matcher,"okay ",0

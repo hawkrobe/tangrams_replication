@@ -1,0 +1,159 @@
+gameid,time,roundNum,sender,contents,tangram
+2388-c,1438808788498,1,matcher,"Hello",0
+2388-c,1438808804413,1,director,"The first spot looks like a the profile of a person sitting with their knees up",F
+2388-c,1438808823278,1,matcher,"are they facing left?",F
+2388-c,1438808830037,1,director,"yes",F
+2388-c,1438808832116,1,matcher,"got it",F
+2388-c,1438808867276,1,matcher,"which spot has the one that looks like a bunny sitting against a wall?",E
+2388-c,1438808889906,1,director,"that is spot 7",E
+2388-c,1438808898380,1,matcher,"got it",E
+2388-c,1438808933665,1,director,"spot 2 has two triangles that stick out to the left and one that sticks out to the right. Like a person standing on one leg",I
+2388-c,1438808933837,1,matcher,"which has the one that looks like someone standing holding their left leg in the air",I
+2388-c,1438808945244,1,matcher,"okay got #2",I
+2388-c,1438808976337,1,director,"3 looks like a person is crouched down to the right, praying or holding a book",L
+2388-c,1438809034885,1,director,"it sort of makes a "s" with the book going into the legs",L
+2388-c,1438809054788,1,matcher,"okay got it",L
+2388-c,1438809104736,1,director,"4 is the diamond head with a rectangle body. it has a small triangle that comes out at the bottom right and a matching indent on the bottom left",H
+2388-c,1438809141547,1,matcher,"got it",H
+2388-c,1438809143933,1,director,"5 looks like someone holding up their arms",C
+2388-c,1438809147787,1,matcher,"good",C
+2388-c,1438809207099,1,director,"six has a diamond on the left with a triangle on the right of the head area. on the bottom right there is a lone triangle sticking out",G
+2388-c,1438809226729,1,matcher,"got it",G
+2388-c,1438809232058,1,matcher,"7 is the bunny right?",E
+2388-c,1438809236425,1,director,"yep",E
+2388-c,1438809257425,1,director,"8 is someone pointing to the left ",D
+2388-c,1438809263754,1,matcher,"where is the one standing with left leg in the air?",A
+2388-c,1438809267473,1,matcher,"got 8",D
+2388-c,1438809272295,1,director,"that is 12",A
+2388-c,1438809277297,1,matcher,"cool",A
+2388-c,1438809315402,1,matcher,"two of the ones left are crouching, one is taller and one is shorter",K
+2388-c,1438809356235,1,director,"taller would be 10 (it should look like it has two diamonds stacked on each other at the top)",K
+2388-c,1438809377817,1,matcher,"and then the third remaining has the solid line on the left",J
+2388-c,1438809382041,1,matcher,"okay got 10",K
+2388-c,1438809388385,1,director,"solid line is 11",J
+2388-c,1438809399473,1,matcher,"okay so other croucher is 9",B
+2388-c,1438809405457,1,director,"should be",B
+2388-c,1438809411801,1,matcher,"good. submitting!",0
+2388-c,1438809418536,2,director,"nice",0
+2388-c,1438809425626,2,director,"1 is bunny",E
+2388-c,1438809427480,2,matcher,"sweet",E
+2388-c,1438809436858,2,matcher,"got it",E
+2388-c,1438809449243,2,director,"2 is the 2 diamons stacked (would have been 10 last time)",K
+2388-c,1438809460481,2,matcher,"done",K
+2388-c,1438809475051,2,director,"3 is the straight line on left side (I think 11 last time)",J
+2388-c,1438809482601,2,matcher,"got it",J
+2388-c,1438809496565,2,director,"4 is crouching guy with knees up (I think 1 last time)",F
+2388-c,1438809512274,2,matcher,"good",F
+2388-c,1438809513447,2,director,"5 is the one with both arms up",C
+2388-c,1438809521776,2,matcher,"ok",C
+2388-c,1438809557951,2,director,"6 is the one that is crouching that has sort of an "s" with the legs pointed to the right (holding book or praying was how I described it before)",L
+2388-c,1438809574392,2,matcher,"cool, we can call him S man",L
+2388-c,1438809580261,2,director,"that works",L
+2388-c,1438809589592,2,director,"7 is leg kicked up to the left",A
+2388-c,1438809595848,2,matcher,"ok",A
+2388-c,1438809612792,2,director,"8 is the short crouching one that was one of the last we did last time",B
+2388-c,1438809619032,2,matcher,"good",B
+2388-c,1438809649593,2,director,"9 is diamond on left part of head, triangle on right part of head, with a lone trianle on the bottom right",G
+2388-c,1438809664560,2,matcher,"got it",G
+2388-c,1438809668051,2,director,"10 is pointing left",D
+2388-c,1438809673144,2,matcher,"ok",D
+2388-c,1438809684860,2,director,"11 is diamond with rectangle body",H
+2388-c,1438809697166,2,matcher,"ok then right leg up guy",I
+2388-c,1438809702035,2,director,"yep",I
+2388-c,1438809706471,2,matcher,"cool ",I
+2388-c,1438809717286,2,matcher,"before I sumbit let's nickname them so we can go fast the other rounds?",0
+2388-c,1438809737252,2,director,"sure. 1~~~ bunny",E
+2388-c,1438809749296,2,matcher,"1. bunny 2~~~ kneeler, 3~~~ left line, 4 knees up",E
+2388-c,1438809762359,2,matcher,"5. arms up 6~~~ S man",L
+2388-c,1438809786582,2,matcher,"7. left leg up 8~~~ short croucher",A
+2388-c,1438809825463,2,matcher,"9. triangle man",G
+2388-c,1438809844855,2,matcher,"10. pointer 11~~~ rectangle body, 12~~~ right leg up",I
+2388-c,1438809849260,2,director,"got it",0
+2388-c,1438809854476,2,matcher,"sweet",0
+2388-c,1438809866386,3,director,"kneeler",K
+2388-c,1438809877158,3,matcher,"okay",K
+2388-c,1438809882308,3,director,"left leg up",A
+2388-c,1438809889246,3,matcher,"good",A
+2388-c,1438809900750,3,director,"triangle man",G
+2388-c,1438809908953,3,matcher,"okay",G
+2388-c,1438809910639,3,director,"right leg up",I
+2388-c,1438809916685,3,matcher,"okay",I
+2388-c,1438809917514,3,director,"pointer",D
+2388-c,1438809922432,3,matcher,"good",D
+2388-c,1438809923214,3,director,"left line",J
+2388-c,1438809930454,3,matcher,"okay",J
+2388-c,1438809931236,3,director,"s man",L
+2388-c,1438809937394,3,matcher,"good",L
+2388-c,1438809938294,3,director,"bunny",E
+2388-c,1438809943680,3,matcher,"ok",E
+2388-c,1438809946518,3,director,"knees up",E
+2388-c,1438809951310,3,matcher,"ok",E
+2388-c,1438809955462,3,director,"short croucher",F
+2388-c,1438809958323,3,matcher,"good",F
+2388-c,1438809963207,3,director,"rectangle body",B
+2388-c,1438809965864,3,matcher,"ok",B
+2388-c,1438809969171,3,director,"arms up",C
+2388-c,1438809973254,3,matcher,"cool",C
+2388-c,1438809995086,4,director,"left leg up, kneeler, bunny",0
+2388-c,1438809995086,4,director,"left leg up",A
+2388-c,1438809995086,4,director,"kneeler",K
+2388-c,1438809995086,4,director,"bunny",E
+2388-c,1438810009926,4,matcher,"ok",0
+2388-c,1438810015861,4,director,"rectangle body, knees up, short croucher",0
+2388-c,1438810015861,4,director,"rectangle body",H
+2388-c,1438810015861,4,director,"knees up",F
+2388-c,1438810015861,4,director,"short croucher",B
+2388-c,1438810024551,4,matcher,"good",0
+2388-c,1438810039591,4,director,"s man, arms up, pointer",0
+2388-c,1438810039591,4,director,"s man",L
+2388-c,1438810039591,4,director,"arms up",C
+2388-c,1438810039591,4,director,"pointer",D
+2388-c,1438810048496,4,matcher,"got it",0
+2388-c,1438810050452,4,director,"triangle man, left line, right leg up",0
+2388-c,1438810050452,4,director,"triangle man",G
+2388-c,1438810050452,4,director,"left line",J
+2388-c,1438810050452,4,director,"right leg up",I
+2388-c,1438810056869,4,matcher,"good!",0
+2388-c,1438810066357,5,matcher,"awesome",0
+2388-c,1438810071766,5,director,"left leg up, kneeler, right leg up",0
+2388-c,1438810071766,5,director,"left leg up",A
+2388-c,1438810071766,5,director,"kneeler",K
+2388-c,1438810071766,5,director,"right leg up",I
+2388-c,1438810084517,5,matcher,"ok",0
+2388-c,1438810088974,5,director,"triangle man, bunny, short croucher",0
+2388-c,1438810088974,5,director,"triangle man",G
+2388-c,1438810088974,5,director,"bunny",E
+2388-c,1438810088974,5,director,"short croucher",B
+2388-c,1438810096397,5,matcher,"ok",0
+2388-c,1438810101356,5,director,"pointer, knees up, rectangle body"
+2388-c,1438810101356,5,director,"pointer",D
+2388-c,1438810101356,5,director,"knees up",F
+2388-c,1438810101356,5,director,"rectangle body",H
+2388-c,1438810108815,5,matcher,"good",0
+2388-c,1438810109638,5,director,"s man, arms up, left line",0
+2388-c,1438810109638,5,director,"s man",L
+2388-c,1438810109638,5,director,"arms up",C
+2388-c,1438810109638,5,director,"left line",J
+2388-c,1438810115672,5,matcher,"good",0
+2388-c,1438810123789,6,matcher,"almost done!",0
+2388-c,1438810130418,6,director,"bunny, arms up, knees up.~~~we are rocking it",0
+2388-c,1438810130418,6,director,"bunny",E
+2388-c,1438810130418,6,director,"arms up",C
+2388-c,1438810130418,6,director,"knees up.~~~we are rocking it",F
+2388-c,1438810134885,6,matcher,"yeah :)",0
+2388-c,1438810142810,6,matcher,"good",0
+2388-c,1438810150932,6,director,"short croucher, rectangle body, right leg up",0
+2388-c,1438810150932,6,director,"short croucher",B
+2388-c,1438810150932,6,director,"rectangle body",H
+2388-c,1438810150932,6,director,"right leg up",I
+2388-c,1438810158037,6,matcher,"ok",0
+2388-c,1438810162081,6,director,"left line, s man, left leg up",0
+2388-c,1438810162081,6,director,"left line",J
+2388-c,1438810162081,6,director,"s man",L
+2388-c,1438810162081,6,director,"left leg up",A
+2388-c,1438810170797,6,matcher,"good",0
+2388-c,1438810172107,6,director,"kneeler, pointer, triangle man",0
+2388-c,1438810172107,6,director,"kneeler",K
+2388-c,1438810172107,6,director,"pointer",L
+2388-c,1438810172107,6,director,"triangle man",G
+2388-c,1438810178029,6,matcher,"perfect!",0

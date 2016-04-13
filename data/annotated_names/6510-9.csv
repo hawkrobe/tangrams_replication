@@ -1,0 +1,156 @@
+gameid,time,roundNum,sender,contents,tangram
+6510-9,1438802974584,1,matcher,"Ready",0
+6510-9,1438802999827,1,director,"1 is has a square and a triangle at the top with the triangle to the left of the square",B
+6510-9,1438803034182,1,director,"It comes to a point at the left of the square",B
+6510-9,1438803050855,1,matcher,"ok I think I got it",B
+6510-9,1438803080982,1,director,"2 has a diamond shape center at the top on a point and has 2 2 points on the right and on the left a point pointing straight up",K
+6510-9,1438803142593,1,matcher,"ok",K
+6510-9,1438803195001,1,director,"3 looks like a man with 2 legs facing left with one leg kicked out and a square on his back",A
+6510-9,1438803238617,1,matcher,"ok",A
+6510-9,1438803284242,1,director,"4 looks like a person facing o their knees with there arm out facing right",L
+6510-9,1438803297334,1,matcher,"ok",L
+6510-9,1438803328979,1,director,"5 looks very similar but no arms or legs. Just a head and body",H
+6510-9,1438803357576,1,matcher,"ok",H
+6510-9,1438803382018,1,director,"6 is perfectly square on the left with 2 points on the right and a diamond centered on top",J
+6510-9,1438803393990,1,matcher,"ok",J
+6510-9,1438803450876,1,director,"7 has a square on top left and a triangle beside it on the right.",G
+6510-9,1438803460979,1,director,"The bottom left comes to a long point",G
+6510-9,1438803472534,1,director,"triangle sticking way out on the bottom right",G
+6510-9,1438803478873,1,matcher,"ok",G
+6510-9,1438803512598,1,director,"8 kind of likes like a person ice skating facing left with both arms extended and one leg in the air",I
+6510-9,1438803530060,1,matcher,"ok",I
+6510-9,1438803559727,1,director,"9 looks like a person with both arms in the air",C
+6510-9,1438803601347,1,director,"its a diamond in the center and and a point coming up on either side",C
+6510-9,1438803617151,1,matcher,"ok",C
+6510-9,1438803633420,1,director,"10 looks like a person doing a situp",F
+6510-9,1438803644200,1,matcher,"ok",F
+6510-9,1438803645215,1,director,"diamond sitting on a point on the far right",F
+6510-9,1438803657812,1,matcher,"ok",F
+6510-9,1438803688608,1,director,"11 has two triangles extending by the points from a diamond",E
+6510-9,1438803713140,1,matcher,"ok done",E
+6510-9,1438803728165,2,matcher,"ready",0
+6510-9,1438803729603,2,director,"1 looks like the person doing situp",F
+6510-9,1438803739618,2,matcher,"ok",F
+6510-9,1438803751772,2,director,"2 facing left with leg kicked out and square on his back",A
+6510-9,1438803767464,2,matcher,"ok",A
+6510-9,1438803772959,2,director,"3 sitting facing right with no arms or legs",H
+6510-9,1438803796465,2,matcher,"ok",H
+6510-9,1438803821628,2,director,"4 square on the left. On the right pointed at the top and bottom and diamond centered on top",J
+6510-9,1438803848447,2,matcher,"ok",J
+6510-9,1438803855656,2,director,"5 person facing right on knees with arms extended",L
+6510-9,1438803871626,2,matcher,"ok",L
+6510-9,1438803893551,2,director,"6 is the two triangles extending up from the corner of the square",E
+6510-9,1438803909607,2,matcher,"ok",E
+6510-9,1438803919013,2,director,"7 looks like the person ice skating",I
+6510-9,1438803930643,2,matcher,"ok",I
+6510-9,1438803933570,2,director,"8 is person standing and pointing left",D
+6510-9,1438803947338,2,matcher,"ok",D
+6510-9,1438803970466,2,director,"9 has square and diamond both touch the top right corner",B
+6510-9,1438803982633,2,director,"not diamon but triangle",B
+6510-9,1438803983205,2,matcher,"ok",B
+6510-9,1438804053382,2,director,"10 has diamond at the top and to points on the right. On the left a point pointing straight up",K
+6510-9,1438804102202,2,matcher,"ok",K
+6510-9,1438804105400,2,director,"11 has the very wide bottom with both points extended far out",G
+6510-9,1438804126711,2,matcher,"ok",G
+6510-9,1438804147679,2,director,"12 is man with arms in the air",C
+6510-9,1438804182170,2,matcher,"ok done",C
+6510-9,1438804212374,3,director,"1 is person doing a situp",F
+6510-9,1438804226861,3,matcher,"ok",F
+6510-9,1438804269634,3,director,"2 is square and triangle sitting at an angle on top right corner with all three points touching on that corner",B
+6510-9,1438804278683,3,matcher,"ok",B
+6510-9,1438804286713,3,director,"3 is person on their knees pointing right",L
+6510-9,1438804296401,3,matcher,"ok",L
+6510-9,1438804311458,3,director,"4 is person facing left with square on their back",A
+6510-9,1438804328620,3,matcher,"ok",A
+6510-9,1438804329586,3,director,"5 is person with arms in the air",C
+6510-9,1438804344521,3,matcher,"ok",C
+6510-9,1438804356691,3,director,"6 is 2 triangles at the top",E
+6510-9,1438804372891,3,director,"sitting on top of corner of sqaure",E
+6510-9,1438804376783,3,director,"square",E
+6510-9,1438804379530,3,matcher,"ok",E
+6510-9,1438804438450,3,director,"7 is the diamond on top with 2 peaks pointing right and one peak on the left pointing up ",K
+6510-9,1438804454062,3,matcher,"ok",K
+6510-9,1438804463202,3,director,"8 is person pointing left",D
+6510-9,1438804472423,3,matcher,"ok",D
+6510-9,1438804498964,3,director,"9 is the wide bottom with triangle on the bottom right",G
+6510-9,1438804509067,3,matcher,"ok",G
+6510-9,1438804510044,3,director,"10 person with no arms or legs",H
+6510-9,1438804519585,3,matcher,"ok",H
+6510-9,1438804526999,3,director,"11 perfectly square on the left",J
+6510-9,1438804536471,3,matcher,"ok",J
+6510-9,1438804538287,3,director,"12 ice skating",I
+6510-9,1438804544531,3,matcher,"ok done",I
+6510-9,1438804555591,4,matcher,"ready",0
+6510-9,1438804565293,4,director,"1 is square on the left",J
+6510-9,1438804580555,4,matcher,"ok",J
+6510-9,1438804594586,4,director,"2 diamond on top with 2 peaks on the right. One pointing up on the left",K
+6510-9,1438804604280,4,matcher,"ok",K
+6510-9,1438804605110,4,director,"3 person with arms in the air",C
+6510-9,1438804611728,4,director,"4 No arms or legs",C
+6510-9,1438804617773,4,matcher,"ok",C
+6510-9,1438804635112,4,director,"5 two triangles extending up from the corner of the square",E
+6510-9,1438804645945,4,matcher,"ok",E
+6510-9,1438804648018,4,director,"man facing left with square on his back",A
+6510-9,1438804662281,4,director,"that was 6",A
+6510-9,1438804663943,4,matcher,"ok",A
+6510-9,1438804671215,4,director,"7 wide bottom",G
+6510-9,1438804681156,4,matcher,"ok",G
+6510-9,1438804684585,4,director,"8 person on knees pointing right",L
+6510-9,1438804692624,4,matcher,"ok",L
+6510-9,1438804693259,4,director,"9 situp",F
+6510-9,1438804700217,4,matcher,"ok",F
+6510-9,1438804713338,4,director,"10 square on triangle on top right corner",B
+6510-9,1438804728290,4,matcher,"ok",B
+6510-9,1438804729004,4,director,"11 ice skating",I
+6510-9,1438804735065,4,matcher,"ok",I
+6510-9,1438804738199,4,director,"12 person pointing left",D
+6510-9,1438804744024,4,matcher,"ok done",D
+6510-9,1438804753821,5,matcher,"ready",0
+6510-9,1438804757896,5,director,"person on knees pointing right",L
+6510-9,1438804779168,5,matcher,"ok",L
+6510-9,1438804782817,5,director,"2 person pointing left",D
+6510-9,1438804788082,5,matcher,"ok",D
+6510-9,1438804789583,5,director,"3. wide bottom",G
+6510-9,1438804795178,5,matcher,"ok",G
+6510-9,1438804811494,5,director,"4. two triangles extending up",E
+6510-9,1438804820788,5,matcher,"ok",E
+6510-9,1438804824344,5,director,"5. no arms or legs",H
+6510-9,1438804833344,5,matcher,"ok",H
+6510-9,1438804836085,5,director,"6. situp",F
+6510-9,1438804840404,5,matcher,"ok",F
+6510-9,1438804846796,5,director,"7 person facing left with square on back",A
+6510-9,1438804854392,5,matcher,"ok",A
+6510-9,1438804862770,5,director,"8 ice skating",I
+6510-9,1438804875016,5,matcher,"ok",I
+6510-9,1438804880783,5,director,"9. triangle and square on top right corner",B
+6510-9,1438804889244,5,matcher,"ok",B
+6510-9,1438804894111,5,director,"10. Left side is square",J
+6510-9,1438804899514,5,matcher,"ok",J
+6510-9,1438804921174,5,director,"11 diamond on top. 2 peaks on right~~~ pointing up on left",K
+6510-9,1438804927442,5,director,"12 arms in the air",C
+6510-9,1438804935001,5,matcher,"ok done",C
+6510-9,1438804944241,6,matcher,"ready",C
+6510-9,1438804945449,6,director,"1. Iceskating",I
+6510-9,1438804964102,6,matcher,"ok",I
+6510-9,1438804967288,6,director,"2. 2 peaks on the right~~~ Peak on the left pointing up",K
+6510-9,1438804974292,6,matcher,"ok",K
+6510-9,1438804977526,6,director,"3. Left side square",J
+6510-9,1438804984985,6,matcher,"ok",J
+6510-9,1438804990943,6,director,"4. Square and triangle on top right corner",B
+6510-9,1438804999986,6,matcher,"ok",B
+6510-9,1438805004533,6,director,"5. two triangles extending up",E
+6510-9,1438805016328,6,matcher,"ok",E
+6510-9,1438805017200,6,director,"6. Arms in the air",C
+6510-9,1438805022844,6,director,"7. Situp",F
+6510-9,1438805022904,6,matcher,"ok",C
+6510-9,1438805032209,6,matcher,"ok",F
+6510-9,1438805044237,6,director,"8. Facing Left with square on back",A
+6510-9,1438805050465,6,matcher,"ok",A
+6510-9,1438805060386,6,director,"9. Person on knees facing right",L
+6510-9,1438805068638,6,matcher,"ok",L
+6510-9,1438805069621,6,director,"10. No arms or Legs",H
+6510-9,1438805076608,6,matcher,"ok",H
+6510-9,1438805077446,6,director,"11. Wide Bottom",G
+6510-9,1438805082793,6,matcher,"ok",G
+6510-9,1438805084808,6,director,"12. Person pointing left",D
+6510-9,1438805116820,6,matcher,"ok done",D

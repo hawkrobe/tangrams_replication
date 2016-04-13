@@ -1,0 +1,105 @@
+[ ] Interface
+	[x] General reformatting
+		[x] Stack text box above board. 
+		[x] Stretch text box and board horizontally
+	[x] Change the board
+		[x] Turn board into 2 row * 6 col
+		[x] Make all board squares white
+		[x] Replace images with Tangram shapes
+			[x] Photoshop off white background from Tangram png
+	[ ] Directions
+		[ ] Change director directions to "Have the matcher rearrange their cards to match yours"
+		[ ] Change matcher directions to "Rearrange your cards to match the director's"
+	[ ] Tangram setup
+		[x] Shuffle director and matcher cards at start of each trial
+		[ ] Re-do assignment if any positions match (i.e. make it pseudorandom)
+[x] Gameplay
+	[x] Remove "Correct/incorrect move!" text
+	[x] Remove red arrow
+	[x] Remove prewritten text for director
+	[x] Do not track mouse movement 
+		[x] Remove mouse variable and data folder
+		[x] Remove screen with green dot to track mouse on matcher's screen
+		[x] Remove screen waiting for matcher to re-position mouse from director's screen
+	[x] Allow matcher to move Tangram figures anywhere on board at any time in game
+	[x] Keep matcher and director objects seperate
+		[x] Server keeps track of how many tangram figures on matcher's board match director's board
+			[x] update frequently
+
+
+[ ] Gameplay duration
+	[x] Keep track of round number on matcher and director screens (i.e. Round 1/6)
+	[ ] For individual round
+		[x] Create "Finished" button that matcher can press to complete a round
+		[x] When button pressed, end round and restart a new one
+		[ ] Show them each how close their boards were to each other
+			[ ] Show them this for a few seconds? 
+			[ ] Use X and check mark 
+	[ ] At end of final round send matcher and director to survey/pay them
+		[x] Show them score from each game...give them stats on their gameplay (for fun)
+[ ] Make gameplay more intuitive
+	[x] Highlight grid space that matcher drags a tangram over
+	[ ] Animate swapped tangram moving to dragged tangram's original position
+[ ] Instruction screen
+	[x] Write instructions for matcher and director
+	[ ] Add to program...is this done through MTurk?
+[ ] Writedata 
+	[x] messages from director and matcher
+	[x] record the starting/end location and ID of the tangram that matcher clicks, drags, releases
+	[x] Include time stamp
+[ ] sudo random shuffle to avoid matching boards (at least for start position)
+	-put in some code but I don't think that it is working
+
+
+[ ] sudo shuffle still needs to be implemented...maybe. 
+[x] Place numbers next to gird spaces
+	[x] Have numbers on top of screen at start of each round
+[x] Have score show up on both screens
+[ ] set up submiterator
+	[x] create mTurk account
+	[x] instruction page
+[ ] need to remove submitbutton from director's page
+
+
+As of 7/20
+
+[x] Remove submit Button from director's page
+[x] overlay tangrams on numbers at the start of each round
+	[ ] especially important for director's board
+[x] Fix sudo shuffle
+[x] Make submit button bigger
+[x] move numbers in director's squares slightly to the right...why are they different for director?
+[ ] Figure out a way to show score for final round
+[x] Link instructions to the start of the game
+[x] Get Screen application on computer
+	[x] figure out how to use Screen...need to close server's application
+
+
+[x] Check instructions out
+[ ] mmTurky stuff
+[ ] check workflow of instruction page sandbox
+[x] link to consent.html 
+[ ] make sure game works on the internet 
+
+7/29/15
+
+[ ] arbitratryness of conventions
+[ ] metaphor concrete
+
+
+[ ] What happened to the data?
+	[ ] Did the 5th game get cut off? Did some exit out? 
+	[ ] Don't let them click through the rounds (give bonus)
+	[ ] Only 9 submits? What happened?
+[ ] Get more fluid dialogue between matcher and director
+	[ ] rewrite instructions. Was it clear enough? Include money
+[ ] Write director's board to file
+[ ] Bonus people for correct tangrams
+	[ ] Need assignment number and workerID number. WriteData?
+	[ ] Learn how to do this via command line. Talk to Noah about his thoughts on this. 
+	[ ] Make sure to look at dropObj for final score!
+[x] move message files into analysis folder and pilot folder. make clear where data is from. Check it in to github. commit 
+	[ ] problem with commit/push from nmaslan16 via var path. Works from tmp path
+[ ] Submiterator getresults to get the subject data. Push pull
+	[ ] Does submiterator overwrite the results each time getresults/reformat is called?
+

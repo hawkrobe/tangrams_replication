@@ -1,0 +1,61 @@
+enlog.1
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ mv trial2screenlog trial2
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ ls
+[0m[01;34mdropObj[0m  [01;34mfinalBoard[0m  [01;34mmessage[0m  [01;34mpilot[0m  screenlog.0  screenlog.1  [01;34mtrial1[0m  [01;34mtrial2[0m
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ git add [K[Kgit [K[K[K[Kgit p[Kstatus
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mdeleted:    dropObj/.gitignore[m
+	[31mdeleted:    finalBoard/.gitignore[m
+	[31mdeleted:    message/.gitignore[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31mscreenlog.0[m
+	[31mscreenlog.1[m
+	[31mtrial2/[m
+	[31m../screenlog.0[m
+	[31m../screenlog.1[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ touch [Ktouch [Ktouch dropObj/.gitignore
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ touch finalBoard/.gitignore
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ touch message/.gitignore
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ ls
+[0m[01;34mdropObj[0m  [01;34mfinalBoard[0m  [01;34mmessage[0m  [01;34mpilot[0m  screenlog.0  screenlog.1  [01;34mtrial1[0m  [01;34mtrial2[0m
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31mscreenlog.0[m
+	[31mscreenlog.1[m
+	[31mtrial2/[m
+	[31m../screenlog.0[m
+	[31m../screenlog.1[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ git add -A
+warning: The behavior of 'git add --all (or -A)' with no path argument from a
+subdirectory of the tree will change in Git 2.0 and should not be used anymore.
+To add content for the whole tree, run:
+
+  git add --all :/
+  (or git add -A :/)
+
+To restrict the command to the current directory, run:
+
+  git add --all .
+  (or git add -A .)
+
+With the current Git version, the command is restricted to the current directory.
+
+nmaslan16@rxdh:/var/www/html/tangrams_replication/data$ git add 

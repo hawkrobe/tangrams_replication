@@ -1,0 +1,9 @@
+gameid, time, roundNum, sender, contents
+
+//from John who emailed me...he said that he and his teammate went through each round but at the end of it he got an error saying the HIT wouldn't submit. 
+
+Error said  "You have exceeded the maximum allowed page request rate for this website."
+
+He said "I am running Win 7 64bit with Chrome."
+
+Could have something to do with running too many scripts
