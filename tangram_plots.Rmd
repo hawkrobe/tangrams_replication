@@ -36,13 +36,56 @@ View(miniTest)
 ```{r}
 #plot tangram A, round 1 distribution of word frequencies
 
-A1 <- ggplot(allTangramsFreqs, aes(x = X1)) + geom_dotplot() + ggtitle("A1")
-A2 <- ggplot(allTangramsFreqs, aes(x = X3)) + geom_dotplot() + ggtitle("A3")
-A3 <- ggplot(allTangramsFreqs, aes(x = X6)) + geom_dotplot() + ggtitle("A6")
-B1 <- ggplot(allTangramsFreqs, aes(x = X1.1)) + geom_dotplot() + ggtitle("B1")
-multiplot(A1, A2, A3, B1, cols=3, rows =2)
+A1 <- ggplot(allTangramsFreqs, aes(x = X1)) + geom_histogram() + ggtitle("Round 1 Tangram A")
+A3 <- ggplot(allTangramsFreqs, aes(x = X3)) + geom_histogram() + ggtitle("Round 3 Tangram A")
+A6 <- ggplot(allTangramsFreqs, aes(x = X6)) + geom_histogram() + ggtitle("Round 6 Tangram A")
+B1 <- ggplot(allTangramsFreqs, aes(x = X1.1)) + geom_histogram() +  ggtitle("Round 1 Tangram B")
+B3 <- ggplot(allTangramsFreqs, aes(x = X3.1)) + geom_histogram() +  ggtitle("Round 3 Tangram B")
+B6 <- ggplot(allTangramsFreqs, aes(x = X6.1)) + geom_histogram() +  ggtitle("Round 6 Tangram B")
+C1 <- ggplot(allTangramsFreqs, aes(x = X1.2)) + geom_histogram() +  ggtitle("C1")
+C3 <- ggplot(allTangramsFreqs, aes(x = X3.2)) + geom_histogram() +  ggtitle("B3")
+C6 <- ggplot(allTangramsFreqs, aes(x = X6.2)) + geom_histogram() +  ggtitle("B6")
+
+
+multiplot(A1, A3, A6, B1,B3, B6, cols=3, rows =3)
 ```
 
+```{r}
+#Show graph of the unique types of words decreasing over rounds...not averaged
+typesTangrams <- read.csv("allTangramsFreqs.csv", header = TRUE)
+#change NA values to 0
+#typesTangrams[is.na(typesTangrams)] <- 0
+miniTypeTest = select(typesTangrams, A:X6.11)
+miniTypeTest = slice(miniTypeTest)
+
+
+#http://stackoverflow.com/questions/26581410/dplyr-summarizing-count-and-conditional-aggregate-functions-on-the-same-factor
+
+#count up unique word types for each tangram over each round
+na_count <-sapply(miniTypeTest, function(y) sum(length(which(!is.na(y)))))
+na_count <- data.frame(na_count)
+View(na_count)
+
+#create dataframe counting unique types for tangrams at each round
+tangramUniqueTypes <- miniTypeTest %>% 
+  summarise_each(funs(sum(!is.na(.))))
+
+#remove everything after dot (including dot)
+names(tangramUniqueTypes) <- gsub("\\.[^.]*$", "", names(tangramUniqueTypes))
+#remove dots in column names
+names(tangramUniqueTypes) <- gsub("\\.", "", names(tangramUniqueTypes))
+#remove "X" in column names
+names(tangramUniqueTypes) <- gsub("X", "", names(tangramUniqueTypes))
+View(tangramUniqueTypes)
+
+
+```
+
+```{r}
+test1 = tangramUniqueTypes
+test1 = slice(test1, 1:5)
+
+```
 
 
 ```{r}
