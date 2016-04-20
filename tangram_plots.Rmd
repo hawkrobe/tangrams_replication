@@ -37,17 +37,6 @@ View(miniTest)
 #plot tangram A, round 1 distribution of word frequencies
 
 A1 <- ggplot(allTangramsFreqs, aes(x = X1)) + geom_histogram() + ggtitle("Round 1 Tangram A")
-A3 <- ggplot(allTangramsFreqs, aes(x = X3)) + geom_histogram() + ggtitle("Round 3 Tangram A")
-A6 <- ggplot(allTangramsFreqs, aes(x = X6)) + geom_histogram() + ggtitle("Round 6 Tangram A")
-B1 <- ggplot(allTangramsFreqs, aes(x = X1.1)) + geom_histogram() +  ggtitle("Round 1 Tangram B")
-B3 <- ggplot(allTangramsFreqs, aes(x = X3.1)) + geom_histogram() +  ggtitle("Round 3 Tangram B")
-B6 <- ggplot(allTangramsFreqs, aes(x = X6.1)) + geom_histogram() +  ggtitle("Round 6 Tangram B")
-C1 <- ggplot(allTangramsFreqs, aes(x = X1.2)) + geom_histogram() +  ggtitle("C1")
-C3 <- ggplot(allTangramsFreqs, aes(x = X3.2)) + geom_histogram() +  ggtitle("B3")
-C6 <- ggplot(allTangramsFreqs, aes(x = X6.2)) + geom_histogram() +  ggtitle("B6")
-
-
-multiplot(A1, A3, A6, B1,B3, B6, cols=3, rows =3)
 ```
 
 ```{r}
@@ -81,59 +70,42 @@ View(tangramUniqueTypes)
 
 ```
 
+
 ```{r}
-test1 = tangramUniqueTypes
-test1 = slice(test1, 1:5)
+library(data.table)
+tangramWordCounts <- read.csv("tangramWordCounts.csv", header = FALSE)
+#rename the columns to tangram, roundNum, word, and count
+setnames(tangramWordCounts, old = c('V1', 'V2', 'V3', 'V4'), new = c('tangram', 'roundNum', 'word', 'count'))
+#arrange in ascending orders
+tangramWordCounts <- arrange(tangramWordCounts, (tangram), (roundNum))
+#filter out the words with 0s from each round
+tangramWordCounts <- filter(tangramWordCounts, count > 0)
+
+#word total change over time for each tangram
+wordTotalEachTangram <- tangramWordCounts %>% group_by(tangram, roundNum)   %>% summarise(sum = sum(count)/24) 
+wordTotalAvgTangram <- wordTotalEachTangram %>% group_by(roundNum) %>%
+  summarise(avg = mean(sum))
+View(wordTotalAvgTangram)
+
+#graphing wordTotal change over time (averaged across participants and tangrams) 
+wordTotalAvgChange <- ggplot(wordTotalAvgTangram, aes(y = avg, x = roundNum)) + geom_line() + ggtitle("Round 1 Tangram A") + xlab("round number") + ylab("average words used")
+wordTotalAvgChange
+
+#count average word types used over rounds for each tangram for each participant
+wordTypesEachTangram <- tangramWordCounts %>% group_by(tangram, roundNum) %>% summarise(numTypes = n_distinct(word)/24)
+#average number of word types used for all tangrams over each round
+wordTypesAvgTangram <- wordTypesEachTangram %>% group_by(roundNum) %>%
+  summarise(avgNumTypes = mean(numTypes))
+
+#graphing wordTypesAvgTangram
+wordTypesAvgTangram <- ggplot(wordTypesAvgTangram, aes(y = avgNumTypes, x = roundNum)) + geom_line() + ggtitle("Average Word Types people used for each tangram over rounds") + xlab("round number") + ylab("average number of word types used")
+wordTypesAvgTangram
+
+#facet across tangram
 
 ```
 
-
 ```{r}
-#http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
-# Multiple plot function
-#
-# ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects)
-# - cols:   Number of columns in layout
-# - layout: A matrix specifying the layout. If present, 'cols' is ignored.
-#
-# If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),
-# then plot 1 will go in the upper left, 2 will go in the upper right, and
-# 3 will go all the way across the bottom.
-#
-multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
-  library(grid)
-
-  # Make a list from the ... arguments and plotlist
-  plots <- c(list(...), plotlist)
-
-  numPlots = length(plots)
-
-  # If layout is NULL, then use 'cols' to determine layout
-  if (is.null(layout)) {
-    # Make the panel
-    # ncol: Number of columns of plots
-    # nrow: Number of rows needed, calculated from # of cols
-    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
-                    ncol = cols, nrow = ceiling(numPlots/cols))
-  }
-
- if (numPlots==1) {
-    print(plots[[1]])
-
-  } else {
-    # Set up the page
-    grid.newpage()
-    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
-
-    # Make each plot, in the correct location
-    for (i in 1:numPlots) {
-      # Get the i,j matrix positions of the regions that contain this subplot
-      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
-
-      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
-                                      layout.pos.col = matchidx$col))
-    }
-  }
-}
-```
+#look at part of speech
+partOfSpeechList <- read.csv("partOfSpeechList", header = TRUE)
 
