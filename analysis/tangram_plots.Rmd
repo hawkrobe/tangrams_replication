@@ -1,0 +1,111 @@
+---
+title: "TangramsThesis"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+require(tidyr)
+require(dplyr)
+require(ggplot2)
+library(shiny)
+```
+
+
+
+
+```{r}
+allTangramsFreqs <- read.csv("allTangramsFreqs.csv", header = TRUE)
+#change NA values to 0
+allTangramsFreqs[is.na(allTangramFreqs)] <- 0
+
+#rearrange data
+testTangramDf = spread(allTangramsFreqs, "A", "B")
+testTangramDf = gather(allTangramsFreqs, "X1", "X2")
+View(testTangramDf)
+
+miniTest= select(allTangramsFreqs, A)
+miniTest = slice(miniTest, 1:2)
+test = spread(miniTest, A, "walking", "bear")
+View(miniTest)
+```
+
+```{r}
+#plot tangram A, round 1 distribution of word frequencies
+
+A1 <- ggplot(allTangramsFreqs, aes(x = X1)) + geom_histogram() + ggtitle("Round 1 Tangram A")
+```
+
+```{r}
+#Show graph of the unique types of words decreasing over rounds...not averaged
+typesTangrams <- read.csv("allTangramsFreqs.csv", header = TRUE)
+#change NA values to 0
+#typesTangrams[is.na(typesTangrams)] <- 0
+miniTypeTest = select(typesTangrams, A:X6.11)
+miniTypeTest = slice(miniTypeTest)
+
+
+#http://stackoverflow.com/questions/26581410/dplyr-summarizing-count-and-conditional-aggregate-functions-on-the-same-factor
+
+#count up unique word types for each tangram over each round
+na_count <-sapply(miniTypeTest, function(y) sum(length(which(!is.na(y)))))
+na_count <- data.frame(na_count)
+View(na_count)
+
+#create dataframe counting unique types for tangrams at each round
+tangramUniqueTypes <- miniTypeTest %>% 
+  summarise_each(funs(sum(!is.na(.))))
+
+#remove everything after dot (including dot)
+names(tangramUniqueTypes) <- gsub("\\.[^.]*$", "", names(tangramUniqueTypes))
+#remove dots in column names
+names(tangramUniqueTypes) <- gsub("\\.", "", names(tangramUniqueTypes))
+#remove "X" in column names
+names(tangramUniqueTypes) <- gsub("X", "", names(tangramUniqueTypes))
+View(tangramUniqueTypes)
+
+
+```
+
+
+```{r}
+library(data.table)
+tangramWordCounts <- read.csv("tangramWordCounts.csv", header = FALSE)
+#rename the columns to tangram, roundNum, word, and count
+setnames(tangramWordCounts, old = c('V1', 'V2', 'V3', 'V4'), new = c('tangram', 'roundNum', 'word', 'count'))
+#arrange in ascending orders
+tangramWordCounts <- arrange(tangramWordCounts, (tangram), (roundNum))
+#filter out the words with 0s from each round
+tangramWordCounts <- filter(tangramWordCounts, count > 0)
+
+#word total change over time for each tangram
+wordTotalEachTangram <- tangramWordCounts %>% group_by(tangram, roundNum)   %>% summarise(sum = sum(count)/24) 
+wordTotalAvgTangram <- wordTotalEachTangram %>% group_by(roundNum) %>%
+  summarise(avg = mean(sum))
+View(wordTotalAvgTangram)
+
+#graphing wordTotal change over time (averaged across participants and tangrams) 
+wordTotalAvgChange <- ggplot(wordTotalAvgTangram, aes(y = avg, x = roundNum)) + geom_line() + ggtitle("Round 1 Tangram A") + xlab("round number") + ylab("average words used")
+wordTotalAvgChange
+
+#count average word types used over rounds for each tangram for each participant
+wordTypesEachTangram <- tangramWordCounts %>% group_by(tangram, roundNum) %>% summarise(numTypes = n_distinct(word)/24)
+#average number of word types used for all tangrams over each round
+wordTypesAvgTangram <- wordTypesEachTangram %>% group_by(roundNum) %>%
+  summarise(avgNumTypes = mean(numTypes))
+
+#graphing wordTypesAvgTangram
+wordTypesAvgTangram <- ggplot(wordTypesAvgTangram, aes(y = avgNumTypes, x = roundNum)) + geom_line() + ggtitle("Average Word Types people used for each tangram over rounds") + xlab("round number") + ylab("average number of word types used")
+wordTypesAvgTangram
+
+#facet across tangram
+
+```
+
+```{r}
+#look at part of speech
+partOfSpeechList <- read.csv("partOfSpeechList", header = TRUE)
+
